@@ -1047,7 +1047,7 @@
     "href": "week03-block1-python-intro.html#wrap-up",
     "title": "Week 3 · Block 1 — Hello, Python",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\n\nA script is a file you can re-run and commit 💾\nVariables are labels on values; values have types\nlen() count() already do real biology work\n\nCommit dna_info.py with a comment at the top explaining what it does.\n\nNext block: strings — sequences are just text 🧬\n\n70–80 min. Two students share their GC result — compare numbers, discuss why they differ."
+    "text": "Wrap-up ✅\n\nA script is a file you can re-run and commit 💾\nVariables are labels on values; values have types\nlen() count() already do real biology work\n\n\nNext block: strings — sequences are just text 🧬\n\n70–80 min. Two students share their GC result — compare numbers, discuss why they differ."
   },
   {
     "objectID": "week10-block1-bash-scripts.html#warm-up",
@@ -1292,7 +1292,7 @@
     "href": "week03-block2-strings.html#useful-string-methods",
     "title": "Week 3 · Block 2 — Strings are sequences",
     "section": "Useful string methods",
-    "text": "Useful string methods\nseq.upper()              # 'ATGC'\nseq.lower()              # 'atgc'\nseq.replace(\"T\", \"U\")    # DNA → RNA!\nseq.count(\"GC\")\nseq.find(\"ATG\")          # position of the first ATG (-1 if absent)\nseq.startswith(\"&gt;\")      # True / False — FASTA headers!\n\nA method does not change the original — it returns a new string.\n\nImportant: seq.upper() alone does nothing unless you assign it. Show the mistake live."
+    "text": "Useful string methods\nseq.upper()              # 'ATGC'\nseq.lower()              # 'atgc'\nseq.replace(\"T\", \"U\")    # DNA → RNA!\nseq.count(\"GC\")\nseq.find(\"ATG\")          # position of the first ATG (-1 if absent)\nseq.startswith(\"&gt;\")      # True / False — FASTA headers!\n\"ATG\" in seq             # True / False — is it inside?\n\nA method does not change the original — it returns a new string.\n\nImportant: seq.upper() alone does nothing unless you assign it. Show the mistake live."
   },
   {
     "objectID": "week03-block2-strings.html#building-strings",
