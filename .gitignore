@@ -1,7 +1,6 @@
-cat > .gitignore << 'EOF'
-.quarto/
+/.quarto/
+_site/
 *_files/
 *.html
-EOF_site/
-
-/.quarto/
+.DS_Store
+.venv/
