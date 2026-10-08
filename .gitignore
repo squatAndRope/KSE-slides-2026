@@ -1,0 +1,7 @@
+cat > .gitignore << 'EOF'
+.quarto/
+*_files/
+*.html
+EOF_site/
+
+/.quarto/
