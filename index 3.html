@@ -78,8 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
+      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      page: 30,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-title","listing-author"],
     };
 
@@ -144,7 +145,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Programming and Computing Basics</h1>
-<p class="subtitle lead">KSE 2026</p>
+<p class="subtitle lead">KSE · 2026</p>
 </div>
 
 
@@ -190,270 +191,356 @@ window.Quarto = {
 <a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
 </th>
 
-<th>
-Subtitle
-</th>
-
 </tr>
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-file-modified-sort="1791468224274" data-listing-reading-time-sort="5" data-listing-word-count-sort="914" data-listing-title-sort="Week 1 · Block 1 — Welcome!" data-listing-filename-sort="week01-block1-welcome.qmd">
+<tr data-index="0" data-listing-file-modified-sort="1789672550000" data-listing-reading-time-sort="5" data-listing-word-count-sort="914" data-listing-title-sort="Week 1 · Block 1 — Welcome!">
+<td>
+<a href="./week01-block1-welcome 2.html" class="title listing-title">Week 1 · Block 1 — Welcome!</a>
+</td>
+
+</tr>
+
+<tr data-index="1" data-listing-file-modified-sort="1791468224274" data-listing-reading-time-sort="5" data-listing-word-count-sort="914" data-listing-title-sort="Week 1 · Block 1 — Welcome!">
 <td>
 <a href="./week01-block1-welcome.html" class="title listing-title">Week 1 · Block 1 — Welcome!</a>
 </td>
+
+</tr>
+
+<tr data-index="2" data-listing-file-modified-sort="1789673900000" data-listing-reading-time-sort="5" data-listing-word-count-sort="957" data-listing-title-sort="Week 1 · Block 2 — First commit">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week01-block2-git 2.html" class="title listing-title">Week 1 · Block 2 — First commit</a>
 </td>
 
 </tr>
 
-<tr data-index="1" data-listing-file-modified-sort="1791468224275" data-listing-reading-time-sort="5" data-listing-word-count-sort="957" data-listing-title-sort="Week 1 · Block 2 — First commit" data-listing-filename-sort="week01-block2-git.qmd">
+<tr data-index="3" data-listing-file-modified-sort="1791468224275" data-listing-reading-time-sort="5" data-listing-word-count-sort="957" data-listing-title-sort="Week 1 · Block 2 — First commit">
 <td>
 <a href="./week01-block2-git.html" class="title listing-title">Week 1 · Block 2 — First commit</a>
 </td>
+
+</tr>
+
+<tr data-index="4" data-listing-file-modified-sort="1790191717000" data-listing-reading-time-sort="8" data-listing-word-count-sort="1599" data-listing-title-sort="Week 2 · Block 1 — The terminal">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week02-block1-terminal 2.html" class="title listing-title">Week 2 · Block 1 — The terminal</a>
 </td>
 
 </tr>
 
-<tr data-index="2" data-listing-file-modified-sort="1791468224275" data-listing-reading-time-sort="8" data-listing-word-count-sort="1599" data-listing-title-sort="Week 2 · Block 1 — The terminal" data-listing-filename-sort="week02-block1-terminal.qmd">
+<tr data-index="5" data-listing-file-modified-sort="1791468224275" data-listing-reading-time-sort="8" data-listing-word-count-sort="1599" data-listing-title-sort="Week 2 · Block 1 — The terminal">
 <td>
 <a href="./week02-block1-terminal.html" class="title listing-title">Week 2 · Block 1 — The terminal</a>
 </td>
+
+</tr>
+
+<tr data-index="6" data-listing-file-modified-sort="1790874403000" data-listing-reading-time-sort="8" data-listing-word-count-sort="1496" data-listing-title-sort="Week 2 · Block 2 — Bash on real data">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week02-block2-bash 2.html" class="title listing-title">Week 2 · Block 2 — Bash on real data</a>
 </td>
 
 </tr>
 
-<tr data-index="3" data-listing-file-modified-sort="1791468224275" data-listing-reading-time-sort="8" data-listing-word-count-sort="1496" data-listing-title-sort="Week 2 · Block 2 — Bash on real data" data-listing-filename-sort="week02-block2-bash.qmd">
+<tr data-index="7" data-listing-file-modified-sort="1791468224275" data-listing-reading-time-sort="8" data-listing-word-count-sort="1496" data-listing-title-sort="Week 2 · Block 2 — Bash on real data">
 <td>
 <a href="./week02-block2-bash.html" class="title listing-title">Week 2 · Block 2 — Bash on real data</a>
 </td>
+
+</tr>
+
+<tr data-index="8" data-listing-file-modified-sort="1791466871000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1233" data-listing-title-sort="Week 3 · Block 1 — Hello, Python">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week03-block1-python-intro 2.html" class="title listing-title">Week 3 · Block 1 — Hello, Python</a>
 </td>
 
 </tr>
 
-<tr data-index="4" data-listing-file-modified-sort="1791468224275" data-listing-reading-time-sort="7" data-listing-word-count-sort="1233" data-listing-title-sort="Week 3 · Block 1 — Hello, Python" data-listing-filename-sort="week03-block1-python-intro.qmd">
+<tr data-index="9" data-listing-file-modified-sort="1791468224275" data-listing-reading-time-sort="7" data-listing-word-count-sort="1233" data-listing-title-sort="Week 3 · Block 1 — Hello, Python">
 <td>
 <a href="./week03-block1-python-intro.html" class="title listing-title">Week 3 · Block 1 — Hello, Python</a>
 </td>
-<td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
-</td>
 
 </tr>
 
-<tr data-index="5" data-listing-file-modified-sort="1791468224276" data-listing-reading-time-sort="4" data-listing-word-count-sort="706" data-listing-title-sort="Week 3 · Block 2 — Strings are sequences" data-listing-filename-sort="week03-block2-strings.qmd">
+<tr data-index="10" data-listing-file-modified-sort="1791468224276" data-listing-reading-time-sort="4" data-listing-word-count-sort="706" data-listing-title-sort="Week 3 · Block 2 — Strings are sequences">
 <td>
 <a href="./week03-block2-strings.html" class="title listing-title">Week 3 · Block 2 — Strings are sequences</a>
 </td>
+
+</tr>
+
+<tr data-index="11" data-listing-file-modified-sort="1789672734000" data-listing-reading-time-sort="3" data-listing-word-count-sort="563" data-listing-title-sort="Week 4 · Block 1 — Lists">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week04-block1-lists 2.html" class="title listing-title">Week 4 · Block 1 — Lists</a>
 </td>
 
 </tr>
 
-<tr data-index="6" data-listing-file-modified-sort="1791468224276" data-listing-reading-time-sort="3" data-listing-word-count-sort="563" data-listing-title-sort="Week 4 · Block 1 — Lists" data-listing-filename-sort="week04-block1-lists.qmd">
+<tr data-index="12" data-listing-file-modified-sort="1791468224276" data-listing-reading-time-sort="3" data-listing-word-count-sort="563" data-listing-title-sort="Week 4 · Block 1 — Lists">
 <td>
 <a href="./week04-block1-lists.html" class="title listing-title">Week 4 · Block 1 — Lists</a>
 </td>
+
+</tr>
+
+<tr data-index="13" data-listing-file-modified-sort="1789672738000" data-listing-reading-time-sort="3" data-listing-word-count-sort="545" data-listing-title-sort="Week 4 · Block 2 — Making decisions">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week04-block2-conditions 2.html" class="title listing-title">Week 4 · Block 2 — Making decisions</a>
 </td>
 
 </tr>
 
-<tr data-index="7" data-listing-file-modified-sort="1791468224276" data-listing-reading-time-sort="3" data-listing-word-count-sort="545" data-listing-title-sort="Week 4 · Block 2 — Making decisions" data-listing-filename-sort="week04-block2-conditions.qmd">
+<tr data-index="14" data-listing-file-modified-sort="1791468224276" data-listing-reading-time-sort="3" data-listing-word-count-sort="545" data-listing-title-sort="Week 4 · Block 2 — Making decisions">
 <td>
 <a href="./week04-block2-conditions.html" class="title listing-title">Week 4 · Block 2 — Making decisions</a>
 </td>
+
+</tr>
+
+<tr data-index="15" data-listing-file-modified-sort="1789672741000" data-listing-reading-time-sort="3" data-listing-word-count-sort="527" data-listing-title-sort="Week 5 · Block 1 — Loops">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week05-block1-loops 2.html" class="title listing-title">Week 5 · Block 1 — Loops</a>
 </td>
 
 </tr>
 
-<tr data-index="8" data-listing-file-modified-sort="1791468224276" data-listing-reading-time-sort="3" data-listing-word-count-sort="527" data-listing-title-sort="Week 5 · Block 1 — Loops" data-listing-filename-sort="week05-block1-loops.qmd">
+<tr data-index="16" data-listing-file-modified-sort="1791468224276" data-listing-reading-time-sort="3" data-listing-word-count-sort="527" data-listing-title-sort="Week 5 · Block 1 — Loops">
 <td>
 <a href="./week05-block1-loops.html" class="title listing-title">Week 5 · Block 1 — Loops</a>
 </td>
+
+</tr>
+
+<tr data-index="17" data-listing-file-modified-sort="1789672746000" data-listing-reading-time-sort="3" data-listing-word-count-sort="429" data-listing-title-sort="Week 5 · Block 2 — Putting it together">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week05-block2-practice 2.html" class="title listing-title">Week 5 · Block 2 — Putting it together</a>
 </td>
 
 </tr>
 
-<tr data-index="9" data-listing-file-modified-sort="1791468224277" data-listing-reading-time-sort="3" data-listing-word-count-sort="429" data-listing-title-sort="Week 5 · Block 2 — Putting it together" data-listing-filename-sort="week05-block2-practice.qmd">
+<tr data-index="18" data-listing-file-modified-sort="1791468224277" data-listing-reading-time-sort="3" data-listing-word-count-sort="429" data-listing-title-sort="Week 5 · Block 2 — Putting it together">
 <td>
 <a href="./week05-block2-practice.html" class="title listing-title">Week 5 · Block 2 — Putting it together</a>
 </td>
+
+</tr>
+
+<tr data-index="19" data-listing-file-modified-sort="1789665868000" data-listing-reading-time-sort="3" data-listing-word-count-sort="470" data-listing-title-sort="Week 6 · Block 1 — Dictionaries">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week06-block1-dictionaries 2.html" class="title listing-title">Week 6 · Block 1 — Dictionaries</a>
 </td>
 
 </tr>
 
-<tr data-index="10" data-listing-file-modified-sort="1791468224277" data-listing-reading-time-sort="3" data-listing-word-count-sort="470" data-listing-title-sort="Week 6 · Block 1 — Dictionaries" data-listing-filename-sort="week06-block1-dictionaries.qmd">
+<tr data-index="20" data-listing-file-modified-sort="1791468224277" data-listing-reading-time-sort="3" data-listing-word-count-sort="470" data-listing-title-sort="Week 6 · Block 1 — Dictionaries">
 <td>
 <a href="./week06-block1-dictionaries.html" class="title listing-title">Week 6 · Block 1 — Dictionaries</a>
 </td>
+
+</tr>
+
+<tr data-index="21" data-listing-file-modified-sort="1789665868000" data-listing-reading-time-sort="3" data-listing-word-count-sort="577" data-listing-title-sort="Week 6 · Block 2 — Functions">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week06-block2-functions 2.html" class="title listing-title">Week 6 · Block 2 — Functions</a>
 </td>
 
 </tr>
 
-<tr data-index="11" data-listing-file-modified-sort="1791468224277" data-listing-reading-time-sort="3" data-listing-word-count-sort="577" data-listing-title-sort="Week 6 · Block 2 — Functions" data-listing-filename-sort="week06-block2-functions.qmd">
+<tr data-index="22" data-listing-file-modified-sort="1791468224277" data-listing-reading-time-sort="3" data-listing-word-count-sort="577" data-listing-title-sort="Week 6 · Block 2 — Functions">
 <td>
 <a href="./week06-block2-functions.html" class="title listing-title">Week 6 · Block 2 — Functions</a>
 </td>
+
+</tr>
+
+<tr data-index="23" data-listing-file-modified-sort="1789665870000" data-listing-reading-time-sort="4" data-listing-word-count-sort="634" data-listing-title-sort="Week 7 · Block 1 — Files">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week07-block1-files 2.html" class="title listing-title">Week 7 · Block 1 — Files</a>
 </td>
 
 </tr>
 
-<tr data-index="12" data-listing-file-modified-sort="1791468224278" data-listing-reading-time-sort="4" data-listing-word-count-sort="634" data-listing-title-sort="Week 7 · Block 1 — Files" data-listing-filename-sort="week07-block1-files.qmd">
+<tr data-index="24" data-listing-file-modified-sort="1791468224278" data-listing-reading-time-sort="4" data-listing-word-count-sort="634" data-listing-title-sort="Week 7 · Block 1 — Files">
 <td>
 <a href="./week07-block1-files.html" class="title listing-title">Week 7 · Block 1 — Files</a>
 </td>
+
+</tr>
+
+<tr data-index="25" data-listing-file-modified-sort="1789665870000" data-listing-reading-time-sort="3" data-listing-word-count-sort="582" data-listing-title-sort="Week 7 · Block 2 — Errors &amp; debugging">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week07-block2-debugging 2.html" class="title listing-title">Week 7 · Block 2 — Errors &amp; debugging</a>
 </td>
 
 </tr>
 
-<tr data-index="13" data-listing-file-modified-sort="1791468224278" data-listing-reading-time-sort="3" data-listing-word-count-sort="582" data-listing-title-sort="Week 7 · Block 2 — Errors &amp; debugging" data-listing-filename-sort="week07-block2-debugging.qmd">
+<tr data-index="26" data-listing-file-modified-sort="1791468224278" data-listing-reading-time-sort="3" data-listing-word-count-sort="582" data-listing-title-sort="Week 7 · Block 2 — Errors &amp; debugging">
 <td>
 <a href="./week07-block2-debugging.html" class="title listing-title">Week 7 · Block 2 — Errors &amp; debugging</a>
 </td>
+
+</tr>
+
+<tr data-index="27" data-listing-file-modified-sort="1789665870000" data-listing-reading-time-sort="3" data-listing-word-count-sort="503" data-listing-title-sort="Week 8 · Block 1 — Git in teams">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week08-block1-git-teams 2.html" class="title listing-title">Week 8 · Block 1 — Git in teams</a>
 </td>
 
 </tr>
 
-<tr data-index="14" data-listing-file-modified-sort="1791468224278" data-listing-reading-time-sort="3" data-listing-word-count-sort="503" data-listing-title-sort="Week 8 · Block 1 — Git in teams" data-listing-filename-sort="week08-block1-git-teams.qmd">
+<tr data-index="28" data-listing-file-modified-sort="1791468224278" data-listing-reading-time-sort="3" data-listing-word-count-sort="503" data-listing-title-sort="Week 8 · Block 1 — Git in teams">
 <td>
 <a href="./week08-block1-git-teams.html" class="title listing-title">Week 8 · Block 1 — Git in teams</a>
 </td>
+
+</tr>
+
+<tr data-index="29" data-listing-file-modified-sort="1789665870000" data-listing-reading-time-sort="3" data-listing-word-count-sort="530" data-listing-title-sort="Week 8 · Block 2 — Conflicts &amp; the pair assignment">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week08-block2-conflicts 2.html" class="title listing-title">Week 8 · Block 2 — Conflicts &amp; the pair assignment</a>
 </td>
 
 </tr>
 
-<tr data-index="15" data-listing-file-modified-sort="1791468224279" data-listing-reading-time-sort="3" data-listing-word-count-sort="530" data-listing-title-sort="Week 8 · Block 2 — Conflicts &amp; the pair assignment" data-listing-filename-sort="week08-block2-conflicts.qmd">
+<tr data-index="30" data-listing-file-modified-sort="1791468224279" data-listing-reading-time-sort="3" data-listing-word-count-sort="530" data-listing-title-sort="Week 8 · Block 2 — Conflicts &amp; the pair assignment">
 <td>
 <a href="./week08-block2-conflicts.html" class="title listing-title">Week 8 · Block 2 — Conflicts &amp; the pair assignment</a>
 </td>
+
+</tr>
+
+<tr data-index="31" data-listing-file-modified-sort="1789666236000" data-listing-reading-time-sort="3" data-listing-word-count-sort="517" data-listing-title-sort="Week 9 · Block 1 — Modules">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week09-block1-modules 2.html" class="title listing-title">Week 9 · Block 1 — Modules</a>
 </td>
 
 </tr>
 
-<tr data-index="16" data-listing-file-modified-sort="1791468224279" data-listing-reading-time-sort="3" data-listing-word-count-sort="517" data-listing-title-sort="Week 9 · Block 1 — Modules" data-listing-filename-sort="week09-block1-modules.qmd">
+<tr data-index="32" data-listing-file-modified-sort="1791468224279" data-listing-reading-time-sort="3" data-listing-word-count-sort="517" data-listing-title-sort="Week 9 · Block 1 — Modules">
 <td>
 <a href="./week09-block1-modules.html" class="title listing-title">Week 9 · Block 1 — Modules</a>
 </td>
+
+</tr>
+
+<tr data-index="33" data-listing-file-modified-sort="1789666236000" data-listing-reading-time-sort="3" data-listing-word-count-sort="422" data-listing-title-sort="Week 9 · Block 2 — Scripts as tools">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week09-block2-cli 2.html" class="title listing-title">Week 9 · Block 2 — Scripts as tools</a>
 </td>
 
 </tr>
 
-<tr data-index="17" data-listing-file-modified-sort="1791468224279" data-listing-reading-time-sort="3" data-listing-word-count-sort="422" data-listing-title-sort="Week 9 · Block 2 — Scripts as tools" data-listing-filename-sort="week09-block2-cli.qmd">
+<tr data-index="34" data-listing-file-modified-sort="1791468224279" data-listing-reading-time-sort="3" data-listing-word-count-sort="422" data-listing-title-sort="Week 9 · Block 2 — Scripts as tools">
 <td>
 <a href="./week09-block2-cli.html" class="title listing-title">Week 9 · Block 2 — Scripts as tools</a>
 </td>
+
+</tr>
+
+<tr data-index="35" data-listing-file-modified-sort="1789666236000" data-listing-reading-time-sort="3" data-listing-word-count-sort="461" data-listing-title-sort="Week 10 · Block 1 — Bash scripts">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week10-block1-bash-scripts 2.html" class="title listing-title">Week 10 · Block 1 — Bash scripts</a>
 </td>
 
 </tr>
 
-<tr data-index="18" data-listing-file-modified-sort="1791468224280" data-listing-reading-time-sort="3" data-listing-word-count-sort="461" data-listing-title-sort="Week 10 · Block 1 — Bash scripts" data-listing-filename-sort="week10-block1-bash-scripts.qmd">
+<tr data-index="36" data-listing-file-modified-sort="1791468224280" data-listing-reading-time-sort="3" data-listing-word-count-sort="461" data-listing-title-sort="Week 10 · Block 1 — Bash scripts">
 <td>
 <a href="./week10-block1-bash-scripts.html" class="title listing-title">Week 10 · Block 1 — Bash scripts</a>
 </td>
-<td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
-</td>
 
 </tr>
 
-<tr data-index="19" data-listing-file-modified-sort="1791468224280" data-listing-reading-time-sort="2" data-listing-word-count-sort="329" data-listing-title-sort="Week 11 · Block 1 — Project lab" data-listing-filename-sort="week11-block1-project-lab.qmd">
+<tr data-index="37" data-listing-file-modified-sort="1791468224280" data-listing-reading-time-sort="2" data-listing-word-count-sort="329" data-listing-title-sort="Week 11 · Block 1 — Project lab">
 <td>
 <a href="./week11-block1-project-lab.html" class="title listing-title">Week 11 · Block 1 — Project lab</a>
 </td>
+
+</tr>
+
+<tr data-index="38" data-listing-file-modified-sort="1789666236000" data-listing-reading-time-sort="2" data-listing-word-count-sort="342" data-listing-title-sort="Week 11 · Block 2 — Review &amp; build">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week11-block2-review 2.html" class="title listing-title">Week 11 · Block 2 — Review &amp; build</a>
 </td>
 
 </tr>
 
-<tr data-index="20" data-listing-file-modified-sort="1791468224280" data-listing-reading-time-sort="2" data-listing-word-count-sort="342" data-listing-title-sort="Week 11 · Block 2 — Review &amp; build" data-listing-filename-sort="week11-block2-review.qmd">
+<tr data-index="39" data-listing-file-modified-sort="1791468224280" data-listing-reading-time-sort="2" data-listing-word-count-sort="342" data-listing-title-sort="Week 11 · Block 2 — Review &amp; build">
 <td>
 <a href="./week11-block2-review.html" class="title listing-title">Week 11 · Block 2 — Review &amp; build</a>
 </td>
+
+</tr>
+
+<tr data-index="40" data-listing-file-modified-sort="1789666356000" data-listing-reading-time-sort="4" data-listing-word-count-sort="621" data-listing-title-sort="Week 12 · Block 1 — Hello, R">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week12-block1-r-intro 2.html" class="title listing-title">Week 12 · Block 1 — Hello, R</a>
 </td>
 
 </tr>
 
-<tr data-index="21" data-listing-file-modified-sort="1791468224280" data-listing-reading-time-sort="4" data-listing-word-count-sort="621" data-listing-title-sort="Week 12 · Block 1 — Hello, R" data-listing-filename-sort="week12-block1-r-intro.qmd">
+<tr data-index="41" data-listing-file-modified-sort="1791468224280" data-listing-reading-time-sort="4" data-listing-word-count-sort="621" data-listing-title-sort="Week 12 · Block 1 — Hello, R">
 <td>
 <a href="./week12-block1-r-intro.html" class="title listing-title">Week 12 · Block 1 — Hello, R</a>
 </td>
+
+</tr>
+
+<tr data-index="42" data-listing-file-modified-sort="1789666356000" data-listing-reading-time-sort="3" data-listing-word-count-sort="542" data-listing-title-sort="Week 12 · Block 2 — Data &amp; plots in R">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week12-block2-r-plots 2.html" class="title listing-title">Week 12 · Block 2 — Data &amp; plots in R</a>
 </td>
 
 </tr>
 
-<tr data-index="22" data-listing-file-modified-sort="1791468224281" data-listing-reading-time-sort="3" data-listing-word-count-sort="542" data-listing-title-sort="Week 12 · Block 2 — Data &amp; plots in R" data-listing-filename-sort="week12-block2-r-plots.qmd">
+<tr data-index="43" data-listing-file-modified-sort="1791468224281" data-listing-reading-time-sort="3" data-listing-word-count-sort="542" data-listing-title-sort="Week 12 · Block 2 — Data &amp; plots in R">
 <td>
 <a href="./week12-block2-r-plots.html" class="title listing-title">Week 12 · Block 2 — Data &amp; plots in R</a>
 </td>
+
+</tr>
+
+<tr data-index="44" data-listing-file-modified-sort="1789666356000" data-listing-reading-time-sort="2" data-listing-word-count-sort="363" data-listing-title-sort="Week 13 · Block 1 — Python vs R">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week13-block1-python-vs-r 2.html" class="title listing-title">Week 13 · Block 1 — Python vs R</a>
 </td>
 
 </tr>
 
-<tr data-index="23" data-listing-file-modified-sort="1791468224281" data-listing-reading-time-sort="2" data-listing-word-count-sort="363" data-listing-title-sort="Week 13 · Block 1 — Python vs R" data-listing-filename-sort="week13-block1-python-vs-r.qmd">
+<tr data-index="45" data-listing-file-modified-sort="1791468224281" data-listing-reading-time-sort="2" data-listing-word-count-sort="363" data-listing-title-sort="Week 13 · Block 1 — Python vs R">
 <td>
 <a href="./week13-block1-python-vs-r.html" class="title listing-title">Week 13 · Block 1 — Python vs R</a>
 </td>
+
+</tr>
+
+<tr data-index="46" data-listing-file-modified-sort="1789666356000" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Week 13 · Block 2 — Final stretch">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week13-block2-final-stretch 2.html" class="title listing-title">Week 13 · Block 2 — Final stretch</a>
 </td>
 
 </tr>
 
-<tr data-index="24" data-listing-file-modified-sort="1791468224281" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Week 13 · Block 2 — Final stretch" data-listing-filename-sort="week13-block2-final-stretch.qmd">
+<tr data-index="47" data-listing-file-modified-sort="1791468224281" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Week 13 · Block 2 — Final stretch">
 <td>
 <a href="./week13-block2-final-stretch.html" class="title listing-title">Week 13 · Block 2 — Final stretch</a>
 </td>
+
+</tr>
+
+<tr data-index="48" data-listing-file-modified-sort="1789666358000" data-listing-reading-time-sort="2" data-listing-word-count-sort="382" data-listing-title-sort="Week 14 · Oral exams &amp; goodbye">
 <td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
+<a href="./week14-oral-exams 2.html" class="title listing-title">Week 14 · Oral exams &amp; goodbye</a>
 </td>
 
 </tr>
 
-<tr data-index="25" data-listing-file-modified-sort="1791468224281" data-listing-reading-time-sort="2" data-listing-word-count-sort="382" data-listing-title-sort="Week 14 · Oral exams &amp; goodbye" data-listing-filename-sort="week14-oral-exams.qmd">
+<tr data-index="49" data-listing-file-modified-sort="1791468224281" data-listing-reading-time-sort="2" data-listing-word-count-sort="382" data-listing-title-sort="Week 14 · Oral exams &amp; goodbye">
 <td>
 <a href="./week14-oral-exams.html" class="title listing-title">Week 14 · Oral exams &amp; goodbye</a>
-</td>
-<td>
-<span class="listing-subtitle">Programming and Computing Basics · KSE 2026</span>
 </td>
 
 </tr>
@@ -461,6 +548,9 @@ Subtitle
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
