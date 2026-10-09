@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Klaudia Brzezińska">
-  <title>Programming and Computing Basics – Week 4 · Block 1 — Lists &amp; tuples</title>
+  <title>Programming and Computing Basics – Week 5 · Block 2 — Putting it together</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,7 +193,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 4 · Block 1 — Lists &amp; tuples</h1>
+  <h1 class="title">Week 5 · Block 2 — Putting it together</h1>
   <p class="subtitle">Programming and Computing Basics · KSE 2026</p>
 
 <div class="quarto-title-authors">
@@ -205,255 +205,126 @@ Klaudia Brzezińska
 </div>
 
 </section>
-<section id="warm-up" class="slide level2 smaller">
-<h2>Warm-up 🔥</h2>
+<section id="today-no-new-syntax" class="slide level2">
+<h2>Today: no new syntax 🎉</h2>
+<p>Today we only <strong>use</strong> what you already know:</p>
+<ul>
+<li>variables and types</li>
+<li>strings and slicing 🧬</li>
+<li>lists 📋</li>
+<li><code>if</code> / <code>elif</code> / <code>else</code> 🚦</li>
+<li><code>for</code> loops 🔁</li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>Programming is not knowing more commands. It is combining few commands well.</p>
+</blockquote>
+<aside class="notes">
+<p>0–5 min. Say this explicitly — students often think they are “behind” because they know “only” 5 things.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="warm-up-find-the-bugs" class="slide level2 smaller">
+<h2>Warm-up: find the bugs 🐛</h2>
+<p>⏱️ 15 min · pairs · 3 bugs</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGC"</span>, <span class="st">"GGCA"</span>, <span class="st">"TTA"</span>]</span>
+<span id="cb1-2"><a></a>lengths <span class="op">=</span> []</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a><span class="cf">for</span> seq <span class="kw">in</span> sequences</span>
+<span id="cb1-5"><a></a>    lengths.append(<span class="bu">len</span>(seq))</span>
+<span id="cb1-6"><a></a><span class="cf">if</span> <span class="bu">len</span>(seq) <span class="op">=</span> <span class="dv">4</span>:</span>
+<span id="cb1-7"><a></a>        <span class="bu">print</span>(<span class="st">"four bases"</span>)</span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a><span class="bu">print</span>(<span class="bu">sum</span>(lenghts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>5–20 min. Bugs: missing colon; <code>=</code> instead of <code>==</code>; typo <code>lenghts</code>; plus the if is outside the loop. Debugging together is where error messages stop being scary.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-to-attack-a-bigger-task" class="slide level2 smaller">
+<h2>How to attack a bigger task 🧗</h2>
+<ol type="1">
+<li><strong>Say it in words</strong> first: “for each sequence, if it is long enough, keep it”</li>
+<li>Write it as <strong>comments</strong>, then fill in the code</li>
+<li>Solve it for <strong>one</strong> element, then wrap it in a loop</li>
+<li><code>print()</code> early and often — see what is actually happening 👀</li>
+</ol>
+<div class="fragment">
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># for each sequence</span></span>
+<span id="cb2-2"><a></a><span class="co">#   calculate GC</span></span>
+<span id="cb2-3"><a></a><span class="co">#   if GC &gt; 0.5, add to the list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>20–30 min. This is the actual skill of the course — the rest is syntax.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="exercise-mini-analysis" class="slide level2 smaller">
+<h2>Exercise: Mini analysis 🧬</h2>
+<p>⏱️ 35 min · breakout rooms · switch after 15 min</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGCGCTA"</span>, <span class="st">"GGC"</span>, <span class="st">"ATGGGCCCTAAA"</span>, <span class="st">"TTANNNGC"</span>, <span class="st">"ATGAAATTTGGG"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Write <code>scripts/mini_analysis.py</code> that prints a small report:</p>
+<ol type="1">
+<li>Total number of sequences and total number of bases</li>
+<li>For each sequence: its length, GC content and whether it starts with <code>ATG</code></li>
+<li>How many sequences are “usable” (longer than 5 bases <strong>and</strong> no <code>N</code>)</li>
+<li>The longest sequence and its codons, one per line</li>
+<li>A final line: <code>"X of Y sequences passed"</code></li>
+</ol>
+<p>💡 <strong>Bonus:</strong> put a <code>#</code> comment above each section explaining what it does</p>
+<aside class="notes">
+<p>30–65 min. Visit every room. Give hints as questions: “what do you want to have at the end?”. Remind them of the empty-list-append pattern if they freeze.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="show-your-work" class="slide level2 smaller">
+<h2>Show your work 👀</h2>
 <p>⏱️ 10 min</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>seq <span class="op">=</span> <span class="st">"ATGCGCTAGCTT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>Print the last 3 bases</li>
-<li>Print the RNA version</li>
-<li>Print <code>True</code> if it contains <code>"TAG"</code> (hint: <code>in</code>)</li>
-</ol>
+<p>Two or three rooms share their screen:</p>
+<ul>
+<li>What does your output look like?</li>
+<li>Where did you get stuck?</li>
+<li>Did anyone solve something differently? 🤔</li>
+</ul>
 <aside class="notes">
-<p>0–10 min. <code>"TAG" in seq</code> is new but guessable — let them try before you show it.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="one-sequence-is-never-enough" class="slide level2">
-<h2>One sequence is never enough 📋</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>seq1 <span class="op">=</span> <span class="st">"ATGC"</span></span>
-<span id="cb2-2"><a></a>seq2 <span class="op">=</span> <span class="st">"GGCA"</span></span>
-<span id="cb2-3"><a></a>seq3 <span class="op">=</span> <span class="st">"TTAG"</span></span>
-<span id="cb2-4"><a></a><span class="co"># ... and 500 more? 😱</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGC"</span>, <span class="st">"GGCA"</span>, <span class="st">"TTAG"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<aside class="notes">
-<p>10–25 min: lists (this slide → “From string to list and back”). Motivation first: real data comes in hundreds of sequences.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="working-with-lists" class="slide level2 smaller">
-<h2>Working with lists</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGC"</span>, <span class="st">"GGCA"</span>, <span class="st">"TTAG"</span>]</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>sequences[<span class="dv">0</span>]        <span class="co"># 'ATGC' — same indexing as strings!</span></span>
-<span id="cb4-4"><a></a>sequences[<span class="op">-</span><span class="dv">1</span>]       <span class="co"># 'TTAG'</span></span>
-<span id="cb4-5"><a></a><span class="bu">len</span>(sequences)      <span class="co"># 3</span></span>
-<span id="cb4-6"><a></a>sequences[<span class="dv">0</span>:<span class="dv">2</span>]      <span class="co"># ['ATGC', 'GGCA'] — slicing works too</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p>Lists hold <strong>anything</strong>: numbers, strings, even other lists.</p>
-</div>
-</section>
-<section id="changing-lists" class="slide level2 smaller">
-<h2>Changing lists ✏️</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>sequences.append(<span class="st">"CCGG"</span>)     <span class="co"># add at the end</span></span>
-<span id="cb5-2"><a></a>sequences.insert(<span class="dv">0</span>, <span class="st">"AAAA"</span>)  <span class="co"># add at a position</span></span>
-<span id="cb5-3"><a></a>sequences.remove(<span class="st">"GGCA"</span>)     <span class="co"># remove by value</span></span>
-<span id="cb5-4"><a></a>last <span class="op">=</span> sequences.pop()       <span class="co"># remove and return the last one</span></span>
-<span id="cb5-5"><a></a>sequences[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"TTTT"</span>        <span class="co"># replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Strings <strong>cannot</strong> be changed, lists <strong>can</strong>. <code>seq[0] = "G"</code> → error 🚫</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="useful-list-tools" class="slide level2 smaller">
-<h2>Useful list tools</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>lengths <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">85</span>, <span class="dv">300</span>, <span class="dv">42</span>]</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="bu">sum</span>(lengths)          <span class="co"># 547</span></span>
-<span id="cb6-4"><a></a><span class="bu">max</span>(lengths)          <span class="co"># 300</span></span>
-<span id="cb6-5"><a></a><span class="bu">min</span>(lengths)          <span class="co"># 42</span></span>
-<span id="cb6-6"><a></a><span class="bu">sorted</span>(lengths)       <span class="co"># [42, 85, 120, 300]</span></span>
-<span id="cb6-7"><a></a><span class="bu">len</span>(lengths)          <span class="co"># 4</span></span>
-<span id="cb6-8"><a></a><span class="bu">sum</span>(lengths) <span class="op">/</span> <span class="bu">len</span>(lengths)   <span class="co"># average 🧮</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="from-string-to-list-and-back" class="slide level2 smaller">
-<h2>From string to list and back</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>header <span class="op">=</span> <span class="st">"&gt;seq1 Homo sapiens BRCA1"</span></span>
-<span id="cb7-2"><a></a>parts <span class="op">=</span> header.split()        <span class="co"># ['&gt;seq1', 'Homo', 'sapiens', 'BRCA1']</span></span>
-<span id="cb7-3"><a></a>parts[<span class="dv">1</span>]                      <span class="co"># 'Homo'</span></span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a><span class="co">"-"</span>.join([<span class="st">"ATG"</span>, <span class="st">"CGC"</span>])      <span class="co"># 'ATG-CGC'</span></span>
-<span id="cb7-6"><a></a><span class="bu">list</span>(<span class="st">"ATGC"</span>)                  <span class="co"># ['A', 'T', 'G', 'C']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><code>split()</code> is how you will parse <strong>every</strong> data file 📄</p>
-<aside class="notes">
-<p>Show splitting a CSV line: <code>"seq1,120,0.42".split(",")</code>. This is the bridge to real files.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="tuples-a-list-that-cannot-change" class="slide level2 smaller">
-<h2>Tuples: a list that cannot change 🔒</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>gene <span class="op">=</span> (<span class="st">"BRCA1"</span>, <span class="st">"chr17"</span>, <span class="dv">43044295</span>, <span class="dv">43125483</span>)   <span class="co"># ( ) instead of [ ]</span></span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>gene[<span class="dv">0</span>]        <span class="co"># 'BRCA1' — same indexing as lists</span></span>
-<span id="cb8-4"><a></a>gene[<span class="dv">2</span>:]       <span class="co"># (43044295, 43125483) — slicing works too</span></span>
-<span id="cb8-5"><a></a><span class="bu">len</span>(gene)      <span class="co"># 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>gene[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"TP53"</span>     <span class="co"># 🚫 TypeError: 'tuple' object does not support item assignment</span></span>
-<span id="cb9-2"><a></a>gene.append(<span class="st">"+"</span>)     <span class="co"># 🚫 AttributeError — no append, no remove</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>Like a string: once made, it stays as it is.</p>
-<aside class="notes">
-<p>25–33 min: tuples (this slide + next). Link back to the callout: strings can’t change, lists can — tuples are the “list version” that can’t. Run the TypeError live and read it together, like in Week 3. Watch out: a one-element tuple needs a comma — (“ATG”,). Mention only if someone asks.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="when-is-a-tuple-useful" class="slide level2 smaller">
-<h2>When is a tuple useful? 🤔</h2>
-<p>When the values <strong>belong together</strong> and <strong>should not change</strong>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>coords <span class="op">=</span> (<span class="dv">1200</span>, <span class="dv">1850</span>)          <span class="co"># start, stop of a gene</span></span>
-<span id="cb10-2"><a></a>codon_pos <span class="op">=</span> (<span class="st">"chr1"</span>, <span class="dv">1200</span>)     <span class="co"># chromosome + position</span></span>
-<span id="cb10-3"><a></a>rgb <span class="op">=</span> (<span class="dv">179</span>, <span class="dv">146</span>, <span class="dv">240</span>)          <span class="co"># a colour for a plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><strong>Unpacking</strong> — give each value its own name in one line:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>start, stop <span class="op">=</span> coords</span>
-<span id="cb11-2"><a></a><span class="bu">print</span>(stop <span class="op">-</span> start)            <span class="co"># 650 — gene length</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>List <code>[ ]</code></th>
-<th>Tuple <code>( )</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Can change?</td>
-<td>✅ yes</td>
-<td>🔒 no</td>
-</tr>
-<tr class="even">
-<td>Typical use</td>
-<td>many things <strong>of the same kind</strong></td>
-<td><strong>one record</strong> with fixed parts</td>
-</tr>
-<tr class="odd">
-<td>Example</td>
-<td>500 sequences</td>
-<td>(start, stop) of one gene</td>
-</tr>
-</tbody>
-</table>
-<aside class="notes">
-<p>The key message: list = a collection that grows; tuple = one record. Why not just use a list? A tuple protects coordinates from being changed by accident, and tells the reader “this is one fixed thing”. Tease: in Week 6, tuples can be dictionary keys — lists cannot.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="exercise-1-predict-then-run" class="slide level2 smaller">
-<h2>Exercise 1: Predict, then run 🔮</h2>
-<p>⏱️ 10 min · chat first</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>seqs <span class="op">=</span> [<span class="st">"ATG"</span>, <span class="st">"GGC"</span>]</span>
-<span id="cb12-2"><a></a>seqs.append(<span class="st">"TTA"</span>)</span>
-<span id="cb12-3"><a></a><span class="bu">print</span>(<span class="bu">len</span>(seqs))</span>
-<span id="cb12-4"><a></a><span class="bu">print</span>(seqs[<span class="dv">1</span>])</span>
-<span id="cb12-5"><a></a><span class="bu">print</span>(seqs[<span class="dv">1</span>][<span class="dv">0</span>])      <span class="co"># 🤔</span></span>
-<span id="cb12-6"><a></a><span class="bu">print</span>(<span class="bu">sorted</span>(seqs))</span>
-<span id="cb12-7"><a></a></span>
-<span id="cb12-8"><a></a>exon <span class="op">=</span> (<span class="dv">300</span>, <span class="dv">450</span>)</span>
-<span id="cb12-9"><a></a>start, stop <span class="op">=</span> exon</span>
-<span id="cb12-10"><a></a><span class="bu">print</span>(stop <span class="op">-</span> start)</span>
-<span id="cb12-11"><a></a>exon[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">310</span>          <span class="co"># 🤔 what happens?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<aside class="notes">
-<p>33–43 min. <code>seqs[1][0]</code> is the key idea: indexing a list, then indexing the string inside it. The last line fails on purpose — ask them to read the error message out loud before you explain.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="exercise-2-sequence-statistics" class="slide level2 smaller">
-<h2>Exercise 2: Sequence statistics 📊</h2>
-<p>⏱️ 20 min · breakout rooms · switch after 10 min</p>
-<p>Create <code>scripts/seq_stats.py</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGCGC"</span>, <span class="st">"GGCATTAGC"</span>, <span class="st">"TTA"</span>, <span class="st">"ATGGGCCCTA"</span>]</span>
-<span id="cb13-2"><a></a>gene <span class="op">=</span> (<span class="st">"BRCA1"</span>, <span class="st">"chr17"</span>, <span class="dv">43044295</span>, <span class="dv">43125483</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>How many sequences are in the <strong>list</strong>? Print the first and the last one</li>
-<li>Add one more sequence of your own</li>
-<li>Make a list of their <strong>lengths</strong> (by hand is fine — 5 values)</li>
-<li>Print the longest, shortest and average length</li>
-<li>Unpack the <strong>tuple</strong> <code>gene</code> into <code>name, chrom, start, stop</code></li>
-<li>Print: <code>BRCA1 is on chr17 and is ... bases long</code> (use an f-string)</li>
-<li>Try to change the gene name in the tuple — copy the error into a comment</li>
-</ol>
-<p>💡 <strong>Bonus:</strong> a list of tuples! <code>genes = [("BRCA1", 81188), ("TP53", 25759)]</code> — print the length of TP53</p>
-<aside class="notes">
-<p>45–70 min. Point 3 by hand is intentional — next block’s loops will feel like a relief. Point 7: keeping the error as a comment = good habit, and it proves they tried. Bonus: genes[1][1] — same “index, then index again” idea as seqs[1][0].</p>
+<p>65–75 min. Praise different solutions — there is no single right one. This also shows AI-generated uniformity is not the goal.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -468,18 +339,16 @@ Klaudia Brzezińska
 </section>
 <section id="wrap-up" class="slide level2 smaller">
 <h2>Wrap-up ✅</h2>
+<p>You can now write a real analysis script 🎉</p>
+<p><strong>Homework</strong> 🏠</p>
 <ul>
-<li><strong>Lists</strong> hold many values and can change: <code>["ATG", "GGC"]</code></li>
-<li><strong>Tuples</strong> hold one fixed record: <code>("BRCA1", "chr17", 43044295, 43125483)</code></li>
-<li>Same indexing and slicing for strings, lists and tuples</li>
-<li><code>append</code> <code>remove</code> <code>sorted</code> <code>sum</code> <code>max</code> <code>min</code></li>
-<li><code>split()</code> turns text into a list 📄 · unpacking: <code>start, stop = coords</code></li>
+<li>Commit <code>mini_analysis.py</code></li>
+<li>Add 2 sequences of your own and check the report still works</li>
 </ul>
-<p><strong>Commit</strong> 📌 <code>seq_stats.py</code>.</p>
 <div class="fragment">
-<p>Next block: <strong>decisions</strong> — <code>if</code> 🚦</p>
+<p>Next week: <strong>dictionaries and functions</strong> — organising data and code 📖</p>
 <aside class="notes">
-<p>70–80 min. Tease: “next time your script can decide what to do — e.g.&nbsp;skip short sequences”.</p>
+<p>75–80 min. Quiz 3 is around this point in the semester — remind them.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -498,7 +367,7 @@ Klaudia Brzezińska
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Programming and Computing Basics · Week 4</p>
+<p>Programming and Computing Basics · Week 5</p>
 </div>
 </div></div>
 
