@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Klaudia Brzezińska">
-  <title>Programming and Computing Basics – Week 4 · Block 1 — Lists &amp; tuples</title>
+  <title>Programming and Computing Basics – Week 4 · Block 1 — Lists</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,7 +193,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 4 · Block 1 — Lists &amp; tuples</h1>
+  <h1 class="title">Week 4 · Block 1 — Lists</h1>
   <p class="subtitle">Programming and Computing Basics · KSE 2026</p>
 
 <div class="quarto-title-authors">
@@ -237,7 +237,7 @@ Klaudia Brzezińska
 <div class="fragment">
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGC"</span>, <span class="st">"GGCA"</span>, <span class="st">"TTAG"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
-<p>10–25 min: lists (this slide → “From string to list and back”). Motivation first: real data comes in hundreds of sequences.</p>
+<p>10–25 min. Motivation first: real data comes in hundreds of sequences.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -322,108 +322,17 @@ Klaudia Brzezińska
       }</style></aside>
 </div>
 </section>
-<section id="tuples-a-list-that-cannot-change" class="slide level2 smaller">
-<h2>Tuples: a list that cannot change 🔒</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>gene <span class="op">=</span> (<span class="st">"BRCA1"</span>, <span class="st">"chr17"</span>, <span class="dv">43044295</span>, <span class="dv">43125483</span>)   <span class="co"># ( ) instead of [ ]</span></span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>gene[<span class="dv">0</span>]        <span class="co"># 'BRCA1' — same indexing as lists</span></span>
-<span id="cb8-4"><a></a>gene[<span class="dv">2</span>:]       <span class="co"># (43044295, 43125483) — slicing works too</span></span>
-<span id="cb8-5"><a></a><span class="bu">len</span>(gene)      <span class="co"># 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>gene[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"TP53"</span>     <span class="co"># 🚫 TypeError: 'tuple' object does not support item assignment</span></span>
-<span id="cb9-2"><a></a>gene.append(<span class="st">"+"</span>)     <span class="co"># 🚫 AttributeError — no append, no remove</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>Like a string: once made, it stays as it is.</p>
-<aside class="notes">
-<p>25–33 min: tuples (this slide + next). Link back to the callout: strings can’t change, lists can — tuples are the “list version” that can’t. Run the TypeError live and read it together, like in Week 3. Watch out: a one-element tuple needs a comma — (“ATG”,). Mention only if someone asks.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="when-is-a-tuple-useful" class="slide level2 smaller">
-<h2>When is a tuple useful? 🤔</h2>
-<p>When the values <strong>belong together</strong> and <strong>should not change</strong>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>coords <span class="op">=</span> (<span class="dv">1200</span>, <span class="dv">1850</span>)          <span class="co"># start, stop of a gene</span></span>
-<span id="cb10-2"><a></a>codon_pos <span class="op">=</span> (<span class="st">"chr1"</span>, <span class="dv">1200</span>)     <span class="co"># chromosome + position</span></span>
-<span id="cb10-3"><a></a>rgb <span class="op">=</span> (<span class="dv">179</span>, <span class="dv">146</span>, <span class="dv">240</span>)          <span class="co"># a colour for a plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><strong>Unpacking</strong> — give each value its own name in one line:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>start, stop <span class="op">=</span> coords</span>
-<span id="cb11-2"><a></a><span class="bu">print</span>(stop <span class="op">-</span> start)            <span class="co"># 650 — gene length</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>List <code>[ ]</code></th>
-<th>Tuple <code>( )</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Can change?</td>
-<td>✅ yes</td>
-<td>🔒 no</td>
-</tr>
-<tr class="even">
-<td>Typical use</td>
-<td>many things <strong>of the same kind</strong></td>
-<td><strong>one record</strong> with fixed parts</td>
-</tr>
-<tr class="odd">
-<td>Example</td>
-<td>500 sequences</td>
-<td>(start, stop) of one gene</td>
-</tr>
-</tbody>
-</table>
-<aside class="notes">
-<p>The key message: list = a collection that grows; tuple = one record. Why not just use a list? A tuple protects coordinates from being changed by accident, and tells the reader “this is one fixed thing”. Tease: in Week 6, tuples can be dictionary keys — lists cannot.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
 <section id="exercise-1-predict-then-run" class="slide level2 smaller">
 <h2>Exercise 1: Predict, then run 🔮</h2>
 <p>⏱️ 10 min · chat first</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>seqs <span class="op">=</span> [<span class="st">"ATG"</span>, <span class="st">"GGC"</span>]</span>
-<span id="cb12-2"><a></a>seqs.append(<span class="st">"TTA"</span>)</span>
-<span id="cb12-3"><a></a><span class="bu">print</span>(<span class="bu">len</span>(seqs))</span>
-<span id="cb12-4"><a></a><span class="bu">print</span>(seqs[<span class="dv">1</span>])</span>
-<span id="cb12-5"><a></a><span class="bu">print</span>(seqs[<span class="dv">1</span>][<span class="dv">0</span>])      <span class="co"># 🤔</span></span>
-<span id="cb12-6"><a></a><span class="bu">print</span>(<span class="bu">sorted</span>(seqs))</span>
-<span id="cb12-7"><a></a></span>
-<span id="cb12-8"><a></a>exon <span class="op">=</span> (<span class="dv">300</span>, <span class="dv">450</span>)</span>
-<span id="cb12-9"><a></a>start, stop <span class="op">=</span> exon</span>
-<span id="cb12-10"><a></a><span class="bu">print</span>(stop <span class="op">-</span> start)</span>
-<span id="cb12-11"><a></a>exon[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">310</span>          <span class="co"># 🤔 what happens?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>seqs <span class="op">=</span> [<span class="st">"ATG"</span>, <span class="st">"GGC"</span>]</span>
+<span id="cb8-2"><a></a>seqs.append(<span class="st">"TTA"</span>)</span>
+<span id="cb8-3"><a></a><span class="bu">print</span>(<span class="bu">len</span>(seqs))</span>
+<span id="cb8-4"><a></a><span class="bu">print</span>(seqs[<span class="dv">1</span>])</span>
+<span id="cb8-5"><a></a><span class="bu">print</span>(seqs[<span class="dv">1</span>][<span class="dv">0</span>])      <span class="co"># 🤔</span></span>
+<span id="cb8-6"><a></a><span class="bu">print</span>(<span class="bu">sorted</span>(seqs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
-<p>33–43 min. <code>seqs[1][0]</code> is the key idea: indexing a list, then indexing the string inside it. The last line fails on purpose — ask them to read the error message out loud before you explain.</p>
+<p>25–35 min. <code>seqs[1][0]</code> is the key idea: indexing a list, then indexing the string inside it.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -440,20 +349,18 @@ Klaudia Brzezińska
 <h2>Exercise 2: Sequence statistics 📊</h2>
 <p>⏱️ 25 min · breakout rooms · switch after 10 min</p>
 <p>Create <code>scripts/seq_stats.py</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGCGC"</span>, <span class="st">"GGCATTAGC"</span>, <span class="st">"TTA"</span>, <span class="st">"ATGGGCCCTA"</span>]</span>
-<span id="cb13-2"><a></a>gene <span class="op">=</span> (<span class="st">"BRCA1"</span>, <span class="st">"chr17"</span>, <span class="dv">43044295</span>, <span class="dv">43125483</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGCGC"</span>, <span class="st">"GGCATTAGC"</span>, <span class="st">"TTA"</span>, <span class="st">"ATGGGCCCTA"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
-<li>How many sequences are in the <strong>list</strong>? Print the first and the last one</li>
+<li>How many sequences are there?</li>
+<li>Print the first and the last one</li>
 <li>Add one more sequence of your own</li>
 <li>Make a list of their <strong>lengths</strong> (by hand is fine — 5 values)</li>
 <li>Print the longest, shortest and average length</li>
-<li>Unpack the <strong>tuple</strong> <code>gene</code> into <code>name, chrom, start, stop</code></li>
-<li>Print: <code>BRCA1 is on chr17 and is ... bases long</code> (use an f-string)</li>
-<li>Try to change the gene name in the tuple — copy the error into a comment</li>
+<li>Split this header and print the species: <code>"&gt;seq1 Homo sapiens BRCA1"</code></li>
 </ol>
-<p>💡 <strong>Bonus:</strong> a list of tuples! <code>genes = [("BRCA1", 81188), ("TP53", 25759)]</code> — print the length of TP53</p>
+<p>💡 <strong>Bonus:</strong> print the sequences sorted alphabetically</p>
 <aside class="notes">
-<p>45–70 min. Point 3 by hand is intentional — next block’s loops will feel like a relief. Point 7: keeping the error as a comment = good habit, and it proves they tried. Bonus: genes[1][1] — same “index, then index again” idea as seqs[1][0].</p>
+<p>35–70 min. Point 4 by hand is intentional — next block’s loops will feel like a relief.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -469,11 +376,10 @@ Klaudia Brzezińska
 <section id="wrap-up" class="slide level2 smaller">
 <h2>Wrap-up ✅</h2>
 <ul>
-<li><strong>Lists</strong> hold many values and can change: <code>["ATG", "GGC"]</code></li>
-<li><strong>Tuples</strong> hold one fixed record: <code>("BRCA1", "chr17", 43044295, 43125483)</code></li>
-<li>Same indexing and slicing for strings, lists and tuples</li>
+<li>Lists hold many values: <code>["ATG", "GGC"]</code></li>
+<li>Same indexing and slicing as strings</li>
 <li><code>append</code> <code>remove</code> <code>sorted</code> <code>sum</code> <code>max</code> <code>min</code></li>
-<li><code>split()</code> turns text into a list 📄 · unpacking: <code>start, stop = coords</code></li>
+<li><code>split()</code> turns text into a list 📄</li>
 </ul>
 <p><strong>Homework</strong> 🏠 Commit <code>seq_stats.py</code>.</p>
 <div class="fragment">
