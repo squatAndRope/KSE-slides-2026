@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Klaudia Brzezińska">
-  <title>Programming and Computing Basics – Week 4 · Block 1 — Lists &amp; tuples</title>
+  <title>Programming and Computing Basics – Week 11 · Block 1 — Project lab</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #e1e4e8; background-color: #24292e; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #e1e4e8; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #6a737d; } /* Annotation */
-    code span.at { color: #f97583; } /* Attribute */
-    code span.bn { color: #79b8ff; } /* BaseN */
-    code span.bu { color: #f97583; } /* BuiltIn */
-    code span.cf { color: #f97583; } /* ControlFlow */
-    code span.ch { color: #9ecbff; } /* Char */
-    code span.cn { color: #79b8ff; } /* Constant */
-    code span.co { color: #6a737d; } /* Comment */
-    code span.cv { color: #6a737d; } /* CommentVar */
-    code span.do { color: #6a737d; } /* Documentation */
-    code span.dt { color: #f97583; } /* DataType */
-    code span.dv { color: #79b8ff; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #f97583; font-weight: bold; } /* Extension */
-    code span.fl { color: #79b8ff; } /* Float */
-    code span.fu { color: #b392f0; } /* Function */
-    code span.im { color: #9ecbff; } /* Import */
-    code span.in { color: #6a737d; } /* Information */
-    code span.kw { color: #f97583; } /* Keyword */
-    code span.op { color: #e1e4e8; } /* Operator */
-    code span.ot { color: #b392f0; } /* Other */
-    code span.pp { color: #f97583; } /* Preprocessor */
-    code span.re { color: #6a737d; } /* RegionMarker */
-    code span.sc { color: #79b8ff; } /* SpecialChar */
-    code span.ss { color: #9ecbff; } /* SpecialString */
-    code span.st { color: #9ecbff; } /* String */
-    code span.va { color: #ffab70; } /* Variable */
-    code span.vs { color: #9ecbff; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-f0c56923daed5cb90211d1948ea5e60b.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -193,7 +127,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 4 · Block 1 — Lists &amp; tuples</h1>
+  <h1 class="title">Week 11 · Block 1 — Project lab</h1>
   <p class="subtitle">Programming and Computing Basics · KSE 2026</p>
 
 <div class="quarto-title-authors">
@@ -205,281 +139,119 @@ Klaudia Brzezińska
 </div>
 
 </section>
-<section id="warm-up" class="slide level2 smaller">
-<h2>Warm-up 🔥</h2>
-<p>⏱️ 10 min</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>seq <span class="op">=</span> <span class="st">"ATGCGCTAGCTT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>Print the last 3 bases</li>
-<li>Print the RNA version</li>
-<li>Print <code>True</code> if it contains <code>"TAG"</code> (hint: <code>in</code>)</li>
-</ol>
-<aside class="notes">
-<p>0–10 min. <code>"TAG" in seq</code> is new but guessable — let them try before you show it.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="one-sequence-is-never-enough" class="slide level2">
-<h2>One sequence is never enough 📋</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>seq1 <span class="op">=</span> <span class="st">"ATGC"</span></span>
-<span id="cb2-2"><a></a>seq2 <span class="op">=</span> <span class="st">"GGCA"</span></span>
-<span id="cb2-3"><a></a>seq3 <span class="op">=</span> <span class="st">"TTAG"</span></span>
-<span id="cb2-4"><a></a><span class="co"># ... and 500 more? 😱</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGC"</span>, <span class="st">"GGCA"</span>, <span class="st">"TTAG"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<aside class="notes">
-<p>10–25 min: lists (this slide → “From string to list and back”). Motivation first: real data comes in hundreds of sequences.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="working-with-lists" class="slide level2 smaller">
-<h2>Working with lists</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGC"</span>, <span class="st">"GGCA"</span>, <span class="st">"TTAG"</span>]</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>sequences[<span class="dv">0</span>]        <span class="co"># 'ATGC' — same indexing as strings!</span></span>
-<span id="cb4-4"><a></a>sequences[<span class="op">-</span><span class="dv">1</span>]       <span class="co"># 'TTAG'</span></span>
-<span id="cb4-5"><a></a><span class="bu">len</span>(sequences)      <span class="co"># 3</span></span>
-<span id="cb4-6"><a></a>sequences[<span class="dv">0</span>:<span class="dv">2</span>]      <span class="co"># ['ATGC', 'GGCA'] — slicing works too</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p>Lists hold <strong>anything</strong>: numbers, strings, even other lists.</p>
-</div>
-</section>
-<section id="changing-lists" class="slide level2 smaller">
-<h2>Changing lists ✏️</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>sequences.append(<span class="st">"CCGG"</span>)     <span class="co"># add at the end</span></span>
-<span id="cb5-2"><a></a>sequences.insert(<span class="dv">0</span>, <span class="st">"AAAA"</span>)  <span class="co"># add at a position</span></span>
-<span id="cb5-3"><a></a>sequences.remove(<span class="st">"GGCA"</span>)     <span class="co"># remove by value</span></span>
-<span id="cb5-4"><a></a>last <span class="op">=</span> sequences.pop()       <span class="co"># remove and return the last one</span></span>
-<span id="cb5-5"><a></a>sequences[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"TTTT"</span>        <span class="co"># replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Strings <strong>cannot</strong> be changed, lists <strong>can</strong>. <code>seq[0] = "G"</code> → error 🚫</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="useful-list-tools" class="slide level2 smaller">
-<h2>Useful list tools</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>lengths <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">85</span>, <span class="dv">300</span>, <span class="dv">42</span>]</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="bu">sum</span>(lengths)          <span class="co"># 547</span></span>
-<span id="cb6-4"><a></a><span class="bu">max</span>(lengths)          <span class="co"># 300</span></span>
-<span id="cb6-5"><a></a><span class="bu">min</span>(lengths)          <span class="co"># 42</span></span>
-<span id="cb6-6"><a></a><span class="bu">sorted</span>(lengths)       <span class="co"># [42, 85, 120, 300]</span></span>
-<span id="cb6-7"><a></a><span class="bu">len</span>(lengths)          <span class="co"># 4</span></span>
-<span id="cb6-8"><a></a><span class="bu">sum</span>(lengths) <span class="op">/</span> <span class="bu">len</span>(lengths)   <span class="co"># average 🧮</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="from-string-to-list-and-back" class="slide level2 smaller">
-<h2>From string to list and back</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>header <span class="op">=</span> <span class="st">"&gt;seq1 Homo sapiens BRCA1"</span></span>
-<span id="cb7-2"><a></a>parts <span class="op">=</span> header.split()        <span class="co"># ['&gt;seq1', 'Homo', 'sapiens', 'BRCA1']</span></span>
-<span id="cb7-3"><a></a>parts[<span class="dv">1</span>]                      <span class="co"># 'Homo'</span></span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a><span class="co">"-"</span>.join([<span class="st">"ATG"</span>, <span class="st">"CGC"</span>])      <span class="co"># 'ATG-CGC'</span></span>
-<span id="cb7-6"><a></a><span class="bu">list</span>(<span class="st">"ATGC"</span>)                  <span class="co"># ['A', 'T', 'G', 'C']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><code>split()</code> is how you will parse <strong>every</strong> data file 📄</p>
-<aside class="notes">
-<p>Show splitting a CSV line: <code>"seq1,120,0.42".split(",")</code>. This is the bridge to real files.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="tuples-a-list-that-cannot-change" class="slide level2 smaller">
-<h2>Tuples: a list that cannot change 🔒</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>gene <span class="op">=</span> (<span class="st">"BRCA1"</span>, <span class="st">"chr17"</span>, <span class="dv">43044295</span>, <span class="dv">43125483</span>)   <span class="co"># ( ) instead of [ ]</span></span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>gene[<span class="dv">0</span>]        <span class="co"># 'BRCA1' — same indexing as lists</span></span>
-<span id="cb8-4"><a></a>gene[<span class="dv">2</span>:]       <span class="co"># (43044295, 43125483) — slicing works too</span></span>
-<span id="cb8-5"><a></a><span class="bu">len</span>(gene)      <span class="co"># 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>gene[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"TP53"</span>     <span class="co"># 🚫 TypeError: 'tuple' object does not support item assignment</span></span>
-<span id="cb9-2"><a></a>gene.append(<span class="st">"+"</span>)     <span class="co"># 🚫 AttributeError — no append, no remove</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>Like a string: once made, it stays as it is.</p>
-<aside class="notes">
-<p>25–33 min: tuples (this slide + next). Link back to the callout: strings can’t change, lists can — tuples are the “list version” that can’t. Run the TypeError live and read it together, like in Week 3. Watch out: a one-element tuple needs a comma — (“ATG”,). Mention only if someone asks.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="when-is-a-tuple-useful" class="slide level2 smaller">
-<h2>When is a tuple useful? 🤔</h2>
-<p>When the values <strong>belong together</strong> and <strong>should not change</strong>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>coords <span class="op">=</span> (<span class="dv">1200</span>, <span class="dv">1850</span>)          <span class="co"># start, stop of a gene</span></span>
-<span id="cb10-2"><a></a>codon_pos <span class="op">=</span> (<span class="st">"chr1"</span>, <span class="dv">1200</span>)     <span class="co"># chromosome + position</span></span>
-<span id="cb10-3"><a></a>rgb <span class="op">=</span> (<span class="dv">179</span>, <span class="dv">146</span>, <span class="dv">240</span>)          <span class="co"># a colour for a plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><strong>Unpacking</strong> — give each value its own name in one line:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>start, stop <span class="op">=</span> coords</span>
-<span id="cb11-2"><a></a><span class="bu">print</span>(stop <span class="op">-</span> start)            <span class="co"># 650 — gene length</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>List <code>[ ]</code></th>
-<th>Tuple <code>( )</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Can change?</td>
-<td>✅ yes</td>
-<td>🔒 no</td>
-</tr>
-<tr class="even">
-<td>Typical use</td>
-<td>many things <strong>of the same kind</strong></td>
-<td><strong>one record</strong> with fixed parts</td>
-</tr>
-<tr class="odd">
-<td>Example</td>
-<td>500 sequences</td>
-<td>(start, stop) of one gene</td>
-</tr>
-</tbody>
-</table>
-<aside class="notes">
-<p>The key message: list = a collection that grows; tuple = one record. Why not just use a list? A tuple protects coordinates from being changed by accident, and tells the reader “this is one fixed thing”. Tease: in Week 6, tuples can be dictionary keys — lists cannot.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="exercise-1-predict-then-run" class="slide level2 smaller">
-<h2>Exercise 1: Predict, then run 🔮</h2>
-<p>⏱️ 10 min · chat first</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>seqs <span class="op">=</span> [<span class="st">"ATG"</span>, <span class="st">"GGC"</span>]</span>
-<span id="cb12-2"><a></a>seqs.append(<span class="st">"TTA"</span>)</span>
-<span id="cb12-3"><a></a><span class="bu">print</span>(<span class="bu">len</span>(seqs))</span>
-<span id="cb12-4"><a></a><span class="bu">print</span>(seqs[<span class="dv">1</span>])</span>
-<span id="cb12-5"><a></a><span class="bu">print</span>(seqs[<span class="dv">1</span>][<span class="dv">0</span>])      <span class="co"># 🤔</span></span>
-<span id="cb12-6"><a></a><span class="bu">print</span>(<span class="bu">sorted</span>(seqs))</span>
-<span id="cb12-7"><a></a></span>
-<span id="cb12-8"><a></a>exon <span class="op">=</span> (<span class="dv">300</span>, <span class="dv">450</span>)</span>
-<span id="cb12-9"><a></a>start, stop <span class="op">=</span> exon</span>
-<span id="cb12-10"><a></a><span class="bu">print</span>(stop <span class="op">-</span> start)</span>
-<span id="cb12-11"><a></a>exon[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">310</span>          <span class="co"># 🤔 what happens?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<aside class="notes">
-<p>33–43 min. <code>seqs[1][0]</code> is the key idea: indexing a list, then indexing the string inside it. The last line fails on purpose — ask them to read the error message out loud before you explain.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="exercise-2-sequence-statistics" class="slide level2 smaller">
-<h2>Exercise 2: Sequence statistics 📊</h2>
-<p>⏱️ 25 min · breakout rooms · switch after 10 min</p>
-<p>Create <code>scripts/seq_stats.py</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGCGC"</span>, <span class="st">"GGCATTAGC"</span>, <span class="st">"TTA"</span>, <span class="st">"ATGGGCCCTA"</span>]</span>
-<span id="cb13-2"><a></a>gene <span class="op">=</span> (<span class="st">"BRCA1"</span>, <span class="st">"chr17"</span>, <span class="dv">43044295</span>, <span class="dv">43125483</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li>How many sequences are in the <strong>list</strong>? Print the first and the last one</li>
-<li>Add one more sequence of your own</li>
-<li>Make a list of their <strong>lengths</strong> (by hand is fine — 5 values)</li>
-<li>Print the longest, shortest and average length</li>
-<li>Unpack the <strong>tuple</strong> <code>gene</code> into <code>name, chrom, start, stop</code></li>
-<li>Print: <code>BRCA1 is on chr17 and is ... bases long</code> (use an f-string)</li>
-<li>Try to change the gene name in the tuple — copy the error into a comment</li>
-</ol>
-<p>💡 <strong>Bonus:</strong> a list of tuples! <code>genes = [("BRCA1", 81188), ("TP53", 25759)]</code> — print the length of TP53</p>
-<aside class="notes">
-<p>45–70 min. Point 3 by hand is intentional — next block’s loops will feel like a relief. Point 7: keeping the error as a comment = good habit, and it proves they tried. Bonus: genes[1][1] — same “index, then index again” idea as seqs[1][0].</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="wrap-up" class="slide level2 smaller">
-<h2>Wrap-up ✅</h2>
+<section id="today-you-build-i-help" class="slide level2">
+<h2>Today: you build, I help 🛠️</h2>
+<p>No lecture. Both blocks are <strong>your project time</strong>.</p>
 <ul>
-<li><strong>Lists</strong> hold many values and can change: <code>["ATG", "GGC"]</code></li>
-<li><strong>Tuples</strong> hold one fixed record: <code>("BRCA1", "chr17", 43044295, 43125483)</code></li>
-<li>Same indexing and slicing for strings, lists and tuples</li>
-<li><code>append</code> <code>remove</code> <code>sorted</code> <code>sum</code> <code>max</code> <code>min</code></li>
-<li><code>split()</code> turns text into a list 📄 · unpacking: <code>start, stop = coords</code></li>
+<li>I am in the main room the whole time 🎧</li>
+<li>Breakout rooms for focused work</li>
+<li>✋ any time you want me to look at something</li>
 </ul>
-<p><strong>Commit</strong> 📌 <code>seq_stats.py</code>.</p>
-<div class="fragment">
-<p>Next block: <strong>decisions</strong> — <code>if</code> 🚦</p>
 <aside class="notes">
-<p>70–80 min. Tease: “next time your script can decide what to do — e.g.&nbsp;skip short sequences”.</p>
+<p>0–5 min. Keep it short — every minute of talking is a minute they are not coding.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="feedback-on-your-proposals" class="slide level2 smaller">
+<h2>Feedback on your proposals 💬</h2>
+<p>⏱️ 10 min</p>
+<p>Three things I saw in your <code>PROJECT.md</code> files:</p>
+<ol type="1">
+<li>[most common strength] 🌟</li>
+<li>[most common risk — usually: too ambitious] ⚠️</li>
+<li>[most common gap — usually: no real input file] 📄</li>
+</ol>
+<div class="fragment">
+<p>If your scope feels big: cut it in half. Then cut it again. ✂️</p>
+<aside class="notes">
+<p>5–15 min. Fill these in after reading their proposals. Concrete, anonymous, kind.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="how-to-start-when-you-are-stuck" class="slide level2 smaller">
+<h2>How to start when you are stuck 🧗</h2>
+<ol type="1">
+<li>Write the <strong>steps in comments</strong> first 📝</li>
+<li>Make the smallest version run — even printing “hello” from your tool</li>
+<li>One function at a time, test it, commit it 💾</li>
+<li><code>print()</code> everything while you work 👀</li>
+</ol>
+<div class="fragment">
+<blockquote>
+<p>Working and ugly beats elegant and unfinished. Always. 🌱</p>
+</blockquote>
+<aside class="notes">
+<p>15–25 min. This is the only “teaching” today. Then get out of the way.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="todays-goal" class="slide level2 smaller">
+<h2>Today’s goal 🎯</h2>
+<p>By the end of the second block:</p>
+<ul>
+<li>✅ Your repo has a <code>PROJECT.md</code> and a script that <strong>runs</strong></li>
+<li>✅ It reads your input file — even if it only prints the first line</li>
+<li>✅ At least one function written and committed</li>
+</ul>
+<div class="fragment">
+<p>That is a real milestone. The rest is iteration 🔁</p>
+<aside class="notes">
+<p>25–30 min. A concrete finish line prevents the “I’ll start at home” drift.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="work-time" class="slide level2 smaller">
+<h2>Work time 🛠️</h2>
+<p>⏱️ Rest of the block</p>
+<p><strong>How to get help</strong></p>
+<ul>
+<li>✋ Raise your hand — I will join your room</li>
+<li>💬 Chat for quick questions</li>
+<li>👥 Room 1 = “quiet focus”, Room 2 = “talk while working”</li>
+</ul>
+<div class="fragment">
+<p><strong>Before you leave: commit and push.</strong> 💾</p>
+<aside class="notes">
+<p>30–80 min. Visit rooms in rotation. Keep a list of who you have checked on — online it is easy to miss the quiet ones. Note recurring problems to address in block 2.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -498,7 +270,7 @@ Klaudia Brzezińska
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Programming and Computing Basics · Week 4</p>
+<p>Programming and Computing Basics · Week 11</p>
 </div>
 </div></div>
 

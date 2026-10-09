@@ -1628,7 +1628,7 @@
     "href": "week04-block1-lists.html#wrap-up",
     "title": "Week 4 · Block 1 — Lists & tuples",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\n\nLists hold many values and can change: [\"ATG\", \"GGC\"]\nTuples hold one fixed record: (\"BRCA1\", \"chr17\", 43044295, 43125483)\nSame indexing and slicing for strings, lists and tuples\nappend remove sorted sum max min\nsplit() turns text into a list 📄 · unpacking: start, stop = coords\n\nHomework 🏠 Commit seq_stats.py.\n\nNext block: decisions — if 🚦\n\n70–80 min. Tease: “next time your script can decide what to do — e.g. skip short sequences”."
+    "text": "Wrap-up ✅\n\nLists hold many values and can change: [\"ATG\", \"GGC\"]\nTuples hold one fixed record: (\"BRCA1\", \"chr17\", 43044295, 43125483)\nSame indexing and slicing for strings, lists and tuples\nappend remove sorted sum max min\nsplit() turns text into a list 📄 · unpacking: start, stop = coords\n\nCommit 📌 seq_stats.py.\n\nNext block: decisions — if 🚦\n\n70–80 min. Tease: “next time your script can decide what to do — e.g. skip short sequences”."
   },
   {
     "objectID": "week13-block1-python-vs-r.html#warm-up",
