@@ -205,17 +205,89 @@ Klaudia Brzezińska
 </div>
 
 </section>
-<section id="warm-up" class="slide level2 smaller">
-<h2>Warm-up 🔥</h2>
-<p>⏱️ 10 min</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>lengths <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">85</span>, <span class="dv">300</span>, <span class="dv">42</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="warm-up-what-do-we-remember" class="slide level2 smaller">
+<h2>Warm-up: what do we remember? 🔁</h2>
+<p>⏱️ 3 min · answer in chat</p>
+<ul>
+<li>What is a <strong>list</strong>? Give an example</li>
+<li>What is a <strong>tuple</strong>? Give an example</li>
+<li>What is the <strong>one big difference</strong> between them?</li>
+</ul>
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>List <code>[ ]</code></th>
+<th>Tuple <code>( )</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Can change?</td>
+<td>✅ yes</td>
+<td>🔒 no</td>
+</tr>
+<tr class="even">
+<td>Typical use</td>
+<td>many things of the same kind</td>
+<td>one fixed record</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>0–3 min. Let them answer first, then reveal the table.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="quick-quiz" class="slide level2 smaller">
+<h2>Quick quiz 🧠</h2>
+<p>⏱️ 5 min · type your answer in chat</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>seqs <span class="op">=</span> [<span class="st">"ATG"</span>, <span class="st">"GGC"</span>, <span class="st">"TTA"</span>]</span>
+<span id="cb1-2"><a></a>exon <span class="op">=</span> (<span class="dv">1200</span>, <span class="dv">1850</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
-<li>Print the average length</li>
-<li>Print the longest</li>
-<li>Add <code>500</code> to the list and print the new average</li>
+<li><code>seqs[-1]</code> → ?</li>
+<li><code>seqs[1][0]</code> → ?</li>
+<li><code>start, stop = exon</code> → what is <code>stop</code>?</li>
+<li><code>"seq1,120,0.42".split(",")</code> → ?</li>
+<li><code>exon[0] = 1300</code> → what happens? 🤔</li>
 </ol>
 <aside class="notes">
-<p>0–10 min. Quick recall of list tools before adding logic on top.</p>
+<p>3–8 min. Answers: ‘TTA’ · ‘G’ · 1850 · [‘seq1’, ‘120’, ‘0.42’] · TypeError (a tuple can’t change). Q4: point out that ‘120’ is still a string. This links to the conversions they’ll need later.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mini-task" class="slide level2 smaller">
+<h2>Mini task 🔥</h2>
+<p>⏱️ 7 min · solo</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>lengths <span class="op">=</span> [<span class="dv">120</span>, <span class="dv">85</span>, <span class="dv">300</span>, <span class="dv">42</span>]</span>
+<span id="cb2-2"><a></a>exon <span class="op">=</span> (<span class="dv">1200</span>, <span class="dv">1850</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Add <code>500</code> to <code>lengths</code> and print the new average</li>
+<li>Print the longest and the shortest length</li>
+<li>Unpack <code>exon</code> into <code>start, stop</code> and print the exon length</li>
+</ol>
+<aside class="notes">
+<p>8–15 min. <code>lengths</code> comes back in the if-slides, so this sets them up nicely.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -234,12 +306,12 @@ Klaudia Brzezińska
 <p>“Analyse the sequence <strong>only if</strong> it is longer than 100 bases.”</p>
 </blockquote>
 <div class="fragment">
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>length <span class="op">=</span> <span class="dv">120</span></span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="cf">if</span> length <span class="op">&gt;</span> <span class="dv">100</span>:</span>
-<span id="cb2-4"><a></a>    <span class="bu">print</span>(<span class="st">"Long enough — analysing"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>length <span class="op">=</span> <span class="dv">120</span></span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a><span class="cf">if</span> length <span class="op">&gt;</span> <span class="dv">100</span>:</span>
+<span id="cb3-4"><a></a>    <span class="bu">print</span>(<span class="st">"Long enough — analysing"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
-<p>10–25 min. Start from the biological question, then show the syntax.</p>
+<p>15–25 min: this slide → Trap. Start from the biological question, then show the syntax.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -255,23 +327,53 @@ Klaudia Brzezińska
 </section>
 <section id="if-elif-else" class="slide level2 smaller">
 <h2>if / elif / else</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>gc <span class="op">=</span> <span class="fl">0.62</span></span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="cf">if</span> gc <span class="op">&gt;</span> <span class="fl">0.6</span>:</span>
-<span id="cb3-4"><a></a>    <span class="bu">print</span>(<span class="st">"GC rich"</span>)</span>
-<span id="cb3-5"><a></a><span class="cf">elif</span> gc <span class="op">&lt;</span> <span class="fl">0.4</span>:</span>
-<span id="cb3-6"><a></a>    <span class="bu">print</span>(<span class="st">"AT rich"</span>)</span>
-<span id="cb3-7"><a></a><span class="cf">else</span>:</span>
-<span id="cb3-8"><a></a>    <span class="bu">print</span>(<span class="st">"Balanced"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>gc <span class="op">=</span> <span class="fl">0.62</span></span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a><span class="cf">if</span> gc <span class="op">&gt;</span> <span class="fl">0.6</span>:</span>
+<span id="cb4-4"><a></a>    <span class="bu">print</span>(<span class="st">"GC rich"</span>)</span>
+<span id="cb4-5"><a></a><span class="cf">elif</span> gc <span class="op">&lt;</span> <span class="fl">0.4</span>:</span>
+<span id="cb4-6"><a></a>    <span class="bu">print</span>(<span class="st">"AT rich"</span>)</span>
+<span id="cb4-7"><a></a><span class="cf">else</span>:</span>
+<span id="cb4-8"><a></a>    <span class="bu">print</span>(<span class="st">"Balanced"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Python checks top to bottom and stops at the <strong>first</strong> true condition.</p>
 </div>
 </section>
+<section id="trap" class="slide level2 smaller">
+<h2>Trap! 🪤</h2>
+<p>⏱️ 3 min · predict in chat</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>gc <span class="op">=</span> <span class="fl">0.75</span></span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="cf">if</span> gc <span class="op">&gt;</span> <span class="fl">0.4</span>:</span>
+<span id="cb5-4"><a></a>    <span class="bu">print</span>(<span class="st">"balanced"</span>)</span>
+<span id="cb5-5"><a></a><span class="cf">elif</span> gc <span class="op">&gt;</span> <span class="fl">0.6</span>:</span>
+<span id="cb5-6"><a></a>    <span class="bu">print</span>(<span class="st">"GC rich"</span>)</span>
+<span id="cb5-7"><a></a><span class="cf">else</span>:</span>
+<span id="cb5-8"><a></a>    <span class="bu">print</span>(<span class="st">"AT rich"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>What gets printed? 🤔</p>
+<div class="fragment">
+<p><code>balanced</code> 😱 — 0.75 &gt; 0.4 is already true, so Python <strong>stops there</strong>.</p>
+<p>The order of conditions <strong>is</strong> the logic → check the most specific case first.</p>
+<aside class="notes">
+<p>Let them answer in chat before revealing. Ask: “How do we fix it?” → swap the order, or use gc &gt;= 0.4 and gc &lt;= 0.6.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
 <section id="indentation-is-the-syntax" class="slide level2 smaller">
 <h2>Indentation is the syntax ⚠️</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="cf">if</span> length <span class="op">&gt;</span> <span class="dv">100</span>:</span>
-<span id="cb4-2"><a></a>    <span class="bu">print</span>(<span class="st">"inside the if"</span>)   <span class="co"># 4 spaces — belongs to the if</span></span>
-<span id="cb4-3"><a></a><span class="bu">print</span>(<span class="st">"always printed"</span>)      <span class="co"># no spaces — outside</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="cf">if</span> length <span class="op">&gt;</span> <span class="dv">100</span>:</span>
+<span id="cb6-2"><a></a>    <span class="bu">print</span>(<span class="st">"inside the if"</span>)   <span class="co"># 4 spaces — belongs to the if</span></span>
+<span id="cb6-3"><a></a><span class="bu">print</span>(<span class="st">"always printed"</span>)      <span class="co"># no spaces — outside</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -287,7 +389,7 @@ Klaudia Brzezińska
 </div>
 </div>
 <aside class="notes">
-<p>Show the error live. Tell them: every Python programmer sees this error weekly.</p>
+<p>25–30 min: indentation + comparisons. Show the error live. Tell them: every Python programmer sees this error weekly.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -329,41 +431,135 @@ Klaudia Brzezińska
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>seq <span class="op">==</span> <span class="st">"ATG"</span>          <span class="co"># comparison</span></span>
-<span id="cb5-2"><a></a>seq <span class="op">=</span> <span class="st">"ATG"</span>           <span class="co"># assignment ⚠️ different thing!</span></span>
-<span id="cb5-3"><a></a><span class="co">"TAG"</span> <span class="kw">in</span> seq          <span class="co"># True / False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>seq <span class="op">==</span> <span class="st">"ATG"</span>          <span class="co"># comparison</span></span>
+<span id="cb7-2"><a></a>seq <span class="op">=</span> <span class="st">"ATG"</span>           <span class="co"># assignment ⚠️ different thing!</span></span>
+<span id="cb7-3"><a></a><span class="co">"TAG"</span> <span class="kw">in</span> seq          <span class="co"># True / False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="logic-from-school" class="slide level2 smaller">
+<h2>Logic from school 🎓</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th><code>A and B</code></th>
+<th><code>A or B</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>True</td>
+<td>True</td>
+<td>✅ True</td>
+<td>✅ True</td>
+</tr>
+<tr class="even">
+<td>True</td>
+<td>False</td>
+<td>❌ False</td>
+<td>✅ True</td>
+</tr>
+<tr class="odd">
+<td>False</td>
+<td>True</td>
+<td>❌ False</td>
+<td>✅ True</td>
+</tr>
+<tr class="even">
+<td>False</td>
+<td>False</td>
+<td>❌ False</td>
+<td>❌ False</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>and</code> → <strong>both</strong> must be true</li>
+<li><code>or</code> → <strong>at least one</strong> is true</li>
+<li><code>not</code> → flips it: <code>not True</code> → <code>False</code></li>
+</ul>
+<div class="fragment">
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>seq <span class="op">=</span> <span class="st">"ATGNNC"</span></span>
+<span id="cb8-2"><a></a><span class="bu">len</span>(seq) <span class="op">&gt;</span> <span class="dv">3</span> <span class="kw">and</span> <span class="st">"N"</span> <span class="kw">in</span> seq              <span class="co"># ?</span></span>
+<span id="cb8-3"><a></a><span class="bu">len</span>(seq) <span class="op">&gt;</span> <span class="dv">10</span> <span class="kw">or</span> seq.startswith(<span class="st">"ATG"</span>)   <span class="co"># ?</span></span>
+<span id="cb8-4"><a></a><span class="kw">not</span> <span class="st">"N"</span> <span class="kw">in</span> seq                           <span class="co"># ?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>30–37 min: logic + combining conditions. Answers: True · True · False. Optional for curious students: Python stops early. In <code>False and ...</code> the rest isn’t even checked.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
 </section>
 <section id="combining-conditions" class="slide level2 smaller">
 <h2>Combining conditions</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="cf">if</span> length <span class="op">&gt;</span> <span class="dv">100</span> <span class="kw">and</span> gc <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
-<span id="cb6-2"><a></a>    <span class="bu">print</span>(<span class="st">"Long and GC rich"</span>)</span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a><span class="cf">if</span> seq.startswith(<span class="st">"ATG"</span>) <span class="kw">or</span> seq.startswith(<span class="st">"GTG"</span>):</span>
-<span id="cb6-5"><a></a>    <span class="bu">print</span>(<span class="st">"Possible start codon"</span>)</span>
-<span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a><span class="cf">if</span> <span class="kw">not</span> seq.startswith(<span class="st">"&gt;"</span>):</span>
-<span id="cb6-8"><a></a>    <span class="bu">print</span>(<span class="st">"This is a sequence line, not a header"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="cf">if</span> length <span class="op">&gt;</span> <span class="dv">100</span> <span class="kw">and</span> gc <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb9-2"><a></a>    <span class="bu">print</span>(<span class="st">"Long and GC rich"</span>)</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a><span class="cf">if</span> seq.startswith(<span class="st">"ATG"</span>) <span class="kw">or</span> seq.startswith(<span class="st">"GTG"</span>):</span>
+<span id="cb9-5"><a></a>    <span class="bu">print</span>(<span class="st">"Possible start codon"</span>)</span>
+<span id="cb9-6"><a></a></span>
+<span id="cb9-7"><a></a><span class="cf">if</span> <span class="kw">not</span> seq.startswith(<span class="st">"&gt;"</span>):</span>
+<span id="cb9-8"><a></a>    <span class="bu">print</span>(<span class="st">"This is a sequence line, not a header"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p><code>and</code> · <code>or</code> · <code>not</code> — they read like English 🙂</p>
 </div>
 </section>
+<section id="clean-code-deal-with-problems-first" class="slide level2 smaller">
+<h2>Clean code: deal with problems first 🧹</h2>
+<p>❌ Nested, hard to read:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="cf">if</span> <span class="bu">len</span>(seq) <span class="op">&gt;=</span> <span class="dv">30</span>:</span>
+<span id="cb10-2"><a></a>    <span class="cf">if</span> <span class="st">"N"</span> <span class="kw">not</span> <span class="kw">in</span> seq:</span>
+<span id="cb10-3"><a></a>        <span class="cf">if</span> seq.startswith(<span class="st">"ATG"</span>):</span>
+<span id="cb10-4"><a></a>            <span class="bu">print</span>(<span class="st">"possible ORF"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>✅ Flat: exit early on bad cases:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="cf">if</span> <span class="bu">len</span>(seq) <span class="op">&lt;</span> <span class="dv">30</span>:</span>
+<span id="cb11-2"><a></a>    <span class="bu">print</span>(<span class="st">"too short"</span>)</span>
+<span id="cb11-3"><a></a><span class="cf">elif</span> <span class="st">"N"</span> <span class="kw">in</span> seq:</span>
+<span id="cb11-4"><a></a>    <span class="bu">print</span>(<span class="st">"contains unknown bases"</span>)</span>
+<span id="cb11-5"><a></a><span class="cf">elif</span> seq.startswith(<span class="st">"ATG"</span>):</span>
+<span id="cb11-6"><a></a>    <span class="bu">print</span>(<span class="st">"possible ORF"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Bad cases first, the real work last. Flat is better than nested 🐍</p>
+<aside class="notes">
+<p>37–42 min. Proper early exit (return / continue) comes with functions and loops. Today it’s the same idea using elif. This is exactly the structure Exercise 2 needs (rules 1–2 first).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
 <section id="exercise-1-predict-then-run" class="slide level2 smaller">
 <h2>Exercise 1: Predict, then run 🔮</h2>
-<p>⏱️ 10 min · chat first</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>seq <span class="op">=</span> <span class="st">"ATGCCCTAA"</span></span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a><span class="cf">if</span> <span class="bu">len</span>(seq) <span class="op">&gt;</span> <span class="dv">5</span>:</span>
-<span id="cb7-4"><a></a>    <span class="bu">print</span>(<span class="st">"A"</span>)</span>
-<span id="cb7-5"><a></a><span class="cf">elif</span> <span class="bu">len</span>(seq) <span class="op">&gt;</span> <span class="dv">3</span>:</span>
-<span id="cb7-6"><a></a>    <span class="bu">print</span>(<span class="st">"B"</span>)</span>
-<span id="cb7-7"><a></a><span class="cf">else</span>:</span>
-<span id="cb7-8"><a></a>    <span class="bu">print</span>(<span class="st">"C"</span>)</span>
-<span id="cb7-9"><a></a></span>
-<span id="cb7-10"><a></a><span class="cf">if</span> seq.startswith(<span class="st">"ATG"</span>) <span class="kw">and</span> seq.endswith(<span class="st">"TAA"</span>):</span>
-<span id="cb7-11"><a></a>    <span class="bu">print</span>(<span class="st">"D"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>⏱️ 8 min · chat first</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>seq <span class="op">=</span> <span class="st">"ATGCCCTAA"</span></span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a><span class="cf">if</span> <span class="bu">len</span>(seq) <span class="op">&gt;</span> <span class="dv">5</span>:</span>
+<span id="cb12-4"><a></a>    <span class="bu">print</span>(<span class="st">"A"</span>)</span>
+<span id="cb12-5"><a></a><span class="cf">elif</span> <span class="bu">len</span>(seq) <span class="op">&gt;</span> <span class="dv">3</span>:</span>
+<span id="cb12-6"><a></a>    <span class="bu">print</span>(<span class="st">"B"</span>)</span>
+<span id="cb12-7"><a></a><span class="cf">else</span>:</span>
+<span id="cb12-8"><a></a>    <span class="bu">print</span>(<span class="st">"C"</span>)</span>
+<span id="cb12-9"><a></a></span>
+<span id="cb12-10"><a></a><span class="cf">if</span> seq.startswith(<span class="st">"ATG"</span>) <span class="kw">and</span> seq.endswith(<span class="st">"TAA"</span>):</span>
+<span id="cb12-11"><a></a>    <span class="bu">print</span>(<span class="st">"D"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Which letters get printed? 🤔</p>
 <aside class="notes">
-<p>25–35 min. Key insight: only ONE branch of if/elif/else runs, but the second if is independent.</p>
+<p>42–50 min. Answer: A and D. Key insight: only ONE branch of if/elif/else runs, but the second if is independent.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -378,7 +574,7 @@ Klaudia Brzezińska
 </section>
 <section id="exercise-2-sequence-quality-check" class="slide level2 smaller">
 <h2>Exercise 2: Sequence quality check 🔬</h2>
-<p>⏱️ 25 min · breakout rooms · switch after 10 min</p>
+<p>⏱️ 22 min · breakout rooms · switch after 10 min</p>
 <p>Create <code>scripts/seq_check.py</code>. For one sequence, print a verdict:</p>
 <ol type="1">
 <li>If it is shorter than 30 bases → <code>"too short"</code></li>
@@ -388,7 +584,7 @@ Klaudia Brzezińska
 </ol>
 <p>💡 <strong>Bonus:</strong> test your script on 3 different sequences by changing the variable. Does every rule fire?</p>
 <aside class="notes">
-<p>35–70 min. <code>%</code> (modulo) is new — explain briefly: remainder after division. Ask pairs to swap sequences with another room to test each other’s scripts.</p>
+<p>50–72 min. <code>%</code> (modulo) is new — explain briefly: remainder after division. Remind them of the clean-code slide: problems (rules 1–2) first. Ask pairs to swap sequences with another room to test each other’s scripts.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -404,16 +600,18 @@ Klaudia Brzezińska
 <section id="wrap-up" class="slide level2 smaller">
 <h2>Wrap-up ✅</h2>
 <ul>
-<li><code>if</code> / <code>elif</code> / <code>else</code> — one branch wins 🚦</li>
+<li><code>if</code> / <code>elif</code> / <code>else</code> — one branch wins, the <strong>first</strong> true one 🚦</li>
+<li>Order of conditions matters 🪤</li>
 <li>Indentation defines what belongs where</li>
 <li><code>==</code> compares, <code>=</code> assigns ⚠️</li>
 <li><code>and</code> <code>or</code> <code>not</code> <code>in</code></li>
+<li>Deal with problems first, keep code flat 🧹</li>
 </ul>
 <p><strong>Homework</strong> 🏠 Commit <code>seq_check.py</code>.</p>
 <div class="fragment">
 <p>Next week: <strong>loops</strong> — do it for all 500 sequences 🔁</p>
 <aside class="notes">
-<p>70–80 min. Exit ticket: “What is the difference between = and ==?”</p>
+<p>72–80 min. Exit ticket: “What is the difference between = and ==?”</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

@@ -112,18 +112,32 @@
     "text": "Before you go 📌\n\nPush everything 💾\nSign up for an exam slot: [link] 📅\nCheck your tool runs on a clean clone of your repo:\n\ngit clone &lt;your repo&gt; test-clone\ncd test-clone\npython3 scripts/my_tool.py data/sequences.fasta\n\nSee you next week 💛\n\n75–80 min. The clean-clone test catches missing files — a very common exam-day surprise. TODO: add the booking link."
   },
   {
-    "objectID": "week04-block2-conditions.html#warm-up",
-    "href": "week04-block2-conditions.html#warm-up",
+    "objectID": "week04-block2-conditions.html#warm-up-what-do-we-remember",
+    "href": "week04-block2-conditions.html#warm-up-what-do-we-remember",
     "title": "Week 4 · Block 2 — Making decisions",
-    "section": "Warm-up 🔥",
-    "text": "Warm-up 🔥\n⏱️ 10 min\nlengths = [120, 85, 300, 42]\n\nPrint the average length\nPrint the longest\nAdd 500 to the list and print the new average\n\n\n0–10 min. Quick recall of list tools before adding logic on top."
+    "section": "Warm-up: what do we remember? 🔁",
+    "text": "Warm-up: what do we remember? 🔁\n⏱️ 3 min · answer in chat\n\nWhat is a list? Give an example\nWhat is a tuple? Give an example\nWhat is the one big difference between them?\n\n\n\n\n\n\nList [ ]\nTuple ( )\n\n\n\n\nCan change?\n✅ yes\n🔒 no\n\n\nTypical use\nmany things of the same kind\none fixed record\n\n\n\n\n0–3 min. Let them answer first, then reveal the table."
+  },
+  {
+    "objectID": "week04-block2-conditions.html#quick-quiz",
+    "href": "week04-block2-conditions.html#quick-quiz",
+    "title": "Week 4 · Block 2 — Making decisions",
+    "section": "Quick quiz 🧠",
+    "text": "Quick quiz 🧠\n⏱️ 5 min · type your answer in chat\nseqs = [\"ATG\", \"GGC\", \"TTA\"]\nexon = (1200, 1850)\n\nseqs[-1] → ?\nseqs[1][0] → ?\nstart, stop = exon → what is stop?\n\"seq1,120,0.42\".split(\",\") → ?\nexon[0] = 1300 → what happens? 🤔\n\n\n3–8 min. Answers: ‘TTA’ · ‘G’ · 1850 · [‘seq1’, ‘120’, ‘0.42’] · TypeError (a tuple can’t change). Q4: point out that ‘120’ is still a string. This links to the conversions they’ll need later."
+  },
+  {
+    "objectID": "week04-block2-conditions.html#mini-task",
+    "href": "week04-block2-conditions.html#mini-task",
+    "title": "Week 4 · Block 2 — Making decisions",
+    "section": "Mini task 🔥",
+    "text": "Mini task 🔥\n⏱️ 7 min · solo\nlengths = [120, 85, 300, 42]\nexon = (1200, 1850)\n\nAdd 500 to lengths and print the new average\nPrint the longest and the shortest length\nUnpack exon into start, stop and print the exon length\n\n\n8–15 min. lengths comes back in the if-slides, so this sets them up nicely."
   },
   {
     "objectID": "week04-block2-conditions.html#scripts-that-decide",
     "href": "week04-block2-conditions.html#scripts-that-decide",
     "title": "Week 4 · Block 2 — Making decisions",
     "section": "Scripts that decide 🚦",
-    "text": "Scripts that decide 🚦\n\n“Analyse the sequence only if it is longer than 100 bases.”\n\n\nlength = 120\n\nif length &gt; 100:\n    print(\"Long enough — analysing\")\n\n10–25 min. Start from the biological question, then show the syntax."
+    "text": "Scripts that decide 🚦\n\n“Analyse the sequence only if it is longer than 100 bases.”\n\n\nlength = 120\n\nif length &gt; 100:\n    print(\"Long enough — analysing\")\n\n15–25 min: this slide → Trap. Start from the biological question, then show the syntax."
   },
   {
     "objectID": "week04-block2-conditions.html#if-elif-else",
@@ -133,11 +147,18 @@
     "text": "if / elif / else\ngc = 0.62\n\nif gc &gt; 0.6:\n    print(\"GC rich\")\nelif gc &lt; 0.4:\n    print(\"AT rich\")\nelse:\n    print(\"Balanced\")\n\nPython checks top to bottom and stops at the first true condition."
   },
   {
+    "objectID": "week04-block2-conditions.html#trap",
+    "href": "week04-block2-conditions.html#trap",
+    "title": "Week 4 · Block 2 — Making decisions",
+    "section": "Trap! 🪤",
+    "text": "Trap! 🪤\n⏱️ 3 min · predict in chat\ngc = 0.75\n\nif gc &gt; 0.4:\n    print(\"balanced\")\nelif gc &gt; 0.6:\n    print(\"GC rich\")\nelse:\n    print(\"AT rich\")\nWhat gets printed? 🤔\n\nbalanced 😱 — 0.75 &gt; 0.4 is already true, so Python stops there.\nThe order of conditions is the logic → check the most specific case first.\n\nLet them answer in chat before revealing. Ask: “How do we fix it?” → swap the order, or use gc &gt;= 0.4 and gc &lt;= 0.6."
+  },
+  {
     "objectID": "week04-block2-conditions.html#indentation-is-the-syntax",
     "href": "week04-block2-conditions.html#indentation-is-the-syntax",
     "title": "Week 4 · Block 2 — Making decisions",
     "section": "Indentation is the syntax ⚠️",
-    "text": "Indentation is the syntax ⚠️\nif length &gt; 100:\n    print(\"inside the if\")   # 4 spaces — belongs to the if\nprint(\"always printed\")      # no spaces — outside\n\n\n\n\n\n\n\nWarning\n\n\nIn Python, indentation is not decoration — it is the structure. IndentationError will be your friend. 🤝\n\n\n\n\nShow the error live. Tell them: every Python programmer sees this error weekly."
+    "text": "Indentation is the syntax ⚠️\nif length &gt; 100:\n    print(\"inside the if\")   # 4 spaces — belongs to the if\nprint(\"always printed\")      # no spaces — outside\n\n\n\n\n\n\n\nWarning\n\n\nIn Python, indentation is not decoration — it is the structure. IndentationError will be your friend. 🤝\n\n\n\n\n25–30 min: indentation + comparisons. Show the error live. Tell them: every Python programmer sees this error weekly."
   },
   {
     "objectID": "week04-block2-conditions.html#comparing-things",
@@ -147,6 +168,13 @@
     "text": "Comparing things\n\n\n\nOperator\nMeaning\n\n\n\n\n==\nequal (two =!)\n\n\n!=\nnot equal\n\n\n&gt; &lt; &gt;= &lt;=\nbigger / smaller\n\n\nin\ncontains\n\n\n\nseq == \"ATG\"          # comparison\nseq = \"ATG\"           # assignment ⚠️ different thing!\n\"TAG\" in seq          # True / False"
   },
   {
+    "objectID": "week04-block2-conditions.html#logic-from-school",
+    "href": "week04-block2-conditions.html#logic-from-school",
+    "title": "Week 4 · Block 2 — Making decisions",
+    "section": "Logic from school 🎓",
+    "text": "Logic from school 🎓\n\n\n\nA\nB\nA and B\nA or B\n\n\n\n\nTrue\nTrue\n✅ True\n✅ True\n\n\nTrue\nFalse\n❌ False\n✅ True\n\n\nFalse\nTrue\n❌ False\n✅ True\n\n\nFalse\nFalse\n❌ False\n❌ False\n\n\n\n\nand → both must be true\nor → at least one is true\nnot → flips it: not True → False\n\n\nseq = \"ATGNNC\"\nlen(seq) &gt; 3 and \"N\" in seq              # ?\nlen(seq) &gt; 10 or seq.startswith(\"ATG\")   # ?\nnot \"N\" in seq                           # ?\n\n30–37 min: logic + combining conditions. Answers: True · True · False. Optional for curious students: Python stops early. In False and ... the rest isn’t even checked."
+  },
+  {
     "objectID": "week04-block2-conditions.html#combining-conditions",
     "href": "week04-block2-conditions.html#combining-conditions",
     "title": "Week 4 · Block 2 — Making decisions",
@@ -154,25 +182,32 @@
     "text": "Combining conditions\nif length &gt; 100 and gc &gt; 0.5:\n    print(\"Long and GC rich\")\n\nif seq.startswith(\"ATG\") or seq.startswith(\"GTG\"):\n    print(\"Possible start codon\")\n\nif not seq.startswith(\"&gt;\"):\n    print(\"This is a sequence line, not a header\")\n\nand · or · not — they read like English 🙂"
   },
   {
+    "objectID": "week04-block2-conditions.html#clean-code-deal-with-problems-first",
+    "href": "week04-block2-conditions.html#clean-code-deal-with-problems-first",
+    "title": "Week 4 · Block 2 — Making decisions",
+    "section": "Clean code: deal with problems first 🧹",
+    "text": "Clean code: deal with problems first 🧹\n❌ Nested, hard to read:\nif len(seq) &gt;= 30:\n    if \"N\" not in seq:\n        if seq.startswith(\"ATG\"):\n            print(\"possible ORF\")\n\n✅ Flat: exit early on bad cases:\nif len(seq) &lt; 30:\n    print(\"too short\")\nelif \"N\" in seq:\n    print(\"contains unknown bases\")\nelif seq.startswith(\"ATG\"):\n    print(\"possible ORF\")\nBad cases first, the real work last. Flat is better than nested 🐍\n\n37–42 min. Proper early exit (return / continue) comes with functions and loops. Today it’s the same idea using elif. This is exactly the structure Exercise 2 needs (rules 1–2 first)."
+  },
+  {
     "objectID": "week04-block2-conditions.html#exercise-1-predict-then-run",
     "href": "week04-block2-conditions.html#exercise-1-predict-then-run",
     "title": "Week 4 · Block 2 — Making decisions",
     "section": "Exercise 1: Predict, then run 🔮",
-    "text": "Exercise 1: Predict, then run 🔮\n⏱️ 10 min · chat first\nseq = \"ATGCCCTAA\"\n\nif len(seq) &gt; 5:\n    print(\"A\")\nelif len(seq) &gt; 3:\n    print(\"B\")\nelse:\n    print(\"C\")\n\nif seq.startswith(\"ATG\") and seq.endswith(\"TAA\"):\n    print(\"D\")\nWhich letters get printed? 🤔\n\n25–35 min. Key insight: only ONE branch of if/elif/else runs, but the second if is independent."
+    "text": "Exercise 1: Predict, then run 🔮\n⏱️ 8 min · chat first\nseq = \"ATGCCCTAA\"\n\nif len(seq) &gt; 5:\n    print(\"A\")\nelif len(seq) &gt; 3:\n    print(\"B\")\nelse:\n    print(\"C\")\n\nif seq.startswith(\"ATG\") and seq.endswith(\"TAA\"):\n    print(\"D\")\nWhich letters get printed? 🤔\n\n42–50 min. Answer: A and D. Key insight: only ONE branch of if/elif/else runs, but the second if is independent."
   },
   {
     "objectID": "week04-block2-conditions.html#exercise-2-sequence-quality-check",
     "href": "week04-block2-conditions.html#exercise-2-sequence-quality-check",
     "title": "Week 4 · Block 2 — Making decisions",
     "section": "Exercise 2: Sequence quality check 🔬",
-    "text": "Exercise 2: Sequence quality check 🔬\n⏱️ 25 min · breakout rooms · switch after 10 min\nCreate scripts/seq_check.py. For one sequence, print a verdict:\n\nIf it is shorter than 30 bases → \"too short\"\nIf it contains an N → \"contains unknown bases\"\nIf its GC content is above 60% → \"GC rich\", below 40% → \"AT rich\", otherwise \"balanced\"\nIf it starts with ATG and its length divides by 3 (len(seq) % 3 == 0) → \"possible ORF\"\n\n💡 Bonus: test your script on 3 different sequences by changing the variable. Does every rule fire?\n\n35–70 min. % (modulo) is new — explain briefly: remainder after division. Ask pairs to swap sequences with another room to test each other’s scripts."
+    "text": "Exercise 2: Sequence quality check 🔬\n⏱️ 22 min · breakout rooms · switch after 10 min\nCreate scripts/seq_check.py. For one sequence, print a verdict:\n\nIf it is shorter than 30 bases → \"too short\"\nIf it contains an N → \"contains unknown bases\"\nIf its GC content is above 60% → \"GC rich\", below 40% → \"AT rich\", otherwise \"balanced\"\nIf it starts with ATG and its length divides by 3 (len(seq) % 3 == 0) → \"possible ORF\"\n\n💡 Bonus: test your script on 3 different sequences by changing the variable. Does every rule fire?\n\n50–72 min. % (modulo) is new — explain briefly: remainder after division. Remind them of the clean-code slide: problems (rules 1–2) first. Ask pairs to swap sequences with another room to test each other’s scripts."
   },
   {
     "objectID": "week04-block2-conditions.html#wrap-up",
     "href": "week04-block2-conditions.html#wrap-up",
     "title": "Week 4 · Block 2 — Making decisions",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\n\nif / elif / else — one branch wins 🚦\nIndentation defines what belongs where\n== compares, = assigns ⚠️\nand or not in\n\nHomework 🏠 Commit seq_check.py.\n\nNext week: loops — do it for all 500 sequences 🔁\n\n70–80 min. Exit ticket: “What is the difference between = and ==?”"
+    "text": "Wrap-up ✅\n\nif / elif / else — one branch wins, the first true one 🚦\nOrder of conditions matters 🪤\nIndentation defines what belongs where\n== compares, = assigns ⚠️\nand or not in\nDeal with problems first, keep code flat 🧹\n\nHomework 🏠 Commit seq_check.py.\n\nNext week: loops — do it for all 500 sequences 🔁\n\n72–80 min. Exit ticket: “What is the difference between = and ==?”"
   },
   {
     "objectID": "week01-block1-welcome.html#hello",
