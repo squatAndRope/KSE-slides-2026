@@ -121,6 +121,44 @@ Forget to change the condition → infinite loop. **Ctrl+C** stops it. 🛑
 Teach Ctrl+C explicitly — online, a student with a runaway loop will panic silently.
 :::
 
+## Next good habit: name your numbers 🏷️ {.smaller}
+
+What does this mean? 🤔
+
+```python
+for i in range(0, len(seq), 3):
+    print(seq[i:i+3])
+
+if len(seq) < 30:
+    print("too short")
+```
+
+. . .
+
+Now it reads itself:
+
+```python
+CODON_LENGTH = 3
+MIN_LENGTH = 30
+
+for i in range(0, len(seq), CODON_LENGTH):
+    print(seq[i:i+CODON_LENGTH])
+
+if len(seq) < MIN_LENGTH:
+    print("too short")
+```
+
+. . .
+
+Put them at the top of the script. Change once → changes everywhere ✨
+
+::: notes
+2–3 min, keep it light. Don't use the term "magic numbers" until someone asks, or say it at the end as a fun name.
+UPPERCASE is just a convention: Python won't stop you from changing it, it tells the reader "don't".
+Not every number needs a name: count = 0, range(5), [0] are fine.
+Link back: last week's habit was "problems first", this week it's "name your numbers".
+:::
+
 ## Exercise 1: Predict, then run 🔮 {.smaller}
 
 ⏱️ 10 min · chat first
