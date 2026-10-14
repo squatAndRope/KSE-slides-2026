@@ -200,14 +200,14 @@
     "href": "week04-block2-conditions.html#exercise-2-sequence-quality-check",
     "title": "Week 4 · Block 2 — Making decisions",
     "section": "Exercise 2: Sequence quality check 🔬",
-    "text": "Exercise 2: Sequence quality check 🔬\n⏱️ 22 min · breakout rooms · switch after 10 min\nCreate scripts/seq_check.py. For one sequence, print a verdict:\n\nIf it is shorter than 30 bases → \"too short\"\nIf it contains an N → \"contains unknown bases\"\nIf its GC content is above 60% → \"GC rich\", below 40% → \"AT rich\", otherwise \"balanced\"\nIf it starts with ATG and its length divides by 3 (len(seq) % 3 == 0) → \"possible ORF\"\n\n💡 Bonus: test your script on 3 different sequences by changing the variable. Does every rule fire?\n\n50–72 min. % (modulo) is new — explain briefly: remainder after division. Remind them of the clean-code slide: problems (rules 1–2) first. Ask pairs to swap sequences with another room to test each other’s scripts."
+    "text": "Exercise 2: Sequence quality check 🔬\n⏱️ 22 min · breakout rooms · switch after 10 min\nCreate scripts/seq_check.py. For one sequence, print a verdict:\n\nIf it is shorter than 30 bases → \"too short\"\nIf it contains an N → \"contains unknown bases\"\nIf its GC content is above 60% → \"GC rich\", below 40% → \"AT rich\", otherwise \"balanced\"\nIf it starts with ATG and its length divides by 3 (len(seq) % 3 == 0) → \"possible ORF\"\n\n💡 Bonus: test your script on 3 different sequences by changing the variable. Does every rule fire?\nCommit seq_check.py.\n\n50–72 min. % (modulo) is new — explain briefly: remainder after division. Remind them of the clean-code slide: problems (rules 1–2) first. Ask pairs to swap sequences with another room to test each other’s scripts."
   },
   {
     "objectID": "week04-block2-conditions.html#wrap-up",
     "href": "week04-block2-conditions.html#wrap-up",
     "title": "Week 4 · Block 2 — Making decisions",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\n\nif / elif / else — one branch wins, the first true one 🚦\nOrder of conditions matters 🪤\nIndentation defines what belongs where\n== compares, = assigns ⚠️\nand or not in\nDeal with problems first, keep code flat 🧹\n\nHomework 🏠 Commit seq_check.py.\n\nNext week: loops — do it for all 500 sequences 🔁\n\n72–80 min. Exit ticket: “What is the difference between = and ==?”"
+    "text": "Wrap-up ✅\n\nif / elif / else — one branch wins, the first true one 🚦\nOrder of conditions matters 🪤\nIndentation defines what belongs where\n== compares, = assigns ⚠️\nand or not in\nDeal with problems first, keep code flat 🧹\n\n\nNext week: loops — do it for all 500 sequences 🔁\n\n72–80 min. Exit ticket: “What is the difference between = and ==?”"
   },
   {
     "objectID": "week01-block1-welcome.html#hello",
