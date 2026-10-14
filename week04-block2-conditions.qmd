@@ -274,6 +274,8 @@ Create `scripts/seq_check.py`. For one sequence, print a verdict:
 
 💡 **Bonus:** test your script on 3 different sequences by changing the variable. Does every rule fire?
 
+**Commit** `seq_check.py`.
+
 ::: notes
 50–72 min. `%` (modulo) is new — explain briefly: remainder after division.
 Remind them of the clean-code slide: problems (rules 1–2) first.
@@ -289,7 +291,7 @@ Ask pairs to swap sequences with another room to test each other's scripts.
 - `and` `or` `not` `in`
 - Deal with problems first, keep code flat 🧹
 
-**Homework** 🏠 Commit `seq_check.py`.
+
 
 . . .
 
