@@ -1,5 +1,5 @@
 ---
-title: "Week 4 · Block 1 — Lists"
+title: "Week 4 · Block 1 — Lists & tuples"
 subtitle: "Programming and Computing Basics · KSE 2026"
 author: "Klaudia Brzezińska"
 format:
@@ -44,7 +44,7 @@ sequences = ["ATGC", "GGCA", "TTAG"]
 ```
 
 ::: notes
-10–25 min. Motivation first: real data comes in hundreds of sequences.
+10–25 min: lists (this slide → "From string to list and back"). Motivation first: real data comes in hundreds of sequences.
 :::
 
 ## Working with lists {.smaller}
@@ -110,6 +110,66 @@ list("ATGC")                  # ['A', 'T', 'G', 'C']
 Show splitting a CSV line: `"seq1,120,0.42".split(",")`. This is the bridge to real files.
 :::
 
+## Tuples: a list that cannot change 🔒 {.smaller}
+
+```python
+gene = ("BRCA1", "chr17", 43044295, 43125483)   # ( ) instead of [ ]
+
+gene[0]        # 'BRCA1' — same indexing as lists
+gene[2:]       # (43044295, 43125483) — slicing works too
+len(gene)      # 4
+```
+
+. . .
+
+```python
+gene[0] = "TP53"     # 🚫 TypeError: 'tuple' object does not support item assignment
+gene.append("+")     # 🚫 AttributeError — no append, no remove
+```
+
+. . .
+
+Like a string: once made, it stays as it is.
+
+::: notes
+25–33 min: tuples (this slide + next). Link back to the callout: strings can't change, lists can — tuples are the "list version" that can't.
+Run the TypeError live and read it together, like in Week 3.
+Watch out: a one-element tuple needs a comma — ("ATG",). Mention only if someone asks.
+:::
+
+## When is a tuple useful? 🤔 {.smaller}
+
+When the values **belong together** and **should not change**:
+
+```python
+coords = (1200, 1850)          # start, stop of a gene
+codon_pos = ("chr1", 1200)     # chromosome + position
+rgb = (179, 146, 240)          # a colour for a plot
+```
+
+. . .
+
+**Unpacking** — give each value its own name in one line:
+
+```python
+start, stop = coords
+print(stop - start)            # 650 — gene length
+```
+
+. . .
+
+| | List `[ ]` | Tuple `( )` |
+|---|---|---|
+| Can change? | ✅ yes | 🔒 no |
+| Typical use | many things **of the same kind** | **one record** with fixed parts |
+| Example | 500 sequences | (start, stop) of one gene |
+
+::: notes
+The key message: list = a collection that grows; tuple = one record.
+Why not just use a list? A tuple protects coordinates from being changed by accident, and tells the reader "this is one fixed thing".
+Tease: in Week 6, tuples can be dictionary keys — lists cannot.
+:::
+
 ## Exercise 1: Predict, then run 🔮 {.smaller}
 
 ⏱️ 10 min · chat first
@@ -121,44 +181,55 @@ print(len(seqs))
 print(seqs[1])
 print(seqs[1][0])      # 🤔
 print(sorted(seqs))
+
+exon = (300, 450)
+start, stop = exon
+print(stop - start)
+exon[0] = 310          # 🤔 what happens?
 ```
 
 ::: notes
-25–35 min. `seqs[1][0]` is the key idea: indexing a list, then indexing the string inside it.
+33–43 min. `seqs[1][0]` is the key idea: indexing a list, then indexing the string inside it.
+The last line fails on purpose — ask them to read the error message out loud before you explain.
 :::
 
 ## Exercise 2: Sequence statistics 📊 {.smaller}
 
-⏱️ 25 min · breakout rooms · switch after 10 min
+⏱️ 20 min · breakout rooms · switch after 10 min
 
 Create `scripts/seq_stats.py`:
 
 ```python
 sequences = ["ATGCGC", "GGCATTAGC", "TTA", "ATGGGCCCTA"]
+gene = ("BRCA1", "chr17", 43044295, 43125483)
 ```
 
-1. How many sequences are there?
-2. Print the first and the last one
-3. Add one more sequence of your own
-4. Make a list of their **lengths** (by hand is fine — 5 values)
-5. Print the longest, shortest and average length
-6. Split this header and print the species:
-   `">seq1 Homo sapiens BRCA1"`
+1. How many sequences are in the **list**? Print the first and the last one
+2. Add one more sequence of your own
+3. Make a list of their **lengths** (by hand is fine — 5 values)
+4. Print the longest, shortest and average length
+5. Unpack the **tuple** `gene` into `name, chrom, start, stop`
+6. Print: `BRCA1 is on chr17 and is ... bases long` (use an f-string)
+7. Try to change the gene name in the tuple — copy the error into a comment
 
-💡 **Bonus:** print the sequences sorted alphabetically
+💡 **Bonus:** a list of tuples!
+`genes = [("BRCA1", 81188), ("TP53", 25759)]` — print the length of TP53
 
 ::: notes
-35–70 min. Point 4 by hand is intentional — next block's loops will feel like a relief.
+45–70 min. Point 3 by hand is intentional — next block's loops will feel like a relief.
+Point 7: keeping the error as a comment = good habit, and it proves they tried.
+Bonus: genes[1][1] — same "index, then index again" idea as seqs[1][0].
 :::
 
 ## Wrap-up ✅ {.smaller}
 
-- Lists hold many values: `["ATG", "GGC"]`
-- Same indexing and slicing as strings
+- **Lists** hold many values and can change: `["ATG", "GGC"]`
+- **Tuples** hold one fixed record: `("BRCA1", "chr17", 43044295, 43125483)`
+- Same indexing and slicing for strings, lists and tuples
 - `append` `remove` `sorted` `sum` `max` `min`
-- `split()` turns text into a list 📄
+- `split()` turns text into a list 📄 · unpacking: `start, stop = coords`
 
-**Homework** 🏠 Commit `seq_stats.py`.
+**Commit**  📌 `seq_stats.py`.
 
 . . .
 

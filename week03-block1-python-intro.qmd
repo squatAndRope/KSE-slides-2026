@@ -252,8 +252,6 @@ If someone finds f-strings online — fine, but not required yet.
 - Variables are **labels** on values; values have **types**
 - `len()` `count()` already do real biology work
 
-**Homework** 🏠 Commit `dna_info.py` with a comment at the top explaining what it does.
-
 . . .
 
 Next block: **strings** — sequences are just text 🧬

@@ -95,6 +95,7 @@ seq.replace("T", "U")    # DNA → RNA!
 seq.count("GC")
 seq.find("ATG")          # position of the first ATG (-1 if absent)
 seq.startswith(">")      # True / False — FASTA headers!
+"ATG" in seq             # True / False — is it inside?
 ```
 
 . . .
@@ -159,7 +160,7 @@ Great discussion: replacing A→T then T→A turns everything into A. The lowerc
 
 ## Exercise 2: Sequence toolkit 🧰 {.smaller}
 
-⏱️ 25 min · breakout rooms · switch after 10 min
+⏱️ 20 min · breakout rooms · switch after 10 min
 
 Create `scripts/seq_tools.py`. For a DNA sequence of your choice, print:
 

@@ -12,20 +12,60 @@ format:
     transition: fade
 ---
 
-## Warm-up 🔥 {.smaller}
+## Warm-up: what do we remember? 🔁 {.smaller}
 
-⏱️ 10 min
+⏱️ 3 min · answer in chat
+
+- What is a **list**? Give an example
+- What is a **tuple**? Give an example
+- What is the **one big difference** between them?
+
+. . .
+
+| | List `[ ]` | Tuple `( )` |
+|---|---|---|
+| Can change? | ✅ yes | 🔒 no |
+| Typical use | many things of the same kind | one fixed record |
+
+::: notes
+0–3 min. Let them answer first, then reveal the table.
+:::
+
+## Quick quiz 🧠 {.smaller}
+
+⏱️ 5 min · type your answer in chat
+
+```python
+seqs = ["ATG", "GGC", "TTA"]
+exon = (1200, 1850)
+```
+
+1. `seqs[-1]` → ?
+2. `seqs[1][0]` → ?
+3. `start, stop = exon` → what is `stop`?
+4. `"seq1,120,0.42".split(",")` → ?
+5. `exon[0] = 1300` → what happens? 🤔
+
+::: notes
+3–8 min. Answers: 'TTA' · 'G' · 1850 · ['seq1', '120', '0.42'] · TypeError (a tuple can't change).
+Q4: point out that '120' is still a string. This links to the conversions they'll need later.
+:::
+
+## Mini task 🔥 {.smaller}
+
+⏱️ 7 min · solo
 
 ```python
 lengths = [120, 85, 300, 42]
+exon = (1200, 1850)
 ```
 
-1. Print the average length
-2. Print the longest
-3. Add `500` to the list and print the new average
+1. Add `500` to `lengths` and print the new average
+2. Print the longest and the shortest length
+3. Unpack `exon` into `start, stop` and print the exon length
 
 ::: notes
-0–10 min. Quick recall of list tools before adding logic on top.
+8–15 min. `lengths` comes back in the if-slides, so this sets them up nicely.
 :::
 
 ## Scripts that decide 🚦
@@ -42,7 +82,7 @@ if length > 100:
 ```
 
 ::: notes
-10–25 min. Start from the biological question, then show the syntax.
+15–25 min: this slide → Trap. Start from the biological question, then show the syntax.
 :::
 
 ## if / elif / else {.smaller}
@@ -62,6 +102,33 @@ else:
 
 Python checks top to bottom and stops at the **first** true condition.
 
+## Trap! 🪤 {.smaller}
+
+⏱️ 3 min · predict in chat
+
+```python
+gc = 0.75
+
+if gc > 0.4:
+    print("balanced")
+elif gc > 0.6:
+    print("GC rich")
+else:
+    print("AT rich")
+```
+
+What gets printed? 🤔
+
+. . .
+
+`balanced` 😱 — 0.75 > 0.4 is already true, so Python **stops there**.
+
+The order of conditions **is** the logic → check the most specific case first.
+
+::: notes
+Let them answer in chat before revealing. Ask: "How do we fix it?" → swap the order, or use gc >= 0.4 and gc <= 0.6.
+:::
+
 ## Indentation is the syntax ⚠️ {.smaller}
 
 ```python
@@ -77,7 +144,7 @@ In Python, indentation is not decoration — it **is** the structure. `Indentati
 :::
 
 ::: notes
-Show the error live. Tell them: every Python programmer sees this error weekly.
+25–30 min: indentation + comparisons. Show the error live. Tell them: every Python programmer sees this error weekly.
 :::
 
 ## Comparing things {.smaller}
@@ -94,6 +161,33 @@ seq == "ATG"          # comparison
 seq = "ATG"           # assignment ⚠️ different thing!
 "TAG" in seq          # True / False
 ```
+
+## Logic from school 🎓 {.smaller}
+
+| A | B | `A and B` | `A or B` |
+|---|---|---|---|
+| True | True | ✅ True | ✅ True |
+| True | False | ❌ False | ✅ True |
+| False | True | ❌ False | ✅ True |
+| False | False | ❌ False | ❌ False |
+
+- `and` → **both** must be true
+- `or` → **at least one** is true
+- `not` → flips it: `not True` → `False`
+
+. . .
+
+```python
+seq = "ATGNNC"
+len(seq) > 3 and "N" in seq              # ?
+len(seq) > 10 or seq.startswith("ATG")   # ?
+not "N" in seq                           # ?
+```
+
+::: notes
+30–37 min: logic + combining conditions. Answers: True · True · False.
+Optional for curious students: Python stops early. In `False and ...` the rest isn't even checked.
+:::
 
 ## Combining conditions {.smaller}
 
@@ -112,9 +206,40 @@ if not seq.startswith(">"):
 
 `and` · `or` · `not` — they read like English 🙂
 
+## Clean code: deal with problems first 🧹 {.smaller}
+
+❌ Nested, hard to read:
+
+```python
+if len(seq) >= 30:
+    if "N" not in seq:
+        if seq.startswith("ATG"):
+            print("possible ORF")
+```
+
+. . .
+
+✅ Flat: exit early on bad cases:
+
+```python
+if len(seq) < 30:
+    print("too short")
+elif "N" in seq:
+    print("contains unknown bases")
+elif seq.startswith("ATG"):
+    print("possible ORF")
+```
+
+Bad cases first, the real work last. Flat is better than nested 🐍
+
+::: notes
+37–42 min. Proper early exit (return / continue) comes with functions and loops. Today it's the same idea using elif.
+This is exactly the structure Exercise 2 needs (rules 1–2 first).
+:::
+
 ## Exercise 1: Predict, then run 🔮 {.smaller}
 
-⏱️ 10 min · chat first
+⏱️ 8 min · chat first
 
 ```python
 seq = "ATGCCCTAA"
@@ -133,12 +258,12 @@ if seq.startswith("ATG") and seq.endswith("TAA"):
 Which letters get printed? 🤔
 
 ::: notes
-25–35 min. Key insight: only ONE branch of if/elif/else runs, but the second if is independent.
+42–50 min. Answer: A and D. Key insight: only ONE branch of if/elif/else runs, but the second if is independent.
 :::
 
 ## Exercise 2: Sequence quality check 🔬 {.smaller}
 
-⏱️ 25 min · breakout rooms · switch after 10 min
+⏱️ 22 min · breakout rooms · switch after 10 min
 
 Create `scripts/seq_check.py`. For one sequence, print a verdict:
 
@@ -150,16 +275,19 @@ Create `scripts/seq_check.py`. For one sequence, print a verdict:
 💡 **Bonus:** test your script on 3 different sequences by changing the variable. Does every rule fire?
 
 ::: notes
-35–70 min. `%` (modulo) is new — explain briefly: remainder after division.
+50–72 min. `%` (modulo) is new — explain briefly: remainder after division.
+Remind them of the clean-code slide: problems (rules 1–2) first.
 Ask pairs to swap sequences with another room to test each other's scripts.
 :::
 
 ## Wrap-up ✅ {.smaller}
 
-- `if` / `elif` / `else` — one branch wins 🚦
+- `if` / `elif` / `else` — one branch wins, the **first** true one 🚦
+- Order of conditions matters 🪤
 - Indentation defines what belongs where
 - `==` compares, `=` assigns ⚠️
 - `and` `or` `not` `in`
+- Deal with problems first, keep code flat 🧹
 
 **Homework** 🏠 Commit `seq_check.py`.
 
@@ -168,5 +296,5 @@ Ask pairs to swap sequences with another room to test each other's scripts.
 Next week: **loops** — do it for all 500 sequences 🔁
 
 ::: notes
-70–80 min. Exit ticket: "What is the difference between = and ==?"
+72–80 min. Exit ticket: "What is the difference between = and ==?"
 :::
