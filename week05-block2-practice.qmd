@@ -70,6 +70,27 @@ Debugging together is where error messages stop being scary.
 20–30 min. This is the actual skill of the course — the rest is syntax.
 :::
 
+## Stuck? Talk to the duck 🦆 {.smaller}
+
+A real debugging technique, used by professionals:
+
+1. Put a rubber duck (or a mug, or a plant 🪴) next to your screen
+2. Explain your code to it, **line by line**, out loud
+3. Somewhere around line 4 you say "...wait, that's wrong" 💡
+
+. . .
+
+Fun fact: it's called **rubber duck debugging** and comes from the book *The Pragmatic Programmer* (1999). A programmer carried a duck around and explained his code to it. 🦆
+
+. . .
+
+The duck never answers. It doesn't need to. Saying it out loud makes **you** notice the gap.
+
+::: notes
+2–3 min, keep it fun. In breakout rooms, your partner is your duck: explain before asking for help.
+Optional: AI chat can work as a duck too, but only if they explain first and don't just paste the code and wait for an answer.
+:::
+
 ## Exercise: Mini analysis 🧬 {.smaller}
 
 ⏱️ 35 min · breakout rooms · switch after 15 min
@@ -87,6 +108,8 @@ Write `scripts/mini_analysis.py` that prints a small report:
 5. A final line: `"X of Y sequences passed"`
 
 💡 **Bonus:** put a `#` comment above each section explaining what it does
+
+**Commit** 📌 `analyse_all.py`.
 
 ::: notes
 30–65 min. Visit every room. Give hints as questions: "what do you want to have at the end?".
@@ -111,10 +134,7 @@ Two or three rooms share their screen:
 
 You can now write a real analysis script 🎉
 
-**Homework** 🏠
 
-- Commit `mini_analysis.py`
-- Add 2 sequences of your own and check the report still works
 
 . . .
 

@@ -195,6 +195,7 @@ sequences = ["ATGCGC", "GGCATTAGC", "TTA", "ATGGGCCCTA", "ATGNNNCGC"]
 
 💡 **Bonus:** print the codons of the longest sequence, one per line
 
+**Commit** 📌 `analyse_all.py`.
 ::: notes
 35–70 min. Point 5 is the hard one — a loop over sequences containing a loop over bases.
 Hint to give if a room is stuck: solve it for ONE sequence first, then wrap it in the outer loop.
@@ -213,7 +214,7 @@ for item in things:
 - Empty list → loop → `append` 📋
 - `range()` for numbers · `while` for "until"
 
-**Homework** 🏠 Commit `analyse_all.py`.
+
 
 ::: notes
 70–80 min. Exit ticket: name one thing from their own studies they would now loop over.
