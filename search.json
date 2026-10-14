@@ -343,11 +343,18 @@
     "text": "How to attack a bigger task 🧗\n\nSay it in words first: “for each sequence, if it is long enough, keep it”\nWrite it as comments, then fill in the code\nSolve it for one element, then wrap it in a loop\nprint() early and often — see what is actually happening 👀\n\n\n# for each sequence\n#   calculate GC\n#   if GC &gt; 0.5, add to the list\n\n20–30 min. This is the actual skill of the course — the rest is syntax."
   },
   {
+    "objectID": "week05-block2-practice.html#stuck-talk-to-the-duck",
+    "href": "week05-block2-practice.html#stuck-talk-to-the-duck",
+    "title": "Week 5 · Block 2 — Putting it together",
+    "section": "Stuck? Talk to the duck 🦆",
+    "text": "Stuck? Talk to the duck 🦆\nA real debugging technique, used by professionals:\n\nPut a rubber duck (or a mug, or a plant 🪴) next to your screen\nExplain your code to it, line by line, out loud\nSomewhere around line 4 you say “…wait, that’s wrong” 💡\n\n\nFun fact: it’s called rubber duck debugging and comes from the book The Pragmatic Programmer (1999). A programmer carried a duck around and explained his code to it. 🦆\n\n\nThe duck never answers. It doesn’t need to. Saying it out loud makes you notice the gap.\n\n2–3 min, keep it fun. In breakout rooms, your partner is your duck: explain before asking for help. Optional: AI chat can work as a duck too, but only if they explain first and don’t just paste the code and wait for an answer."
+  },
+  {
     "objectID": "week05-block2-practice.html#exercise-mini-analysis",
     "href": "week05-block2-practice.html#exercise-mini-analysis",
     "title": "Week 5 · Block 2 — Putting it together",
     "section": "Exercise: Mini analysis 🧬",
-    "text": "Exercise: Mini analysis 🧬\n⏱️ 35 min · breakout rooms · switch after 15 min\nsequences = [\"ATGCGCTA\", \"GGC\", \"ATGGGCCCTAAA\", \"TTANNNGC\", \"ATGAAATTTGGG\"]\nWrite scripts/mini_analysis.py that prints a small report:\n\nTotal number of sequences and total number of bases\nFor each sequence: its length, GC content and whether it starts with ATG\nHow many sequences are “usable” (longer than 5 bases and no N)\nThe longest sequence and its codons, one per line\nA final line: \"X of Y sequences passed\"\n\n💡 Bonus: put a # comment above each section explaining what it does\n\n30–65 min. Visit every room. Give hints as questions: “what do you want to have at the end?”. Remind them of the empty-list-append pattern if they freeze."
+    "text": "Exercise: Mini analysis 🧬\n⏱️ 35 min · breakout rooms · switch after 15 min\nsequences = [\"ATGCGCTA\", \"GGC\", \"ATGGGCCCTAAA\", \"TTANNNGC\", \"ATGAAATTTGGG\"]\nWrite scripts/mini_analysis.py that prints a small report:\n\nTotal number of sequences and total number of bases\nFor each sequence: its length, GC content and whether it starts with ATG\nHow many sequences are “usable” (longer than 5 bases and no N)\nThe longest sequence and its codons, one per line\nA final line: \"X of Y sequences passed\"\n\n💡 Bonus: put a # comment above each section explaining what it does\nCommit 📌 analyse_all.py.\n\n30–65 min. Visit every room. Give hints as questions: “what do you want to have at the end?”. Remind them of the empty-list-append pattern if they freeze."
   },
   {
     "objectID": "week05-block2-practice.html#show-your-work",
@@ -361,7 +368,7 @@
     "href": "week05-block2-practice.html#wrap-up",
     "title": "Week 5 · Block 2 — Putting it together",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\nYou can now write a real analysis script 🎉\nHomework 🏠\n\nCommit mini_analysis.py\nAdd 2 sequences of your own and check the report still works\n\n\nNext week: dictionaries and functions — organising data and code 📖\n\n75–80 min. Quiz 3 is around this point in the semester — remind them."
+    "text": "Wrap-up ✅\nYou can now write a real analysis script 🎉\n\nNext week: dictionaries and functions — organising data and code 📖\n\n75–80 min. Quiz 3 is around this point in the semester — remind them."
   },
   {
     "objectID": "week06-block2-functions.html#warm-up",
@@ -532,6 +539,13 @@
     "text": "range() and while\nfor i in range(5):        # 0,1,2,3,4\n    print(i)\n\nfor i in range(0, 9, 3):  # 0,3,6 — codon positions!\n    print(seq[i:i+3])\n\nwhile len(seq) &gt; 3:       # repeat while the condition holds\n    seq = seq[1:]\n\n\n\n\n\n\nWarning\n\n\nForget to change the condition → infinite loop. Ctrl+C stops it. 🛑\n\n\n\n\nTeach Ctrl+C explicitly — online, a student with a runaway loop will panic silently."
   },
   {
+    "objectID": "week05-block1-loops.html#next-good-habit-name-your-numbers",
+    "href": "week05-block1-loops.html#next-good-habit-name-your-numbers",
+    "title": "Week 5 · Block 1 — Loops",
+    "section": "Next good habit: name your numbers 🏷️",
+    "text": "Next good habit: name your numbers 🏷️\nWhat does this mean? 🤔\nfor i in range(0, len(seq), 3):\n    print(seq[i:i+3])\n\nif len(seq) &lt; 30:\n    print(\"too short\")\n\nNow it reads itself:\nCODON_LENGTH = 3\nMIN_LENGTH = 30\n\nfor i in range(0, len(seq), CODON_LENGTH):\n    print(seq[i:i+CODON_LENGTH])\n\nif len(seq) &lt; MIN_LENGTH:\n    print(\"too short\")\n\n\nPut them at the top of the script. Change once → changes everywhere ✨\n\n2–3 min, keep it light. Don’t use the term “magic numbers” until someone asks, or say it at the end as a fun name. UPPERCASE is just a convention: Python won’t stop you from changing it, it tells the reader “don’t”. Not every number needs a name: count = 0, range(5), [0] are fine. Link back: last week’s habit was “problems first”, this week it’s “name your numbers”."
+  },
+  {
     "objectID": "week05-block1-loops.html#exercise-1-predict-then-run",
     "href": "week05-block1-loops.html#exercise-1-predict-then-run",
     "title": "Week 5 · Block 1 — Loops",
@@ -543,14 +557,14 @@
     "href": "week05-block1-loops.html#exercise-2-analyse-them-all",
     "title": "Week 5 · Block 1 — Loops",
     "section": "Exercise 2: Analyse them all 🧬",
-    "text": "Exercise 2: Analyse them all 🧬\n⏱️ 25 min · breakout rooms · switch after 10 min\nCreate scripts/analyse_all.py:\nsequences = [\"ATGCGC\", \"GGCATTAGC\", \"TTA\", \"ATGGGCCCTA\", \"ATGNNNCGC\"]\n\nPrint each sequence with its length\nBuild a list of lengths, then print the average\nCount how many sequences start with ATG\nPrint only the sequences longer than 5 bases\nFor each sequence print its GC content (loop inside a loop!)\n\n💡 Bonus: print the codons of the longest sequence, one per line\n\n35–70 min. Point 5 is the hard one — a loop over sequences containing a loop over bases. Hint to give if a room is stuck: solve it for ONE sequence first, then wrap it in the outer loop."
+    "text": "Exercise 2: Analyse them all 🧬\n⏱️ 25 min · breakout rooms · switch after 10 min\nCreate scripts/analyse_all.py:\nsequences = [\"ATGCGC\", \"GGCATTAGC\", \"TTA\", \"ATGGGCCCTA\", \"ATGNNNCGC\"]\n\nPrint each sequence with its length\nBuild a list of lengths, then print the average\nCount how many sequences start with ATG\nPrint only the sequences longer than 5 bases\nFor each sequence print its GC content (loop inside a loop!)\n\n💡 Bonus: print the codons of the longest sequence, one per line\nCommit 📌 analyse_all.py. ::: notes 35–70 min. Point 5 is the hard one — a loop over sequences containing a loop over bases. Hint to give if a room is stuck: solve it for ONE sequence first, then wrap it in the outer loop. :::"
   },
   {
     "objectID": "week05-block1-loops.html#wrap-up",
     "href": "week05-block1-loops.html#wrap-up",
     "title": "Week 5 · Block 1 — Loops",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\nresults = []\nfor item in things:\n    if condition:\n        results.append(something)\n\nfor x in y: repeats for each element\nEmpty list → loop → append 📋\nrange() for numbers · while for “until”\n\nHomework 🏠 Commit analyse_all.py.\n\n70–80 min. Exit ticket: name one thing from their own studies they would now loop over."
+    "text": "Wrap-up ✅\nresults = []\nfor item in things:\n    if condition:\n        results.append(something)\n\nfor x in y: repeats for each element\nEmpty list → loop → append 📋\nrange() for numbers · while for “until”\n\n\n70–80 min. Exit ticket: name one thing from their own studies they would now loop over."
   },
   {
     "objectID": "week12-block2-r-plots.html#warm-up",

@@ -336,16 +336,52 @@ Klaudia Brzezińska
       }</style></aside>
 </div>
 </section>
+<section id="next-good-habit-name-your-numbers" class="slide level2 smaller">
+<h2>Next good habit: name your numbers 🏷️</h2>
+<p>What does this mean? 🤔</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(seq), <span class="dv">3</span>):</span>
+<span id="cb9-2"><a></a>    <span class="bu">print</span>(seq[i:i<span class="op">+</span><span class="dv">3</span>])</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a><span class="cf">if</span> <span class="bu">len</span>(seq) <span class="op">&lt;</span> <span class="dv">30</span>:</span>
+<span id="cb9-5"><a></a>    <span class="bu">print</span>(<span class="st">"too short"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Now it reads itself:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>CODON_LENGTH <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb10-2"><a></a>MIN_LENGTH <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(seq), CODON_LENGTH):</span>
+<span id="cb10-5"><a></a>    <span class="bu">print</span>(seq[i:i<span class="op">+</span>CODON_LENGTH])</span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a><span class="cf">if</span> <span class="bu">len</span>(seq) <span class="op">&lt;</span> MIN_LENGTH:</span>
+<span id="cb10-8"><a></a>    <span class="bu">print</span>(<span class="st">"too short"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>Put them at the top of the script. Change once → changes everywhere ✨</p>
+<aside class="notes">
+<p>2–3 min, keep it light. Don’t use the term “magic numbers” until someone asks, or say it at the end as a fun name. UPPERCASE is just a convention: Python won’t stop you from changing it, it tells the reader “don’t”. Not every number needs a name: count = 0, range(5), [0] are fine. Link back: last week’s habit was “problems first”, this week it’s “name your numbers”.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
 <section id="exercise-1-predict-then-run" class="slide level2 smaller">
 <h2>Exercise 1: Predict, then run 🔮</h2>
 <p>⏱️ 10 min · chat first</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-2"><a></a><span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]:</span>
-<span id="cb9-3"><a></a>    total <span class="op">=</span> total <span class="op">+</span> n</span>
-<span id="cb9-4"><a></a><span class="bu">print</span>(total)</span>
-<span id="cb9-5"><a></a></span>
-<span id="cb9-6"><a></a><span class="cf">for</span> base <span class="kw">in</span> <span class="st">"ATG"</span>:</span>
-<span id="cb9-7"><a></a>    <span class="bu">print</span>(base <span class="op">*</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-2"><a></a><span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]:</span>
+<span id="cb11-3"><a></a>    total <span class="op">=</span> total <span class="op">+</span> n</span>
+<span id="cb11-4"><a></a><span class="bu">print</span>(total)</span>
+<span id="cb11-5"><a></a></span>
+<span id="cb11-6"><a></a><span class="cf">for</span> base <span class="kw">in</span> <span class="st">"ATG"</span>:</span>
+<span id="cb11-7"><a></a>    <span class="bu">print</span>(base <span class="op">*</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>25–35 min. If they get the accumulator, the rest of the semester is much easier.</p>
 <style type="text/css">
@@ -364,7 +400,7 @@ Klaudia Brzezińska
 <h2>Exercise 2: Analyse them all 🧬</h2>
 <p>⏱️ 25 min · breakout rooms · switch after 10 min</p>
 <p>Create <code>scripts/analyse_all.py</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGCGC"</span>, <span class="st">"GGCATTAGC"</span>, <span class="st">"TTA"</span>, <span class="st">"ATGGGCCCTA"</span>, <span class="st">"ATGNNNCGC"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGCGC"</span>, <span class="st">"GGCATTAGC"</span>, <span class="st">"TTA"</span>, <span class="st">"ATGGGCCCTA"</span>, <span class="st">"ATGNNNCGC"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Print each sequence with its length</li>
 <li>Build a list of lengths, then print the average</li>
@@ -373,32 +409,19 @@ Klaudia Brzezińska
 <li>For each sequence print its GC content (loop inside a loop!)</li>
 </ol>
 <p>💡 <strong>Bonus:</strong> print the codons of the longest sequence, one per line</p>
-<aside class="notes">
-<p>35–70 min. Point 5 is the hard one — a loop over sequences containing a loop over bases. Hint to give if a room is stuck: solve it for ONE sequence first, then wrap it in the outer loop.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p><strong>Commit</strong> 📌 <code>analyse_all.py</code>. ::: notes 35–70 min. Point 5 is the hard one — a loop over sequences containing a loop over bases. Hint to give if a room is stuck: solve it for ONE sequence first, then wrap it in the outer loop. :::</p>
 </section>
 <section id="wrap-up" class="slide level2 smaller">
 <h2>Wrap-up ✅</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>results <span class="op">=</span> []</span>
-<span id="cb11-2"><a></a><span class="cf">for</span> item <span class="kw">in</span> things:</span>
-<span id="cb11-3"><a></a>    <span class="cf">if</span> condition:</span>
-<span id="cb11-4"><a></a>        results.append(something)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>results <span class="op">=</span> []</span>
+<span id="cb13-2"><a></a><span class="cf">for</span> item <span class="kw">in</span> things:</span>
+<span id="cb13-3"><a></a>    <span class="cf">if</span> condition:</span>
+<span id="cb13-4"><a></a>        results.append(something)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>for x in y:</code> repeats for each element</li>
 <li>Empty list → loop → <code>append</code> 📋</li>
 <li><code>range()</code> for numbers · <code>while</code> for “until”</li>
 </ul>
-<p><strong>Homework</strong> 🏠 Commit <code>analyse_all.py</code>.</p>
 <aside class="notes">
 <p>70–80 min. Exit ticket: name one thing from their own studies they would now loop over.</p>
 <style type="text/css">
