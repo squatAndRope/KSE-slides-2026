@@ -333,7 +333,7 @@
     "href": "week05-block2-practice.html#warm-up-find-the-bugs",
     "title": "Week 5 · Block 2 — Putting it together",
     "section": "Warm-up: find the bugs 🐛",
-    "text": "Warm-up: find the bugs 🐛\n⏱️ 15 min · pairs · 3 bugs\nsequences = [\"ATGC\", \"GGCA\", \"TTA\"]\nlengths = []\n\nfor seq in sequences\n    lengths.append(len(seq))\nif len(seq) = 4:\n        print(\"four bases\")\n\nprint(sum(lenghts))\n\n5–20 min. Bugs: missing colon; = instead of ==; typo lenghts; plus the if is outside the loop. Debugging together is where error messages stop being scary."
+    "text": "Warm-up: find the bugs 🐛\n⏱️ 10 min · 4 bugs\nsequences = [\"ATGC\", \"GGCA\", \"TTA\"]\nlengths = []\n\nfor seq in sequences\n    lengths.append(len(seq))\nif len(seq) = 4:\n        print(\"four bases\")\n\nprint(sum(lenghts))\n\n5–20 min. Bugs: missing colon; = instead of ==; typo lenghts; plus the if is outside the loop. Debugging together is where error messages stop being scary."
   },
   {
     "objectID": "week05-block2-practice.html#how-to-attack-a-bigger-task",
