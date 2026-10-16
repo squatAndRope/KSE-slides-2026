@@ -318,19 +318,36 @@ Klaudia Brzezińska
 <section id="exercise-mini-analysis" class="slide level2 smaller">
 <h2>Exercise: Mini analysis 🧬</h2>
 <p>⏱️ 35 min · breakout rooms · switch after 15 min</p>
+<p>Write <code>scripts/mini_analysis.py</code> that prints a report for:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>sequences <span class="op">=</span> [<span class="st">"ATGCGCTA"</span>, <span class="st">"GGC"</span>, <span class="st">"ATGGGCCCTAAA"</span>, <span class="st">"TTANNNGC"</span>, <span class="st">"ATGAAATTTGGG"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Write <code>scripts/mini_analysis.py</code> that prints a small report:</p>
 <ol type="1">
 <li>Total number of sequences and total number of bases</li>
-<li>For each sequence: its length, GC content and whether it starts with <code>ATG</code></li>
-<li>How many sequences are “usable” (longer than 5 bases <strong>and</strong> no <code>N</code>)</li>
-<li>The longest sequence and its codons, one per line</li>
-<li>A final line: <code>"X of Y sequences passed"</code></li>
+<li>For each sequence: length, GC content (fraction, 2 decimals, <code>N</code> counts in the length) and <code>True</code>/<code>False</code> for starting with <code>ATG</code></li>
+<li>Count <strong>usable</strong> sequences: <code>len(seq) &gt; 5</code> <strong>and</strong> no <code>N</code></li>
+<li>The longest sequence (if tied, the first one) and its codons, one per line</li>
+<li>Final line: <code>X of Y sequences usable</code></li>
 </ol>
-<p>💡 <strong>Bonus:</strong> put a <code>#</code> comment above each section explaining what it does</p>
-<p><strong>Commit</strong> 📌 <code>analyse_all.py</code>.</p>
+</section>
+<section id="mini-analysis-expected-output" class="slide level2 smaller">
+<h2>Mini analysis: expected output 🎯</h2>
+<p>Your output should look like this:</p>
+<pre><code>Sequences: 5
+Total bases: 43
+ATGCGCTA 8 0.50 True
+GGC 3 1.00 False
+ATGGGCCCTAAA 12 0.50 True
+TTANNNGC 8 0.25 False
+ATGAAATTTGGG 12 0.33 True
+Longest: ATGGGCCCTAAA
+ATG
+GGC
+CCT
+AAA
+3 of 5 sequences usable</code></pre>
+<p>💡 <strong>Bonus:</strong> add a <code>#</code> comment above each section explaining what it does</p>
+<p>📌 <strong>Commit</strong> <code>scripts/mini_analysis.py</code></p>
 <aside class="notes">
-<p>30–65 min. Visit every room. Give hints as questions: “what do you want to have at the end?”. Remind them of the empty-list-append pattern if they freeze.</p>
+<p>Hints if stuck: <code>max(sequences, key=len)</code> · <code>range(0, len(seq), 3)</code> for codons · <code>f"{gc:.2f}"</code> for 2 decimals. Tie: two sequences have 12 bases — max() returns the first one.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

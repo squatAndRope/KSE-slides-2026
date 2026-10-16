@@ -354,7 +354,14 @@
     "href": "week05-block2-practice.html#exercise-mini-analysis",
     "title": "Week 5 · Block 2 — Putting it together",
     "section": "Exercise: Mini analysis 🧬",
-    "text": "Exercise: Mini analysis 🧬\n⏱️ 35 min · breakout rooms · switch after 15 min\nsequences = [\"ATGCGCTA\", \"GGC\", \"ATGGGCCCTAAA\", \"TTANNNGC\", \"ATGAAATTTGGG\"]\nWrite scripts/mini_analysis.py that prints a small report:\n\nTotal number of sequences and total number of bases\nFor each sequence: its length, GC content and whether it starts with ATG\nHow many sequences are “usable” (longer than 5 bases and no N)\nThe longest sequence and its codons, one per line\nA final line: \"X of Y sequences passed\"\n\n💡 Bonus: put a # comment above each section explaining what it does\nCommit 📌 analyse_all.py.\n\n30–65 min. Visit every room. Give hints as questions: “what do you want to have at the end?”. Remind them of the empty-list-append pattern if they freeze."
+    "text": "Exercise: Mini analysis 🧬\n⏱️ 35 min · breakout rooms · switch after 15 min\nWrite scripts/mini_analysis.py that prints a report for:\nsequences = [\"ATGCGCTA\", \"GGC\", \"ATGGGCCCTAAA\", \"TTANNNGC\", \"ATGAAATTTGGG\"]\n\nTotal number of sequences and total number of bases\nFor each sequence: length, GC content (fraction, 2 decimals, N counts in the length) and True/False for starting with ATG\nCount usable sequences: len(seq) &gt; 5 and no N\nThe longest sequence (if tied, the first one) and its codons, one per line\nFinal line: X of Y sequences usable"
+  },
+  {
+    "objectID": "week05-block2-practice.html#mini-analysis-expected-output",
+    "href": "week05-block2-practice.html#mini-analysis-expected-output",
+    "title": "Week 5 · Block 2 — Putting it together",
+    "section": "Mini analysis: expected output 🎯",
+    "text": "Mini analysis: expected output 🎯\nYour output should look like this:\nSequences: 5\nTotal bases: 43\nATGCGCTA 8 0.50 True\nGGC 3 1.00 False\nATGGGCCCTAAA 12 0.50 True\nTTANNNGC 8 0.25 False\nATGAAATTTGGG 12 0.33 True\nLongest: ATGGGCCCTAAA\nATG\nGGC\nCCT\nAAA\n3 of 5 sequences usable\n💡 Bonus: add a # comment above each section explaining what it does\n📌 Commit scripts/mini_analysis.py\n\nHints if stuck: max(sequences, key=len) · range(0, len(seq), 3) for codons · f\"{gc:.2f}\" for 2 decimals. Tie: two sequences have 12 bases — max() returns the first one."
   },
   {
     "objectID": "week05-block2-practice.html#wrap-up",
