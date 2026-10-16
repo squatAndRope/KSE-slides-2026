@@ -357,13 +357,6 @@
     "text": "Exercise: Mini analysis 🧬\n⏱️ 35 min · breakout rooms · switch after 15 min\nsequences = [\"ATGCGCTA\", \"GGC\", \"ATGGGCCCTAAA\", \"TTANNNGC\", \"ATGAAATTTGGG\"]\nWrite scripts/mini_analysis.py that prints a small report:\n\nTotal number of sequences and total number of bases\nFor each sequence: its length, GC content and whether it starts with ATG\nHow many sequences are “usable” (longer than 5 bases and no N)\nThe longest sequence and its codons, one per line\nA final line: \"X of Y sequences passed\"\n\n💡 Bonus: put a # comment above each section explaining what it does\nCommit 📌 analyse_all.py.\n\n30–65 min. Visit every room. Give hints as questions: “what do you want to have at the end?”. Remind them of the empty-list-append pattern if they freeze."
   },
   {
-    "objectID": "week05-block2-practice.html#show-your-work",
-    "href": "week05-block2-practice.html#show-your-work",
-    "title": "Week 5 · Block 2 — Putting it together",
-    "section": "Show your work 👀",
-    "text": "Show your work 👀\n⏱️ 10 min\nTwo or three rooms share their screen:\n\nWhat does your output look like?\nWhere did you get stuck?\nDid anyone solve something differently? 🤔\n\n\n65–75 min. Praise different solutions — there is no single right one. This also shows AI-generated uniformity is not the goal."
-  },
-  {
     "objectID": "week05-block2-practice.html#wrap-up",
     "href": "week05-block2-practice.html#wrap-up",
     "title": "Week 5 · Block 2 — Putting it together",
