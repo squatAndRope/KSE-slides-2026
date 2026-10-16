@@ -130,7 +130,7 @@
     "href": "week04-block2-conditions.html#mini-task",
     "title": "Week 4 · Block 2 — Making decisions",
     "section": "Mini task 🔥",
-    "text": "Mini task 🔥\n⏱️ 7 min · solo\nlengths = [120, 85, 300, 42]\nexon = (1200, 1850)\n\nAdd 500 to lengths and print the new average\nPrint the longest and the shortest length\nUnpack exon into start, stop and print the exon length\n\n\n8–15 min. lengths comes back in the if-slides, so this sets them up nicely."
+    "text": "Mini task 🔥\n⏱️ 7 min · solo\nlengths = [120, 85, 300, 42]\nexon = (1200, 1850)\n\nAppend new item with the value 500 to lengths and print the new average\nPrint the longest and the shortest length\nUnpack exon into start, stop and print the exon length\n\n\n8–15 min. lengths comes back in the if-slides, so this sets them up nicely."
   },
   {
     "objectID": "week04-block2-conditions.html#scripts-that-decide",
