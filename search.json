@@ -557,7 +557,7 @@
     "href": "week05-block1-loops.html#exercise-2-analyse-them-all",
     "title": "Week 5 · Block 1 — Loops",
     "section": "Exercise 2: Analyse them all 🧬",
-    "text": "Exercise 2: Analyse them all 🧬\n⏱️ 25 min · breakout rooms · switch after 10 min\nCreate scripts/analyse_all.py:\nsequences = [\"ATGCGC\", \"GGCATTAGC\", \"TTA\", \"ATGGGCCCTA\", \"ATGNNNCGC\"]\n\nPrint each sequence with its length\nBuild a list of lengths, then print the average\nCount how many sequences start with ATG\nPrint only the sequences longer than 5 bases\nFor each sequence print its GC content (loop inside a loop!)\n\n💡 Bonus: print the codons of the longest sequence, one per line\nCommit 📌 analyse_all.py. ::: notes 35–70 min. Point 5 is the hard one — a loop over sequences containing a loop over bases. Hint to give if a room is stuck: solve it for ONE sequence first, then wrap it in the outer loop. :::"
+    "text": "Exercise 2: Analyse them all 🧬\n⏱️ 25 min · breakout rooms · switch after 10 min\nCreate scripts/analyse_all.py:\nsequences = [\"ATGCGC\", \"GGCATTAGC\", \"TTA\", \"ATGGGCCCTA\", \"ATGNNNCGC\"]\n\nPrint each sequence with its length\nBuild a list of lengths, then print the average\nCount how many sequences start with ATG\nPrint only the sequences longer than 5 bases\nFor each sequence print its GC content (loop inside a loop!)\n\n💡 Bonus: print the codons of the longest sequence, one per line\nCommit 📌 loops.py.\n\n35–70 min. Point 5 is the hard one — a loop over sequences containing a loop over bases. Hint to give if a room is stuck: solve it for ONE sequence first, then wrap it in the outer loop."
   },
   {
     "objectID": "week05-block1-loops.html#wrap-up",
