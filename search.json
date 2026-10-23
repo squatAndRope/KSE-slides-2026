@@ -389,7 +389,7 @@
     "href": "week06_block2_dictionaries.html#dictionaries-key-value",
     "title": "Week 6 · Block 2 — Dictionaries (first look)",
     "section": "Dictionaries: key → value 📖",
-    "text": "Dictionaries: key → value 📖\nLists find things by position. Dictionaries find them by name.\nlengths = {\"seq1\": 120, \"seq2\": 85}\n\nlengths[\"seq2\"]           # 85 — look up by name\nlengths[\"seq3\"] = 300     # add a new entry\n\"seq1\" in lengths         # True\nlengths.get(\"seq9\", 0)    # 0 instead of an error 🛟\nKeys are unique · values can be anything 🔑\n\n0–5 min. Concept only. Looping over .items() comes next week with files."
+    "text": "Dictionaries: key → value 📖\nLists find things by position. Dictionaries find them by name (the key).\nlengths = {\"seq1\": 120, \"seq2\": 85}\n#           ^^^^^^  ^^^\n#            key   value\n\nlengths[\"seq2\"]           # 85 — look up by key\nlengths[\"seq3\"] = 300     # add a new entry\n\"seq1\" in lengths         # True\nlengths.get(\"seq9\", 0)    # 0 instead of an error 🛟\nKeys are unique · values can be anything 🔑"
   },
   {
     "objectID": "week06_block2_dictionaries.html#counting-with-a-dictionary",

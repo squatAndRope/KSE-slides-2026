@@ -207,37 +207,27 @@ Klaudia Brzezińska
 </section>
 <section id="dictionaries-key-value" class="slide level2 smaller">
 <h2>Dictionaries: key → value 📖</h2>
-<p>Lists find things by <strong>position</strong>. Dictionaries find them by <strong>name</strong>.</p>
+<p>Lists find things by <strong>position</strong>. Dictionaries find them by <strong>name</strong> (the <strong>key</strong>).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>lengths <span class="op">=</span> {<span class="st">"seq1"</span>: <span class="dv">120</span>, <span class="st">"seq2"</span>: <span class="dv">85</span>}</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>lengths[<span class="st">"seq2"</span>]           <span class="co"># 85 — look up by name</span></span>
-<span id="cb1-4"><a></a>lengths[<span class="st">"seq3"</span>] <span class="op">=</span> <span class="dv">300</span>     <span class="co"># add a new entry</span></span>
-<span id="cb1-5"><a></a><span class="co">"seq1"</span> <span class="kw">in</span> lengths         <span class="co"># True</span></span>
-<span id="cb1-6"><a></a>lengths.get(<span class="st">"seq9"</span>, <span class="dv">0</span>)    <span class="co"># 0 instead of an error 🛟</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a></a><span class="co">#           ^^^^^^  ^^^</span></span>
+<span id="cb1-3"><a></a><span class="co">#            key   value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>lengths[<span class="st">"seq2"</span>]           <span class="co"># 85 — look up by key</span></span>
+<span id="cb2-2"><a></a>lengths[<span class="st">"seq3"</span>] <span class="op">=</span> <span class="dv">300</span>     <span class="co"># add a new entry</span></span>
+<span id="cb2-3"><a></a><span class="co">"seq1"</span> <span class="kw">in</span> lengths         <span class="co"># True</span></span>
+<span id="cb2-4"><a></a>lengths.get(<span class="st">"seq9"</span>, <span class="dv">0</span>)    <span class="co"># 0 instead of an error 🛟</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Keys are unique · values can be anything 🔑</p>
-<aside class="notes">
-<p>0–5 min. Concept only. Looping over .items() comes next week with files.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</div>
 </section>
 <section id="counting-with-a-dictionary" class="slide level2 smaller">
 <h2>Counting with a dictionary 🧮</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>seq <span class="op">=</span> <span class="st">"ATGCGCATG"</span></span>
-<span id="cb2-2"><a></a>counts <span class="op">=</span> {}</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="cf">for</span> base <span class="kw">in</span> seq:</span>
-<span id="cb2-5"><a></a>    counts[base] <span class="op">=</span> counts.get(base, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a><span class="bu">print</span>(counts)   <span class="co"># {'A': 2, 'T': 2, 'G': 3, 'C': 2}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>seq <span class="op">=</span> <span class="st">"ATGCGCATG"</span></span>
+<span id="cb3-2"><a></a>counts <span class="op">=</span> {}</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="cf">for</span> base <span class="kw">in</span> seq:</span>
+<span id="cb3-5"><a></a>    counts[base] <span class="op">=</span> counts.get(base, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a><span class="bu">print</span>(counts)   <span class="co"># {'A': 2, 'T': 2, 'G': 3, 'C': 2}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>5–10 min. Walk through the first three iterations base by base.</p>
 <style type="text/css">
@@ -256,9 +246,9 @@ Klaudia Brzezińska
 <h2>Exercise: Functions meet dictionaries 🧬</h2>
 <p>⏱️ 10 min · your own screen · react ✅</p>
 <p>Add a fourth function to <code>seq_functions.py</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">def</span> count_bases(seq):</span>
-<span id="cb3-2"><a></a>    ...</span>
-<span id="cb3-3"><a></a>    <span class="cf">return</span> counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">def</span> count_bases(seq):</span>
+<span id="cb4-2"><a></a>    ...</span>
+<span id="cb4-3"><a></a>    <span class="cf">return</span> counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Test it: <code>print(count_bases("ATGCGCATG"))</code></p>
 <p>💡 <strong>Bonus:</strong> print only the count of <code>G</code></p>
 <div class="fragment">
