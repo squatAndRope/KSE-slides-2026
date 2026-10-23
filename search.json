@@ -403,7 +403,7 @@
     "href": "week06_block2_dictionaries.html#exercise-functions-meet-dictionaries",
     "title": "Week 6 · Block 2 — Dictionaries (first look)",
     "section": "Exercise: Functions meet dictionaries 🧬",
-    "text": "Exercise: Functions meet dictionaries 🧬\n⏱️ 10 min · your own screen · react ✅\nAdd a fourth function to seq_functions.py:\ndef count_bases(seq):\n    ...\n    return counts\nTest it: print(count_bases(\"ATGCGCATG\"))\n💡 Bonus: print only the count of G\n\nHomework 🏠 Commit seq_functions.py (all four functions). Next week: files — real data from disk 📄\n\n10–20 min. A function that returns a dictionary — both ideas of the day in 5 lines. Next week they import this file, so it must work."
+    "text": "Exercise: Functions meet dictionaries 🧬\n⏱️ 10 min · your own screen · react ✅\nAdd a fourth function to seq_functions.py:\ndef count_bases(seq):\n    ...\n    return counts\nTest it: print(count_bases(\"ATGCGCATG\"))\n💡 Bonus: print only the count of G\n\nNext week: files — real data from disk 📄\n\n10–20 min. A function that returns a dictionary — both ideas of the day in 5 lines. Next week they import this file, so it must work."
   },
   {
     "objectID": "week08-block2-conflicts.html#warm-up",
@@ -1670,7 +1670,7 @@
     "href": "week06_block1_functions.html#exercise-2-your-own-toolkit",
     "title": "Week 6 · Block 1 — Functions",
     "section": "Exercise 2: Your own toolkit 🧰",
-    "text": "Exercise 2: Your own toolkit 🧰\n⏱️ 25 min · breakout rooms · switch after 12 min\nCreate scripts/seq_functions.py with three functions:\n\ngc_content(seq) → GC as a percentage, rounded to 2 decimals\nreverse_complement(seq) → the reverse complement\nis_usable(seq, min_length=30) → True/False (long enough and no N)\n\nTest all three on 3 different sequences and print the results.\n💡 Bonus: first_atg(seq) → position of the first ATG, or -1\n\n28–53 min. Most rooms will reuse code from weeks 3–5 — that is exactly the point. Praise copy-from-your-own-repo."
+    "text": "Exercise 2: Your own toolkit 🧰\n⏱️ 25 min · breakout rooms · switch after 12 min\nCreate scripts/seq_functions.py with three functions:\n\ngc_content(seq) → GC as a percentage, rounded to 2 decimals\nreverse_complement(seq) → the reverse complement\nis_usable(seq, min_length=30) → True/False (long enough and no N)\n\nTest all three on 3 different sequences and print the results.\n💡 Bonus: first_atg(seq) → position of the first ATG, or -1\nHomework 🏠 Commit seq_functions.py (all four functions).\n\n28–53 min. Most rooms will reuse code from weeks 3–5 — that is exactly the point. Praise copy-from-your-own-repo."
   },
   {
     "objectID": "week06_block1_functions.html#wrap-up",
