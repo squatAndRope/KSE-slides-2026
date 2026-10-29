@@ -1271,7 +1271,7 @@
     "href": "week08-block2-conflicts.html#who-presses-merge",
     "title": "Week 8 · Block 2 — Conflicts & the pair assignment",
     "section": "Who presses Merge? 🟢",
-    "text": "Who presses Merge? 🟢\nAs collaborators, both of you can merge any pull request.\n\nOur rule:\n\n\n\n\n\n\nImportant\n\n\nYou never merge your own pull request. Your partner reviews it, then your partner merges it. 🤝\n\n\n\nOla writes  → Ola opens PR  → Ivan reviews → Ivan merges\nIvan writes → Ivan opens PR → Ola reviews  → Ola merges\n\nTechnically any collaborator on a personal repo has write access (can merge and even push to main). GitHub can enforce reviews with branch protection — only for public repos on free accounts. Here it is a team agreement. I will see in the PR history who opened and who merged."
+    "text": "Who presses Merge? 🟢\nAs collaborators, both of you can merge any pull request.\n\nOur rule:\n\n\n\n\n\n\nImportant\n\n\nYou never merge your own pull request. Your partner reviews it, then your partner merges it. 🤝\n\n\n\nA writes  → A opens PR  → B reviews → B merges\nB writes → B opens PR → A reviews  → A merges\n\nTechnically any collaborator on a personal repo has write access (can merge and even push to main). GitHub can enforce reviews with branch protection — only for public repos on free accounts. Here it is a team agreement. I will see in the PR history who opened and who merged."
   },
   {
     "objectID": "week08-block2-conflicts.html#what-i-will-look-at",
