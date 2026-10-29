@@ -139,8 +139,8 @@ Your partner reviews it, then **your partner merges it**. 🤝
 :::
 
 ```
-Ola writes  → Ola opens PR  → Ivan reviews → Ivan merges
-Ivan writes → Ivan opens PR → Ola reviews  → Ola merges
+A writes  → A opens PR  → B reviews → B merges
+B writes → B opens PR → A reviews  → A merges
 ```
 
 ::: notes
@@ -161,7 +161,7 @@ I will see in the PR history who opened and who merged.
 
 . . .
 
-Deadline: **[date]** · Submit: paste your repo link in [Moodle]
+Deadline: **[next class]** · Submit: paste your repo link in private message on slack
 
 ::: notes
 TODO: fill in the date and submission channel.
