@@ -1229,21 +1229,21 @@
     "href": "week08-block2-conflicts.html#warm-up",
     "title": "Week 8 · Block 2 — Conflicts & the pair assignment",
     "section": "Warm-up 🔥",
-    "text": "Warm-up 🔥\n⏱️ 10 min\nIn your pair-assignment repo:\ngit switch main\ngit pull\nls\nDo you see your partner’s file? React ✅\n\n0–10 min. This confirms yesterday’s merges actually landed in main."
+    "text": "Warm-up 🔥\n⏱️ 10 min\nIn our shared programming-basics repo:\ngit switch main\ngit pull\nls students/\nDo you see your classmates’ files? React ✅\n\n0–10 min. This confirms the merges from Block 1 actually landed in main."
   },
   {
     "objectID": "week08-block2-conflicts.html#the-moment-of-truth",
     "href": "week08-block2-conflicts.html#the-moment-of-truth",
     "title": "Week 8 · Block 2 — Conflicts & the pair assignment",
     "section": "The moment of truth 💥",
-    "text": "The moment of truth 💥\nYou both edited the same line.\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\ngc = round(value, 2)\n=======\ngc = round(value, 3)\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; partner-branch\n\nGit does not guess. You decide. 🧑‍⚖️\n\n10–25 min. Reassure: a conflict is not damage, nothing is lost."
+    "text": "The moment of truth 💥\nYou both edited the same line.\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\n    return round(gc, 2)\n=======\n    return round(gc, 3)\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; a1b2c3d (Round GC to 3 decimals)\n\nGit does not guess. You decide. 🧑‍⚖️\n\n10–25 min. Reassure: a conflict is not damage, nothing is lost. HEAD = your version, the part below ======= = the incoming one."
   },
   {
     "objectID": "week08-block2-conflicts.html#resolving-a-conflict",
     "href": "week08-block2-conflicts.html#resolving-a-conflict",
     "title": "Week 8 · Block 2 — Conflicts & the pair assignment",
     "section": "Resolving a conflict 🧑‍⚖️",
-    "text": "Resolving a conflict 🧑‍⚖️\n\ngit status — which files are in conflict?\nOpen the file, find the &lt;&lt;&lt;&lt;&lt;&lt;&lt; markers\nKeep what should stay — delete all markers ✂️\nSave, then:\n\ngit add &lt;file&gt;\ngit commit -m \"Resolve conflict in seq_functions.py\"\ngit push\n\nVS Code shows buttons: Accept Current / Incoming / Both 🖱️"
+    "text": "Resolving a conflict 🧑‍⚖️\n\ngit status — which files are in conflict?\nOpen the file, find the &lt;&lt;&lt;&lt;&lt;&lt;&lt; markers\nKeep what should stay — delete all markers ✂️\nSave, then:\n\ngit add gc_tools.py\ngit commit -m \"Resolve conflict in gc_tools.py\"\ngit push\n\nVS Code shows buttons: Accept Current / Incoming / Both 🖱️"
   },
   {
     "objectID": "week08-block2-conflicts.html#how-to-avoid-conflicts",
@@ -1257,35 +1257,42 @@
     "href": "week08-block2-conflicts.html#exercise-1-make-a-conflict-on-purpose",
     "title": "Week 8 · Block 2 — Conflicts & the pair assignment",
     "section": "Exercise 1: Make a conflict on purpose 😈",
-    "text": "Exercise 1: Make a conflict on purpose 😈\n⏱️ 25 min · breakout rooms · pairs\n\nBoth of you: git switch main and git pull\nBoth edit the same line of the same file — differently\nBoth commit. A pushes first ✅\nB pushes → rejected → git pull → 💥 conflict\nResolve it together, commit, push\nBoth run git log --oneline — do you see the same history?\n\n\n25–50 min. Doing it deliberately in class is much better than meeting it in panic at 2 a.m."
+    "text": "Exercise 1: Make a conflict on purpose 😈\n⏱️ 25 min · breakout rooms · pairs\nA: create repo pair-assignment, add B as collaborator, add this file and push:\n# gc_tools.py\ndef gc_content(seq):\n    gc = (seq.count(\"G\") + seq.count(\"C\")) / len(seq) * 100\n    return round(gc, 1)\nB: accept the invitation and git clone the repo\n\n\nA changes the last line to round(gc, 2) · B to round(gc, 3)\nBoth commit. A pushes first ✅\nB pushes → rejected → git pull → 💥 conflict\nResolve it together, commit, push\nBoth run git log --oneline — do you see the same history?\n\n\n25–50 min. Paste the file and steps in the chat. Today they push to main directly — only for this exercise. From now on: branches + pull requests. If B gets “divergent branches” hint on pull: git pull –no-rebase (or set git config pull.rebase false beforehand). Doing it deliberately in class is much better than meeting it in panic at 2 a.m."
   },
   {
     "objectID": "week08-block2-conflicts.html#pair-assignment",
     "href": "week08-block2-conflicts.html#pair-assignment",
     "title": "Week 8 · Block 2 — Conflicts & the pair assignment",
     "section": "Pair assignment 📋",
-    "text": "Pair assignment 📋\n25% of your grade · due in 2 weeks · in pairs\nBuild a small FASTA analysis tool together, in one repository:\n\nAt least 4 functions, each written by one of you\nEach function on its own branch, merged via a pull request\nEach of you reviews at least 2 of your partner’s pull requests 👀\nA README.md explaining what it does and how to run it\nAt least one resolved conflict in the history 😈\n\n\n50–65 min. Walk through each point. Stress: I grade the collaboration, not only the code."
+    "text": "Pair assignment 📋\n25% of your grade · due in 2 weeks · in pairs · same pair-assignment repo\nBuild a small FASTA analysis tool together:\n\nEach of you writes at least 2 functions (4+ in total) ✍️\nEach function on its own branch, merged via a pull request\nYou review your partner’s pull requests — every one of them 👀\nA README.md explaining what it does and how to run it\nAt least one resolved conflict in the history 😈\n\n\n50–65 min. Walk through each point. Stress: I grade the collaboration, not only the code."
+  },
+  {
+    "objectID": "week08-block2-conflicts.html#who-presses-merge",
+    "href": "week08-block2-conflicts.html#who-presses-merge",
+    "title": "Week 8 · Block 2 — Conflicts & the pair assignment",
+    "section": "Who presses Merge? 🟢",
+    "text": "Who presses Merge? 🟢\nAs collaborators, both of you can merge any pull request.\n\nOur rule:\n\n\n\n\n\n\nImportant\n\n\nYou never merge your own pull request. Your partner reviews it, then your partner merges it. 🤝\n\n\n\nOla writes  → Ola opens PR  → Ivan reviews → Ivan merges\nIvan writes → Ivan opens PR → Ola reviews  → Ola merges\n\nTechnically any collaborator on a personal repo has write access (can merge and even push to main). GitHub can enforce reviews with branch protection — only for public repos on free accounts. Here it is a team agreement. I will see in the PR history who opened and who merged."
   },
   {
     "objectID": "week08-block2-conflicts.html#what-i-will-look-at",
     "href": "week08-block2-conflicts.html#what-i-will-look-at",
     "title": "Week 8 · Block 2 — Conflicts & the pair assignment",
     "section": "What I will look at 🔍",
-    "text": "What I will look at 🔍\n\n\n\nPart\nWhat I check\n\n\n\n\nCode\nDoes it run? Are functions small and named clearly?\n\n\nGit\nBranches, pull requests, meaningful commit messages\n\n\nReview\nAre the comments useful and kind? 💛\n\n\nREADME\nCould a stranger run your tool?\n\n\nBalance\nDid both of you contribute? 👥\n\n\n\n\nDeadline: [date] · Submit: paste your repo link in [Moodle]\n\nTODO: fill in the date and submission channel."
+    "text": "What I will look at 🔍\n\n\n\n\n\n\n\nPart\nWhat I check\n\n\n\n\nCode\nDoes it run? Are functions small and named clearly?\n\n\nGit\nBranches, pull requests, meaningful commit messages\n\n\nReview\nDid you review all your partner’s PRs? Useful and kind? 💛\n\n\nREADME\nCould a stranger run your tool?\n\n\nBalance\nDid both of you write and review? 👥\n\n\n\n\nDeadline: [date] · Submit: paste your repo link in [Moodle]\n\nTODO: fill in the date and submission channel."
   },
   {
     "objectID": "week08-block2-conflicts.html#exercise-2-plan-it",
     "href": "week08-block2-conflicts.html#exercise-2-plan-it",
     "title": "Week 8 · Block 2 — Conflicts & the pair assignment",
     "section": "Exercise 2: Plan it 🗺️",
-    "text": "Exercise 2: Plan it 🗺️\n⏱️ 15 min · breakout rooms · with your partner\nBefore you leave today, write it in your README.md:\n\nWhich 4 functions will your tool have?\nWho writes which one? ✋\nWhen will you meet during the next two weeks? 📅\n\nCommit the README and push it.\n\n65–80 min. Forcing a written plan now prevents the classic “we did nothing for 13 days” panic."
+    "text": "Exercise 2: Plan it 🗺️\n⏱️ 15 min · breakout rooms · with your partner\nBefore you leave today, write it in your README.md:\n\nWhich 4 functions will your tool have?\nWho writes which ones? ✋\nWhen will you meet during the next two weeks? 📅\n\nCommit the README and push it.\n\n65–80 min. Forcing a written plan now prevents the classic “we did nothing for 13 days” panic."
   },
   {
     "objectID": "week08-block2-conflicts.html#wrap-up",
     "href": "week08-block2-conflicts.html#wrap-up",
     "title": "Week 8 · Block 2 — Conflicts & the pair assignment",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\n\nConflicts: keep what should stay, delete the markers ✂️\ngit pull before starting, always 🌅\nYour assignment starts now 📋\n\n\nNext week: scripts as tools — running your code from the terminal ⚙️\n\n80 min. Remind: quiz 4 this week."
+    "text": "Wrap-up ✅\n\nConflicts: keep what should stay, delete the markers ✂️\ngit pull before starting, always 🌅\nWrite → open PR → partner reviews and merges 🤝\nYour assignment starts now 📋\n\n\nNext week: scripts as tools — running your code from the terminal ⚙️\n\n80 min. Remind: quiz 4 this week."
   },
   {
     "objectID": "week06-block1_functions.html#warm-up",
@@ -1649,7 +1656,7 @@
     "href": "week08-block1-git-in-teams.html#sharing-a-repository",
     "title": "Week 8 · Block 1 — Git in teams",
     "section": "Sharing a repository 🤝",
-    "text": "Sharing a repository 🤝\nOne of you owns the repo, the other becomes a collaborator:\nRepo → Settings → Collaborators → Add people\n\ngit clone &lt;url&gt;        # the partner clones it\ngit pull               # get the newest changes 📥\n\n\n\n\n\n\nNote\n\n\nGolden rule: git pull before you start working. Every time. 🌅"
+    "text": "Sharing a repository 🤝\nOne person owns the repo, the others become collaborators.\nToday: I am the owner, you are my collaborators 🙂\n\n📧 Check your e-mail or github.com/notifications → Accept invitation\ngit clone https://github.com/squatAndRope/programming-basics.git\ncd programming-basics\ngit pull               # get the newest changes 📥\n\n\n\n\n\n\nNote\n\n\nGolden rule: git pull before you start working. Every time. 🌅\n\n\n\n\nInvitations expire after 7 days. If someone cannot push later, the invitation was not accepted."
   },
   {
     "objectID": "week08-block1-git-in-teams.html#pull-requests",
@@ -1670,13 +1677,20 @@
     "href": "week08-block1-git-in-teams.html#exercise-your-first-pull-request",
     "title": "Week 8 · Block 1 — Git in teams",
     "section": "Exercise: Your first pull request 📬",
-    "text": "Exercise: Your first pull request 📬\n⏱️ 35 min · breakout rooms · pairs\n\nA creates a repo pair-assignment and adds B as collaborator\nB clones it\nEach creates their own branch: git switch -c &lt;yourname&gt;-function\nEach writes one small function in a separate file and pushes it\nEach opens a pull request and reviews the partner’s one 👀\nMerge both pull requests on GitHub\n\n\n25–65 min. Paste the steps in the chat. Expect authentication issues for B — have the token/gh login plan ready. Visit every room; PR merging is where people get lost."
+    "text": "Exercise: Your first pull request 📬\n⏱️ 30 min · everyone into my repository\n\nAccept the invitation and clone the repo\nCreate your own branch: git switch -c &lt;yourname&gt;-hello\nAdd one new file students/&lt;yourname&gt;.py with one small function 🐍\ngit add → git commit → git push -u origin &lt;yourname&gt;-hello\nOn GitHub: Compare & pull request → write what your file does\nLeave one kind comment on a classmate’s pull request 👀\n\n\n\n\n\n\n\nWarning\n\n\n🚫 Never push to main directly — only through a pull request.\n\n\n\n\n25–55 min. Paste the steps in the chat. Own file per person = no conflicts today (conflicts are next block). Expect authentication issues — have the token/gh login plan ready. Watch the Pull requests tab: count PRs vs. students."
+  },
+  {
+    "objectID": "week08-block1-git-in-teams.html#live-merge",
+    "href": "week08-block1-git-in-teams.html#live-merge",
+    "title": "Week 8 · Block 1 — Git in teams",
+    "section": "Live merge 🎉",
+    "text": "Live merge 🎉\n⏱️ 10 min · on my screen\nI review your pull requests and press Merge — one by one 🟢\n\nThen everybody:\ngit switch main\ngit pull\nls students/\nEveryone’s file is now in your copy. That is teamwork with Git 🤝\n\n55–65 min. Merge live, read one or two functions aloud, say something nice about each. If a PR touched something outside students/, show how to ask for changes instead of merging."
   },
   {
     "objectID": "week08-block1-git-in-teams.html#wrap-up",
     "href": "week08-block1-git-in-teams.html#wrap-up",
     "title": "Week 8 · Block 1 — Git in teams",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\n\n\n\nCommand\nWhat it does\n\n\n\n\ngit switch -c name\nNew branch 🌿\n\n\ngit switch main\nGo back\n\n\ngit pull\nGet partner’s changes 📥\n\n\ngit push -u origin name\nPublish your branch\n\n\n\nNext block: what happens when you both edit the same line 💥\n\n65–80 min. Leave them curious about conflicts — it is the best part of week 8."
+    "text": "Wrap-up ✅\n\n\n\nCommand\nWhat it does\n\n\n\n\ngit clone &lt;url&gt;\nCopy a repo to your computer 📦\n\n\ngit switch -c name\nNew branch 🌿\n\n\ngit switch main\nGo back\n\n\ngit pull\nGet others’ changes 📥\n\n\ngit push -u origin name\nPublish your branch\n\n\n\nNext block: what happens when you both edit the same line 💥\n\n65–80 min. Leave them curious about conflicts — it is the best part of week 8."
   }
 ]

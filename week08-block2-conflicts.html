@@ -208,13 +208,13 @@ Klaudia Brzezińska
 <section id="warm-up" class="slide level2 smaller">
 <h2>Warm-up 🔥</h2>
 <p>⏱️ 10 min</p>
-<p>In your <code>pair-assignment</code> repo:</p>
+<p>In our shared <code>programming-basics</code> repo:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="fu">git</span> switch main</span>
 <span id="cb1-2"><a></a><span class="fu">git</span> pull</span>
-<span id="cb1-3"><a></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Do you see your partner’s file? React ✅</p>
+<span id="cb1-3"><a></a><span class="fu">ls</span> students/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Do you see your classmates’ files? React ✅</p>
 <aside class="notes">
-<p>0–10 min. This confirms yesterday’s merges actually landed in main.</p>
+<p>0–10 min. This confirms the merges from Block 1 actually landed in main.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -231,14 +231,14 @@ Klaudia Brzezińska
 <h2>The moment of truth 💥</h2>
 <p>You both edited <strong>the same line</strong>.</p>
 <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-gc = round(value, 2)
+    return round(gc, 2)
 =======
-gc = round(value, 3)
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; partner-branch</code></pre>
+    return round(gc, 3)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; a1b2c3d (Round GC to 3 decimals)</code></pre>
 <div class="fragment">
 <p>Git does not guess. <strong>You</strong> decide. 🧑‍⚖️</p>
 <aside class="notes">
-<p>10–25 min. Reassure: a conflict is not damage, nothing is lost.</p>
+<p>10–25 min. Reassure: a conflict is not damage, nothing is lost. HEAD = your version, the part below ======= = the incoming one.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -260,8 +260,8 @@ gc = round(value, 3)
 <li>Keep what should stay — delete <strong>all</strong> markers ✂️</li>
 <li>Save, then:</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="fu">git</span> add <span class="op">&lt;</span>file<span class="op">&gt;</span></span>
-<span id="cb3-2"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Resolve conflict in seq_functions.py"</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="fu">git</span> add gc_tools.py</span>
+<span id="cb3-2"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Resolve conflict in gc_tools.py"</span></span>
 <span id="cb3-3"><a></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>VS Code shows buttons: <em>Accept Current</em> / <em>Incoming</em> / <em>Both</em> 🖱️</p>
@@ -284,16 +284,22 @@ gc = round(value, 3)
 <section id="exercise-1-make-a-conflict-on-purpose" class="slide level2 smaller">
 <h2>Exercise 1: Make a conflict on purpose 😈</h2>
 <p>⏱️ 25 min · breakout rooms · pairs</p>
+<p><strong>A</strong>: create repo <code>pair-assignment</code>, add <strong>B</strong> as collaborator, add this file and push:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># gc_tools.py</span></span>
+<span id="cb4-2"><a></a><span class="kw">def</span> gc_content(seq):</span>
+<span id="cb4-3"><a></a>    gc <span class="op">=</span> (seq.count(<span class="st">"G"</span>) <span class="op">+</span> seq.count(<span class="st">"C"</span>)) <span class="op">/</span> <span class="bu">len</span>(seq) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb4-4"><a></a>    <span class="cf">return</span> <span class="bu">round</span>(gc, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>B</strong>: accept the invitation and <code>git clone</code> the repo</p>
+<div class="fragment">
 <ol type="1">
-<li>Both of you: <code>git switch main</code> and <code>git pull</code></li>
-<li>Both edit the <strong>same line</strong> of the same file — differently</li>
+<li><strong>A</strong> changes the last line to <code>round(gc, 2)</code> · <strong>B</strong> to <code>round(gc, 3)</code></li>
 <li>Both commit. <strong>A</strong> pushes first ✅</li>
 <li><strong>B</strong> pushes → rejected → <code>git pull</code> → 💥 conflict</li>
 <li>Resolve it together, commit, push</li>
 <li>Both run <code>git log --oneline</code> — do you see the same history?</li>
 </ol>
 <aside class="notes">
-<p>25–50 min. Doing it deliberately in class is much better than meeting it in panic at 2 a.m.</p>
+<p>25–50 min. Paste the file and steps in the chat. Today they push to main directly — only for this exercise. From now on: branches + pull requests. If B gets “divergent branches” hint on pull: git pull –no-rebase (or set git config pull.rebase false beforehand). Doing it deliberately in class is much better than meeting it in panic at 2 a.m.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -305,15 +311,16 @@ gc = round(value, 3)
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
 </section>
 <section id="pair-assignment" class="slide level2 smaller">
 <h2>Pair assignment 📋</h2>
-<p><strong>25% of your grade · due in 2 weeks · in pairs</strong></p>
-<p>Build a small FASTA analysis tool together, in <strong>one</strong> repository:</p>
+<p><strong>25% of your grade · due in 2 weeks · in pairs</strong> · same <code>pair-assignment</code> repo</p>
+<p>Build a small FASTA analysis tool together:</p>
 <ul>
-<li>At least <strong>4 functions</strong>, each written by one of you</li>
+<li><strong>Each of you writes at least 2 functions</strong> (4+ in total) ✍️</li>
 <li>Each function on its <strong>own branch</strong>, merged via a <strong>pull request</strong></li>
-<li>Each of you reviews at least <strong>2</strong> of your partner’s pull requests 👀</li>
+<li><strong>You review your partner’s pull requests</strong> — every one of them 👀</li>
 <li>A <code>README.md</code> explaining what it does and how to run it</li>
 <li>At least <strong>one resolved conflict</strong> in the history 😈</li>
 </ul>
@@ -331,9 +338,48 @@ gc = round(value, 3)
           display:block!important;
       }</style></aside>
 </section>
+<section id="who-presses-merge" class="slide level2 smaller">
+<h2>Who presses Merge? 🟢</h2>
+<p>As collaborators, <strong>both</strong> of you can merge any pull request.</p>
+<div class="fragment">
+<p>Our rule:</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>You <strong>never merge your own</strong> pull request. Your partner reviews it, then <strong>your partner merges it</strong>. 🤝</p>
+</div>
+</div>
+</div>
+<pre><code>Ola writes  → Ola opens PR  → Ivan reviews → Ivan merges
+Ivan writes → Ivan opens PR → Ola reviews  → Ola merges</code></pre>
+<aside class="notes">
+<p>Technically any collaborator on a personal repo has write access (can merge and even push to main). GitHub can enforce reviews with branch protection — only for public repos on free accounts. Here it is a team agreement. I will see in the PR history who opened and who merged.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
 <section id="what-i-will-look-at" class="slide level2 smaller">
 <h2>What I will look at 🔍</h2>
 <table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Part</th>
@@ -351,7 +397,7 @@ gc = round(value, 3)
 </tr>
 <tr class="odd">
 <td>Review</td>
-<td>Are the comments useful and kind? 💛</td>
+<td>Did you review <strong>all</strong> your partner’s PRs? Useful and kind? 💛</td>
 </tr>
 <tr class="even">
 <td>README</td>
@@ -359,7 +405,7 @@ gc = round(value, 3)
 </tr>
 <tr class="odd">
 <td>Balance</td>
-<td>Did <strong>both</strong> of you contribute? 👥</td>
+<td>Did <strong>both</strong> of you write and review? 👥</td>
 </tr>
 </tbody>
 </table>
@@ -386,7 +432,7 @@ gc = round(value, 3)
 <p>Before you leave today, write it in your <code>README.md</code>:</p>
 <ol type="1">
 <li>Which 4 functions will your tool have?</li>
-<li>Who writes which one? ✋</li>
+<li>Who writes which ones? ✋</li>
 <li>When will you meet during the next two weeks? 📅</li>
 </ol>
 <p>Commit the README and push it.</p>
@@ -409,6 +455,7 @@ gc = round(value, 3)
 <ul>
 <li>Conflicts: keep what should stay, delete the markers ✂️</li>
 <li><code>git pull</code> before starting, always 🌅</li>
+<li>Write → open PR → <strong>partner</strong> reviews and merges 🤝</li>
 <li>Your assignment starts <strong>now</strong> 📋</li>
 </ul>
 <div class="fragment">

@@ -283,11 +283,13 @@ Klaudia Brzezińska
 </div></aside></section>
 <section id="sharing-a-repository" class="slide level2 smaller">
 <h2>Sharing a repository 🤝</h2>
-<p>One of you owns the repo, the other becomes a <strong>collaborator</strong>:</p>
-<p>Repo → <strong>Settings</strong> → <strong>Collaborators</strong> → <em>Add people</em></p>
+<p>One person owns the repo, the others become <strong>collaborators</strong>.</p>
+<p>Today: <strong>I</strong> am the owner, <strong>you</strong> are my collaborators 🙂</p>
 <div class="fragment">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="fu">git</span> clone <span class="op">&lt;</span>url<span class="op">&gt;</span>        <span class="co"># the partner clones it</span></span>
-<span id="cb3-2"><a></a><span class="fu">git</span> pull               <span class="co"># get the newest changes 📥</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>📧 Check your e-mail or <a href="https://github.com/notifications">github.com/notifications</a> → <strong>Accept invitation</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="fu">git</span> clone https://github.com/squatAndRope/programming-basics.git</span>
+<span id="cb3-2"><a></a><span class="bu">cd</span> programming-basics</span>
+<span id="cb3-3"><a></a><span class="fu">git</span> pull               <span class="co"># get the newest changes 📥</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -301,6 +303,19 @@ Klaudia Brzezińska
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>Invitations expire after 7 days. If someone cannot push later, the invitation was not accepted.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 </section>
 <section id="pull-requests" class="slide level2">
@@ -352,17 +367,30 @@ Klaudia Brzezińska
 </section>
 <section id="exercise-your-first-pull-request" class="slide level2 smaller">
 <h2>Exercise: Your first pull request 📬</h2>
-<p>⏱️ 35 min · breakout rooms · pairs</p>
+<p>⏱️ 30 min · everyone into <strong>my</strong> repository</p>
 <ol type="1">
-<li><strong>A</strong> creates a repo <code>pair-assignment</code> and adds <strong>B</strong> as collaborator</li>
-<li><strong>B</strong> clones it</li>
-<li>Each creates their <strong>own branch</strong>: <code>git switch -c &lt;yourname&gt;-function</code></li>
-<li>Each writes <strong>one small function</strong> in a separate file and pushes it</li>
-<li>Each opens a <strong>pull request</strong> and reviews the partner’s one 👀</li>
-<li>Merge both pull requests on GitHub</li>
+<li>Accept the invitation and <strong>clone</strong> the repo</li>
+<li>Create your <strong>own branch</strong>: <code>git switch -c &lt;yourname&gt;-hello</code></li>
+<li>Add <strong>one new file</strong> <code>students/&lt;yourname&gt;.py</code> with one small function 🐍</li>
+<li><code>git add</code> → <code>git commit</code> → <code>git push -u origin &lt;yourname&gt;-hello</code></li>
+<li>On GitHub: <strong>Compare &amp; pull request</strong> → write what your file does</li>
+<li>Leave <strong>one kind comment</strong> on a classmate’s pull request 👀</li>
 </ol>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>🚫 Never push to <code>main</code> directly — only through a pull request.</p>
+</div>
+</div>
+</div>
 <aside class="notes">
-<p>25–65 min. Paste the steps in the chat. Expect authentication issues for B — have the token/gh login plan ready. Visit every room; PR merging is where people get lost.</p>
+<p>25–55 min. Paste the steps in the chat. Own file per person = no conflicts today (conflicts are next block). Expect authentication issues — have the token/gh login plan ready. Watch the Pull requests tab: count PRs vs.&nbsp;students.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -375,6 +403,31 @@ Klaudia Brzezińska
           display:block!important;
       }</style></aside>
 </section>
+<section id="live-merge" class="slide level2 smaller">
+<h2>Live merge 🎉</h2>
+<p>⏱️ 10 min · on my screen</p>
+<p>I review your pull requests and press <strong>Merge</strong> — one by one 🟢</p>
+<div class="fragment">
+<p>Then everybody:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="fu">git</span> switch main</span>
+<span id="cb5-2"><a></a><span class="fu">git</span> pull</span>
+<span id="cb5-3"><a></a><span class="fu">ls</span> students/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Everyone’s file is now in your copy. <strong>That</strong> is teamwork with Git 🤝</p>
+<aside class="notes">
+<p>55–65 min. Merge live, read one or two functions aloud, say something nice about each. If a PR touched something outside students/, show how to ask for changes instead of merging.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
 <section id="wrap-up" class="slide level2 smaller">
 <h2>Wrap-up ✅</h2>
 <table class="caption-top">
@@ -386,18 +439,22 @@ Klaudia Brzezińska
 </thead>
 <tbody>
 <tr class="odd">
+<td><code>git clone &lt;url&gt;</code></td>
+<td>Copy a repo to your computer 📦</td>
+</tr>
+<tr class="even">
 <td><code>git switch -c name</code></td>
 <td>New branch 🌿</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>git switch main</code></td>
 <td>Go back</td>
 </tr>
-<tr class="odd">
-<td><code>git pull</code></td>
-<td>Get partner’s changes 📥</td>
-</tr>
 <tr class="even">
+<td><code>git pull</code></td>
+<td>Get others’ changes 📥</td>
+</tr>
+<tr class="odd">
 <td><code>git push -u origin name</code></td>
 <td>Publish your branch</td>
 </tr>
