@@ -1,0 +1,74 @@
+---
+title: "Week 6 · Block 2 — Dictionaries (first look)"
+subtitle: "Programming and Computing Basics · KSE 2026"
+author: "Klaudia Brzezińska"
+format:
+  revealjs:
+    theme: dark
+    highlight-style: github-dark
+    slide-number: true
+    code-copy: true
+    footer: "Programming and Computing Basics · Week 6"
+    transition: fade
+---
+
+## Dictionaries: key → value 📖 {.smaller}
+
+Lists find things by **position**. Dictionaries find them by **name** (the **key**).
+
+```python
+lengths = {"seq1": 120, "seq2": 85}
+#           ^^^^^^  ^^^
+#            key   value
+```
+
+. . .
+
+```python
+lengths["seq2"]           # 85 — look up by key
+lengths["seq3"] = 300     # add a new entry
+"seq1" in lengths         # True
+lengths.get("seq9", 0)    # 0 instead of an error 🛟
+```
+
+Keys are unique · values can be anything 🔑
+
+## Counting with a dictionary 🧮 {.smaller}
+
+```python
+seq = "ATGCGCATG"
+counts = {}
+
+for base in seq:
+    counts[base] = counts.get(base, 0) + 1
+
+print(counts)   # {'A': 2, 'T': 2, 'G': 3, 'C': 2}
+```
+
+::: notes
+5–10 min. Walk through the first three iterations base by base.
+:::
+
+## Exercise: Functions meet dictionaries 🧬 {.smaller}
+
+⏱️ 10 min · your own screen · react ✅
+
+Add a fourth function to `seq_functions.py`:
+
+```python
+def count_bases(seq):
+    ...
+    return counts
+```
+
+Test it: `print(count_bases("ATGCGCATG"))`
+
+💡 **Bonus:** print only the count of `G`
+
+. . .
+
+Next week: **files** — real data from disk 📄
+
+::: notes
+10–20 min. A function that returns a dictionary — both ideas of the day in 5 lines. Next week they import this file, so it must work.
+:::

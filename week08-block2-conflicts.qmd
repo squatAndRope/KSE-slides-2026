@@ -16,18 +16,18 @@ format:
 
 ⏱️ 10 min
 
-In your `pair-assignment` repo:
+In our shared `programming-basics` repo:
 
 ```bash
 git switch main
 git pull
-ls
+ls students/
 ```
 
-Do you see your partner's file? React ✅
+Do you see your classmates' files? React ✅
 
 ::: notes
-0–10 min. This confirms yesterday's merges actually landed in main.
+0–10 min. This confirms the merges from Block 1 actually landed in main.
 :::
 
 ## The moment of truth 💥
@@ -36,10 +36,10 @@ You both edited **the same line**.
 
 ```
 <<<<<<< HEAD
-gc = round(value, 2)
+    return round(gc, 2)
 =======
-gc = round(value, 3)
->>>>>>> partner-branch
+    return round(gc, 3)
+>>>>>>> a1b2c3d (Round GC to 3 decimals)
 ```
 
 . . .
@@ -48,6 +48,7 @@ Git does not guess. **You** decide. 🧑‍⚖️
 
 ::: notes
 10–25 min. Reassure: a conflict is not damage, nothing is lost.
+HEAD = your version, the part below ======= = the incoming one.
 :::
 
 ## Resolving a conflict 🧑‍⚖️ {.smaller}
@@ -58,8 +59,8 @@ Git does not guess. **You** decide. 🧑‍⚖️
 4. Save, then:
 
 ```bash
-git add <file>
-git commit -m "Resolve conflict in seq_functions.py"
+git add gc_tools.py
+git commit -m "Resolve conflict in gc_tools.py"
 git push
 ```
 
@@ -82,31 +83,70 @@ VS Code shows buttons: *Accept Current* / *Incoming* / *Both* 🖱️
 
 ⏱️ 25 min · breakout rooms · pairs
 
-1. Both of you: `git switch main` and `git pull`
-2. Both edit the **same line** of the same file — differently
-3. Both commit. **A** pushes first ✅
-4. **B** pushes → rejected → `git pull` → 💥 conflict
-5. Resolve it together, commit, push
-6. Both run `git log --oneline` — do you see the same history?
+**A**: create repo `pair-assignment`, add **B** as collaborator, add this file and push:
+
+```python
+# gc_tools.py
+def gc_content(seq):
+    gc = (seq.count("G") + seq.count("C")) / len(seq) * 100
+    return round(gc, 1)
+```
+
+**B**: accept the invitation and `git clone` the repo
+
+. . .
+
+1. **A** changes the last line to `round(gc, 2)` · **B** to `round(gc, 3)`
+2. Both commit. **A** pushes first ✅
+3. **B** pushes → rejected → `git pull` → 💥 conflict
+4. Resolve it together, commit, push
+5. Both run `git log --oneline` — do you see the same history?
 
 ::: notes
-25–50 min. Doing it deliberately in class is much better than meeting it in panic at 2 a.m.
+25–50 min. Paste the file and steps in the chat.
+Today they push to main directly — only for this exercise. From now on: branches + pull requests.
+If B gets "divergent branches" hint on pull: git pull --no-rebase (or set git config pull.rebase false beforehand).
+Doing it deliberately in class is much better than meeting it in panic at 2 a.m.
 :::
 
 ## Pair assignment 📋 {.smaller}
 
-**25% of your grade · due in 2 weeks · in pairs**
+**25% of your grade · due in 2 weeks · in pairs** · same `pair-assignment` repo
 
-Build a small FASTA analysis tool together, in **one** repository:
+Build a small FASTA analysis tool together:
 
-- At least **4 functions**, each written by one of you
+- **Each of you writes at least 2 functions** (4+ in total) ✍️
 - Each function on its **own branch**, merged via a **pull request**
-- Each of you reviews at least **2** of your partner's pull requests 👀
+- **You review your partner's pull requests** — every one of them 👀
 - A `README.md` explaining what it does and how to run it
 - At least **one resolved conflict** in the history 😈
 
 ::: notes
 50–65 min. Walk through each point. Stress: I grade the collaboration, not only the code.
+:::
+
+## Who presses Merge? 🟢 {.smaller}
+
+As collaborators, **both** of you can merge any pull request.
+
+. . .
+
+Our rule:
+
+::: {.callout-important}
+You **never merge your own** pull request. 
+Your partner reviews it, then **your partner merges it**. 🤝
+:::
+
+```
+Ola writes  → Ola opens PR  → Ivan reviews → Ivan merges
+Ivan writes → Ivan opens PR → Ola reviews  → Ola merges
+```
+
+::: notes
+Technically any collaborator on a personal repo has write access (can merge and even push to main).
+GitHub can enforce reviews with branch protection — only for public repos on free accounts. Here it is a team agreement.
+I will see in the PR history who opened and who merged.
 :::
 
 ## What I will look at 🔍 {.smaller}
@@ -115,9 +155,9 @@ Build a small FASTA analysis tool together, in **one** repository:
 |---|---|
 | Code | Does it run? Are functions small and named clearly? |
 | Git | Branches, pull requests, meaningful commit messages |
-| Review | Are the comments useful and kind? 💛 |
+| Review | Did you review **all** your partner's PRs? Useful and kind? 💛 |
 | README | Could a stranger run your tool? |
-| Balance | Did **both** of you contribute? 👥 |
+| Balance | Did **both** of you write and review? 👥 |
 
 . . .
 
@@ -134,7 +174,7 @@ TODO: fill in the date and submission channel.
 Before you leave today, write it in your `README.md`:
 
 1. Which 4 functions will your tool have?
-2. Who writes which one? ✋
+2. Who writes which ones? ✋
 3. When will you meet during the next two weeks? 📅
 
 Commit the README and push it.
@@ -147,6 +187,7 @@ Commit the README and push it.
 
 - Conflicts: keep what should stay, delete the markers ✂️
 - `git pull` before starting, always 🌅
+- Write → open PR → **partner** reviews and merges 🤝
 - Your assignment starts **now** 📋
 
 . . .

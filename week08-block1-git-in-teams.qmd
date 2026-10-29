@@ -44,7 +44,7 @@ Answer: **nobody has to lose** — that is what branches are for 🌿
 10–25 min. This block is the foundation of the pair assignment.
 :::
 
-## Branches 🌿
+## Branches 🌿 {.smaller}
 
 ```bash
 git branch                    # where am I?
@@ -55,23 +55,41 @@ git switch main               # back to the main line
 
 . . .
 
+![](git-branch.svg){fig-align="center" width="70%"}
+
 A branch is a **parallel version** of your project. Experiment freely — `main` stays safe. 🛟
+
+::: aside
+You'll also see: `git checkout -b add-gc-function` — the older command, same result.
+:::
+
+::: notes
+Point at the picture: main keeps going, the branch has its own commits, merge comes later (pull requests).
+`checkout -b` = `switch -c`. switch was added in Git 2.23 because checkout does too many things.
+:::
 
 ## Sharing a repository 🤝 {.smaller}
 
-One of you owns the repo, the other becomes a **collaborator**:
+One person owns the repo, the others become **collaborators**.
 
-Repo → **Settings** → **Collaborators** → *Add people*
+Today: **I** am the owner, **you** are my collaborators 🙂
 
 . . .
 
+📧 Check your e-mail or [github.com/notifications](https://github.com/notifications) → **Accept invitation**
+
 ```bash
-git clone <url>        # the partner clones it
+git clone https://github.com/squatAndRope/programming-basics.git
+cd programming-basics
 git pull               # get the newest changes 📥
 ```
 
 ::: {.callout-note}
 Golden rule: `git pull` **before** you start working. Every time. 🌅
+:::
+
+::: notes
+Invitations expire after 7 days. If someone cannot push later, the invitation was not accepted.
 :::
 
 ## Pull requests 📬
@@ -110,27 +128,57 @@ Model one good and one bad comment. Online, tone in writing matters even more.
 
 ## Exercise: Your first pull request 📬 {.smaller}
 
-⏱️ 35 min · breakout rooms · pairs
+⏱️ 30 min · everyone into **my** repository
 
-1. **A** creates a repo `pair-assignment` and adds **B** as collaborator
-2. **B** clones it
-3. Each creates their **own branch**: `git switch -c <yourname>-function`
-4. Each writes **one small function** in a separate file and pushes it
-5. Each opens a **pull request** and reviews the partner's one 👀
-6. Merge both pull requests on GitHub
+1. Accept the invitation and **clone** the repo
+2. Create your **own branch**: `git switch -c <yourname>-hello`
+3. Add **one new file** `students/<yourname>.py` with one small function 🐍
+4. `git add` → `git commit` → `git push -u origin <yourname>-hello`
+5. On GitHub: **Compare & pull request** → write what your file does
+6. Leave **one kind comment** on a classmate's pull request 👀
+
+::: {.callout-warning}
+🚫 Never push to `main` directly — only through a pull request.
+:::
 
 ::: notes
-25–65 min. Paste the steps in the chat. Expect authentication issues for B — have the token/gh login plan ready.
-Visit every room; PR merging is where people get lost.
+25–55 min. Paste the steps in the chat.
+Own file per person = no conflicts today (conflicts are next block).
+Expect authentication issues — have the token/gh login plan ready.
+Watch the Pull requests tab: count PRs vs. students.
+:::
+
+## Live merge 🎉 {.smaller}
+
+⏱️ 10 min · on my screen
+
+I review your pull requests and press **Merge** — one by one 🟢
+
+. . .
+
+Then everybody:
+
+```bash
+git switch main
+git pull
+ls students/
+```
+
+Everyone's file is now in your copy. **That** is teamwork with Git 🤝
+
+::: notes
+55–65 min. Merge live, read one or two functions aloud, say something nice about each.
+If a PR touched something outside students/, show how to ask for changes instead of merging.
 :::
 
 ## Wrap-up ✅ {.smaller}
 
 | Command | What it does |
 |---|---|
+| `git clone <url>` | Copy a repo to your computer 📦 |
 | `git switch -c name` | New branch 🌿 |
 | `git switch main` | Go back |
-| `git pull` | Get partner's changes 📥 |
+| `git pull` | Get others' changes 📥 |
 | `git push -u origin name` | Publish your branch |
 
 **Next block:** what happens when you both edit the **same line** 💥

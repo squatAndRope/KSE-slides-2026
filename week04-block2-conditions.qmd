@@ -60,7 +60,7 @@ lengths = [120, 85, 300, 42]
 exon = (1200, 1850)
 ```
 
-1. Add `500` to `lengths` and print the new average
+1. Append new item with the value `500` to `lengths` and print the new average
 2. Print the longest and the shortest length
 3. Unpack `exon` into `start, stop` and print the exon length
 

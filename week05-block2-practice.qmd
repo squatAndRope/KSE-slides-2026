@@ -32,7 +32,7 @@ Today we only **use** what you already know:
 
 ## Warm-up: find the bugs 🐛 {.smaller}
 
-⏱️ 15 min · pairs · 3 bugs
+⏱️ 10 min · 4 bugs
 
 ```python
 sequences = ["ATGC", "GGCA", "TTA"]
@@ -95,40 +95,47 @@ Optional: AI chat can work as a duck too, but only if they explain first and don
 
 ⏱️ 35 min · breakout rooms · switch after 15 min
 
+Write `scripts/mini_analysis.py` that prints a report for:
+
 ```python
 sequences = ["ATGCGCTA", "GGC", "ATGGGCCCTAAA", "TTANNNGC", "ATGAAATTTGGG"]
 ```
 
-Write `scripts/mini_analysis.py` that prints a small report:
-
 1. Total number of sequences and total number of bases
-2. For each sequence: its length, GC content and whether it starts with `ATG`
-3. How many sequences are "usable" (longer than 5 bases **and** no `N`)
-4. The longest sequence and its codons, one per line
-5. A final line: `"X of Y sequences passed"`
+2. For each sequence: length, GC content (fraction, 2 decimals, `N` counts in the length) and `True`/`False` for starting with `ATG`
+3. Count **usable** sequences: `len(seq) > 5` **and** no `N`
+4. The longest sequence (if tied, the first one) and its codons, one per line
+5. Final line: `X of Y sequences usable`
 
-💡 **Bonus:** put a `#` comment above each section explaining what it does
+## Mini analysis: expected output 🎯 {.smaller}
 
-**Commit** 📌 `analyse_all.py`.
+Your output should look like this:
+
+```
+Sequences: 5
+Total bases: 43
+ATGCGCTA 8 0.50 True
+GGC 3 1.00 False
+ATGGGCCCTAAA 12 0.50 True
+TTANNNGC 8 0.25 False
+ATGAAATTTGGG 12 0.33 True
+Longest: ATGGGCCCTAAA
+ATG
+GGC
+CCT
+AAA
+3 of 5 sequences usable
+```
+
+💡 **Bonus:** add a `#` comment above each section explaining what it does
+
+📌 **Commit** `scripts/mini_analysis.py`
 
 ::: notes
-30–65 min. Visit every room. Give hints as questions: "what do you want to have at the end?".
-Remind them of the empty-list-append pattern if they freeze.
+Hints if stuck: `max(sequences, key=len)` · `range(0, len(seq), 3)` for codons · `f"{gc:.2f}"` for 2 decimals.
+Tie: two sequences have 12 bases — max() returns the first one.
 :::
 
-## Show your work 👀 {.smaller}
-
-⏱️ 10 min
-
-Two or three rooms share their screen:
-
-- What does your output look like?
-- Where did you get stuck?
-- Did anyone solve something differently? 🤔
-
-::: notes
-65–75 min. Praise different solutions — there is no single right one. This also shows AI-generated uniformity is not the goal.
-:::
 
 ## Wrap-up ✅ {.smaller}
 

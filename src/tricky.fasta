@@ -1,0 +1,11 @@
+>seq1
+ATGCGCGTTA
+>seq2_with_N
+GGGCNNNATAT
+>seq3_empty
+>seq4_lowercase
+atatatatgc
+
+>seq5_multiline
+ATGCGC
+GTTAGC

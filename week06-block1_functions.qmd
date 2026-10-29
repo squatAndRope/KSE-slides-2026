@@ -1,5 +1,5 @@
 ---
-title: "Week 6 · Block 2 — Functions"
+title: "Week 6 · Block 1 — Functions"
 subtitle: "Programming and Computing Basics · KSE 2026"
 author: "Klaudia Brzezińska"
 format:
@@ -14,20 +14,22 @@ format:
 
 ## Warm-up 🔥 {.smaller}
 
-⏱️ 10 min
+⏱️ 5 min
 
 ```python
-seq = "ATGCGCATG"
+seq1 = "ATGCGC"
+seq2 = "GGCATT"
+seq3 = "TTAGCA"
 ```
 
-Count each base using a dictionary and print the result.
+Compute the GC content of all three.
 
 . . .
 
-Did you write this code before? Where? 🤔
+Did you write this code before? How many times? 🤔
 
 ::: notes
-0–10 min. The point: they have written GC content at least three times by now.
+0–5 min. The point: they have written GC content at least three times by now.
 :::
 
 ## You keep writing the same thing 🔁 {.smaller}
@@ -43,7 +45,7 @@ gc3 = (seq3.count("G") + seq3.count("C")) / len(seq3)
 Change the formula → change it in **three** places. Forget one → silent bug 🐛
 
 ::: notes
-10–25 min. Silent bugs are worse than crashes — you get a wrong number, not an error.
+5–8 min. Silent bugs are worse than crashes — you get a wrong number, not an error.
 :::
 
 ## Defining a function
@@ -63,6 +65,10 @@ print(gc_content(seq2))
 
 `def` name(**input**) → `return` **output** 📦
 
+::: notes
+8–20 min for this slide through "return is not print". Type it live.
+:::
+
 ## Anatomy of a function {.smaller}
 
 ```python
@@ -79,10 +85,6 @@ gc_content("ATGC")                  # 0.5
 gc_content("ATGC", as_percent=True) # 50.0
 ```
 
-::: notes
-Default arguments are optional to teach — but students love them once they see them.
-:::
-
 ## `return` is not `print` ⚠️ {.smaller}
 
 ```python
@@ -97,23 +99,12 @@ total = bad("ATGC") + bad("GGC")     # TypeError 🚫
 ```
 
 ::: notes
-This is THE function misconception. Show the TypeError live and read it together.
+THE function misconception. Show the TypeError live and read it together.
 :::
-
-## Why functions? 🧰
-
-- Write once, use everywhere
-- **Name** the idea: `gc_content()` explains itself 📖
-- Test one small thing instead of a 100-line script
-- Fix a bug in **one** place
-
-. . .
-
-> A good function does **one** thing and has a **clear name**.
 
 ## Exercise 1: Predict, then run 🔮 {.smaller}
 
-⏱️ 10 min · chat first
+⏱️ 8 min · chat first
 
 ```python
 def double(x):
@@ -129,27 +120,29 @@ print(result)        # 🤔
 ```
 
 ::: notes
-25–35 min. The last line printing `None` is the lesson of the day.
+20–28 min. The last line printing `None` is the lesson of the day.
 :::
 
 ## Exercise 2: Your own toolkit 🧰 {.smaller}
 
-⏱️ 25 min · breakout rooms · switch after 10 min
+⏱️ 25 min · breakout rooms · switch after 12 min
 
-Create `scripts/seq_functions.py` with four functions:
+Create `scripts/seq_functions.py` with three functions:
 
-1. `gc_content(seq)` → returns GC as a percentage, rounded to 2 decimals
-2. `reverse_complement(seq)` → returns the reverse complement
-3. `count_bases(seq)` → returns a **dictionary** of base counts
-4. `is_usable(seq, min_length=30)` → returns `True`/`False`
+1. `gc_content(seq)` → GC as a percentage, rounded to 2 decimals
+2. `reverse_complement(seq)` → the reverse complement
+3. `is_usable(seq, min_length=30)` → `True`/`False`
    (long enough **and** no `N`)
 
-Then test all four on 3 different sequences and print the results.
+Test all three on 3 different sequences and print the results.
 
-💡 **Bonus:** write `longest_orf_start(seq)` returning the position of the first `ATG`, or `-1`
+💡 **Bonus:** `first_atg(seq)` → position of the first `ATG`, or `-1`
+
+**Homework** 🏠 Commit `seq_functions.py` (all four functions).
+
 
 ::: notes
-35–70 min. Most rooms will reuse code from weeks 3–5 — that is exactly the point. Praise copy-from-your-own-repo.
+28–53 min. Most rooms will reuse code from weeks 3–5 — that is exactly the point. Praise copy-from-your-own-repo.
 :::
 
 ## Wrap-up ✅ {.smaller}
@@ -164,12 +157,6 @@ def name(input):
 - One function = one job, with a clear name
 - Your repo is now a small **toolkit** 🧰
 
-**Homework** 🏠 Commit `seq_functions.py`.
-
-. . .
-
-Next week: **files** — real data from disk 📄
-
 ::: notes
-70–80 min. Tell them next week they will finally read the FASTA file from week 2 with Python.
+53–60 min. Two rooms show one function each. Then straight into dictionaries.
 :::
