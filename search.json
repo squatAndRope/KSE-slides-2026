@@ -294,18 +294,11 @@
     "text": "Two ways to import 📥\nfrom my_stats import average      # take one function\naverage([1, 2, 3])\nimport my_stats                   # take the whole module\nmy_stats.average([1, 2, 3])       # use it with the prefix\nimport my_stats as ms             # give it a short nickname\nms.average([1, 2, 3])\n\nRemember the nickname trick — you’ll see import pandas as pd in 10 minutes 😉"
   },
   {
-    "objectID": "week09-block1-modules.html#the-__main__-trick",
-    "href": "week09-block1-modules.html#the-__main__-trick",
-    "title": "Week 9 · Block 1 — Modules & libraries",
-    "section": "The __main__ trick 🎩",
-    "text": "The __main__ trick 🎩\n# my_stats.py\ndef average(numbers):\n    ...\n\nif __name__ == \"__main__\":\n    print(\"Testing:\", average([1, 2, 3]))   # runs ONLY when executed directly\n\npython3 my_stats.py → the test runs ▶️\nimport my_stats → the test stays quiet 🤫\n\n22–27 min. Without this, importing a file runs all its top-level prints — confusing and messy."
-  },
-  {
     "objectID": "week09-block1-modules.html#exercise-1-your-first-module",
     "href": "week09-block1-modules.html#exercise-1-your-first-module",
     "title": "Week 9 · Block 1 — Modules & libraries",
     "section": "Exercise 1: Your first module 🧩",
-    "text": "Exercise 1: Your first module 🧩\n⏱️ 13 min · your own screen · react ✅\nIn scripts/:\n\nCreate my_stats.py with average(numbers)\nAdd one more function of your choice: minimum, maximum or count_above(numbers, limit) 💪\nAdd the if __name__ == \"__main__\": test block\nCreate analysis.py that imports both functions and prints results\nRun both files — does each behave as expected?\n\n💡 Bonus: what happens with average([])? 🤔\n\n27–40 min. Import errors are almost always about which folder they run python from. The bonus (ZeroDivisionError) sets up the “why libraries” argument on the next slides."
+    "text": "Exercise 1: Your first module 🧩\n⏱️ 18 min · your own screen · react ✅\nIn scripts/:\n\nCreate my_stats.py with average(numbers)\nAdd one more function of your choice: minimum, maximum or count_above(numbers, limit) 💪\nCreate analysis.py that imports both functions and prints results\nRun analysis.py — does it work?\n\n💡 Bonus: what happens with average([])? 🤔\n\n22–40 min. Import errors are almost always about which folder they run python from. The bonus (ZeroDivisionError) sets up the “why libraries” argument on the next slides."
   },
   {
     "objectID": "week09-block1-modules.html#someone-already-wrote-it",
@@ -340,7 +333,7 @@
     "href": "week09-block1-modules.html#wrap-up",
     "title": "Week 9 · Block 1 — Modules & libraries",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\n\nCode = small reusable blocks, not one giant file 🧱\nYour own block → module · someone else’s → library 📚\nimport x · from x import y · import x as nickname\nif __name__ == \"__main__\": keeps tests quiet on import 🤫\npandas = tables in Python 🐼\n\nCommit 💾 my_stats.py, analysis.py and your Exercise 2 script.\n\nNext block: pandas for real — filtering, sorting, grouping 🐼\n\n77–80 min."
+    "text": "Wrap-up ✅\n\nCode = small reusable blocks, not one giant file 🧱\nYour own block → module · someone else’s → library 📚\nimport x · from x import y · import x as nickname\npandas = tables in Python 🐼\n\nCommit 💾 my_stats.py, analysis.py and your Exercise 2 script.\n\nNext block: pandas for real — filtering, sorting, grouping 🐼\n\n77–80 min."
   },
   {
     "objectID": "week11-block2-review.html#show-and-tell",

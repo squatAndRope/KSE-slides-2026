@@ -354,46 +354,19 @@ Klaudia Brzezińska
 <p>Remember the nickname trick — you’ll see <code>import pandas as pd</code> in 10 minutes 😉</p>
 </div>
 </section>
-<section id="the-__main__-trick" class="slide level2 smaller">
-<h2>The <code>__main__</code> trick 🎩</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># my_stats.py</span></span>
-<span id="cb6-2"><a></a><span class="kw">def</span> average(numbers):</span>
-<span id="cb6-3"><a></a>    ...</span>
-<span id="cb6-4"><a></a></span>
-<span id="cb6-5"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb6-6"><a></a>    <span class="bu">print</span>(<span class="st">"Testing:"</span>, average([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]))   <span class="co"># runs ONLY when executed directly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><code>python3 my_stats.py</code> → the test runs ▶️</p>
-<p><code>import my_stats</code> → the test stays quiet 🤫</p>
-<aside class="notes">
-<p>22–27 min. Without this, importing a file runs all its top-level prints — confusing and messy.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
 <section id="exercise-1-your-first-module" class="slide level2 smaller">
 <h2>Exercise 1: Your first module 🧩</h2>
-<p>⏱️ 13 min · your own screen · react ✅</p>
+<p>⏱️ 18 min · your own screen · react ✅</p>
 <p>In <code>scripts/</code>:</p>
 <ol type="1">
 <li>Create <code>my_stats.py</code> with <code>average(numbers)</code></li>
 <li>Add <strong>one more</strong> function of your choice: <code>minimum</code>, <code>maximum</code> or <code>count_above(numbers, limit)</code> 💪</li>
-<li>Add the <code>if __name__ == "__main__":</code> test block</li>
 <li>Create <code>analysis.py</code> that <strong>imports</strong> both functions and prints results</li>
-<li>Run both files — does each behave as expected?</li>
+<li>Run <code>analysis.py</code> — does it work?</li>
 </ol>
 <p>💡 <strong>Bonus:</strong> what happens with <code>average([])</code>? 🤔</p>
 <aside class="notes">
-<p>27–40 min. Import errors are almost always about which folder they run python from. The bonus (ZeroDivisionError) sets up the “why libraries” argument on the next slides.</p>
+<p>22–40 min. Import errors are almost always about which folder they run python from. The bonus (ZeroDivisionError) sets up the “why libraries” argument on the next slides.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -409,18 +382,18 @@ Klaudia Brzezińska
 <section id="someone-already-wrote-it" class="slide level2 smaller">
 <h2>Someone already wrote it 📚</h2>
 <p><strong>Level 1 — your module</strong> ✍️</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> my_stats <span class="im">import</span> average</span>
-<span id="cb7-2"><a></a>average([<span class="fl">41.2</span>, <span class="fl">38.5</span>, <span class="fl">52.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">from</span> my_stats <span class="im">import</span> average</span>
+<span id="cb6-2"><a></a>average([<span class="fl">41.2</span>, <span class="fl">38.5</span>, <span class="fl">52.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p><strong>Level 2 — standard library</strong> (comes with Python 🏛️)</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">from</span> statistics <span class="im">import</span> mean</span>
-<span id="cb8-2"><a></a>mean([<span class="fl">41.2</span>, <span class="fl">38.5</span>, <span class="fl">52.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> statistics <span class="im">import</span> mean</span>
+<span id="cb7-2"><a></a>mean([<span class="fl">41.2</span>, <span class="fl">38.5</span>, <span class="fl">52.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><strong>Level 3 — external library</strong> (install once 📥)</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="ex">pip3</span> install pandas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb10-2"><a></a>pd.Series([<span class="fl">41.2</span>, <span class="fl">38.5</span>, <span class="fl">52.1</span>]).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a></a><span class="ex">pip3</span> install pandas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a></a>pd.Series([<span class="fl">41.2</span>, <span class="fl">38.5</span>, <span class="fl">52.1</span>]).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Same result. Three authors: <strong>you</strong>, <strong>Python</strong>, <strong>the pandas team</strong>.</p>
 <aside class="notes">
 <p>40–48 min. The key slide of the block. Run all three live, show identical output.</p>
@@ -485,9 +458,9 @@ Klaudia Brzezińska
 <li>Every column gets a name, every row an index</li>
 </ul>
 <div class="fragment">
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb12-2"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/samples.csv"</span>)</span>
-<span id="cb12-3"><a></a>df[<span class="st">"gc_content"</span>].mean()     <span class="co"># your average(), one line 🎯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-2"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/samples.csv"</span>)</span>
+<span id="cb11-3"><a></a>df[<span class="st">"gc_content"</span>].mean()     <span class="co"># your average(), one line 🎯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>52–60 min. Only a first look — next block is all pandas. Connect to week 12: R has the same idea (data.frame) — pandas was inspired by it.</p>
 <style type="text/css">
@@ -539,7 +512,6 @@ s5,44.0,870</code></pre>
 <li>Code = small <strong>reusable blocks</strong>, not one giant file 🧱</li>
 <li>Your own block → <strong>module</strong> · someone else’s → <strong>library</strong> 📚</li>
 <li><code>import x</code> · <code>from x import y</code> · <code>import x as nickname</code></li>
-<li><code>if __name__ == "__main__":</code> keeps tests quiet on import 🤫</li>
 <li>pandas = tables in Python 🐼</li>
 </ul>
 <p><strong>Commit</strong> 💾 <code>my_stats.py</code>, <code>analysis.py</code> and your Exercise 2 script.</p>
