@@ -1,0 +1,259 @@
+---
+title: "Week 9 · Block 2 — pandas basics"
+subtitle: "Programming and Computing Basics · KSE 2026"
+author: "Klaudia Brzezińska"
+format:
+  revealjs:
+    theme: dark
+    highlight-style: github-dark
+    slide-number: true
+    code-copy: true
+    footer: "Programming and Computing Basics · Week 9"
+    transition: fade
+---
+
+## Warm-up 🔥 {.smaller}
+
+⏱️ 8 min · your own screen
+
+Replace `data/samples.csv` with this bigger version:
+
+```
+sample,organism,gc_content,length
+s01,Homo sapiens,41.2,1200
+s02,Homo sapiens,39.8,980
+s03,Homo sapiens,43.5,1530
+s04,Homo sapiens,40.1,1100
+s05,Mus musculus,42.0,1340
+s06,Mus musculus,44.3,870
+s07,Mus musculus,41.7,1020
+s08,Escherichia coli,50.8,2100
+s09,Escherichia coli,51.2,1850
+s10,Escherichia coli,52.4,1960
+s11,Escherichia coli,49.9,760
+s12,Mus musculus,43.1,1410
+```
+
+```python
+import pandas as pd
+df = pd.read_csv("data/samples.csv")
+print(df)
+```
+
+You see a table? React ✅
+
+::: notes
+0–8 min. Paste the CSV in the chat. Toy data on purpose — values are illustrative.
+If "No module named pandas": pip3 install pandas (or python3 -m pip install pandas).
+:::
+
+## First look at your data 👀 {.smaller}
+
+Always start here — **before** any analysis:
+
+```python
+df.head()        # first 5 rows
+df.shape         # (12, 4) → rows, columns
+df.columns       # column names
+df.dtypes        # what type is each column?
+df.describe()    # quick statistics for numeric columns
+```
+
+. . .
+
+> Look at your data first. Most bugs are in the data, not in the code. 🔍
+
+::: notes
+8–15 min. Notice: shape and columns have no () — they are attributes, not methods.
+Students will mix this up; that's fine, the error message tells them.
+:::
+
+## Selecting columns 📏 {.smaller}
+
+One column → a **Series**:
+
+```python
+df["gc_content"]
+df["gc_content"].mean()     # your average() from Block 1 🎯
+df["gc_content"].max()
+df["organism"].unique()     # which organisms do we have?
+```
+
+. . .
+
+Several columns → a smaller **DataFrame**:
+
+```python
+df[["sample", "gc_content"]]      # note: double brackets!
+```
+
+::: notes
+15–22 min. Double brackets = a list of column names inside the selector.
+:::
+
+## Filtering rows 🔎 {.smaller}
+
+Keep only rows where a condition is `True`:
+
+```python
+df[df["gc_content"] > 45]
+df[df["organism"] == "Homo sapiens"]
+```
+
+. . .
+
+Two conditions at once:
+
+```python
+df[(df["gc_content"] > 40) & (df["length"] > 1000)]   # AND
+df[(df["organism"] == "Mus musculus") | (df["length"] < 900)]   # OR
+```
+
+⚠️ In pandas: `&` and `|`, **not** `and` / `or` — and **parentheses** around each condition
+
+::: notes
+22–32 min. The & / parentheses rule is the #1 pandas error. Show the error once on purpose.
+Connect to week 4: same logic as if, different syntax.
+:::
+
+## Sorting & new columns 🔀 {.smaller}
+
+```python
+df.sort_values("gc_content")                     # lowest first
+df.sort_values("gc_content", ascending=False)    # highest first
+df.sort_values("length", ascending=False).head(3)   # top 3 longest
+```
+
+. . .
+
+New column from existing ones — **no loop needed** ✨
+
+```python
+df["length_kb"] = df["length"] / 1000
+df["gc_rich"] = df["gc_content"] > 45
+```
+
+::: notes
+32–40 min. Point out: pandas applies the operation to every row at once.
+In week 5 this would have been a for loop.
+:::
+
+## Exercise 1: Ask the table 🧐 {.smaller}
+
+⏱️ 15 min · your own screen · react ✅
+
+In `scripts/explore_samples.py`:
+
+1. How many samples are there? Which organisms? 🔢
+2. What is the mean length of all samples? 📏
+3. Show only *E. coli* samples 🦠
+4. Show samples with GC > 42 **and** length > 1000
+5. Top 3 samples by GC content 🥇
+6. Add a column `length_kb`
+
+💡 **Bonus:** what does `df["organism"].value_counts()` do?
+
+::: notes
+40–55 min. Walk around (breakout check-ins). Most common issues: & vs and, missing parentheses,
+typos in column names (KeyError).
+:::
+
+## Grouping 🧺 {.smaller}
+
+"What is the mean GC **per organism**?"
+
+```python
+df.groupby("organism")["gc_content"].mean()
+```
+
+```
+organism
+Escherichia coli    51.075
+Homo sapiens        41.150
+Mus musculus        42.775
+```
+
+. . .
+
+Read it like a sentence: **group** by organism → take **gc_content** → compute **mean** 🗣️
+
+```python
+df.groupby("organism")["length"].max()
+df["organism"].value_counts()      # how many samples per organism
+```
+
+::: notes
+55–63 min. Without pandas: a dictionary of lists + loop (week 6). Mention it, don't code it.
+:::
+
+## Saving results 💾
+
+```python
+gc_rich = df[df["gc_content"] > 45]
+gc_rich.to_csv("results/gc_rich.csv", index=False)
+```
+
+. . .
+
+`index=False` → no extra column with row numbers 🧹
+
+Open the file — it's a normal CSV, Excel can read it too 📊
+
+::: notes
+63–66 min. Make sure results/ exists, otherwise OSError.
+:::
+
+## Exercise 2: Mini report 📋 {.smaller}
+
+⏱️ 12 min · breakout rooms · pairs · finish at home
+
+Write `scripts/samples_report.py` that:
+
+1. Reads `data/samples.csv`
+2. Prints the number of samples per organism
+3. Prints mean GC and mean length **per organism**
+4. Saves the samples longer than 1 kb, sorted by length, to `results/long_samples.csv`
+
+💡 **Bonus:** build a DataFrame from your own data:
+
+```python
+rows = [{"name": "seq1", "gc": 41.2}, {"name": "seq2", "gc": 52.0}]
+pd.DataFrame(rows)
+```
+
+— a list of dictionaries (week 6!) becomes a table 🪄
+
+::: notes
+66–78 min. The bonus is the bridge to their own FASTA scripts:
+collect results as dicts in a loop, then one line to a DataFrame.
+:::
+
+## Cheat sheet 🐼 {.smaller}
+
+| I want to… | pandas |
+|---|---|
+| read a CSV | `pd.read_csv("file.csv")` |
+| look at it | `.head()` · `.shape` · `.describe()` |
+| one column | `df["col"]` |
+| filter rows | `df[df["col"] > 5]` |
+| sort | `df.sort_values("col")` |
+| new column | `df["new"] = df["a"] / 1000` |
+| per group | `df.groupby("g")["col"].mean()` |
+| save | `df.to_csv("out.csv", index=False)` |
+
+## Wrap-up ✅ {.smaller}
+
+- pandas = tables in Python: **DataFrame** 📋 + **Series** 📏
+- Look first: `.head()`, `.shape`, `.describe()` 👀
+- Filter with `&` / `|` and parentheses ⚠️
+- `groupby` = per-group statistics in one line 🧺
+
+**Homework** 🏠 Finish and commit `samples_report.py`.
+
+. . .
+
+Next week: **Bash scripts** ⚙️
+
+::: notes
+78–80 min. Remind: quiz this week.
+:::
