@@ -1,0 +1,382 @@
+---
+title: "Week 8 · Block 2 — Protected main, conflicts & the pair assignment"
+subtitle: "Programming and Computing Basics · KSE 2026"
+author: "Klaudia Brzezińska"
+format:
+  revealjs:
+    theme: dark
+    highlight-style: github-dark
+    slide-number: true
+    code-copy: true
+    footer: "Programming and Computing Basics · Week 8"
+    transition: fade
+---
+
+## Warm-up 🔥 {.smaller}
+
+⏱️ 5 min · with your partner
+
+- Your pair repo `pair-assignment` exists ✅
+- Your partner is a **collaborator** (invitation accepted) ✅
+- The repo has at least a `README.md` on `main` ✅
+- **Both** of you have it cloned:
+
+```bash
+git clone https://github.com/<owner>/pair-assignment.git
+cd pair-assignment
+```
+
+React ✅ when all four are true.
+
+::: notes
+0–5 min. If a repo is empty (no README), the owner adds one via "Add file" on GitHub first —
+a ruleset needs main to exist.
+:::
+
+## Today's workflow 🗺️
+
+```
+1. Protect main            🛡️  nobody pushes to main directly
+2. Work on your own branch 🌿  feature/<your-name>
+3. Open a pull request     📬  your partner reviews
+4. Partner approves+merges 🤝
+5. Conflict? Merge main into your branch, fix, push 🧑‍⚖️
+```
+
+. . .
+
+> `main` = the version that always works. Everything else happens on branches.
+
+::: notes
+5–8 min. This slide is the map for the whole block. Come back to it if they get lost.
+:::
+
+## Step 1: Protect `main` 🛡️ {.smaller}
+
+**Repo owner only** · on GitHub:
+
+1. **Settings** → **Rules** → **Rulesets**
+2. **New ruleset** → **New branch ruleset**
+3. Ruleset name: `protect-main`
+4. Enforcement status: **Active**
+5. Target branches → **Add target** → **Include default branch**
+6. Branch rules — tick:
+   - ✅ Restrict deletions
+   - ✅ Block force pushes
+   - ✅ **Require a pull request before merging** → Required approvals: **1**
+7. **Create** 💾
+
+::: notes
+8–15 min. Do it live on shared screen with one pair's repo, then let everyone repeat.
+Rulesets are enforced on PUBLIC repos for free accounts. For a private repo you need
+GitHub Pro — students with GitHub Education have it. Easiest: make the repo public
+(Settings → General → Danger Zone → Change visibility).
+Required approvals = 1 means the author cannot approve their own PR → partner must.
+:::
+
+## Test it 🧪
+
+Try to cheat — push straight to `main`:
+
+```bash
+git switch main
+echo "test" >> README.md
+git commit -am "Try to push to main"
+git push
+```
+
+. . .
+
+❌ `GH013: Repository rule violations found` → **it works!** 🎉
+
+Now undo your local test commit:
+
+```bash
+git reset --hard origin/main
+```
+
+::: notes
+15–18 min. If the push goes through, the ruleset is not active or the repo is private without Pro.
+:::
+
+## One-time setup: no more Vim 😵‍💫 {.smaller}
+
+Sometimes Git opens an **editor** to ask for a commit message.
+By default that is **Vim** — hard to exit if you've never used it.
+
+Run once (everyone):
+
+```bash
+git config --global core.editor "code --wait"
+git config --global pull.rebase false
+```
+
+. . .
+
+Now Git opens **VS Code** instead → edit, **save, close the tab** → Git continues ✅
+
+. . .
+
+🆘 Already stuck in Vim? Press `Esc`, type `:wq`, press `Enter`.
+
+::: notes
+18–22 min. Windows: if "code" is not found, VS Code is not in PATH —
+reinstall with "Add to PATH" ticked, or use: git config --global core.editor "notepad".
+pull.rebase false = git pull merges, no "divergent branches" error.
+:::
+
+## Exercise 1: Make a conflict on purpose 😈 {.smaller}
+
+⏱️ 25 min · breakout rooms · pairs
+
+**Both** of you, on your own laptop:
+
+```bash
+git switch main
+git pull
+git switch -c feature/<your-name>
+```
+
+Create **two files**:
+
+1. `gc_tools.py` — **exactly this name** (see next slide)
+2. **Any file you like** — e.g. `hello_<your-name>.py` with one `print()` 🎨
+
+::: notes
+22–25 min explanation, then breakout rooms.
+Paste the next slide's code in the chat.
+:::
+
+## Exercise 1: the shared file ✍️ {.smaller}
+
+**Partner A** — `gc_tools.py`:
+
+```python
+def gc_content(seq):
+    gc = (seq.count("G") + seq.count("C")) / len(seq) * 100
+    return round(gc, 2)
+```
+
+**Partner B** — `gc_tools.py`:
+
+```python
+def gc_content(seq):
+    gc = (seq.count("G") + seq.count("C")) / len(seq) * 100
+    return round(gc, 3)
+```
+
+Then both:
+
+```bash
+git add .
+git commit -m "Add gc_tools and my own file"
+git push -u origin feature/<your-name>
+```
+
+::: notes
+Same file name, different content → guaranteed conflict.
+The free-name file never conflicts — shows that Git only complains when two people touch the same thing.
+:::
+
+## Exercise 1: pull requests 📬 {.smaller}
+
+On GitHub → **Compare & pull request** (base: `main` ← compare: `feature/<your-name>`)
+→ add your partner as **Reviewer** → **Create pull request**
+
+. . .
+
+**Round 1 — A's PR** 🅰️
+
+- B: **Files changed** → **Review changes** → **Approve** ✅
+- B clicks **Merge pull request** 🟢
+
+. . .
+
+**Round 2 — B's PR** 🅱️
+
+GitHub now says: ⚠️ **This branch has conflicts that must be resolved**
+
+👉 B fixes it locally (next slides)
+
+::: notes
+Make sure A's PR is merged FIRST — otherwise both get confused about who resolves.
+:::
+
+## The moment of truth 💥 {.smaller}
+
+**B**, in the terminal:
+
+```bash
+git switch main
+git pull                      # get A's merged work
+git switch feature/<your-name>
+git merge main --no-edit      # bring main into your branch
+```
+
+. . .
+
+```
+CONFLICT (add/add): Merge conflict in gc_tools.py
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+Git does not guess. **You** decide. 🧑‍⚖️
+
+::: notes
+--no-edit = use the default merge message, never open an editor.
+Reassure: a conflict is not damage, nothing is lost.
+:::
+
+## Inside the file 🔍
+
+```
+<<<<<<< HEAD
+    return round(gc, 3)
+=======
+    return round(gc, 2)
+>>>>>>> main
+```
+
+- above `=======` → **your** branch (HEAD)
+- below `=======` → what came from **main**
+
+. . .
+
+VS Code buttons: *Accept Current* / *Incoming* / *Both* 🖱️
+— or just edit by hand. **Delete all markers** ✂️
+
+## Finish the merge ✅ {.smaller}
+
+**Decide together** which rounding stays. Then B:
+
+```bash
+git status                    # check: which files are in conflict?
+git add gc_tools.py
+git commit -m "Merge main into feature/<your-name>, resolve gc_tools"
+git push
+```
+
+. . .
+
+Back on GitHub: the conflict warning is gone 🎉
+→ **A** approves and **A** merges B's PR 🤝
+
+. . .
+
+Both:
+
+```bash
+git switch main
+git pull
+git log --oneline --graph
+```
+
+Same history on both laptops? React ✅
+
+::: notes
+-m on the commit = no editor. If they forget -m, VS Code opens (thanks to the setup) — save & close.
+Ends at ~50 min.
+:::
+
+## How to avoid conflicts 🛡️
+
+- `git pull` on `main` **before** you create a branch 🌅
+- Small branches, small PRs — merge often
+- Agree **who works on which file** ✋
+- Talk to each other 💬
+
+. . .
+
+> Conflicts are a communication problem more than a Git problem.
+
+::: notes
+50–55 min.
+:::
+
+## Pair assignment 📋 {.smaller}
+
+**25% of your grade · due in 2 weeks · in pairs** · same `pair-assignment` repo
+
+Build a small FASTA analysis tool together:
+
+- **Each of you writes at least 2 functions** (4+ in total) ✍️
+- Each function on its **own branch**, merged via a **pull request**
+- **You review your partner's pull requests** — every one of them 👀
+- A `README.md` explaining what it does and how to run it
+- At least **one resolved conflict** in the history 😈 *(today's counts!)*
+
+::: notes
+55–63 min. Stress: I grade the collaboration, not only the code.
+:::
+
+## Who presses Merge? 🟢 {.smaller}
+
+::: {.callout-important}
+You **never merge your own** pull request.
+Your partner reviews it, then **your partner merges it**. 🤝
+:::
+
+```
+A writes → A opens PR → B approves → B merges
+B writes → B opens PR → A approves → A merges
+```
+
+. . .
+
+Your ruleset already enforces the approval 🛡️ — the merge button is our agreement.
+
+::: notes
+The ruleset blocks merging without 1 approval, and the author cannot approve their own PR.
+It does not stop the author from clicking merge after approval — that's the team rule.
+I will see in the PR history who opened and who merged.
+:::
+
+## What I will look at 🔍 {.smaller}
+
+| Part | What I check |
+|---|---|
+| Code | Does it run? Are functions small and named clearly? |
+| Git | Protected main, branches, PRs, meaningful commit messages |
+| Review | Did you review **all** your partner's PRs? Useful and kind? 💛 |
+| README | Could a stranger run your tool? |
+| Balance | Did **both** of you write and review? 👥 |
+
+. . .
+
+Deadline: **[next class]** · Submit: paste your repo link in a private message on Slack or invite me to the repo
+
+::: notes
+63–68 min. TODO: fill in the date.
+:::
+
+## Exercise 2: Plan it 🗺️ {.smaller}
+
+⏱️ starts now · finish at home · with your partner
+
+On a new branch `docs/plan`, write in `README.md`:
+
+1. Which 4 functions will your tool have?
+2. Who writes which ones? ✋
+3. When will you meet during the next two weeks? 📅
+
+Open a PR → partner approves and merges 🤝
+
+::: notes
+68–80 min. Practising the whole flow once more on something harmless.
+Forcing a written plan now prevents the "we did nothing for 13 days" panic.
+:::
+
+## Wrap-up ✅
+
+- `main` is protected — everything goes through a PR 🛡️
+- Conflict: `git merge main --no-edit` → fix → `add` → `commit -m` → `push` ✂️
+- Write → open PR → **partner** approves and merges 🤝
+- Your assignment starts **now** 📋
+
+. . .
+
+After the break: **scripts as tools** — running your code from the terminal ⚙️
+
+::: notes
+80 min. Remind: quiz 4 this week.
+:::
