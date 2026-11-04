@@ -1,5 +1,5 @@
 ---
-title: "Week 9 · Block 1 — Modules"
+title: "Week 9 · Block 1 — Modules & libraries"
 subtitle: "Programming and Computing Basics · KSE 2026"
 author: "Klaudia Brzezińska"
 format:
@@ -12,145 +12,277 @@ format:
     transition: fade
 ---
 
-## Warm-up 🔥 {.smaller}
+## Warm-up 🔥
 
-⏱️ 10 min
+Imagine your project is **one file** with **1000 lines**. 📜
 
-How is your pair assignment going?
+- Where is the function that counts GC? 🔍
+- Your partner wants to use it in *their* script — copy-paste? 😬
+- You find a bug — how many copies do you fix?
 
-1. In the chat: how many pull requests does your repo have? 🔢
-2. Any conflict yet? 💥
+React with an emoji that describes that feeling 😵‍💫
 
 ::: notes
-0–10 min. Quick pulse check. Rooms with 0 PRs get a nudge and a concrete next step.
+0–5 min. Let them feel the problem before giving the solution.
 :::
 
-## Your own module 📦 {.smaller}
+## Code is built from blocks 🧱
 
-Any `.py` file is a module you can import.
+Real programs are **not** one long file.
+
+They are made of **small, reusable blocks**:
+
+- write it **once** ✍️
+- use it **many times**, in many scripts ♻️
+- fix it **in one place** 🔧
+
+. . .
+
+> Good code is like LEGO: small pieces that click together.
+
+::: notes
+5–10 min. This is the "why" of the whole block. Everything after is "how".
+:::
+
+## Two ways to get a block 🧩 {.smaller}
+
+| | **Module** 📦 | **Library** 📚 |
+|---|---|---|
+| Who wrote it? | **You** (or your team) | **Someone else** |
+| What is it? | Your own `.py` file | A package of ready modules |
+| How do you get it? | It's already in your folder | Built-in, or `pip install` |
+| Example | `my_stats.py` | `statistics`, `pandas` |
+
+. . .
+
+Same idea, same `import` — the only difference is **who wrote it**. 🤝
+
+::: notes
+10–15 min. Vocabulary, kept loose on purpose:
+module = one .py file · package = folder of modules · library = collection someone publishes.
+Don't spend long on exact definitions — even professionals use them interchangeably.
+:::
+
+## Let's build a block: `average` ✍️ {.smaller}
 
 ```python
-# in analyse.py
-from seq_functions import gc_content, reverse_complement
-
-print(gc_content("ATGCGC"))
+# my_stats.py
+def average(numbers):
+    total = 0
+    for n in numbers:
+        total += n
+    return total / len(numbers)
 ```
 
 . . .
 
+Use it from **another file** in the same folder:
+
 ```python
-import seq_functions               # whole module
-seq_functions.gc_content("ATGC")   # then use the prefix
+# analysis.py
+from my_stats import average
+
+gc_values = [41.2, 38.5, 52.1, 47.9]
+print(average(gc_values))   # 44.925
 ```
 
+🎉 You just made a **module**.
+
 ::: notes
-10–25 min. They already did this in week 7 — now explain why it worked (same folder).
+15–22 min. Live-code it. Emphasise: two files, same folder, import works because Python
+looks in the folder you run it from.
 :::
+
+## Two ways to import 📥 {.smaller}
+
+```python
+from my_stats import average      # take one function
+average([1, 2, 3])
+```
+
+```python
+import my_stats                   # take the whole module
+my_stats.average([1, 2, 3])       # use it with the prefix
+```
+
+```python
+import my_stats as ms             # give it a short nickname
+ms.average([1, 2, 3])
+```
+
+. . .
+
+Remember the nickname trick — you'll see `import pandas as pd` in 10 minutes 😉
 
 ## The `__main__` trick 🎩 {.smaller}
 
 ```python
-# seq_functions.py
-def gc_content(seq):
+# my_stats.py
+def average(numbers):
     ...
 
 if __name__ == "__main__":
-    print("Testing:", gc_content("ATGC"))   # runs ONLY when executed directly
+    print("Testing:", average([1, 2, 3]))   # runs ONLY when executed directly
 ```
 
 . . .
 
-Import it → the test does not run. Run it → it does. 🪄
+`python3 my_stats.py` → the test runs ▶️
+
+`import my_stats` → the test stays quiet 🤫
 
 ::: notes
-Without this, importing a file runs all its top-level prints — confusing and messy.
+22–27 min. Without this, importing a file runs all its top-level prints — confusing and messy.
 :::
 
-## The standard library 🏛️ {.smaller}
+## Exercise 1: Your first module 🧩 {.smaller}
 
-Python ships with hundreds of ready modules:
+⏱️ 13 min · your own screen · react ✅
 
-```python
-import os        # files and folders
-import sys       # the script itself, arguments
-import random    # random numbers
-import math      # sqrt, log, ...
-from collections import Counter   # counting, done for you 🎁
-```
+In `scripts/`:
 
-```python
-Counter("ATGCGC")   # Counter({'G': 2, 'C': 2, 'A': 1, 'T': 1})
-```
+1. Create `my_stats.py` with `average(numbers)`
+2. Add **one more** function of your choice: `minimum`, `maximum` or `count_above(numbers, limit)` 💪
+3. Add the `if __name__ == "__main__":` test block
+4. Create `analysis.py` that **imports** both functions and prints results
+5. Run both files — does each behave as expected?
+
+💡 **Bonus:** what happens with `average([])`? 🤔
 
 ::: notes
-Show Counter after they wrote counting by hand for two weeks — the reaction is always good.
+27–40 min. Import errors are almost always about which folder they run python from.
+The bonus (ZeroDivisionError) sets up the "why libraries" argument on the next slides.
 :::
 
-## Installing packages 📥 {.smaller}
+## Someone already wrote it 📚 {.smaller}
+
+**Level 1 — your module** ✍️
+
+```python
+from my_stats import average
+average([41.2, 38.5, 52.1])
+```
+
+. . .
+
+**Level 2 — standard library** (comes with Python 🏛️)
+
+```python
+from statistics import mean
+mean([41.2, 38.5, 52.1])
+```
+
+. . .
+
+**Level 3 — external library** (install once 📥)
 
 ```bash
-pip3 install biopython
+pip3 install pandas
 ```
 
 ```python
-from Bio.Seq import Seq
-
-s = Seq("ATGCGC")
-print(s.reverse_complement())   # someone already wrote your function 🙂
+import pandas as pd
+pd.Series([41.2, 38.5, 52.1]).mean()
 ```
+
+Same result. Three authors: **you**, **Python**, **the pandas team**.
+
+::: notes
+40–48 min. The key slide of the block. Run all three live, show identical output.
+:::
+
+## Why use a library? ⚖️ {.smaller}
+
+✅ **Pros**
+
+- Tested by thousands of people 🧪
+- Handles cases you forgot — empty data, missing values 🕳️
+- Fast, documented, saves you hours ⏱️
 
 . . .
 
-**But:** you now understand what it does inside. That is the difference. 🧠
+⚠️ **Costs**
+
+- Must be installed — on every computer 💻
+- Versions change, things can break 🔧
+- Blind use = you don't know what happens inside 🙈
+
+. . .
+
+> You wrote `average` yourself first. Now you know what `.mean()` does inside. That's the difference. 🧠
 
 ::: notes
-25–35 min. Important framing: libraries are not cheating — but blind use is.
-Biopython install may fail on some laptops; keep it optional, not required for the exercise.
+48–52 min. Libraries are not cheating — but blind use is.
+If pip fails on someone's laptop: pip vs pip3, or python3 -m pip install pandas.
 :::
 
-## Exercise 1: Split your code 🧩 {.smaller}
+## Meet pandas 🐼 {.smaller}
 
-⏱️ 15 min · your own screen · react ✅
+**The** library for **tables** in Python — think Excel, but in code.
 
-1. Make sure `scripts/seq_functions.py` has your functions only
-2. Create `scripts/run_analysis.py` that **imports** them
-3. Add the `if __name__ == "__main__":` block to `seq_functions.py`
-4. Run both files — does each behave as expected?
+```
+   sample  gc_content  length
+0      s1        41.2    1200
+1      s2        38.5     950
+2      s3        52.1    1430
+```
 
-💡 **Bonus:** replace your own `count_bases` with `Counter` and compare results
+- **DataFrame** = the whole table 📋
+- **Series** = one column 📏
+- Every column gets a name, every row an index
+
+. . .
+
+```python
+import pandas as pd
+df = pd.read_csv("data/samples.csv")
+df["gc_content"].mean()     # your average(), one line 🎯
+```
 
 ::: notes
-35–50 min. Import errors here are almost always about which folder they run python from.
+52–60 min. Only a first look — next block is all pandas.
+Connect to week 12: R has the same idea (data.frame) — pandas was inspired by it.
 :::
 
-## Exercise 2: Explore a module 🔭 {.smaller}
+## Exercise 2: Your way vs pandas 🥊 {.smaller}
 
-⏱️ 25 min · breakout rooms
+⏱️ 15 min · breakout rooms · pairs
 
-Each room picks **one** module: `random` · `math` · `os` · `Counter`
+Create `data/samples.csv`:
 
-1. Find out what it does — read the docs, try it out
-2. Write 3 short examples in `scripts/explore_<module>.py`
-3. Find **one** use for it in a biology context 🧬
-4. Be ready to show your room's findings in 3 minutes 🎤
+```
+sample,gc_content,length
+s1,41.2,1200
+s2,38.5,950
+s3,52.1,1430
+s4,47.9,1100
+s5,44.0,870
+```
+
+1. **Your way:** read the file with `open()`, collect `gc_content` into a list, use **your** `average()` 🧱
+2. **pandas way:** `pd.read_csv()` + `.mean()` 🐼
+3. Same result? How many lines did each take? ✍️
+4. Try `df.describe()` — what does it show? 🔭
 
 ::: notes
-50–75 min. Assign modules so each is taken. Bring rooms back and let each present briefly — students teaching students.
+60–77 min. Step 1 reuses week 7 (files): skip the header, split(","), float().
+The line count difference is the punchline. Let 1–2 pairs share their numbers.
 :::
 
 ## Wrap-up ✅ {.smaller}
 
-- Every `.py` file is a module 📦
-- `from x import y` · `if __name__ == "__main__"`
-- The standard library is huge — look before you write 🔭
-- `pip install` for everything else
+- Code = small **reusable blocks**, not one giant file 🧱
+- Your own block → **module** · someone else's → **library** 📚
+- `import x` · `from x import y` · `import x as nickname`
+- `if __name__ == "__main__":` keeps tests quiet on import 🤫
+- pandas = tables in Python 🐼
 
-**Homework** 🏠 Commit your split scripts.
+**Homework** 🏠 Commit `my_stats.py`, `analysis.py` and your Exercise 2 script.
 
 . . .
 
-Next block: running your scripts like **real tools** ⚙️
+Next block: **pandas** for real — filtering, sorting, grouping 🐼
 
 ::: notes
-75–80 min.
+77–80 min.
 :::
