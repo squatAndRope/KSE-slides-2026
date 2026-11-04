@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Klaudia Brzezińska">
-  <title>Programming and Computing Basics – Week 9 · Block 1 — Modules</title>
+  <title>Programming and Computing Basics – Week 9 · Block 1 — Modules &amp; libraries</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,7 +193,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 9 · Block 1 — Modules</h1>
+  <h1 class="title">Week 9 · Block 1 — Modules &amp; libraries</h1>
   <p class="subtitle">Programming and Computing Basics · KSE 2026</p>
 
 <div class="quarto-title-authors">
@@ -205,16 +205,17 @@ Klaudia Brzezińska
 </div>
 
 </section>
-<section id="warm-up" class="slide level2 smaller">
+<section id="warm-up" class="slide level2">
 <h2>Warm-up 🔥</h2>
-<p>⏱️ 10 min</p>
-<p>How is your pair assignment going?</p>
-<ol type="1">
-<li>In the chat: how many pull requests does your repo have? 🔢</li>
-<li>Any conflict yet? 💥</li>
-</ol>
+<p>Imagine your project is <strong>one file</strong> with <strong>1000 lines</strong>. 📜</p>
+<ul>
+<li>Where is the function that counts GC? 🔍</li>
+<li>Your partner wants to use it in <em>their</em> script — copy-paste? 😬</li>
+<li>You find a bug — how many copies do you fix?</li>
+</ul>
+<p>React with an emoji that describes that feeling 😵‍💫</p>
 <aside class="notes">
-<p>0–10 min. Quick pulse check. Rooms with 0 PRs get a nudge and a concrete next step.</p>
+<p>0–5 min. Let them feel the problem before giving the solution.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -227,18 +228,21 @@ Klaudia Brzezińska
           display:block!important;
       }</style></aside>
 </section>
-<section id="your-own-module" class="slide level2 smaller">
-<h2>Your own module 📦</h2>
-<p>Any <code>.py</code> file is a module you can import.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># in analyse.py</span></span>
-<span id="cb1-2"><a></a><span class="im">from</span> seq_functions <span class="im">import</span> gc_content, reverse_complement</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="bu">print</span>(gc_content(<span class="st">"ATGCGC"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="code-is-built-from-blocks" class="slide level2">
+<h2>Code is built from blocks 🧱</h2>
+<p>Real programs are <strong>not</strong> one long file.</p>
+<p>They are made of <strong>small, reusable blocks</strong>:</p>
+<ul>
+<li>write it <strong>once</strong> ✍️</li>
+<li>use it <strong>many times</strong>, in many scripts ♻️</li>
+<li>fix it <strong>in one place</strong> 🔧</li>
+</ul>
 <div class="fragment">
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> seq_functions               <span class="co"># whole module</span></span>
-<span id="cb2-2"><a></a>seq_functions.gc_content(<span class="st">"ATGC"</span>)   <span class="co"># then use the prefix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote>
+<p>Good code is like LEGO: small pieces that click together.</p>
+</blockquote>
 <aside class="notes">
-<p>10–25 min. They already did this in week 7 — now explain why it worked (same folder).</p>
+<p>5–10 min. This is the “why” of the whole block. Everything after is “how”.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -250,20 +254,119 @@ Klaudia Brzezińska
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
+</section>
+<section id="two-ways-to-get-a-block" class="slide level2 smaller">
+<h2>Two ways to get a block 🧩</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Module</strong> 📦</th>
+<th><strong>Library</strong> 📚</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Who wrote it?</td>
+<td><strong>You</strong> (or your team)</td>
+<td><strong>Someone else</strong></td>
+</tr>
+<tr class="even">
+<td>What is it?</td>
+<td>Your own <code>.py</code> file</td>
+<td>A package of ready modules</td>
+</tr>
+<tr class="odd">
+<td>How do you get it?</td>
+<td>It’s already in your folder</td>
+<td>Built-in, or <code>pip install</code></td>
+</tr>
+<tr class="even">
+<td>Example</td>
+<td><code>my_stats.py</code></td>
+<td><code>statistics</code>, <code>pandas</code></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>Same idea, same <code>import</code> — the only difference is <strong>who wrote it</strong>. 🤝</p>
+<aside class="notes">
+<p>10–15 min. Vocabulary, kept loose on purpose: module = one .py file · package = folder of modules · library = collection someone publishes. Don’t spend long on exact definitions — even professionals use them interchangeably.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="lets-build-a-block-average" class="slide level2 smaller">
+<h2>Let’s build a block: <code>average</code> ✍️</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># my_stats.py</span></span>
+<span id="cb1-2"><a></a><span class="kw">def</span> average(numbers):</span>
+<span id="cb1-3"><a></a>    total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-4"><a></a>    <span class="cf">for</span> n <span class="kw">in</span> numbers:</span>
+<span id="cb1-5"><a></a>        total <span class="op">+=</span> n</span>
+<span id="cb1-6"><a></a>    <span class="cf">return</span> total <span class="op">/</span> <span class="bu">len</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Use it from <strong>another file</strong> in the same folder:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># analysis.py</span></span>
+<span id="cb2-2"><a></a><span class="im">from</span> my_stats <span class="im">import</span> average</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a>gc_values <span class="op">=</span> [<span class="fl">41.2</span>, <span class="fl">38.5</span>, <span class="fl">52.1</span>, <span class="fl">47.9</span>]</span>
+<span id="cb2-5"><a></a><span class="bu">print</span>(average(gc_values))   <span class="co"># 44.925</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>🎉 You just made a <strong>module</strong>.</p>
+<aside class="notes">
+<p>15–22 min. Live-code it. Emphasise: two files, same folder, import works because Python looks in the folder you run it from.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="two-ways-to-import" class="slide level2 smaller">
+<h2>Two ways to import 📥</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> my_stats <span class="im">import</span> average      <span class="co"># take one function</span></span>
+<span id="cb3-2"><a></a>average([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> my_stats                   <span class="co"># take the whole module</span></span>
+<span id="cb4-2"><a></a>my_stats.average([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])       <span class="co"># use it with the prefix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> my_stats <span class="im">as</span> ms             <span class="co"># give it a short nickname</span></span>
+<span id="cb5-2"><a></a>ms.average([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Remember the nickname trick — you’ll see <code>import pandas as pd</code> in 10 minutes 😉</p>
 </div>
 </section>
 <section id="the-__main__-trick" class="slide level2 smaller">
 <h2>The <code>__main__</code> trick 🎩</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># seq_functions.py</span></span>
-<span id="cb3-2"><a></a><span class="kw">def</span> gc_content(seq):</span>
-<span id="cb3-3"><a></a>    ...</span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb3-6"><a></a>    <span class="bu">print</span>(<span class="st">"Testing:"</span>, gc_content(<span class="st">"ATGC"</span>))   <span class="co"># runs ONLY when executed directly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># my_stats.py</span></span>
+<span id="cb6-2"><a></a><span class="kw">def</span> average(numbers):</span>
+<span id="cb6-3"><a></a>    ...</span>
+<span id="cb6-4"><a></a></span>
+<span id="cb6-5"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb6-6"><a></a>    <span class="bu">print</span>(<span class="st">"Testing:"</span>, average([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]))   <span class="co"># runs ONLY when executed directly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<p>Import it → the test does not run. Run it → it does. 🪄</p>
+<p><code>python3 my_stats.py</code> → the test runs ▶️</p>
+<p><code>import my_stats</code> → the test stays quiet 🤫</p>
 <aside class="notes">
-<p>Without this, importing a file runs all its top-level prints — confusing and messy.</p>
+<p>22–27 min. Without this, importing a file runs all its top-level prints — confusing and messy.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -277,65 +380,20 @@ Klaudia Brzezińska
       }</style></aside>
 </div>
 </section>
-<section id="the-standard-library" class="slide level2 smaller">
-<h2>The standard library 🏛️</h2>
-<p>Python ships with hundreds of ready modules:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> os        <span class="co"># files and folders</span></span>
-<span id="cb4-2"><a></a><span class="im">import</span> sys       <span class="co"># the script itself, arguments</span></span>
-<span id="cb4-3"><a></a><span class="im">import</span> random    <span class="co"># random numbers</span></span>
-<span id="cb4-4"><a></a><span class="im">import</span> math      <span class="co"># sqrt, log, ...</span></span>
-<span id="cb4-5"><a></a><span class="im">from</span> collections <span class="im">import</span> Counter   <span class="co"># counting, done for you 🎁</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>Counter(<span class="st">"ATGCGC"</span>)   <span class="co"># Counter({'G': 2, 'C': 2, 'A': 1, 'T': 1})</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<aside class="notes">
-<p>Show Counter after they wrote counting by hand for two weeks — the reaction is always good.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="installing-packages" class="slide level2 smaller">
-<h2>Installing packages 📥</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="ex">pip3</span> install biopython</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> Bio.Seq <span class="im">import</span> Seq</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a>s <span class="op">=</span> Seq(<span class="st">"ATGCGC"</span>)</span>
-<span id="cb7-4"><a></a><span class="bu">print</span>(s.reverse_complement())   <span class="co"># someone already wrote your function 🙂</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><strong>But:</strong> you now understand what it does inside. That is the difference. 🧠</p>
-<aside class="notes">
-<p>25–35 min. Important framing: libraries are not cheating — but blind use is. Biopython install may fail on some laptops; keep it optional, not required for the exercise.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="exercise-1-split-your-code" class="slide level2 smaller">
-<h2>Exercise 1: Split your code 🧩</h2>
-<p>⏱️ 15 min · your own screen · react ✅</p>
+<section id="exercise-1-your-first-module" class="slide level2 smaller">
+<h2>Exercise 1: Your first module 🧩</h2>
+<p>⏱️ 13 min · your own screen · react ✅</p>
+<p>In <code>scripts/</code>:</p>
 <ol type="1">
-<li>Make sure <code>scripts/seq_functions.py</code> has your functions only</li>
-<li>Create <code>scripts/run_analysis.py</code> that <strong>imports</strong> them</li>
-<li>Add the <code>if __name__ == "__main__":</code> block to <code>seq_functions.py</code></li>
+<li>Create <code>my_stats.py</code> with <code>average(numbers)</code></li>
+<li>Add <strong>one more</strong> function of your choice: <code>minimum</code>, <code>maximum</code> or <code>count_above(numbers, limit)</code> 💪</li>
+<li>Add the <code>if __name__ == "__main__":</code> test block</li>
+<li>Create <code>analysis.py</code> that <strong>imports</strong> both functions and prints results</li>
 <li>Run both files — does each behave as expected?</li>
 </ol>
-<p>💡 <strong>Bonus:</strong> replace your own <code>count_bases</code> with <code>Counter</code> and compare results</p>
+<p>💡 <strong>Bonus:</strong> what happens with <code>average([])</code>? 🤔</p>
 <aside class="notes">
-<p>35–50 min. Import errors here are almost always about which folder they run python from.</p>
+<p>27–40 min. Import errors are almost always about which folder they run python from. The bonus (ZeroDivisionError) sets up the “why libraries” argument on the next slides.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -348,18 +406,121 @@ Klaudia Brzezińska
           display:block!important;
       }</style></aside>
 </section>
-<section id="exercise-2-explore-a-module" class="slide level2 smaller">
-<h2>Exercise 2: Explore a module 🔭</h2>
-<p>⏱️ 25 min · breakout rooms</p>
-<p>Each room picks <strong>one</strong> module: <code>random</code> · <code>math</code> · <code>os</code> · <code>Counter</code></p>
+<section id="someone-already-wrote-it" class="slide level2 smaller">
+<h2>Someone already wrote it 📚</h2>
+<p><strong>Level 1 — your module</strong> ✍️</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> my_stats <span class="im">import</span> average</span>
+<span id="cb7-2"><a></a>average([<span class="fl">41.2</span>, <span class="fl">38.5</span>, <span class="fl">52.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Level 2 — standard library</strong> (comes with Python 🏛️)</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">from</span> statistics <span class="im">import</span> mean</span>
+<span id="cb8-2"><a></a>mean([<span class="fl">41.2</span>, <span class="fl">38.5</span>, <span class="fl">52.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p><strong>Level 3 — external library</strong> (install once 📥)</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="ex">pip3</span> install pandas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a></a>pd.Series([<span class="fl">41.2</span>, <span class="fl">38.5</span>, <span class="fl">52.1</span>]).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Same result. Three authors: <strong>you</strong>, <strong>Python</strong>, <strong>the pandas team</strong>.</p>
+<aside class="notes">
+<p>40–48 min. The key slide of the block. Run all three live, show identical output.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="why-use-a-library" class="slide level2 smaller">
+<h2>Why use a library? ⚖️</h2>
+<p>✅ <strong>Pros</strong></p>
+<ul>
+<li>Tested by thousands of people 🧪</li>
+<li>Handles cases you forgot — empty data, missing values 🕳️</li>
+<li>Fast, documented, saves you hours ⏱️</li>
+</ul>
+<div class="fragment">
+<p>⚠️ <strong>Costs</strong></p>
+<ul>
+<li>Must be installed — on every computer 💻</li>
+<li>Versions change, things can break 🔧</li>
+<li>Blind use = you don’t know what happens inside 🙈</li>
+</ul>
+</div>
+<div class="fragment">
+<blockquote>
+<p>You wrote <code>average</code> yourself first. Now you know what <code>.mean()</code> does inside. That’s the difference. 🧠</p>
+</blockquote>
+<aside class="notes">
+<p>48–52 min. Libraries are not cheating — but blind use is. If pip fails on someone’s laptop: pip vs pip3, or python3 -m pip install pandas.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="meet-pandas" class="slide level2 smaller">
+<h2>Meet pandas 🐼</h2>
+<p><strong>The</strong> library for <strong>tables</strong> in Python — think Excel, but in code.</p>
+<pre><code>   sample  gc_content  length
+0      s1        41.2    1200
+1      s2        38.5     950
+2      s3        52.1    1430</code></pre>
+<ul>
+<li><strong>DataFrame</strong> = the whole table 📋</li>
+<li><strong>Series</strong> = one column 📏</li>
+<li>Every column gets a name, every row an index</li>
+</ul>
+<div class="fragment">
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-2"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/samples.csv"</span>)</span>
+<span id="cb12-3"><a></a>df[<span class="st">"gc_content"</span>].mean()     <span class="co"># your average(), one line 🎯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>52–60 min. Only a first look — next block is all pandas. Connect to week 12: R has the same idea (data.frame) — pandas was inspired by it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="exercise-2-your-way-vs-pandas" class="slide level2 smaller">
+<h2>Exercise 2: Your way vs pandas 🥊</h2>
+<p>⏱️ 15 min · breakout rooms · pairs</p>
+<p>Create <code>data/samples.csv</code>:</p>
+<pre><code>sample,gc_content,length
+s1,41.2,1200
+s2,38.5,950
+s3,52.1,1430
+s4,47.9,1100
+s5,44.0,870</code></pre>
 <ol type="1">
-<li>Find out what it does — read the docs, try it out</li>
-<li>Write 3 short examples in <code>scripts/explore_&lt;module&gt;.py</code></li>
-<li>Find <strong>one</strong> use for it in a biology context 🧬</li>
-<li>Be ready to show your room’s findings in 3 minutes 🎤</li>
+<li><strong>Your way:</strong> read the file with <code>open()</code>, collect <code>gc_content</code> into a list, use <strong>your</strong> <code>average()</code> 🧱</li>
+<li><strong>pandas way:</strong> <code>pd.read_csv()</code> + <code>.mean()</code> 🐼</li>
+<li>Same result? How many lines did each take? ✍️</li>
+<li>Try <code>df.describe()</code> — what does it show? 🔭</li>
 </ol>
 <aside class="notes">
-<p>50–75 min. Assign modules so each is taken. Bring rooms back and let each present briefly — students teaching students.</p>
+<p>60–77 min. Step 1 reuses week 7 (files): skip the header, split(“,”), float(). The line count difference is the punchline. Let 1–2 pairs share their numbers.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -375,16 +536,17 @@ Klaudia Brzezińska
 <section id="wrap-up" class="slide level2 smaller">
 <h2>Wrap-up ✅</h2>
 <ul>
-<li>Every <code>.py</code> file is a module 📦</li>
-<li><code>from x import y</code> · <code>if __name__ == "__main__"</code></li>
-<li>The standard library is huge — look before you write 🔭</li>
-<li><code>pip install</code> for everything else</li>
+<li>Code = small <strong>reusable blocks</strong>, not one giant file 🧱</li>
+<li>Your own block → <strong>module</strong> · someone else’s → <strong>library</strong> 📚</li>
+<li><code>import x</code> · <code>from x import y</code> · <code>import x as nickname</code></li>
+<li><code>if __name__ == "__main__":</code> keeps tests quiet on import 🤫</li>
+<li>pandas = tables in Python 🐼</li>
 </ul>
-<p><strong>Homework</strong> 🏠 Commit your split scripts.</p>
+<p><strong>Homework</strong> 🏠 Commit <code>my_stats.py</code>, <code>analysis.py</code> and your Exercise 2 script.</p>
 <div class="fragment">
-<p>Next block: running your scripts like <strong>real tools</strong> ⚙️</p>
+<p>Next block: <strong>pandas</strong> for real — filtering, sorting, grouping 🐼</p>
 <aside class="notes">
-<p>75–80 min.</p>
+<p>77–80 min.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
