@@ -277,7 +277,7 @@ The line count difference is the punchline. Let 1–2 pairs share their numbers.
 - `if __name__ == "__main__":` keeps tests quiet on import 🤫
 - pandas = tables in Python 🐼
 
-**Homework** 🏠 Commit `my_stats.py`, `analysis.py` and your Exercise 2 script.
+**Commit** 💾 `my_stats.py`, `analysis.py` and your Exercise 2 script.
 
 . . .
 
