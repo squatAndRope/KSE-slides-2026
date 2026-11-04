@@ -114,43 +114,21 @@ ms.average([1, 2, 3])
 
 Remember the nickname trick — you'll see `import pandas as pd` in 10 minutes 😉
 
-## The `__main__` trick 🎩 {.smaller}
-
-```python
-# my_stats.py
-def average(numbers):
-    ...
-
-if __name__ == "__main__":
-    print("Testing:", average([1, 2, 3]))   # runs ONLY when executed directly
-```
-
-. . .
-
-`python3 my_stats.py` → the test runs ▶️
-
-`import my_stats` → the test stays quiet 🤫
-
-::: notes
-22–27 min. Without this, importing a file runs all its top-level prints — confusing and messy.
-:::
-
 ## Exercise 1: Your first module 🧩 {.smaller}
 
-⏱️ 13 min · your own screen · react ✅
+⏱️ 18 min · your own screen · react ✅
 
 In `scripts/`:
 
 1. Create `my_stats.py` with `average(numbers)`
 2. Add **one more** function of your choice: `minimum`, `maximum` or `count_above(numbers, limit)` 💪
-3. Add the `if __name__ == "__main__":` test block
-4. Create `analysis.py` that **imports** both functions and prints results
-5. Run both files — does each behave as expected?
+3. Create `analysis.py` that **imports** both functions and prints results
+4. Run `analysis.py` — does it work?
 
 💡 **Bonus:** what happens with `average([])`? 🤔
 
 ::: notes
-27–40 min. Import errors are almost always about which folder they run python from.
+22–40 min. Import errors are almost always about which folder they run python from.
 The bonus (ZeroDivisionError) sets up the "why libraries" argument on the next slides.
 :::
 
@@ -274,7 +252,6 @@ The line count difference is the punchline. Let 1–2 pairs share their numbers.
 - Code = small **reusable blocks**, not one giant file 🧱
 - Your own block → **module** · someone else's → **library** 📚
 - `import x` · `from x import y` · `import x as nickname`
-- `if __name__ == "__main__":` keeps tests quiet on import 🤫
 - pandas = tables in Python 🐼
 
 **Commit** 💾 `my_stats.py`, `analysis.py` and your Exercise 2 script.
