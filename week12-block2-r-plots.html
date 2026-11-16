@@ -230,17 +230,17 @@ Klaudia Brzezińska
 </section>
 <section id="reading-real-data" class="slide level2 smaller">
 <h2>Reading real data 📄</h2>
-<p>Remember <code>results/report.txt</code> from your Python tool? Let’s analyse it in R.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>seqs <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"results/report.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<p>Remember <code>data/samples.csv</code>? Let’s read it in R.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>seqs <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/samples.csv"</span>)</span>
 <span id="cb2-2"><a></a></span>
 <span id="cb2-3"><a></a><span class="fu">head</span>(seqs)</span>
 <span id="cb2-4"><a></a><span class="fu">str</span>(seqs)        <span class="co"># structure: columns and their types 🔍</span></span>
 <span id="cb2-5"><a></a><span class="fu">summary</span>(seqs)    <span class="co"># min, max, mean per column 📊</span></span>
 <span id="cb2-6"><a></a><span class="fu">nrow</span>(seqs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<p><strong>Python produced the data. R analyses it.</strong> 🐍🤝🇷</p>
+<p><strong>pandas saved it with <code>to_csv()</code>. R reads it.</strong> 🐍🤝🇷</p>
 <aside class="notes">
-<p>10–25 min. This is the payoff: their own pipeline now spans two languages. Make sure their report has a header row — otherwise read.csv guesses wrong.</p>
+<p>10–25 min. Any CSV saved by pandas with to_csv() reads straight into R — the pipeline spans two languages. Use samples.csv from week 9 (columns: sample, organism, gc_content, length).</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -279,21 +279,22 @@ Klaudia Brzezińska
 </section>
 <section id="three-plots-you-will-actually-use" class="slide level2 smaller">
 <h2>Three plots you will actually use</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">hist</span>(seqs<span class="sc">$</span>gc)                       <span class="co"># distribution 📊</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">hist</span>(seqs<span class="sc">$</span>gc_content)                        <span class="co"># distribution 📊</span></span>
 <span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a><span class="fu">plot</span>(seqs<span class="sc">$</span>length, seqs<span class="sc">$</span>gc,          <span class="co"># relationship 🔗</span></span>
+<span id="cb4-3"><a></a><span class="fu">plot</span>(seqs<span class="sc">$</span>length, seqs<span class="sc">$</span>gc_content,           <span class="co"># relationship 🔗</span></span>
 <span id="cb4-4"><a></a>     <span class="at">xlab =</span> <span class="st">"Length"</span>, <span class="at">ylab =</span> <span class="st">"GC"</span>,</span>
 <span id="cb4-5"><a></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"darkgreen"</span>)</span>
 <span id="cb4-6"><a></a></span>
-<span id="cb4-7"><a></a><span class="fu">boxplot</span>(gc <span class="sc">~</span> species, <span class="at">data =</span> seqs)  <span class="co"># compare groups 📦</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a></a><span class="fu">boxplot</span>(gc_content <span class="sc">~</span> organism, <span class="at">data =</span> seqs)  <span class="co"># compare groups 📦</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p><code>main</code> <code>xlab</code> <code>ylab</code> <code>col</code> work almost everywhere.</p>
+<p>Same three plots as matplotlib last week — compare! 📊</p>
 </div>
 </section>
 <section id="saving-a-figure" class="slide level2">
 <h2>Saving a figure 💾</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">png</span>(<span class="st">"results/gc_plot.png"</span>, <span class="at">width =</span> <span class="dv">800</span>, <span class="at">height =</span> <span class="dv">600</span>)</span>
-<span id="cb5-2"><a></a><span class="fu">hist</span>(seqs<span class="sc">$</span>gc, <span class="at">main =</span> <span class="st">"GC content"</span>, <span class="at">col =</span> <span class="st">"steelblue"</span>)</span>
+<span id="cb5-2"><a></a><span class="fu">hist</span>(seqs<span class="sc">$</span>gc_content, <span class="at">main =</span> <span class="st">"GC content"</span>, <span class="at">col =</span> <span class="st">"steelblue"</span>)</span>
 <span id="cb5-3"><a></a><span class="fu">dev.off</span>()          <span class="co"># ⚠️ don't forget this — it closes the file!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Now your figure is a file you can put in a report or a thesis 📄</p>
@@ -316,7 +317,7 @@ Klaudia Brzezińska
 <h2>A word on ggplot2 🎨</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> length, <span class="at">y =</span> gc)) <span class="sc">+</span></span>
+<span id="cb6-3"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> length, <span class="at">y =</span> gc_content)) <span class="sc">+</span></span>
 <span id="cb6-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb6-5"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GC vs length"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
@@ -341,16 +342,16 @@ Klaudia Brzezińska
 <p>⏱️ 30 min · breakout rooms · switch after 15 min</p>
 <p>Create <code>scripts/plot_report.R</code>:</p>
 <ol type="1">
-<li>Run your Python tool to produce a tab-separated report 🐍</li>
-<li>Read it into R with <code>read.csv(..., sep = "\t")</code></li>
+<li>Pick a CSV: <code>data/samples.csv</code> or a CSV from <strong>your project</strong> 🐍</li>
+<li>Read it into R with <code>read.csv()</code></li>
 <li>Print <code>summary()</code> and the number of rows</li>
 <li>Make a histogram of lengths 📊</li>
-<li>Make a scatter plot of length vs GC 🔗</li>
+<li>Make a scatter plot of two numeric columns 🔗</li>
 <li>Save one figure into <code>results/</code> and commit the <strong>script</strong> (not the PNG 🙈)</li>
 </ol>
-<p>💡 <strong>Bonus:</strong> colour the points by whether GC is above 50%</p>
+<p>💡 <strong>Bonus:</strong> recreate one of your project plots in R — it counts as the project bonus 🇷</p>
 <aside class="notes">
-<p>35–75 min. Most common failure: wrong path or missing header. Have a ready CSV in the chat as plan B.</p>
+<p>35–75 min. Most common failure: wrong working directory (setwd / RStudio project). Have samples.csv in the chat as plan B.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -371,9 +372,9 @@ Klaudia Brzezińska
 <li><code>hist()</code> <code>plot()</code> <code>boxplot()</code> — one line each 📊</li>
 <li><code>png()</code> … <code>dev.off()</code> to save 💾</li>
 </ul>
-<p><strong>Homework</strong> 🏠 Commit your R script.</p>
+<p><strong>Commit</strong> 💾 your R script.</p>
 <div class="fragment">
-<p>Next week: Python vs R side by side, and last project help 🛟</p>
+<p>Next week: Python vs R side by side, and last project lab 🛟</p>
 <aside class="notes">
 <p>75–80 min. Two students share their plot — first figures always get a nice reaction.</p>
 <style type="text/css">

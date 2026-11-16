@@ -276,6 +276,16 @@ Klaudia Brzezińska
 <td><code>for s in seqs:</code></td>
 <td><code>for (s in seqs) {</code></td>
 </tr>
+<tr class="even">
+<td>Math on all</td>
+<td><code>np.array(x) * 2</code></td>
+<td><code>x * 2</code></td>
+</tr>
+<tr class="odd">
+<td>Table</td>
+<td><code>pd.DataFrame(...)</code></td>
+<td><code>data.frame(...)</code></td>
+</tr>
 </tbody>
 </table>
 <div class="fragment">
@@ -335,7 +345,7 @@ Klaudia Brzezińska
 <div class="fragment">
 <p>In R, operations work on <strong>whole vectors</strong> at once.</p>
 <aside class="notes">
-<p>The no-loop vectorisation is the genuine “wow” moment. Compare with the Python loop they wrote in week 5.</p>
+<p>Same idea as numpy arrays from week 10 — in R it is built in, no library needed.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -383,7 +393,7 @@ Klaudia Brzezińska
 <span id="cb3-9"><a></a>seqs<span class="sc">$</span>length         <span class="co"># one column as a vector</span></span>
 <span id="cb3-10"><a></a><span class="fu">mean</span>(seqs<span class="sc">$</span>gc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<p>A data frame is a spreadsheet you can compute with 🧮</p>
+<p>Looks familiar? It’s the same idea as a pandas DataFrame — pandas copied it from R 🐼🇷</p>
 </div>
 </section>
 <section id="filtering-rows" class="slide level2">
