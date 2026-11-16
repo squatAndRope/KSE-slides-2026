@@ -1603,6 +1603,13 @@
     "text": "What is an API? 🌐\nA web page is made for humans 👀\nAn API is a URL made for programs 🤖, and it returns data, not a layout.\n\nhttps://rest.ensembl.org / lookup/symbol / homo_sapiens / BRCA2\n        server              what to do      species       gene\n\n\nBig biological databases all have one: Ensembl, NCBI, UniProt, PDB… 🧬\n\n5–10 min. Read the URL as a sentence. Change BRCA2 to TP53 in the browser live."
   },
   {
+    "objectID": "week10-block2-api-project.html#where-to-find-biological-data",
+    "href": "week10-block2-api-project.html#where-to-find-biological-data",
+    "title": "Week 10 · Block 2 — Data from the internet & your final project",
+    "section": "Where to find biological data 🧬",
+    "text": "Where to find biological data 🧬\n\n\n\nDatabase\nWhat you find there\nAPI docs\n\n\n\n\nEnsembl 🧬\ngenes, transcripts, sequences, variants, orthologs, for hundreds of species\nrest.ensembl.org\n\n\nNCBI 📚\nGenBank sequences, genes, PubMed articles, sequencing runs (SRA)\nE-utilities\n\n\nUniProt 🧪\nproteins: sequence, function, domains, where in the cell\nuniprot.org/help/api\n\n\nPDB 🔬\nexperimental 3D structures of proteins and DNA\nRCSB web APIs\n\n\nAlphaFold DB 🤖\npredicted 3D structures for almost every known protein\nalphafold.ebi.ac.uk/api-docs\n\n\nKEGG 🗺️\nmetabolic and signalling pathways, which genes take part\nKEGG REST\n\n\n\n\nSame idea everywhere: a URL in → data out (JSON, FASTA or a table) 🔁\n\n~2 min, don’t go through every row. Point out: these are good data sources for the final project. Today we only use Ensembl, the others are for curiosity and the project."
+  },
+  {
     "objectID": "week10-block2-api-project.html#json-dictionaries-you-already-know",
     "href": "week10-block2-api-project.html#json-dictionaries-you-already-know",
     "title": "Week 10 · Block 2 — Data from the internet & your final project",
@@ -1670,7 +1677,7 @@
     "href": "week10-block2-api-project.html#timeline",
     "title": "Week 10 · Block 2 — Data from the internet & your final project",
     "section": "Timeline 📅",
-    "text": "Timeline 📅\n\n\n\nWhen\nWhat\n\n\n\n\nToday\nWrite PROJECT.md ✍️\n\n\nWeek 11\nProject lab: I give feedback, you build 🛠️\n\n\nWeek 12–13\nR in class, project at home + lab time in week 13 🔁\n\n\nWeek 14\n15-minute oral exam: you run and explain your tool 💬\n\n\n\n\n60–63 min. Week 11 slides already reference feedback on PROJECT.md, so it must exist by then."
+    "text": "Timeline 📅\n\n\n\n\n\n\n\nWhen\nWhat\n\n\n\n\nToday\nWrite PROJECT.md ✍️\n\n\nWeek 11\nProject lab: I give feedback, you build 🛠️\n\n\nWeek 12 + Week 13 Block 1\nR in class, project at home 🔁\n\n\nWeek 13 Block 2\nFinal stretch: last project work time in class + exam prep ✅\n\n\nWeek 14\n15-minute oral exam: you run and explain your tool 💬\n\n\n\n\n60–63 min. Week 11 slides already reference feedback on PROJECT.md, so it must exist by then."
   },
   {
     "objectID": "week10-block2-api-project.html#project.md",
