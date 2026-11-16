@@ -74,21 +74,35 @@
     "href": "week09-block2-pandas.html#first-look-at-your-data",
     "title": "Week 9 · Block 2 — pandas basics",
     "section": "First look at your data 👀",
-    "text": "First look at your data 👀\nAlways start here — before any analysis:\ndf.head()        # first 5 rows\ndf.shape         # (12, 4) → rows, columns\ndf.columns       # column names\ndf.dtypes        # what type is each column?\ndf.describe()    # quick statistics for numeric columns\n\n\nLook at your data first. Most bugs are in the data, not in the code. 🔍\n\n\n8–15 min. Notice: shape and columns have no () — they are attributes, not methods. Students will mix this up; that’s fine, the error message tells them."
+    "text": "First look at your data 👀\nAlways start here — before any analysis:\ndf.head()        # first 5 rows\ndf.shape         # (12, 4) → rows, columns\ndf.columns       # column names\ndf.dtypes        # what type is each column?\ndf.describe()    # quick statistics for numeric columns\n\n\nLook at your data first. Most bugs are in the data, not in the code. 🔍\n\n\n8–12 min. Notice: shape and columns have no () — they are attributes, not methods. Students will mix this up; that’s fine, the error message tells them."
+  },
+  {
+    "objectID": "week09-block2-pandas.html#types-python-vs-pandas",
+    "href": "week09-block2-pandas.html#types-python-vs-pandas",
+    "title": "Week 9 · Block 2 — pandas basics",
+    "section": "Types: Python vs pandas 🏷️",
+    "text": "Types: Python vs pandas 🏷️\ndf.dtypes\nsample            str      ← older pandas (&lt; 3.0) shows: object\norganism          str\ngc_content    float64\nlength          int64\n\n\n\n\nPython 🐍\npandas 🐼\nwhat’s inside\n\n\n\n\nint\nint64\nwhole numbers\n\n\nfloat\nfloat64\ndecimals (and missing values!)\n\n\nstr\nstr / object\ntext\n\n\nbool\nbool\nTrue / False\n\n\n\n\n\nOne type per column, not per value. A Python list can mix [1, \"a\", 2.5], a pandas column can’t 📏\n\n12–15 min. The 64 = 64 bits per number: pandas stores numbers like numpy, fixed size, fast. pandas 3.0 changed text columns from object to str — students on older installs will see object, both are fine."
+  },
+  {
+    "objectID": "week09-block2-pandas.html#when-types-go-wrong",
+    "href": "week09-block2-pandas.html#when-types-go-wrong",
+    "title": "Week 9 · Block 2 — pandas basics",
+    "section": "When types go wrong ⚠️",
+    "text": "When types go wrong ⚠️\npandas guesses the type when reading the CSV. Sometimes it guesses “wrong”:\npd.Series([1200, 980, None]).dtype    # float64, not int64! 😮\n→ a single missing value turns a whole integer column into decimals (NaN is a float)\n\ndf[\"length\"].dtype          # if it says str/object, a value is not a number\ndf[\"length\"].astype(int)    # convert, like int(\"1200\") in plain Python\n\n\n\n.dtypes is your first bug detector: a number column that says str means dirty data 🔍\n\n\n15–17 min. Typical real cause: “1,200” or “n/a” somewhere in the file. Same idea as week 3: input() returns a string, you call int() on it."
   },
   {
     "objectID": "week09-block2-pandas.html#selecting-columns",
     "href": "week09-block2-pandas.html#selecting-columns",
     "title": "Week 9 · Block 2 — pandas basics",
     "section": "Selecting columns 📏",
-    "text": "Selecting columns 📏\nOne column → a Series:\ndf[\"gc_content\"]\ndf[\"gc_content\"].mean()     # your average() from Block 1 🎯\ndf[\"gc_content\"].max()\ndf[\"organism\"].unique()     # which organisms do we have?\n\nSeveral columns → a smaller DataFrame:\ndf[[\"sample\", \"gc_content\"]]      # note: double brackets!\n\n15–22 min. Double brackets = a list of column names inside the selector."
+    "text": "Selecting columns 📏\nOne column → a Series:\ndf[\"gc_content\"]\ndf[\"gc_content\"].mean()     # your average() from Block 1 🎯\ndf[\"gc_content\"].max()\ndf[\"organism\"].unique()     # which organisms do we have?\n\nSeveral columns → a smaller DataFrame:\ndf[[\"sample\", \"gc_content\"]]      # note: double brackets!\n\n17–23 min. Double brackets = a list of column names inside the selector."
   },
   {
     "objectID": "week09-block2-pandas.html#filtering-rows",
     "href": "week09-block2-pandas.html#filtering-rows",
     "title": "Week 9 · Block 2 — pandas basics",
     "section": "Filtering rows 🔎",
-    "text": "Filtering rows 🔎\nKeep only rows where a condition is True:\ndf[df[\"gc_content\"] &gt; 45]\ndf[df[\"organism\"] == \"Homo sapiens\"]\n\nTwo conditions at once:\ndf[(df[\"gc_content\"] &gt; 40) & (df[\"length\"] &gt; 1000)]   # AND\ndf[(df[\"organism\"] == \"Mus musculus\") | (df[\"length\"] &lt; 900)]   # OR\n⚠️ In pandas: & and |, not and / or — and parentheses around each condition\n\n22–32 min. The & / parentheses rule is the #1 pandas error. Show the error once on purpose. Connect to week 4: same logic as if, different syntax."
+    "text": "Filtering rows 🔎\nKeep only rows where a condition is True:\ndf[df[\"gc_content\"] &gt; 45]\ndf[df[\"organism\"] == \"Homo sapiens\"]\n\nTwo conditions at once:\ndf[(df[\"gc_content\"] &gt; 40) & (df[\"length\"] &gt; 1000)]   # AND\ndf[(df[\"organism\"] == \"Mus musculus\") | (df[\"length\"] &lt; 900)]   # OR\n⚠️ In pandas: & and |, not and / or — and parentheses around each condition\n\n23–32 min. The & / parentheses rule is the #1 pandas error. Show the error once on purpose. Connect to week 4: same logic as if, different syntax."
   },
   {
     "objectID": "week09-block2-pandas.html#sorting-new-columns",
@@ -102,7 +116,7 @@
     "href": "week09-block2-pandas.html#exercise-1-ask-the-table",
     "title": "Week 9 · Block 2 — pandas basics",
     "section": "Exercise 1: Ask the table 🧐",
-    "text": "Exercise 1: Ask the table 🧐\n⏱️ 15 min · your own screen · react ✅\nIn scripts/explore_samples.py:\n\nHow many samples are there? Which organisms? 🔢\nWhat is the mean length of all samples? 📏\nShow only E. coli samples 🦠\nShow samples with GC &gt; 42 and length &gt; 1000\nTop 3 samples by GC content 🥇\nAdd a column length_kb\n\n💡 Bonus: what does df[\"organism\"].value_counts() do?\n\n40–55 min. Walk around (breakout check-ins). Most common issues: & vs and, missing parentheses, typos in column names (KeyError)."
+    "text": "Exercise 1: Ask the table 🧐\n⏱️ 15 min · your own screen · react ✅\nCreate scripts/explore_samples.py and read data/samples.csv (the 12-sample file from the warm-up):\nimport pandas as pd\ndf = pd.read_csv(\"data/samples.csv\")\n\nHow many samples are there? Which organisms? 🔢\nWhat is the mean length of all samples? 📏\nShow only E. coli samples 🦠\nShow samples with GC &gt; 42 and length &gt; 1000\nTop 3 samples by GC content 🥇\nAdd a column length_kb\n\n💡 Bonus: what does df[\"organism\"].value_counts() do?\n\n40–55 min. Walk around (breakout check-ins). Most common issues: & vs and, missing parentheses, typos in column names (KeyError)."
   },
   {
     "objectID": "week09-block2-pandas.html#grouping",

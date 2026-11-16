@@ -253,7 +253,92 @@ s12,Mus musculus,43.1,1410</code></pre>
 <p>Look at your data first. Most bugs are in the data, not in the code. 🔍</p>
 </blockquote>
 <aside class="notes">
-<p>8–15 min. Notice: shape and columns have no () — they are attributes, not methods. Students will mix this up; that’s fine, the error message tells them.</p>
+<p>8–12 min. Notice: shape and columns have no () — they are attributes, not methods. Students will mix this up; that’s fine, the error message tells them.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="types-python-vs-pandas" class="slide level2 smaller">
+<h2>Types: Python vs pandas 🏷️</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>sample            str      ← older pandas (&lt; 3.0) shows: object
+organism          str
+gc_content    float64
+length          int64</code></pre>
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Python 🐍</th>
+<th>pandas 🐼</th>
+<th>what’s inside</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>int</code></td>
+<td><code>int64</code></td>
+<td>whole numbers</td>
+</tr>
+<tr class="even">
+<td><code>float</code></td>
+<td><code>float64</code></td>
+<td>decimals (and missing values!)</td>
+</tr>
+<tr class="odd">
+<td><code>str</code></td>
+<td><code>str</code> / <code>object</code></td>
+<td>text</td>
+</tr>
+<tr class="even">
+<td><code>bool</code></td>
+<td><code>bool</code></td>
+<td>True / False</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p>One <strong>type per column</strong>, not per value. A Python list can mix <code>[1, "a", 2.5]</code>, a pandas column can’t 📏</p>
+<aside class="notes">
+<p>12–15 min. The 64 = 64 bits per number: pandas stores numbers like numpy, fixed size, fast. pandas 3.0 changed text columns from object to str — students on older installs will see object, both are fine.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="when-types-go-wrong" class="slide level2 smaller">
+<h2>When types go wrong ⚠️</h2>
+<p>pandas <strong>guesses</strong> the type when reading the CSV. Sometimes it guesses “wrong”:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>pd.Series([<span class="dv">1200</span>, <span class="dv">980</span>, <span class="va">None</span>]).dtype    <span class="co"># float64, not int64! 😮</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>→ a single missing value turns a whole integer column into decimals (<code>NaN</code> is a float)</p>
+<div class="fragment">
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>df[<span class="st">"length"</span>].dtype          <span class="co"># if it says str/object, a value is not a number</span></span>
+<span id="cb7-2"><a></a>df[<span class="st">"length"</span>].astype(<span class="bu">int</span>)    <span class="co"># convert, like int("1200") in plain Python</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<blockquote>
+<p><code>.dtypes</code> is your first bug detector: a number column that says <code>str</code> means dirty data 🔍</p>
+</blockquote>
+<aside class="notes">
+<p>15–17 min. Typical real cause: “1,200” or “n/a” somewhere in the file. Same idea as week 3: input() returns a string, you call int() on it.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -270,15 +355,15 @@ s12,Mus musculus,43.1,1410</code></pre>
 <section id="selecting-columns" class="slide level2 smaller">
 <h2>Selecting columns 📏</h2>
 <p>One column → a <strong>Series</strong>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>df[<span class="st">"gc_content"</span>]</span>
-<span id="cb4-2"><a></a>df[<span class="st">"gc_content"</span>].mean()     <span class="co"># your average() from Block 1 🎯</span></span>
-<span id="cb4-3"><a></a>df[<span class="st">"gc_content"</span>].<span class="bu">max</span>()</span>
-<span id="cb4-4"><a></a>df[<span class="st">"organism"</span>].unique()     <span class="co"># which organisms do we have?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>df[<span class="st">"gc_content"</span>]</span>
+<span id="cb8-2"><a></a>df[<span class="st">"gc_content"</span>].mean()     <span class="co"># your average() from Block 1 🎯</span></span>
+<span id="cb8-3"><a></a>df[<span class="st">"gc_content"</span>].<span class="bu">max</span>()</span>
+<span id="cb8-4"><a></a>df[<span class="st">"organism"</span>].unique()     <span class="co"># which organisms do we have?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Several columns → a smaller <strong>DataFrame</strong>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>df[[<span class="st">"sample"</span>, <span class="st">"gc_content"</span>]]      <span class="co"># note: double brackets!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>df[[<span class="st">"sample"</span>, <span class="st">"gc_content"</span>]]      <span class="co"># note: double brackets!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
-<p>15–22 min. Double brackets = a list of column names inside the selector.</p>
+<p>17–23 min. Double brackets = a list of column names inside the selector.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -295,15 +380,15 @@ s12,Mus musculus,43.1,1410</code></pre>
 <section id="filtering-rows" class="slide level2 smaller">
 <h2>Filtering rows 🔎</h2>
 <p>Keep only rows where a condition is <code>True</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>df[df[<span class="st">"gc_content"</span>] <span class="op">&gt;</span> <span class="dv">45</span>]</span>
-<span id="cb6-2"><a></a>df[df[<span class="st">"organism"</span>] <span class="op">==</span> <span class="st">"Homo sapiens"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>df[df[<span class="st">"gc_content"</span>] <span class="op">&gt;</span> <span class="dv">45</span>]</span>
+<span id="cb10-2"><a></a>df[df[<span class="st">"organism"</span>] <span class="op">==</span> <span class="st">"Homo sapiens"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Two conditions at once:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>df[(df[<span class="st">"gc_content"</span>] <span class="op">&gt;</span> <span class="dv">40</span>) <span class="op">&amp;</span> (df[<span class="st">"length"</span>] <span class="op">&gt;</span> <span class="dv">1000</span>)]   <span class="co"># AND</span></span>
-<span id="cb7-2"><a></a>df[(df[<span class="st">"organism"</span>] <span class="op">==</span> <span class="st">"Mus musculus"</span>) <span class="op">|</span> (df[<span class="st">"length"</span>] <span class="op">&lt;</span> <span class="dv">900</span>)]   <span class="co"># OR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>df[(df[<span class="st">"gc_content"</span>] <span class="op">&gt;</span> <span class="dv">40</span>) <span class="op">&amp;</span> (df[<span class="st">"length"</span>] <span class="op">&gt;</span> <span class="dv">1000</span>)]   <span class="co"># AND</span></span>
+<span id="cb11-2"><a></a>df[(df[<span class="st">"organism"</span>] <span class="op">==</span> <span class="st">"Mus musculus"</span>) <span class="op">|</span> (df[<span class="st">"length"</span>] <span class="op">&lt;</span> <span class="dv">900</span>)]   <span class="co"># OR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>⚠️ In pandas: <code>&amp;</code> and <code>|</code>, <strong>not</strong> <code>and</code> / <code>or</code> — and <strong>parentheses</strong> around each condition</p>
 <aside class="notes">
-<p>22–32 min. The &amp; / parentheses rule is the #1 pandas error. Show the error once on purpose. Connect to week 4: same logic as if, different syntax.</p>
+<p>23–32 min. The &amp; / parentheses rule is the #1 pandas error. Show the error once on purpose. Connect to week 4: same logic as if, different syntax.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -319,13 +404,13 @@ s12,Mus musculus,43.1,1410</code></pre>
 </section>
 <section id="sorting-new-columns" class="slide level2 smaller">
 <h2>Sorting &amp; new columns 🔀</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>df.sort_values(<span class="st">"gc_content"</span>)                     <span class="co"># lowest first</span></span>
-<span id="cb8-2"><a></a>df.sort_values(<span class="st">"gc_content"</span>, ascending<span class="op">=</span><span class="va">False</span>)    <span class="co"># highest first</span></span>
-<span id="cb8-3"><a></a>df.sort_values(<span class="st">"length"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">3</span>)   <span class="co"># top 3 longest</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>df.sort_values(<span class="st">"gc_content"</span>)                     <span class="co"># lowest first</span></span>
+<span id="cb12-2"><a></a>df.sort_values(<span class="st">"gc_content"</span>, ascending<span class="op">=</span><span class="va">False</span>)    <span class="co"># highest first</span></span>
+<span id="cb12-3"><a></a>df.sort_values(<span class="st">"length"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">3</span>)   <span class="co"># top 3 longest</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>New column from existing ones — <strong>no loop needed</strong> ✨</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>df[<span class="st">"length_kb"</span>] <span class="op">=</span> df[<span class="st">"length"</span>] <span class="op">/</span> <span class="dv">1000</span></span>
-<span id="cb9-2"><a></a>df[<span class="st">"gc_rich"</span>] <span class="op">=</span> df[<span class="st">"gc_content"</span>] <span class="op">&gt;</span> <span class="dv">45</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>df[<span class="st">"length_kb"</span>] <span class="op">=</span> df[<span class="st">"length"</span>] <span class="op">/</span> <span class="dv">1000</span></span>
+<span id="cb13-2"><a></a>df[<span class="st">"gc_rich"</span>] <span class="op">=</span> df[<span class="st">"gc_content"</span>] <span class="op">&gt;</span> <span class="dv">45</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>32–40 min. Point out: pandas applies the operation to every row at once. In week 5 this would have been a for loop.</p>
 <style type="text/css">
@@ -344,7 +429,9 @@ s12,Mus musculus,43.1,1410</code></pre>
 <section id="exercise-1-ask-the-table" class="slide level2 smaller">
 <h2>Exercise 1: Ask the table 🧐</h2>
 <p>⏱️ 15 min · your own screen · react ✅</p>
-<p>In <code>scripts/explore_samples.py</code>:</p>
+<p>Create <code>scripts/explore_samples.py</code> and read <strong><code>data/samples.csv</code></strong> (the 12-sample file from the warm-up):</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-2"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/samples.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>How many samples are there? Which organisms? 🔢</li>
 <li>What is the mean length of all samples? 📏</li>
@@ -371,15 +458,15 @@ s12,Mus musculus,43.1,1410</code></pre>
 <section id="grouping" class="slide level2 smaller">
 <h2>Grouping 🧺</h2>
 <p>“What is the mean GC <strong>per organism</strong>?”</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>df.groupby(<span class="st">"organism"</span>)[<span class="st">"gc_content"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>df.groupby(<span class="st">"organism"</span>)[<span class="st">"gc_content"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>organism
 Escherichia coli    51.075
 Homo sapiens        41.150
 Mus musculus        42.775</code></pre>
 <div class="fragment">
 <p>Read it like a sentence: <strong>group</strong> by organism → take <strong>gc_content</strong> → compute <strong>mean</strong> 🗣️</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>df.groupby(<span class="st">"organism"</span>)[<span class="st">"length"</span>].<span class="bu">max</span>()</span>
-<span id="cb12-2"><a></a>df[<span class="st">"organism"</span>].value_counts()      <span class="co"># how many samples per organism</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>df.groupby(<span class="st">"organism"</span>)[<span class="st">"length"</span>].<span class="bu">max</span>()</span>
+<span id="cb17-2"><a></a>df[<span class="st">"organism"</span>].value_counts()      <span class="co"># how many samples per organism</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>55–63 min. Without pandas: a dictionary of lists + loop (week 6). Mention it, don’t code it.</p>
 <style type="text/css">
@@ -397,8 +484,8 @@ Mus musculus        42.775</code></pre>
 </section>
 <section id="saving-results" class="slide level2">
 <h2>Saving results 💾</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>gc_rich <span class="op">=</span> df[df[<span class="st">"gc_content"</span>] <span class="op">&gt;</span> <span class="dv">45</span>]</span>
-<span id="cb13-2"><a></a>gc_rich.to_csv(<span class="st">"results/gc_rich.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>gc_rich <span class="op">=</span> df[df[<span class="st">"gc_content"</span>] <span class="op">&gt;</span> <span class="dv">45</span>]</span>
+<span id="cb18-2"><a></a>gc_rich.to_csv(<span class="st">"results/gc_rich.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p><code>index=False</code> → no extra column with row numbers 🧹</p>
 <p>Open the file — it’s a normal CSV, Excel can read it too 📊</p>
@@ -428,8 +515,8 @@ Mus musculus        42.775</code></pre>
 <li>Saves the samples longer than 1 kb, sorted by length, to <code>results/long_samples.csv</code></li>
 </ol>
 <p>💡 <strong>Bonus:</strong> build a DataFrame from your own data:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>rows <span class="op">=</span> [{<span class="st">"name"</span>: <span class="st">"seq1"</span>, <span class="st">"gc"</span>: <span class="fl">41.2</span>}, {<span class="st">"name"</span>: <span class="st">"seq2"</span>, <span class="st">"gc"</span>: <span class="fl">52.0</span>}]</span>
-<span id="cb14-2"><a></a>pd.DataFrame(rows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>rows <span class="op">=</span> [{<span class="st">"name"</span>: <span class="st">"seq1"</span>, <span class="st">"gc"</span>: <span class="fl">41.2</span>}, {<span class="st">"name"</span>: <span class="st">"seq2"</span>, <span class="st">"gc"</span>: <span class="fl">52.0</span>}]</span>
+<span id="cb19-2"><a></a>pd.DataFrame(rows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>— a list of dictionaries (week 6!) becomes a table 🪄</p>
 <aside class="notes">
 <p>66–78 min. The bonus is the bridge to their own FASTA scripts: collect results as dicts in a loop, then one line to a DataFrame.</p>
