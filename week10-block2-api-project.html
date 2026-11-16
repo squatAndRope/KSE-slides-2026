@@ -372,16 +372,18 @@ Klaudia Brzezińska
 </section>
 <section id="exercise-part-a-fetch" class="slide level2 smaller">
 <h2>Exercise, part A: Fetch 🌐</h2>
-<p>⏱️ 8 min · breakout rooms · pairs · react ✅</p>
-<p>Create <strong><code>scripts/fetch_genes.py</code></strong>:</p>
+<p>⏱️ 8 min · breakout rooms · pairs · react ✅ · file: <strong><code>scripts/fetch_genes.py</code></strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>genes <span class="op">=</span> [<span class="st">"BRCA1"</span>, <span class="st">"BRCA2"</span>, <span class="st">"TP53"</span>, <span class="st">"EGFR"</span>, <span class="st">"MYC"</span>, <span class="st">"KRAS"</span>, <span class="st">"CFTR"</span>, <span class="st">"HBB"</span>]</span>
+<span id="cb7-2"><a></a>url <span class="op">=</span> <span class="ss">f"https://rest.ensembl.org/lookup/symbol/homo_sapiens/</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">"</span>   <span class="co"># inside the loop</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ol type="1">
-<li>Start with this list of 8 human genes:</li>
+<li>Loop over <code>genes</code>, request each <code>url</code> with <code>headers={"Content-Type": "application/json"}</code></li>
+<li>Keep the 4 columns from the table →</li>
+<li>Save to <strong><code>results/genes.csv</code></strong> (<code>index=False</code>)</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>genes <span class="op">=</span> [<span class="st">"BRCA1"</span>, <span class="st">"BRCA2"</span>, <span class="st">"TP53"</span>, <span class="st">"EGFR"</span>, <span class="st">"MYC"</span>, <span class="st">"KRAS"</span>, <span class="st">"CFTR"</span>, <span class="st">"HBB"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="2" type="1">
-<li>For each gene, request <code>https://rest.ensembl.org/lookup/symbol/homo_sapiens/&lt;GENE&gt;</code> with <code>headers={"Content-Type": "application/json"}</code></li>
-<li>From each response, keep exactly these 4 columns:</li>
-</ol>
+<p>✅ Check: <strong>8 rows</strong> + header</p>
+</div><div class="column" style="width:50%;">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -392,7 +394,7 @@ Klaudia Brzezińska
 <tbody>
 <tr class="odd">
 <td><code>gene</code></td>
-<td>the symbol from your list</td>
+<td>your symbol</td>
 </tr>
 <tr class="even">
 <td><code>chromosome</code></td>
@@ -404,14 +406,11 @@ Klaudia Brzezińska
 </tr>
 <tr class="even">
 <td><code>strand</code></td>
-<td><code>strand</code> (1 or -1)</td>
+<td><code>strand</code> (1 / -1)</td>
 </tr>
 </tbody>
 </table>
-<ol start="4" type="1">
-<li>Save the table to <strong><code>results/genes.csv</code></strong> (<code>index=False</code>)</li>
-</ol>
-<p>✅ Check: the CSV has <strong>8 rows + 1 header row</strong></p>
+</div></div>
 <aside class="notes">
 <p>30–38 min. This is the “Many genes → a table” slide plus one extra column (strand). Common issues: forgetting the header (they get HTML/error), typo in a key → KeyError, results/ missing → OSError. If Ensembl is slow or down: paste a ready genes.csv in the chat and go to part B.</p>
 <style type="text/css">
