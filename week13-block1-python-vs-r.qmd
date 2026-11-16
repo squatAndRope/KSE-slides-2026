@@ -67,6 +67,46 @@ long <- lengths[lengths > 100]
 10–25 min. Let them see it, don't over-explain. R wins on tables, Python wins elsewhere.
 :::
 
+## Same table, two languages 📊 {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+**pandas** 🐼
+
+```python
+df = pd.read_csv("data/samples.csv")
+
+df[df["gc_content"] > 45]
+
+df.groupby("organism")["gc_content"].mean()
+
+plt.hist(df["gc_content"])
+```
+:::
+::: {.column width="50%"}
+**R** 🇷
+
+```r
+df <- read.csv("data/samples.csv")
+
+df[df$gc_content > 45, ]
+
+aggregate(gc_content ~ organism,
+          data = df, FUN = mean)
+
+hist(df$gc_content)
+```
+:::
+::::
+
+. . .
+
+Different words, **same four steps**: read → filter → group → plot 🧠
+
+::: notes
+Line by line, ask: "what is the R version of this?" before revealing.
+:::
+
 ## Where each one shines ✨ {.smaller}
 
 | Task | Better fit |
@@ -104,14 +144,14 @@ What transfers between every language:
 
 ⏱️ 30 min · breakout rooms
 
-Take one of your **own** Python scripts from weeks 3–7 and rewrite a piece of it in R:
+Take one of your **own** Python scripts from weeks 3–10 and rewrite a piece of it in R:
 
-1. Pick something small — GC content, filtering, counting
+1. Pick something small — GC content, filtering, a pandas groupby, a plot
 2. Write the R version in `scripts/translated.R`
 3. Run both — do they give the same answer? ✅
 4. In the chat: which version was shorter? Which was clearer? 🤔
 
-💡 **Bonus:** which part was hardest to translate, and why?
+💡 **Bonus:** translate a plot from **your project** — it counts as the project bonus 🇷
 
 ::: notes
 35–70 min. The comparison of their own code is far more convincing than my slides.
@@ -125,7 +165,7 @@ Common trap: indexing from 1, and strsplit() returning a list.
 **Python** 🐍
 
 - Biopython 🧬
-- pandas (tables)
+- seaborn (nicer plots) 📊
 - Rosalind.info (puzzles) 🧩
 :::
 ::: {.column width="50%"}

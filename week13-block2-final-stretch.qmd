@@ -30,7 +30,7 @@ Today:
 
 | Minutes | What happens |
 |---|---|
-| 1–3 | You share your screen and **run** your tool ⚙️ |
+| 1–3 | You share your screen and **run** your analysis ⚙️ |
 | 3–8 | You walk me through the code 🚶 |
 | 8–13 | I ask questions about your choices 🤔 |
 | 13–15 | What was hardest, what would you change 💭 |
@@ -46,8 +46,9 @@ No memorising. No trick questions. Your code is open in front of you 📖
 ## Questions I will probably ask 🤔 {.smaller}
 
 - Walk me through what happens when I run this command ⚙️
+- Why this plot? What does it tell us? 📊
 - Why a dictionary here and a list there?
-- What happens if the input file is empty? 🛡️
+- What happens if the data file is missing — or the API is down? 🛡️
 - Which part took you longest? 😅
 - If you had another week, what would you add?
 - Where did you get stuck, and how did you get unstuck? 🔍
@@ -62,12 +63,13 @@ No memorising. No trick questions. Your code is open in front of you 📖
 
 ## Final checklist ✅ {.smaller}
 
-- [ ] Runs from the terminal with an argument ⚙️
-- [ ] At least 3 functions with clear names 🧩
-- [ ] Reads a real file 📄
-- [ ] Prints or saves output 💾
-- [ ] Friendly message when input is missing 🛡️
-- [ ] README with an example command 📖
+- [ ] Main script runs: `python3 scripts/analysis.py` ⚙️
+- [ ] Own module with ≥ 3 functions, imported 📦
+- [ ] Data saved in `data/` (file or API download) 💾
+- [ ] pandas: a filter, a sort or groupby, a new column 🐼
+- [ ] ≥ 2 plots with title + axis labels in `figures/` 📊
+- [ ] Friendly message when the data file is missing 🛡️
+- [ ] README: question, how to run, **what you found** 📖
 - [ ] Commits spread over several days 📈
 - [ ] **You can explain every line** 🗣️
 
@@ -113,7 +115,7 @@ So go through it now, line by line. 📖
 ```bash
 git clone <your repo> test-clone
 cd test-clone
-python3 scripts/my_tool.py data/sequences.fasta
+python3 scripts/analysis.py
 ```
 
 . . .

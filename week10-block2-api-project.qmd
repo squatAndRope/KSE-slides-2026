@@ -1,0 +1,264 @@
+---
+title: "Week 10 · Block 2 — Data from the internet & your final project"
+subtitle: "Programming and Computing Basics · KSE 2026"
+author: "Klaudia Brzezińska"
+format:
+  revealjs:
+    theme: dark
+    highlight-style: github-dark
+    slide-number: true
+    code-copy: true
+    footer: "Programming and Computing Basics · Week 10"
+    transition: fade
+---
+
+## Warm-up 🔥 {.smaller}
+
+⏱️ 5 min · your browser
+
+Open this link in your browser:
+
+```
+https://rest.ensembl.org/lookup/symbol/homo_sapiens/BRCA2?content-type=application/json
+```
+
+. . .
+
+In the chat: on which **chromosome** is BRCA2? How long is the gene? 🧬
+
+::: notes
+0–5 min. Answer: chromosome 13 (seq_region_name), length = end - start.
+They just used an API without writing any code.
+:::
+
+## What is an API? 🌐 {.smaller}
+
+A **web page** is made for humans 👀
+
+An **API** is a URL made for **programs** 🤖, and it returns *data*, not a layout.
+
+. . .
+
+```
+https://rest.ensembl.org / lookup/symbol / homo_sapiens / BRCA2
+        server              what to do      species       gene
+```
+
+. . .
+
+Big biological databases all have one: Ensembl, NCBI, UniProt, PDB… 🧬
+
+::: notes
+5–10 min. Read the URL as a sentence. Change BRCA2 to TP53 in the browser live.
+:::
+
+## JSON = dictionaries you already know 📖 {.smaller}
+
+What you saw in the browser:
+
+```json
+{
+  "id": "ENSG00000139618",
+  "display_name": "BRCA2",
+  "biotype": "protein_coding",
+  "seq_region_name": "13",
+  "start": 32315086,
+  "end": 32400268,
+  "strand": 1
+}
+```
+
+. . .
+
+Keys and values → a Python **dictionary** (week 6!) 🎯
+
+::: notes
+10–13 min. Values shortened, the real response has more keys (description, assembly_name, …).
+:::
+
+## Asking from Python 🐍 {.smaller}
+
+```bash
+pip3 install requests
+```
+
+```python
+import requests
+
+url = "https://rest.ensembl.org/lookup/symbol/homo_sapiens/BRCA2"
+response = requests.get(url, headers={"Content-Type": "application/json"})
+response.raise_for_status()      # stop with an error if something went wrong
+
+gene = response.json()           # JSON → dictionary
+print(gene["display_name"], gene["seq_region_name"])
+print("Length:", gene["end"] - gene["start"] + 1, "bp")
+```
+
+. . .
+
+`requests` is just another **library**: someone else wrote the hard part 📦
+
+::: notes
+13–20 min. Show what happens with a typo in the gene name: raise_for_status() gives an HTTPError (400).
+That's the same idea as FileNotFoundError: the outside world can fail.
+:::
+
+## Many genes → a table 📋 {.smaller}
+
+The bridge from last week: **list of dictionaries → DataFrame** 🪄
+
+```python
+import pandas as pd
+import requests
+
+genes = ["BRCA1", "BRCA2", "TP53", "EGFR", "MYC"]
+rows = []
+
+for symbol in genes:
+    url = f"https://rest.ensembl.org/lookup/symbol/homo_sapiens/{symbol}"
+    r = requests.get(url, headers={"Content-Type": "application/json"})
+    r.raise_for_status()
+    g = r.json()
+    rows.append({"gene": symbol, "chromosome": g["seq_region_name"],
+                 "length": g["end"] - g["start"] + 1})
+
+df = pd.DataFrame(rows)
+df.to_csv("results/genes.csv", index=False)     # save it! 💾
+```
+
+::: notes
+20–27 min. Every piece is something they know: loop (w5), dict (w6), list of dicts → DataFrame (w9 bonus), to_csv (w9).
+:::
+
+## Be a polite client 🙏 {.smaller}
+
+- **Save** what you downloaded → work on the CSV, not the API 💾
+- Don't ask 10 000 times in a loop: there are rate limits ⏳
+- Add a small pause if you ask many times: `time.sleep(0.2)`
+- No internet = your analysis still runs from the saved file ✅
+
+. . .
+
+> Download once, analyse many times. 🔁
+
+::: notes
+27–30 min. Important for the project and the oral exam: their tool must run without the network.
+:::
+
+## Exercise: Your gene table 🧬 {.smaller}
+
+⏱️ 15 min · breakout rooms · pairs
+
+In `scripts/fetch_genes.py`:
+
+1. Pick 5–8 genes (any you like, or: `BRCA1 BRCA2 TP53 EGFR MYC KRAS CFTR HBB`)
+2. Fetch them from Ensembl, build a DataFrame, save `results/genes.csv`
+3. In a **second** script, read the CSV and plot gene length as a bar chart 📊
+
+💡 **Bonus:** which gene is the longest? Is any of them on the minus strand (`strand == -1`)?
+
+::: notes
+30–45 min. Two scripts on purpose: fetching and analysing are separate steps.
+If Ensembl is slow or down: give them a ready genes.csv in the chat and skip to step 3.
+:::
+
+# Your final project 🚀
+
+## The idea 💡 {.smaller}
+
+Build **one small tool** in Python that answers **one question** about **real biological data**.
+
+. . .
+
+It brings together everything:
+
+| Skill | From week |
+|---|---|
+| reading files, functions, loops | 3–7 🐍 |
+| Git & commits | 1, 8 💾 |
+| pandas analysis | 9 🐼 |
+| plots | 10 📊 |
+| (optional) data from an API | 10 🌐 |
+
+::: notes
+45–50 min. Energy up here, this is the start of the most important part of the course.
+:::
+
+## Requirements ✅ {.smaller}
+
+Your tool must:
+
+- 📄 read a **real data file** (FASTA, CSV, or data you downloaded and saved)
+- 🧩 use at least **3 functions** with clear names
+- 🐼 do an analysis with **pandas**
+- 📊 save at least **one plot** to `results/`
+- 🛡️ show a friendly message if the input file is missing
+- 📖 have a `README.md` with how to run it
+- 📈 have commits spread over several days
+
+. . .
+
+And the most important one: **you can explain every line** 🗣️
+
+::: notes
+50–55 min. These match the final checklist in week 13, so nothing will surprise them later.
+:::
+
+## Ideas, if you need one 🌱 {.smaller}
+
+- 🧬 GC content and length of all sequences in a FASTA file, per organism, with a plot
+- 🔬 Fetch 20 genes from Ensembl, compare lengths across chromosomes
+- 📋 A CSV from your own lab or course: clean it, summarise it, plot it
+- 🦠 Compare two genomes / gene sets: what is different?
+- 🎲 Your own idea, the best option if you have one!
+
+. . .
+
+**Small and working > big and broken** 🌱
+
+::: notes
+55–60 min. Developers in the group can do something more ambitious (or in another language, as agreed).
+:::
+
+## Timeline 📅 {.smaller}
+
+| When | What |
+|---|---|
+| **Today** | Write `PROJECT.md` ✍️ |
+| Week 11 | Project lab: I give feedback, you build 🛠️ |
+| Week 12–13 | R in class, project at home + lab time in week 13 🔁 |
+| **Week 14** | 15-minute oral exam: you run and explain your tool 💬 |
+
+::: notes
+60–63 min. Week 11 slides already reference feedback on PROJECT.md, so it must exist by then.
+:::
+
+## `PROJECT.md` ✍️ {.smaller}
+
+⏱️ rest of the block · your own screen
+
+Create it in your repo and answer in 3–5 lines each:
+
+```markdown
+# My project
+
+## Question
+What do I want to find out?
+
+## Data
+Which file? Where does it come from? (paste the first 3 lines)
+
+## Steps
+1. read ...
+2. compute ...
+3. plot ...
+
+## Output
+What will be in results/ when it works?
+```
+
+**Commit & push** 💾 by the end of the block, I read all of them before week 11 👀
+
+::: notes
+63–80 min. Visit rooms. The most useful nudge: "show me your data file", no file = no project yet.
+:::

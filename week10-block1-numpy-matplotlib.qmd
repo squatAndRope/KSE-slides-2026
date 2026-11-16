@@ -1,0 +1,269 @@
+---
+title: "Week 10 · Block 1 — numpy & plots"
+subtitle: "Programming and Computing Basics · KSE 2026"
+author: "Klaudia Brzezińska"
+format:
+  revealjs:
+    theme: dark
+    highlight-style: github-dark
+    slide-number: true
+    code-copy: true
+    footer: "Programming and Computing Basics · Week 10"
+    transition: fade
+---
+
+## Warm-up 🔥 {.smaller}
+
+⏱️ 8 min · your own screen
+
+Same `data/samples.csv` as last time 🐼
+
+```python
+import pandas as pd
+df = pd.read_csv("data/samples.csv")
+
+print(df.groupby("organism")["gc_content"].mean())
+print(df.sort_values("length", ascending=False).head(3))
+```
+
+Install today's libraries:
+
+```bash
+pip3 install numpy matplotlib
+```
+
+Both lines work? React ✅
+
+::: notes
+0–8 min. Quick pandas recap + install check. If pip fails: python3 -m pip install numpy matplotlib.
+pandas already installed numpy as a dependency, so usually only matplotlib is new.
+:::
+
+## Today 🗺️
+
+1. **numpy**: the engine under pandas ⚙️
+2. **matplotlib**: turning tables into pictures 📊
+
+. . .
+
+> A table answers questions. A plot shows you questions you didn't know to ask. 👀
+
+## pandas stands on numpy 🧱 {.smaller}
+
+Every pandas column is a **numpy array** inside:
+
+```python
+import numpy as np
+
+gc = df["gc_content"].to_numpy()
+print(type(gc))     # <class 'numpy.ndarray'>
+print(gc)
+```
+
+. . .
+
+You can also make one yourself:
+
+```python
+lengths = np.array([1200, 980, 1530, 1100])
+```
+
+::: notes
+8–13 min. Message: numpy is not a new world, it's what they already used without knowing.
+Libraries are built on top of other libraries (link to Block 1 of week 9).
+:::
+
+## List vs array 🤔 {.smaller}
+
+```python
+lengths_list = [1200, 980, 1530]
+lengths_arr  = np.array([1200, 980, 1530])
+```
+
+. . .
+
+```python
+lengths_list * 2     # [1200, 980, 1530, 1200, 980, 1530]  😮
+lengths_arr * 2      # [2400 1960 3060]                    ✅
+```
+
+. . .
+
+```python
+lengths_arr / 1000             # every element, no loop ✨
+lengths_arr - lengths_arr.mean()
+```
+
+A list is a **container**. An array is a **vector of numbers** you can do maths on. 🧮
+
+::: notes
+13–20 min. Live-code this. The list * 2 surprise always lands.
+Same idea as pandas new columns last week: the operation goes to every element at once.
+:::
+
+## Statistics in one line 📈 {.smaller}
+
+```python
+np.mean(gc)          # average
+np.median(gc)        # middle value
+np.std(gc)           # spread
+np.min(gc), np.max(gc)
+np.round(gc, 0)      # round every value
+```
+
+. . .
+
+Filtering works like in pandas: a **mask** of `True` / `False`
+
+```python
+gc > 45              # [False False ... True True]
+gc[gc > 45]          # only the GC-rich values
+(gc > 45).sum()      # how many? True counts as 1 🤯
+```
+
+::: notes
+20–27 min. The True-as-1 trick is worth a pause: counting with sum().
+:::
+
+## Exercise 1: numpy warm-up 🧮 {.smaller}
+
+⏱️ 10 min · your own screen · react ✅
+
+In `scripts/numpy_practice.py`, using the `length` column as an array:
+
+1. Print the mean, median and standard deviation 📏
+2. Convert all lengths to kb (one line, no loop)
+3. How many samples are longer than 1000 bp?
+4. Which is bigger here: mean or median? What does that tell you? 🤔
+
+💡 **Bonus:** `np.percentile(lengths, 90)`: what does it mean?
+
+::: notes
+27–37 min. Q4: mean > median → a few long samples pull the mean up. Good intuition for skewed data.
+:::
+
+## matplotlib: the idea 🎨 {.smaller}
+
+Every plot follows the same recipe:
+
+```python
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()             # 1. an empty canvas
+ax.hist(df["gc_content"], bins=6)    # 2. draw something
+ax.set_xlabel("GC content (%)")      # 3. label it
+ax.set_ylabel("Number of samples")
+ax.set_title("GC content distribution")
+plt.show()                           # 4. show it
+```
+
+. . .
+
+`fig` = the whole picture 🖼️ · `ax` = the plot area where you draw ✏️
+
+::: notes
+37–44 min. Teach the fig, ax style from day one, it scales to multiple panels.
+plt.show() opens a window; in VS Code it may open a separate window, that's normal.
+:::
+
+## Three plots you will use forever 📊 {.smaller}
+
+**Distribution** → histogram
+
+```python
+ax.hist(df["length"], bins=8)
+```
+
+**Compare groups** → bar chart (hello, `groupby` 👋)
+
+```python
+mean_gc = df.groupby("organism")["gc_content"].mean()
+ax.bar(mean_gc.index, mean_gc.values)
+```
+
+**Relationship** → scatter
+
+```python
+ax.scatter(df["length"], df["gc_content"])
+```
+
+::: notes
+44–50 min. Ask before each: "what question does this plot answer?"
+:::
+
+## Save, don't screenshot 💾 {.smaller}
+
+```python
+fig.savefig("results/gc_per_organism.png", dpi=150, bbox_inches="tight")
+```
+
+. . .
+
+- `dpi=150` → sharp enough for a report 🔍
+- `bbox_inches="tight"` → labels are not cut off ✂️
+- `savefig` **before** `plt.show()`, otherwise you may save an empty image 😅
+
+. . .
+
+A script that saves its plot = a plot you can **reproduce** tomorrow 🔁
+
+::: notes
+50–53 min. results/ must exist, same as last week.
+:::
+
+## Exercise 2: Your first figures 🖼️ {.smaller}
+
+⏱️ 20 min · breakout rooms · pairs
+
+Write `scripts/samples_plots.py` that reads `data/samples.csv` and saves:
+
+1. 📊 `results/gc_hist.png`: histogram of GC content
+2. 🧺 `results/gc_per_organism.png`: bar chart of mean GC per organism
+3. 🔵 `results/length_vs_gc.png`: scatter of length vs GC
+
+Every plot needs: axis labels + a title ✍️
+
+💡 **Bonus:** colour the scatter by organism:
+
+```python
+for organism, group in df.groupby("organism"):
+    ax.scatter(group["length"], group["gc_content"], label=organism)
+ax.legend()
+```
+
+::: notes
+53–73 min. Common issues: missing results/ folder, saving after show(), long organism
+names overlapping on the bar chart. Fix: plt.xticks(rotation=30) or ax.barh(...).
+The bonus loops over groupby, worth showing to the whole group if someone gets it.
+:::
+
+## Cheat sheet 📊 {.smaller}
+
+| I want to… | code |
+|---|---|
+| column → array | `df["col"].to_numpy()` |
+| statistics | `np.mean` · `np.median` · `np.std` |
+| filter / count | `arr[arr > 5]` · `(arr > 5).sum()` |
+| empty canvas | `fig, ax = plt.subplots()` |
+| distribution | `ax.hist(...)` |
+| compare groups | `ax.bar(x, y)` |
+| relationship | `ax.scatter(x, y)` |
+| labels | `ax.set_xlabel` · `set_ylabel` · `set_title` |
+| save | `fig.savefig("results/x.png", dpi=150)` |
+
+## Wrap-up ✅ {.smaller}
+
+- numpy = arrays: maths on all numbers at once, no loop 🧮
+- pandas columns **are** numpy arrays underneath 🧱
+- `fig, ax = plt.subplots()` → draw → label → save 🎨
+- Pick the plot by the question: distribution · groups · relationship 🤔
+
+**Commit** 💾 `samples_plots.py` (and your PNGs, if you want them in the repo).
+
+. . .
+
+Next block: **data from the internet** 🌐 + your **final project** 🚀
+
+::: notes
+78–80 min.
+:::

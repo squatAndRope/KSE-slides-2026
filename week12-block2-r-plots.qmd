@@ -30,10 +30,10 @@ gc <- c(0.55, 0.41, 0.62, 0.38, 0.71)
 
 ## Reading real data 📄 {.smaller}
 
-Remember `results/report.txt` from your Python tool? Let's analyse it in R.
+Remember `data/samples.csv`? Let's read it in R.
 
 ```r
-seqs <- read.csv("results/report.txt", sep = "\t")
+seqs <- read.csv("data/samples.csv")
 
 head(seqs)
 str(seqs)        # structure: columns and their types 🔍
@@ -43,11 +43,11 @@ nrow(seqs)
 
 . . .
 
-**Python produced the data. R analyses it.** 🐍🤝🇷
+**pandas saved it with `to_csv()`. R reads it.** 🐍🤝🇷
 
 ::: notes
-10–25 min. This is the payoff: their own pipeline now spans two languages.
-Make sure their report has a header row — otherwise read.csv guesses wrong.
+10–25 min. Any CSV saved by pandas with to_csv() reads straight into R — the pipeline spans two languages.
+Use samples.csv from week 9 (columns: sample, organism, gc_content, length).
 :::
 
 ## Your first plot 📈
@@ -70,24 +70,26 @@ The instant plot is R's best first impression. Show it live.
 ## Three plots you will actually use {.smaller}
 
 ```r
-hist(seqs$gc)                       # distribution 📊
+hist(seqs$gc_content)                        # distribution 📊
 
-plot(seqs$length, seqs$gc,          # relationship 🔗
+plot(seqs$length, seqs$gc_content,           # relationship 🔗
      xlab = "Length", ylab = "GC",
      pch = 19, col = "darkgreen")
 
-boxplot(gc ~ species, data = seqs)  # compare groups 📦
+boxplot(gc_content ~ organism, data = seqs)  # compare groups 📦
 ```
 
 . . .
 
 `main` `xlab` `ylab` `col` work almost everywhere.
 
+Same three plots as matplotlib last week — compare! 📊
+
 ## Saving a figure 💾
 
 ```r
 png("results/gc_plot.png", width = 800, height = 600)
-hist(seqs$gc, main = "GC content", col = "steelblue")
+hist(seqs$gc_content, main = "GC content", col = "steelblue")
 dev.off()          # ⚠️ don't forget this — it closes the file!
 ```
 
@@ -104,7 +106,7 @@ Now your figure is a file you can put in a report or a thesis 📄
 ```r
 library(ggplot2)
 
-ggplot(seqs, aes(x = length, y = gc)) +
+ggplot(seqs, aes(x = length, y = gc_content)) +
   geom_point() +
   labs(title = "GC vs length")
 ```
@@ -124,17 +126,17 @@ Mention only. Going deeper needs a full block; point them to resources instead.
 
 Create `scripts/plot_report.R`:
 
-1. Run your Python tool to produce a tab-separated report 🐍
-2. Read it into R with `read.csv(..., sep = "\t")`
+1. Pick a CSV: `data/samples.csv` or a CSV from **your project** 🐍
+2. Read it into R with `read.csv()`
 3. Print `summary()` and the number of rows
 4. Make a histogram of lengths 📊
-5. Make a scatter plot of length vs GC 🔗
+5. Make a scatter plot of two numeric columns 🔗
 6. Save one figure into `results/` and commit the **script** (not the PNG 🙈)
 
-💡 **Bonus:** colour the points by whether GC is above 50%
+💡 **Bonus:** recreate one of your project plots in R — it counts as the project bonus 🇷
 
 ::: notes
-35–75 min. Most common failure: wrong path or missing header. Have a ready CSV in the chat as plan B.
+35–75 min. Most common failure: wrong working directory (setwd / RStudio project). Have samples.csv in the chat as plan B.
 :::
 
 ## Wrap-up ✅ {.smaller}
@@ -144,11 +146,11 @@ Create `scripts/plot_report.R`:
 - `hist()` `plot()` `boxplot()` — one line each 📊
 - `png()` … `dev.off()` to save 💾
 
-**Homework** 🏠 Commit your R script.
+**Commit** 💾 your R script.
 
 . . .
 
-Next week: Python vs R side by side, and last project help 🛟
+Next week: Python vs R side by side, and last project lab 🛟
 
 ::: notes
 75–80 min. Two students share their plot — first figures always get a nice reaction.

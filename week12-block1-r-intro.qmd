@@ -48,6 +48,8 @@ You will meet R in almost every biology lab. 💛
 | Function | `len(x)` | `length(x)` |
 | Condition | `if x > 5:` | `if (x > 5) {` |
 | Loop | `for s in seqs:` | `for (s in seqs) {` |
+| Math on all | `np.array(x) * 2` | `x * 2` |
+| Table | `pd.DataFrame(...)` | `data.frame(...)` |
 
 . . .
 
@@ -93,7 +95,7 @@ lengths > 100       # TRUE FALSE TRUE FALSE
 In R, operations work on **whole vectors** at once.
 
 ::: notes
-The no-loop vectorisation is the genuine "wow" moment. Compare with the Python loop they wrote in week 5.
+Same idea as numpy arrays from week 10 — in R it is built in, no library needed.
 :::
 
 ## Indexing ⚠️ {.smaller}
@@ -127,7 +129,7 @@ mean(seqs$gc)
 
 . . .
 
-A data frame is a spreadsheet you can compute with 🧮
+Looks familiar? It's the same idea as a pandas DataFrame — pandas copied it from R 🐼🇷
 
 ## Filtering rows 🎯
 

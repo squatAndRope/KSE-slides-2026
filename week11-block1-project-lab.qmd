@@ -32,7 +32,7 @@ Three things I saw in your `PROJECT.md` files:
 
 1. [most common strength] 🌟
 2. [most common risk — usually: too ambitious] ⚠️
-3. [most common gap — usually: no real input file] 📄
+3. [most common gap — usually: no clear data source] 📄
 
 . . .
 
@@ -62,8 +62,8 @@ If your scope feels big: cut it in half. Then cut it again. ✂️
 By the end of the second block:
 
 - ✅ Your repo has a `PROJECT.md` and a script that **runs**
-- ✅ It reads your input file — even if it only prints the first line
-- ✅ At least one function written and committed
+- ✅ Your data is in `data/` and loads into pandas — even if you only print `df.head()` 🐼
+- ✅ At least one function in your own module, written and committed 📦
 
 . . .
 

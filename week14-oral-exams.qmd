@@ -18,7 +18,7 @@ format:
 
 - 15 minutes each, by the slots you booked 📅
 - Join the main room at your time
-- Have your repo open and your tool ready to run ⚙️
+- Have your repo open and your analysis ready to run ⚙️
 
 . . .
 
@@ -49,7 +49,7 @@ Keep this on screen between exams as a holding slide.
 
 | Minutes | What happens |
 |---|---|
-| 1–3 | Run your tool ⚙️ |
+| 1–3 | Run your analysis ⚙️ |
 | 3–8 | Walk me through the code 🚶 |
 | 8–13 | Questions about your choices 🤔 |
 | 13–15 | Hardest part, what you'd change 💭 |
@@ -70,16 +70,17 @@ Show briefly at the start of each exam if the student seems nervous.
 
 Today you can:
 
-- work in the terminal and write bash loops 🐚
-- write Python: strings, lists, dictionaries, loops, functions 🐍
-- read and write real biological data 🧬
+- work in the terminal 🐚
+- write Python: strings, lists, dictionaries, loops, functions, modules 🐍
+- analyse tables with pandas and plot them with matplotlib 📊
+- download data from biological databases with an API 🌐
 - debug your own code 🔍
 - collaborate with Git, branches and pull requests 👥
-- analyse and plot data in R 📊
+- take your first steps in R 🇷
 
 . . .
 
-You built a working tool from nothing. That is real. 🎉
+You asked your own question and answered it with your own code. That is real. 🎉
 
 ::: notes
 Closing block, last 15–20 min. Optionally invite everyone back for this.

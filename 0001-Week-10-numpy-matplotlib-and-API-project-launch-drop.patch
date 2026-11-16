@@ -1,0 +1,970 @@
+From b98a2b2a5108ff2ef0acc3b06a7899338583038c Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Mon, 16 Nov 2026 07:24:17 +0000
+Subject: [PATCH] Week 10: numpy+matplotlib and API+project launch; drop CLI
+ and bash-scripts decks
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_017Pkgqi6xCq3MfoNfS4RJSq
+---
+ week09-block2-cli.qmd              | 161 -----------------
+ week10-block1-bash-scripts.qmd     | 158 -----------------
+ week10-block1-numpy-matplotlib.qmd | 269 +++++++++++++++++++++++++++++
+ week10-block2-api-project.qmd      | 264 ++++++++++++++++++++++++++++
+ week11-block2-review.qmd           |   2 +-
+ week13-block1-python-vs-r.qmd      |  32 ++++
+ week13-block2-final-stretch.qmd    |   2 +-
+ 7 files changed, 567 insertions(+), 321 deletions(-)
+ delete mode 100644 week09-block2-cli.qmd
+ delete mode 100644 week10-block1-bash-scripts.qmd
+ create mode 100644 week10-block1-numpy-matplotlib.qmd
+ create mode 100644 week10-block2-api-project.qmd
+
+diff --git a/week09-block2-cli.qmd b/week09-block2-cli.qmd
+deleted file mode 100644
+index d81dd00..0000000
+--- a/week09-block2-cli.qmd
++++ /dev/null
+@@ -1,161 +0,0 @@
+----
+-title: "Week 9 · Block 2 — Scripts as tools"
+-subtitle: "Programming and Computing Basics · KSE 2026"
+-author: "Klaudia Brzezińska"
+-format:
+-  revealjs:
+-    theme: dark
+-    highlight-style: github-dark
+-    slide-number: true
+-    code-copy: true
+-    footer: "Programming and Computing Basics · Week 9"
+-    transition: fade
+----
+-
+-## Warm-up 🔥 {.smaller}
+-
+-⏱️ 10 min
+-
+-```python
+-from collections import Counter
+-print(Counter("ATGCGCATG"))
+-```
+-
+-Now do the same with **your own** `count_bases()`.
+-Same result? React ✅ or ✋
+-
+-::: notes
+-0–10 min. Nice confidence boost: their hand-written function matches the library.
+-:::
+-
+-## The hardcoded filename problem 😩 {.smaller}
+-
+-```python
+-filename = "data/sequences.fasta"
+-```
+-
+-New file? **Edit the script.** 😖
+-Colleague wants to use it? **They edit the script.** 😖
+-
+-. . .
+-
+-Real tools take their input from the **command line** ⚙️
+-
+-::: notes
+-10–25 min. Connect to week 2: grep, wc, head all take a filename as an argument.
+-:::
+-
+-## `sys.argv` {.smaller}
+-
+-```python
+-import sys
+-
+-print(sys.argv)
+-```
+-
+-```bash
+-python3 report.py data/sequences.fasta 30
+-# ['report.py', 'data/sequences.fasta', '30']
+-```
+-
+-. . .
+-
+-`sys.argv[0]` is the script · `[1]`, `[2]`, … are your arguments
+-**Everything is a string** ⚠️ → `int(sys.argv[2])`
+-
+-## Being a good tool 🛡️ {.smaller}
+-
+-```python
+-import sys
+-
+-if len(sys.argv) < 2:
+-    print("Usage: python3 report.py <fasta_file> [min_length]")
+-    sys.exit(1)
+-
+-filename = sys.argv[1]
+-min_length = int(sys.argv[2]) if len(sys.argv) > 2 else 0
+-```
+-
+-. . .
+-
+-A tool that explains itself when misused is a **kind** tool 💛
+-
+-::: notes
+-25–35 min. sys.exit(1) — non-zero means "something went wrong", used by pipelines.
+-:::
+-
+-## Printing for pipes 🔗 {.smaller}
+-
+-```bash
+-python3 report.py data/sequences.fasta | sort -k2 -n | head -5
+-```
+-
+-. . .
+-
+-- Results → `print()` (goes to stdout, can be piped) ✅
+-- Warnings and progress → `print(..., file=sys.stderr)` ⚠️
+-
+-. . .
+-
+-Your Python script is now just another Unix tool 🐍🤝🐚
+-
+-::: notes
+-This is the moment bash and Python finally meet. Show a real pipe live.
+-:::
+-
+-## Exercise 1: Add arguments ⚙️ {.smaller}
+-
+-⏱️ 20 min · your own screen · react ✅
+-
+-Turn `fasta_report.py` into a proper tool:
+-
+-1. Take the FASTA path from `sys.argv[1]`
+-2. Print a usage message if it is missing
+-3. Add an optional `min_length` argument — skip shorter sequences
+-4. Test it:
+-
+-```bash
+-python3 scripts/fasta_report.py data/sequences.fasta
+-python3 scripts/fasta_report.py data/sequences.fasta 50
+-python3 scripts/fasta_report.py
+-```
+-
+-::: notes
+-35–55 min. The third command must NOT crash with IndexError — that is the point.
+-:::
+-
+-## Exercise 2: Build a pipeline 🔗 {.smaller}
+-
+-⏱️ 20 min · breakout rooms
+-
+-1. Make your script print one sequence per line: `name<TAB>length<TAB>GC`
+-2. Now combine it with bash:
+-
+-```bash
+-python3 scripts/fasta_report.py data/sequences.fasta | sort -k3 -n | tail -3
+-python3 scripts/fasta_report.py data/sequences.fasta | grep "Homo" | wc -l
+-```
+-
+-3. Save the top 3 GC-richest sequences into `results/top_gc.txt`
+-
+-💡 **Bonus:** which is easier for each task — Python or bash? Discuss 🤔
+-
+-::: notes
+-55–75 min. The bonus discussion is the real learning: the right tool for the right job.
+-:::
+-
+-## Wrap-up ✅ {.smaller}
+-
+-- `sys.argv` makes your script reusable ⚙️
+-- Always handle the "no arguments" case 🛡️
+-- `print()` results, pipe them onwards 🔗
+-
+-**Homework** 🏠 Commit your tool. Add usage instructions to the README.
+-
+-. . .
+-
+-Next week: **mini-project** — you build something of your own 🚀
+-
+-::: notes
+-75–80 min. Tease the project: they now have every piece they need.
+-:::
+diff --git a/week10-block1-bash-scripts.qmd b/week10-block1-bash-scripts.qmd
+deleted file mode 100644
+index 1122f89..0000000
+--- a/week10-block1-bash-scripts.qmd
++++ /dev/null
+@@ -1,158 +0,0 @@
+----
+-title: "Week 10 · Block 1 — Bash scripts"
+-subtitle: "Programming and Computing Basics · KSE 2026"
+-author: "Klaudia Brzezińska"
+-format:
+-  revealjs:
+-    theme: dark
+-    highlight-style: github-dark
+-    slide-number: true
+-    code-copy: true
+-    footer: "Programming and Computing Basics · Week 10"
+-    transition: fade
+----
+-
+-## Warm-up 🔥 {.smaller}
+-
+-⏱️ 10 min
+-
+-```bash
+-python3 scripts/fasta_report.py data/sequences.fasta | head -3
+-```
+-
+-Does your tool still work? React ✅ or ✋
+-
+-. . .
+-
+-**Pair assignment is due this week** 📋 Questions in the chat 💬
+-
+-::: notes
+-0–10 min. Reserve a few minutes for assignment questions — better now than by e-mail at midnight.
+-:::
+-
+-## One file is never enough 📁📁📁
+-
+-```bash
+-python3 scripts/fasta_report.py data/sample1.fasta
+-python3 scripts/fasta_report.py data/sample2.fasta
+-python3 scripts/fasta_report.py data/sample3.fasta
+-# ... 47 more 😫
+-```
+-
+-. . .
+-
+-Same problem as in week 5 — now we solve it in **bash** 🔁
+-
+-::: notes
+-10–25 min. Deliberate echo of the Python loops lesson: the pattern transfers.
+-:::
+-
+-## Loops in bash 🔁
+-
+-```bash
+-for file in data/*.fasta
+-do
+-    echo "Processing $file"
+-    python3 scripts/fasta_report.py "$file"
+-done
+-```
+-
+-. . |
+-
+-- `*.fasta` — the shell expands it into a list 🌟
+-- `$file` — the variable · always in **quotes** ⚠️
+-
+-::: notes
+-Quotes matter: file names with spaces break everything without them.
+-:::
+-
+-## Variables in bash {.smaller}
+-
+-```bash
+-DATA_DIR="data"
+-MIN_LENGTH=50
+-
+-echo "Looking in $DATA_DIR"
+-python3 scripts/fasta_report.py "$DATA_DIR/sequences.fasta" $MIN_LENGTH
+-```
+-
+-. . .
+-
+-::: {.callout-warning}
+-No spaces around `=` — `X = 5` is an error, `X=5` is correct. 🤨
+-:::
+-
+-## A real script file 📜 {.smaller}
+-
+-```bash
+-#!/bin/bash
+-# run_all.sh — analyse every FASTA file in data/
+-
+-for file in data/*.fasta
+-do
+-    name=$(basename "$file" .fasta)
+-    python3 scripts/fasta_report.py "$file" > "results/${name}_report.txt"
+-    echo "Done: $name"
+-done
+-```
+-
+-```bash
+-bash run_all.sh        # simplest way to run it
+-```
+-
+-::: notes
+-`$(...)` captures a command's output — mention briefly, don't dwell.
+-`chmod +x` and ./run_all.sh can be a bonus for the curious.
+-:::
+-
+-## Exercise 1: Loop over files 🔁 {.smaller}
+-
+-⏱️ 20 min · your own screen · react ✅
+-
+-1. Make 3 copies of your FASTA with different names in `data/`
+-2. Write a loop that prints the name and line count of each
+-3. Now run your Python tool on each of them
+-4. Save each result to `results/<name>_report.txt`
+-
+-💡 **Bonus:** print a count at the end: "Processed N files"
+-
+-::: notes
+-25–45 min. Copying the file 3 times is a cheap way to simulate a real dataset.
+-:::
+-
+-## Exercise 2: Your first pipeline 🚀 {.smaller}
+-
+-⏱️ 30 min · breakout rooms · switch after 15 min
+-
+-Write `run_all.sh` that does the whole analysis in one command:
+-
+-1. Create the `results/` folder if it does not exist (`mkdir -p results`)
+-2. Loop over every `.fasta` file in `data/`
+-3. Run your Python tool on each one, saving a report per file
+-4. Print a summary line: how many files were processed
+-5. Commit it — and add `results/` to `.gitignore` 🙈
+-
+-💡 **Bonus:** make the script accept the data folder as `$1`
+-
+-::: notes
+-45–75 min. This is the "aha" of the course: one command reproduces the whole analysis.
+-:::
+-
+-## Wrap-up ✅ {.smaller}
+-
+-```bash
+-for file in data/*.fasta
+-do
+-    python3 scripts/tool.py "$file"
+-done
+-```
+-
+-- Bash loops over **files**, Python works **inside** them 🧬
+-- Quote your variables ⚠️
+-- One script = a reproducible analysis 🔁
+-
+-**Homework** 🏠 Commit `run_all.sh`.
+-
+-::: notes
+-75–80 min. Remind: pair assignment due — check the deadline.
+-:::
+diff --git a/week10-block1-numpy-matplotlib.qmd b/week10-block1-numpy-matplotlib.qmd
+new file mode 100644
+index 0000000..5afc2dd
+--- /dev/null
++++ b/week10-block1-numpy-matplotlib.qmd
+@@ -0,0 +1,269 @@
++---
++title: "Week 10 · Block 1 — numpy & plots"
++subtitle: "Programming and Computing Basics · KSE 2026"
++author: "Klaudia Brzezińska"
++format:
++  revealjs:
++    theme: dark
++    highlight-style: github-dark
++    slide-number: true
++    code-copy: true
++    footer: "Programming and Computing Basics · Week 10"
++    transition: fade
++---
++
++## Warm-up 🔥 {.smaller}
++
++⏱️ 8 min · your own screen
++
++Same `data/samples.csv` as last time 🐼
++
++```python
++import pandas as pd
++df = pd.read_csv("data/samples.csv")
++
++print(df.groupby("organism")["gc_content"].mean())
++print(df.sort_values("length", ascending=False).head(3))
++```
++
++Install today's libraries:
++
++```bash
++pip3 install numpy matplotlib
++```
++
++Both lines work? React ✅
++
++::: notes
++0–8 min. Quick pandas recap + install check. If pip fails: python3 -m pip install numpy matplotlib.
++pandas already installed numpy as a dependency, so usually only matplotlib is new.
++:::
++
++## Today 🗺️
++
++1. **numpy**: the engine under pandas ⚙️
++2. **matplotlib**: turning tables into pictures 📊
++
++. . .
++
++> A table answers questions. A plot shows you questions you didn't know to ask. 👀
++
++## pandas stands on numpy 🧱 {.smaller}
++
++Every pandas column is a **numpy array** inside:
++
++```python
++import numpy as np
++
++gc = df["gc_content"].to_numpy()
++print(type(gc))     # <class 'numpy.ndarray'>
++print(gc)
++```
++
++. . .
++
++You can also make one yourself:
++
++```python
++lengths = np.array([1200, 980, 1530, 1100])
++```
++
++::: notes
++8–13 min. Message: numpy is not a new world, it's what they already used without knowing.
++Libraries are built on top of other libraries (link to Block 1 of week 9).
++:::
++
++## List vs array 🤔 {.smaller}
++
++```python
++lengths_list = [1200, 980, 1530]
++lengths_arr  = np.array([1200, 980, 1530])
++```
++
++. . .
++
++```python
++lengths_list * 2     # [1200, 980, 1530, 1200, 980, 1530]  😮
++lengths_arr * 2      # [2400 1960 3060]                    ✅
++```
++
++. . .
++
++```python
++lengths_arr / 1000             # every element, no loop ✨
++lengths_arr - lengths_arr.mean()
++```
++
++A list is a **container**. An array is a **vector of numbers** you can do maths on. 🧮
++
++::: notes
++13–20 min. Live-code this. The list * 2 surprise always lands.
++Same idea as pandas new columns last week: the operation goes to every element at once.
++:::
++
++## Statistics in one line 📈 {.smaller}
++
++```python
++np.mean(gc)          # average
++np.median(gc)        # middle value
++np.std(gc)           # spread
++np.min(gc), np.max(gc)
++np.round(gc, 0)      # round every value
++```
++
++. . .
++
++Filtering works like in pandas: a **mask** of `True` / `False`
++
++```python
++gc > 45              # [False False ... True True]
++gc[gc > 45]          # only the GC-rich values
++(gc > 45).sum()      # how many? True counts as 1 🤯
++```
++
++::: notes
++20–27 min. The True-as-1 trick is worth a pause: counting with sum().
++:::
++
++## Exercise 1: numpy warm-up 🧮 {.smaller}
++
++⏱️ 10 min · your own screen · react ✅
++
++In `scripts/numpy_practice.py`, using the `length` column as an array:
++
++1. Print the mean, median and standard deviation 📏
++2. Convert all lengths to kb (one line, no loop)
++3. How many samples are longer than 1000 bp?
++4. Which is bigger here: mean or median? What does that tell you? 🤔
++
++💡 **Bonus:** `np.percentile(lengths, 90)`: what does it mean?
++
++::: notes
++27–37 min. Q4: mean > median → a few long samples pull the mean up. Good intuition for skewed data.
++:::
++
++## matplotlib: the idea 🎨 {.smaller}
++
++Every plot follows the same recipe:
++
++```python
++import matplotlib.pyplot as plt
++
++fig, ax = plt.subplots()             # 1. an empty canvas
++ax.hist(df["gc_content"], bins=6)    # 2. draw something
++ax.set_xlabel("GC content (%)")      # 3. label it
++ax.set_ylabel("Number of samples")
++ax.set_title("GC content distribution")
++plt.show()                           # 4. show it
++```
++
++. . .
++
++`fig` = the whole picture 🖼️ · `ax` = the plot area where you draw ✏️
++
++::: notes
++37–44 min. Teach the fig, ax style from day one, it scales to multiple panels.
++plt.show() opens a window; in VS Code it may open a separate window, that's normal.
++:::
++
++## Three plots you will use forever 📊 {.smaller}
++
++**Distribution** → histogram
++
++```python
++ax.hist(df["length"], bins=8)
++```
++
++**Compare groups** → bar chart (hello, `groupby` 👋)
++
++```python
++mean_gc = df.groupby("organism")["gc_content"].mean()
++ax.bar(mean_gc.index, mean_gc.values)
++```
++
++**Relationship** → scatter
++
++```python
++ax.scatter(df["length"], df["gc_content"])
++```
++
++::: notes
++44–50 min. Ask before each: "what question does this plot answer?"
++:::
++
++## Save, don't screenshot 💾 {.smaller}
++
++```python
++fig.savefig("results/gc_per_organism.png", dpi=150, bbox_inches="tight")
++```
++
++. . .
++
++- `dpi=150` → sharp enough for a report 🔍
++- `bbox_inches="tight"` → labels are not cut off ✂️
++- `savefig` **before** `plt.show()`, otherwise you may save an empty image 😅
++
++. . .
++
++A script that saves its plot = a plot you can **reproduce** tomorrow 🔁
++
++::: notes
++50–53 min. results/ must exist, same as last week.
++:::
++
++## Exercise 2: Your first figures 🖼️ {.smaller}
++
++⏱️ 20 min · breakout rooms · pairs
++
++Write `scripts/samples_plots.py` that reads `data/samples.csv` and saves:
++
++1. 📊 `results/gc_hist.png`: histogram of GC content
++2. 🧺 `results/gc_per_organism.png`: bar chart of mean GC per organism
++3. 🔵 `results/length_vs_gc.png`: scatter of length vs GC
++
++Every plot needs: axis labels + a title ✍️
++
++💡 **Bonus:** colour the scatter by organism:
++
++```python
++for organism, group in df.groupby("organism"):
++    ax.scatter(group["length"], group["gc_content"], label=organism)
++ax.legend()
++```
++
++::: notes
++53–73 min. Common issues: missing results/ folder, saving after show(), long organism
++names overlapping on the bar chart. Fix: plt.xticks(rotation=30) or ax.barh(...).
++The bonus loops over groupby, worth showing to the whole group if someone gets it.
++:::
++
++## Cheat sheet 📊 {.smaller}
++
++| I want to… | code |
++|---|---|
++| column → array | `df["col"].to_numpy()` |
++| statistics | `np.mean` · `np.median` · `np.std` |
++| filter / count | `arr[arr > 5]` · `(arr > 5).sum()` |
++| empty canvas | `fig, ax = plt.subplots()` |
++| distribution | `ax.hist(...)` |
++| compare groups | `ax.bar(x, y)` |
++| relationship | `ax.scatter(x, y)` |
++| labels | `ax.set_xlabel` · `set_ylabel` · `set_title` |
++| save | `fig.savefig("results/x.png", dpi=150)` |
++
++## Wrap-up ✅ {.smaller}
++
++- numpy = arrays: maths on all numbers at once, no loop 🧮
++- pandas columns **are** numpy arrays underneath 🧱
++- `fig, ax = plt.subplots()` → draw → label → save 🎨
++- Pick the plot by the question: distribution · groups · relationship 🤔
++
++**Commit** 💾 `samples_plots.py` (and your PNGs, if you want them in the repo).
++
++. . .
++
++Next block: **data from the internet** 🌐 + your **final project** 🚀
++
++::: notes
++78–80 min.
++:::
+diff --git a/week10-block2-api-project.qmd b/week10-block2-api-project.qmd
+new file mode 100644
+index 0000000..013d531
+--- /dev/null
++++ b/week10-block2-api-project.qmd
+@@ -0,0 +1,264 @@
++---
++title: "Week 10 · Block 2 — Data from the internet & your final project"
++subtitle: "Programming and Computing Basics · KSE 2026"
++author: "Klaudia Brzezińska"
++format:
++  revealjs:
++    theme: dark
++    highlight-style: github-dark
++    slide-number: true
++    code-copy: true
++    footer: "Programming and Computing Basics · Week 10"
++    transition: fade
++---
++
++## Warm-up 🔥 {.smaller}
++
++⏱️ 5 min · your browser
++
++Open this link in your browser:
++
++```
++https://rest.ensembl.org/lookup/symbol/homo_sapiens/BRCA2?content-type=application/json
++```
++
++. . .
++
++In the chat: on which **chromosome** is BRCA2? How long is the gene? 🧬
++
++::: notes
++0–5 min. Answer: chromosome 13 (seq_region_name), length = end - start.
++They just used an API without writing any code.
++:::
++
++## What is an API? 🌐 {.smaller}
++
++A **web page** is made for humans 👀
++
++An **API** is a URL made for **programs** 🤖, and it returns *data*, not a layout.
++
++. . .
++
++```
++https://rest.ensembl.org / lookup/symbol / homo_sapiens / BRCA2
++        server              what to do      species       gene
++```
++
++. . .
++
++Big biological databases all have one: Ensembl, NCBI, UniProt, PDB… 🧬
++
++::: notes
++5–10 min. Read the URL as a sentence. Change BRCA2 to TP53 in the browser live.
++:::
++
++## JSON = dictionaries you already know 📖 {.smaller}
++
++What you saw in the browser:
++
++```json
++{
++  "id": "ENSG00000139618",
++  "display_name": "BRCA2",
++  "biotype": "protein_coding",
++  "seq_region_name": "13",
++  "start": 32315086,
++  "end": 32400268,
++  "strand": 1
++}
++```
++
++. . .
++
++Keys and values → a Python **dictionary** (week 6!) 🎯
++
++::: notes
++10–13 min. Values shortened, the real response has more keys (description, assembly_name, …).
++:::
++
++## Asking from Python 🐍 {.smaller}
++
++```bash
++pip3 install requests
++```
++
++```python
++import requests
++
++url = "https://rest.ensembl.org/lookup/symbol/homo_sapiens/BRCA2"
++response = requests.get(url, headers={"Content-Type": "application/json"})
++response.raise_for_status()      # stop with an error if something went wrong
++
++gene = response.json()           # JSON → dictionary
++print(gene["display_name"], gene["seq_region_name"])
++print("Length:", gene["end"] - gene["start"] + 1, "bp")
++```
++
++. . .
++
++`requests` is just another **library**: someone else wrote the hard part 📦
++
++::: notes
++13–20 min. Show what happens with a typo in the gene name: raise_for_status() gives an HTTPError (400).
++That's the same idea as FileNotFoundError: the outside world can fail.
++:::
++
++## Many genes → a table 📋 {.smaller}
++
++The bridge from last week: **list of dictionaries → DataFrame** 🪄
++
++```python
++import pandas as pd
++import requests
++
++genes = ["BRCA1", "BRCA2", "TP53", "EGFR", "MYC"]
++rows = []
++
++for symbol in genes:
++    url = f"https://rest.ensembl.org/lookup/symbol/homo_sapiens/{symbol}"
++    r = requests.get(url, headers={"Content-Type": "application/json"})
++    r.raise_for_status()
++    g = r.json()
++    rows.append({"gene": symbol, "chromosome": g["seq_region_name"],
++                 "length": g["end"] - g["start"] + 1})
++
++df = pd.DataFrame(rows)
++df.to_csv("results/genes.csv", index=False)     # save it! 💾
++```
++
++::: notes
++20–27 min. Every piece is something they know: loop (w5), dict (w6), list of dicts → DataFrame (w9 bonus), to_csv (w9).
++:::
++
++## Be a polite client 🙏 {.smaller}
++
++- **Save** what you downloaded → work on the CSV, not the API 💾
++- Don't ask 10 000 times in a loop: there are rate limits ⏳
++- Add a small pause if you ask many times: `time.sleep(0.2)`
++- No internet = your analysis still runs from the saved file ✅
++
++. . .
++
++> Download once, analyse many times. 🔁
++
++::: notes
++27–30 min. Important for the project and the oral exam: their tool must run without the network.
++:::
++
++## Exercise: Your gene table 🧬 {.smaller}
++
++⏱️ 15 min · breakout rooms · pairs
++
++In `scripts/fetch_genes.py`:
++
++1. Pick 5–8 genes (any you like, or: `BRCA1 BRCA2 TP53 EGFR MYC KRAS CFTR HBB`)
++2. Fetch them from Ensembl, build a DataFrame, save `results/genes.csv`
++3. In a **second** script, read the CSV and plot gene length as a bar chart 📊
++
++💡 **Bonus:** which gene is the longest? Is any of them on the minus strand (`strand == -1`)?
++
++::: notes
++30–45 min. Two scripts on purpose: fetching and analysing are separate steps.
++If Ensembl is slow or down: give them a ready genes.csv in the chat and skip to step 3.
++:::
++
++# Your final project 🚀
++
++## The idea 💡 {.smaller}
++
++Build **one small tool** in Python that answers **one question** about **real biological data**.
++
++. . .
++
++It brings together everything:
++
++| Skill | From week |
++|---|---|
++| reading files, functions, loops | 3–7 🐍 |
++| Git & commits | 1, 8 💾 |
++| pandas analysis | 9 🐼 |
++| plots | 10 📊 |
++| (optional) data from an API | 10 🌐 |
++
++::: notes
++45–50 min. Energy up here, this is the start of the most important part of the course.
++:::
++
++## Requirements ✅ {.smaller}
++
++Your tool must:
++
++- 📄 read a **real data file** (FASTA, CSV, or data you downloaded and saved)
++- 🧩 use at least **3 functions** with clear names
++- 🐼 do an analysis with **pandas**
++- 📊 save at least **one plot** to `results/`
++- 🛡️ show a friendly message if the input file is missing
++- 📖 have a `README.md` with how to run it
++- 📈 have commits spread over several days
++
++. . .
++
++And the most important one: **you can explain every line** 🗣️
++
++::: notes
++50–55 min. These match the final checklist in week 13, so nothing will surprise them later.
++:::
++
++## Ideas, if you need one 🌱 {.smaller}
++
++- 🧬 GC content and length of all sequences in a FASTA file, per organism, with a plot
++- 🔬 Fetch 20 genes from Ensembl, compare lengths across chromosomes
++- 📋 A CSV from your own lab or course: clean it, summarise it, plot it
++- 🦠 Compare two genomes / gene sets: what is different?
++- 🎲 Your own idea, the best option if you have one!
++
++. . .
++
++**Small and working > big and broken** 🌱
++
++::: notes
++55–60 min. Developers in the group can do something more ambitious (or in another language, as agreed).
++:::
++
++## Timeline 📅 {.smaller}
++
++| When | What |
++|---|---|
++| **Today** | Write `PROJECT.md` ✍️ |
++| Week 11 | Project lab: I give feedback, you build 🛠️ |
++| Week 12–13 | R in class, project at home + lab time in week 13 🔁 |
++| **Week 14** | 15-minute oral exam: you run and explain your tool 💬 |
++
++::: notes
++60–63 min. Week 11 slides already reference feedback on PROJECT.md, so it must exist by then.
++:::
++
++## `PROJECT.md` ✍️ {.smaller}
++
++⏱️ rest of the block · your own screen
++
++Create it in your repo and answer in 3–5 lines each:
++
++```markdown
++# My project
++
++## Question
++What do I want to find out?
++
++## Data
++Which file? Where does it come from? (paste the first 3 lines)
++
++## Steps
++1. read ...
++2. compute ...
++3. plot ...
++
++## Output
++What will be in results/ when it works?
++```
++
++**Commit & push** 💾 by the end of the block, I read all of them before week 11 👀
++
++::: notes
++63–80 min. Visit rooms. The most useful nudge: "show me your data file", no file = no project yet.
++:::
+diff --git a/week11-block2-review.qmd b/week11-block2-review.qmd
+index 6c0cd58..4ab06ca 100644
+--- a/week11-block2-review.qmd
++++ b/week11-block2-review.qmd
+@@ -51,7 +51,7 @@ All four are on the grading list. All four take 10 minutes to fix. ⏱️
+ 
+ Before week 14, your project needs:
+ 
+-- [ ] Runs from the terminal with an argument ⚙️
++- [ ] Runs from the terminal with one command ⚙️
+ - [ ] At least 3 functions with clear names
+ - [ ] Reads a real file 📄
+ - [ ] Prints or saves output
+diff --git a/week13-block1-python-vs-r.qmd b/week13-block1-python-vs-r.qmd
+index 8cdb648..f93e001 100644
+--- a/week13-block1-python-vs-r.qmd
++++ b/week13-block1-python-vs-r.qmd
+@@ -82,6 +82,38 @@ long <- lengths[lengths > 100]
+ 
+ Most bioinformaticians use **both**, and that is normal. 💛
+ 
++## One problem, three tools 🧰 {.smaller}
++
++*How many sequences are in my FASTA file?*
++
++**Bash** 🐚 (week 2)
++
++```bash
++grep -c ">" data/sequences.fasta
++```
++
++**Python** 🐍
++
++```python
++with open("data/sequences.fasta") as f:
++    print(sum(1 for line in f if line.startswith(">")))
++```
++
++**R** 🇷
++
++```r
++sum(startsWith(readLines("data/sequences.fasta"), ">"))
++```
++
++. . .
++
++Every language can solve the same problem. Each one has a place where it is the **easiest** 💛
++
++::: notes
++~3 min, just show it. Bash: quick one-off questions about files. Python: building tools.
++R: statistics and plots. No need to go deeper.
++:::
++
+ ## The real skill 🧠 {.smaller}
+ 
+ What transfers between every language:
+diff --git a/week13-block2-final-stretch.qmd b/week13-block2-final-stretch.qmd
+index 3042544..d26c64e 100644
+--- a/week13-block2-final-stretch.qmd
++++ b/week13-block2-final-stretch.qmd
+@@ -62,7 +62,7 @@ No memorising. No trick questions. Your code is open in front of you 📖
+ 
+ ## Final checklist ✅ {.smaller}
+ 
+-- [ ] Runs from the terminal with an argument ⚙️
++- [ ] Runs from the terminal with one command ⚙️
+ - [ ] At least 3 functions with clear names 🧩
+ - [ ] Reads a real file 📄
+ - [ ] Prints or saves output 💾
+-- 
+2.43.0
+

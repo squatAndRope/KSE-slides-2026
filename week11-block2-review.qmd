@@ -37,11 +37,12 @@ Common fixable issues:
 - Functions that `print` instead of `return` ⚠️
 - Everything in one long block — no functions yet 🧩
 - No error handling: missing file → crash 💥
+- Plots without title or axis labels 🏷️
 - Commits: one giant "final" instead of steps 📈
 
 . . .
 
-All four are on the grading list. All four take 10 minutes to fix. ⏱️
+All five are on the grading list. All five take 10 minutes to fix. ⏱️
 
 ::: notes
 20–30 min. Replace with what you actually saw in block 1 — specific beats generic.
@@ -51,12 +52,13 @@ All four are on the grading list. All four take 10 minutes to fix. ⏱️
 
 Before week 14, your project needs:
 
-- [ ] Runs from the terminal with an argument ⚙️
-- [ ] At least 3 functions with clear names
-- [ ] Reads a real file 📄
-- [ ] Prints or saves output
-- [ ] Friendly message when something is missing 🛡️
-- [ ] README with an example command
+- [ ] Main script runs: `python3 scripts/analysis.py` ⚙️
+- [ ] Own module with ≥ 3 functions, imported 📦
+- [ ] Data saved in `data/` (file or API download) 💾
+- [ ] pandas: a filter, a sort or groupby, a new column 🐼
+- [ ] ≥ 2 plots with title + axis labels in `figures/` 📊
+- [ ] Friendly message when the data file is missing 🛡️
+- [ ] README: question, how to run, **what you found** 📖
 - [ ] Commits spread over several days 📈
 
 ::: notes
@@ -81,7 +83,7 @@ Before week 14, your project needs:
 
 ## Wrap-up ✅ {.smaller}
 
-**Next two weeks: R** 🇷
+**Next week: R** 🇷 · **Week 13:** last project lab 🛠️
 
 Project work continues **at home** — and I am available:
 
