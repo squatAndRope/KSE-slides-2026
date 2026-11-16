@@ -1593,7 +1593,7 @@
     "href": "week10-block2-api-project.html#warm-up",
     "title": "Week 10 · Block 2 — Data from the internet & your final project",
     "section": "Warm-up 🔥",
-    "text": "Warm-up 🔥\n⏱️ 5 min · your browser\nOpen this link in your browser:\nhttps://rest.ensembl.org/lookup/symbol/homo_sapiens/BRCA2?content-type=application/json\n\nIn the chat: on which chromosome is BRCA2? How long is the gene? 🧬\n\n0–5 min. Answer: chromosome 13 (seq_region_name), length = end - start. They just used an API without writing any code."
+    "text": "Warm-up 🔥\n⏱️ 5 min · your browser\nOpen this link in your browser:\nhttps://rest.ensembl.org/lookup/symbol/homo_sapiens/BRCA2?content-type=application/json\n\nIn the chat: on which chromosome is BRCA2? How long is the gene? 🧬\n\n0–5 min. Answer: chromosome 13 (seq_region_name), length = end - start + 1 (both ends count). They just used an API without writing any code."
   },
   {
     "objectID": "week10-block2-api-project.html#what-is-an-api",
@@ -1631,11 +1631,18 @@
     "text": "Be a polite client 🙏\n\nSave what you downloaded → work on the CSV, not the API 💾\nDon’t ask 10 000 times in a loop: there are rate limits ⏳\nAdd a small pause if you ask many times: time.sleep(0.2)\nNo internet = your analysis still runs from the saved file ✅\n\n\n\nDownload once, analyse many times. 🔁\n\n\n27–30 min. Important for the project and the oral exam: their tool must run without the network."
   },
   {
-    "objectID": "week10-block2-api-project.html#exercise-your-gene-table",
-    "href": "week10-block2-api-project.html#exercise-your-gene-table",
+    "objectID": "week10-block2-api-project.html#exercise-part-a-fetch",
+    "href": "week10-block2-api-project.html#exercise-part-a-fetch",
     "title": "Week 10 · Block 2 — Data from the internet & your final project",
-    "section": "Exercise: Your gene table 🧬",
-    "text": "Exercise: Your gene table 🧬\n⏱️ 15 min · breakout rooms · pairs\nIn scripts/fetch_genes.py:\n\nPick 5–8 genes (any you like, or: BRCA1 BRCA2 TP53 EGFR MYC KRAS CFTR HBB)\nFetch them from Ensembl, build a DataFrame, save results/genes.csv\nIn a second script, read the CSV and plot gene length as a bar chart 📊\n\n💡 Bonus: which gene is the longest? Is any of them on the minus strand (strand == -1)?\n\n30–45 min. Two scripts on purpose: fetching and analysing are separate steps. If Ensembl is slow or down: give them a ready genes.csv in the chat and skip to step 3."
+    "section": "Exercise, part A: Fetch 🌐",
+    "text": "Exercise, part A: Fetch 🌐\n⏱️ 8 min · breakout rooms · pairs · react ✅\nCreate scripts/fetch_genes.py:\n\nStart with this list of 8 human genes:\n\ngenes = [\"BRCA1\", \"BRCA2\", \"TP53\", \"EGFR\", \"MYC\", \"KRAS\", \"CFTR\", \"HBB\"]\n\nFor each gene, request https://rest.ensembl.org/lookup/symbol/homo_sapiens/&lt;GENE&gt; with headers={\"Content-Type\": \"application/json\"}\nFrom each response, keep exactly these 4 columns:\n\n\n\n\ncolumn\nfrom JSON\n\n\n\n\ngene\nthe symbol from your list\n\n\nchromosome\nseq_region_name\n\n\nlength\nend - start + 1\n\n\nstrand\nstrand (1 or -1)\n\n\n\n\nSave the table to results/genes.csv (index=False)\n\n✅ Check: the CSV has 8 rows + 1 header row\n\n30–38 min. This is the “Many genes → a table” slide plus one extra column (strand). Common issues: forgetting the header (they get HTML/error), typo in a key → KeyError, results/ missing → OSError. If Ensembl is slow or down: paste a ready genes.csv in the chat and go to part B."
+  },
+  {
+    "objectID": "week10-block2-api-project.html#exercise-part-b-analyse",
+    "href": "week10-block2-api-project.html#exercise-part-b-analyse",
+    "title": "Week 10 · Block 2 — Data from the internet & your final project",
+    "section": "Exercise, part B: Analyse 📊",
+    "text": "Exercise, part B: Analyse 📊\n⏱️ 7 min · same pairs\nCreate a second script scripts/plot_genes.py (no internet needed here!):\n\nRead results/genes.csv with pandas\nSort the genes by length, longest first\nDraw a bar chart: genes on the x axis, length on the y axis\nLabels: x = \"Gene\", y = \"Length (bp)\", title = \"Length of 8 human genes\"\nSave it as results/gene_lengths.png\n\n💡 Bonus (answer in the chat):\n\nWhich gene is the longest? Which is the shortest? 🥇\nWhich genes are on the minus strand (strand == -1)? Filter them with pandas\n\n\n38–45 min. Two scripts on purpose: fetching and analysing are separate steps (“download once, analyse many times”). Expected: HBB is tiny compared to the others, the bar chart makes the scale difference obvious. Run the script once yourself before class to know the exact answers. Hint if needed: plt.xticks(rotation=45) if labels overlap."
   },
   {
     "objectID": "week10-block2-api-project.html#the-idea",

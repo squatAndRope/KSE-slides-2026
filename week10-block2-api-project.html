@@ -213,7 +213,7 @@ Klaudia Brzezińska
 <div class="fragment">
 <p>In the chat: on which <strong>chromosome</strong> is BRCA2? How long is the gene? 🧬</p>
 <aside class="notes">
-<p>0–5 min. Answer: chromosome 13 (seq_region_name), length = end - start. They just used an API without writing any code.</p>
+<p>0–5 min. Answer: chromosome 13 (seq_region_name), length = end - start + 1 (both ends count). They just used an API without writing any code.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -370,18 +370,80 @@ Klaudia Brzezińska
       }</style></aside>
 </div>
 </section>
-<section id="exercise-your-gene-table" class="slide level2 smaller">
-<h2>Exercise: Your gene table 🧬</h2>
-<p>⏱️ 15 min · breakout rooms · pairs</p>
-<p>In <code>scripts/fetch_genes.py</code>:</p>
+<section id="exercise-part-a-fetch" class="slide level2 smaller">
+<h2>Exercise, part A: Fetch 🌐</h2>
+<p>⏱️ 8 min · breakout rooms · pairs · react ✅</p>
+<p>Create <strong><code>scripts/fetch_genes.py</code></strong>:</p>
 <ol type="1">
-<li>Pick 5–8 genes (any you like, or: <code>BRCA1 BRCA2 TP53 EGFR MYC KRAS CFTR HBB</code>)</li>
-<li>Fetch them from Ensembl, build a DataFrame, save <code>results/genes.csv</code></li>
-<li>In a <strong>second</strong> script, read the CSV and plot gene length as a bar chart 📊</li>
+<li>Start with this list of 8 human genes:</li>
 </ol>
-<p>💡 <strong>Bonus:</strong> which gene is the longest? Is any of them on the minus strand (<code>strand == -1</code>)?</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>genes <span class="op">=</span> [<span class="st">"BRCA1"</span>, <span class="st">"BRCA2"</span>, <span class="st">"TP53"</span>, <span class="st">"EGFR"</span>, <span class="st">"MYC"</span>, <span class="st">"KRAS"</span>, <span class="st">"CFTR"</span>, <span class="st">"HBB"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>For each gene, request <code>https://rest.ensembl.org/lookup/symbol/homo_sapiens/&lt;GENE&gt;</code> with <code>headers={"Content-Type": "application/json"}</code></li>
+<li>From each response, keep exactly these 4 columns:</li>
+</ol>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>column</th>
+<th>from JSON</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>gene</code></td>
+<td>the symbol from your list</td>
+</tr>
+<tr class="even">
+<td><code>chromosome</code></td>
+<td><code>seq_region_name</code></td>
+</tr>
+<tr class="odd">
+<td><code>length</code></td>
+<td><code>end - start + 1</code></td>
+</tr>
+<tr class="even">
+<td><code>strand</code></td>
+<td><code>strand</code> (1 or -1)</td>
+</tr>
+</tbody>
+</table>
+<ol start="4" type="1">
+<li>Save the table to <strong><code>results/genes.csv</code></strong> (<code>index=False</code>)</li>
+</ol>
+<p>✅ Check: the CSV has <strong>8 rows + 1 header row</strong></p>
 <aside class="notes">
-<p>30–45 min. Two scripts on purpose: fetching and analysing are separate steps. If Ensembl is slow or down: give them a ready genes.csv in the chat and skip to step 3.</p>
+<p>30–38 min. This is the “Many genes → a table” slide plus one extra column (strand). Common issues: forgetting the header (they get HTML/error), typo in a key → KeyError, results/ missing → OSError. If Ensembl is slow or down: paste a ready genes.csv in the chat and go to part B.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercise-part-b-analyse" class="slide level2 smaller">
+<h2>Exercise, part B: Analyse 📊</h2>
+<p>⏱️ 7 min · same pairs</p>
+<p>Create a <strong>second</strong> script <strong><code>scripts/plot_genes.py</code></strong> (no internet needed here!):</p>
+<ol type="1">
+<li>Read <code>results/genes.csv</code> with pandas</li>
+<li>Sort the genes by <code>length</code>, longest first</li>
+<li>Draw a bar chart: genes on the x axis, length on the y axis</li>
+<li>Labels: x = <code>"Gene"</code>, y = <code>"Length (bp)"</code>, title = <code>"Length of 8 human genes"</code></li>
+<li>Save it as <strong><code>results/gene_lengths.png</code></strong></li>
+</ol>
+<p>💡 <strong>Bonus</strong> (answer in the chat):</p>
+<ul>
+<li>Which gene is the longest? Which is the shortest? 🥇</li>
+<li>Which genes are on the minus strand (<code>strand == -1</code>)? Filter them with pandas</li>
+</ul>
+<aside class="notes">
+<p>38–45 min. Two scripts on purpose: fetching and analysing are separate steps (“download once, analyse many times”). Expected: HBB is tiny compared to the others, the bar chart makes the scale difference obvious. Run the script once yourself before class to know the exact answers. Hint if needed: plt.xticks(rotation=45) if labels overlap.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -550,21 +612,21 @@ Klaudia Brzezińska
 <h2><code>PROJECT.md</code> ✍️</h2>
 <p>⏱️ rest of the block · your own screen</p>
 <p>Create it in your repo and answer in 3–5 lines each:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a></a><span class="fu"># My project</span></span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a><span class="fu">## Question</span></span>
-<span id="cb7-4"><a></a>What do I want to find out?</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a><span class="fu">## Data</span></span>
-<span id="cb7-7"><a></a>Which file? Where does it come from? (paste the first 3 lines)</span>
-<span id="cb7-8"><a></a></span>
-<span id="cb7-9"><a></a><span class="fu">## Steps</span></span>
-<span id="cb7-10"><a></a><span class="ss">1. </span>read ...</span>
-<span id="cb7-11"><a></a><span class="ss">2. </span>compute ...</span>
-<span id="cb7-12"><a></a><span class="ss">3. </span>plot ...</span>
-<span id="cb7-13"><a></a></span>
-<span id="cb7-14"><a></a><span class="fu">## Output</span></span>
-<span id="cb7-15"><a></a>What will be in results/ when it works?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a></a><span class="fu"># My project</span></span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a><span class="fu">## Question</span></span>
+<span id="cb8-4"><a></a>What do I want to find out?</span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a><span class="fu">## Data</span></span>
+<span id="cb8-7"><a></a>Which file? Where does it come from? (paste the first 3 lines)</span>
+<span id="cb8-8"><a></a></span>
+<span id="cb8-9"><a></a><span class="fu">## Steps</span></span>
+<span id="cb8-10"><a></a><span class="ss">1. </span>read ...</span>
+<span id="cb8-11"><a></a><span class="ss">2. </span>compute ...</span>
+<span id="cb8-12"><a></a><span class="ss">3. </span>plot ...</span>
+<span id="cb8-13"><a></a></span>
+<span id="cb8-14"><a></a><span class="fu">## Output</span></span>
+<span id="cb8-15"><a></a>What will be in results/ when it works?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Commit &amp; push</strong> 💾 by the end of the block, I read all of them before week 11 👀</p>
 <aside class="notes">
 <p>63–80 min. Visit rooms. The most useful nudge: “show me your data file”, no file = no project yet.</p>
