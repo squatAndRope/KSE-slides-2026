@@ -278,11 +278,44 @@ Klaudia Brzezińska
 <span id="cb6-2"><a></a>lengths_arr <span class="op">*</span> <span class="dv">2</span>      <span class="co"># [2400 1960 3060]                    ✅</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>lengths_arr <span class="op">/</span> <span class="dv">1000</span>             <span class="co"># every element, no loop ✨</span></span>
-<span id="cb7-2"><a></a>lengths_arr <span class="op">-</span> lengths_arr.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>A list is a <strong>container</strong>. An array is a <strong>vector of numbers</strong> you can do maths on. 🧮</p>
+<p><strong>Why?</strong> You have seen this before, in week 3:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co">"AT"</span> <span class="op">*</span> <span class="dv">3</span>             <span class="co"># "ATATAT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A <strong>list</strong> can hold anything (numbers, text, other lists), so Python can’t assume maths. For a list, <code>*</code> means <strong>“repeat the contents”</strong>, just like for a string 🔁</p>
+<p>An <strong>array</strong> holds <strong>only numbers of one type</strong>, so <code>*</code> means <strong>“multiply every number”</strong> 🧮</p>
 <aside class="notes">
-<p>13–20 min. Live-code this. The list * 2 surprise always lands. Same idea as pandas new columns last week: the operation goes to every element at once.</p>
+<p>13–19 min. Live-code this. The list * 2 surprise always lands. Ask before revealing: “what do you think list * 2 gives?” Most will guess wrong, that’s the point.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="maths-on-every-element" class="slide level2 smaller">
+<h2>Maths on every element ✨</h2>
+<p>The number is applied to <strong>each</strong> element (numpy calls this <em>broadcasting</em>):</p>
+<pre><code>[1200, 980, 1530] * 2   →   [1200*2, 980*2, 1530*2]   →   [2400, 1960, 3060]</code></pre>
+<div class="fragment">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>lengths_arr <span class="op">/</span> <span class="dv">1000</span>       <span class="co"># bp → kb for every sample: [1.2  0.98 1.53]</span></span>
+<span id="cb9-2"><a></a>lengths_list <span class="op">/</span> <span class="dv">1000</span>      <span class="co"># TypeError ❌, a list would need a loop</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>lengths_arr.mean()                  <span class="co"># one number: 1236.7</span></span>
+<span id="cb10-2"><a></a>lengths_arr <span class="op">-</span> lengths_arr.mean()    <span class="co"># [-36.7 -256.7 293.3]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>→ how much each sample is <strong>longer or shorter than average</strong> 📏</p>
+</div>
+<div class="fragment">
+<p>⚠️ Same trap with <code>+</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>[<span class="dv">1</span>, <span class="dv">2</span>] <span class="op">+</span> [<span class="dv">3</span>, <span class="dv">4</span>]                       <span class="co"># [1, 2, 3, 4]  → glued together</span></span>
+<span id="cb11-2"><a></a>np.array([<span class="dv">1</span>, <span class="dv">2</span>]) <span class="op">+</span> np.array([<span class="dv">3</span>, <span class="dv">4</span>])   <span class="co"># [4 6]         → added</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>19–24 min. Same idea as pandas new columns last week: df[“length”] / 1000 worked because the column IS an array. Lists are not “worse”: for collecting mixed things and append() in a loop, a list is the right tool.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -298,18 +331,18 @@ Klaudia Brzezińska
 </section>
 <section id="statistics-in-one-line" class="slide level2 smaller">
 <h2>Statistics in one line 📈</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>np.mean(gc)          <span class="co"># average</span></span>
-<span id="cb8-2"><a></a>np.median(gc)        <span class="co"># middle value</span></span>
-<span id="cb8-3"><a></a>np.std(gc)           <span class="co"># spread</span></span>
-<span id="cb8-4"><a></a>np.<span class="bu">min</span>(gc), np.<span class="bu">max</span>(gc)</span>
-<span id="cb8-5"><a></a>np.<span class="bu">round</span>(gc, <span class="dv">0</span>)      <span class="co"># round every value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>np.mean(gc)          <span class="co"># average</span></span>
+<span id="cb12-2"><a></a>np.median(gc)        <span class="co"># middle value</span></span>
+<span id="cb12-3"><a></a>np.std(gc)           <span class="co"># spread</span></span>
+<span id="cb12-4"><a></a>np.<span class="bu">min</span>(gc), np.<span class="bu">max</span>(gc)</span>
+<span id="cb12-5"><a></a>np.<span class="bu">round</span>(gc, <span class="dv">0</span>)      <span class="co"># round every value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Filtering works like in pandas: a <strong>mask</strong> of <code>True</code> / <code>False</code></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>gc <span class="op">&gt;</span> <span class="dv">45</span>              <span class="co"># [False False ... True True]</span></span>
-<span id="cb9-2"><a></a>gc[gc <span class="op">&gt;</span> <span class="dv">45</span>]          <span class="co"># only the GC-rich values</span></span>
-<span id="cb9-3"><a></a>(gc <span class="op">&gt;</span> <span class="dv">45</span>).<span class="bu">sum</span>()      <span class="co"># how many? True counts as 1 🤯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>gc <span class="op">&gt;</span> <span class="dv">45</span>              <span class="co"># [False False ... True True]</span></span>
+<span id="cb13-2"><a></a>gc[gc <span class="op">&gt;</span> <span class="dv">45</span>]          <span class="co"># only the GC-rich values</span></span>
+<span id="cb13-3"><a></a>(gc <span class="op">&gt;</span> <span class="dv">45</span>).<span class="bu">sum</span>()      <span class="co"># how many? True counts as 1 🤯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
-<p>20–27 min. The True-as-1 trick is worth a pause: counting with sum().</p>
+<p>24–29 min. The True-as-1 trick is worth a pause: counting with sum().</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -335,7 +368,7 @@ Klaudia Brzezińska
 </ol>
 <p>💡 <strong>Bonus:</strong> <code>np.percentile(lengths, 90)</code>: what does it mean?</p>
 <aside class="notes">
-<p>27–37 min. Q4: mean &gt; median → a few long samples pull the mean up. Good intuition for skewed data.</p>
+<p>29–38 min. Q4: mean &gt; median → a few long samples pull the mean up. Good intuition for skewed data.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -351,14 +384,14 @@ Klaudia Brzezińska
 <section id="matplotlib-the-idea" class="slide level2 smaller">
 <h2>matplotlib: the idea 🎨</h2>
 <p>Every plot follows the same recipe:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb10-2"><a></a></span>
-<span id="cb10-3"><a></a>fig, ax <span class="op">=</span> plt.subplots()             <span class="co"># 1. an empty canvas</span></span>
-<span id="cb10-4"><a></a>ax.hist(df[<span class="st">"gc_content"</span>], bins<span class="op">=</span><span class="dv">6</span>)    <span class="co"># 2. draw something</span></span>
-<span id="cb10-5"><a></a>ax.set_xlabel(<span class="st">"GC content (%)"</span>)      <span class="co"># 3. label it</span></span>
-<span id="cb10-6"><a></a>ax.set_ylabel(<span class="st">"Number of samples"</span>)</span>
-<span id="cb10-7"><a></a>ax.set_title(<span class="st">"GC content distribution"</span>)</span>
-<span id="cb10-8"><a></a>plt.show()                           <span class="co"># 4. show it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a>fig, ax <span class="op">=</span> plt.subplots()             <span class="co"># 1. an empty canvas</span></span>
+<span id="cb14-4"><a></a>ax.hist(df[<span class="st">"gc_content"</span>], bins<span class="op">=</span><span class="dv">6</span>)    <span class="co"># 2. draw something</span></span>
+<span id="cb14-5"><a></a>ax.set_xlabel(<span class="st">"GC content (%)"</span>)      <span class="co"># 3. label it</span></span>
+<span id="cb14-6"><a></a>ax.set_ylabel(<span class="st">"Number of samples"</span>)</span>
+<span id="cb14-7"><a></a>ax.set_title(<span class="st">"GC content distribution"</span>)</span>
+<span id="cb14-8"><a></a>plt.show()                           <span class="co"># 4. show it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p><code>fig</code> = the whole picture 🖼️ · <code>ax</code> = the plot area where you draw ✏️</p>
 <aside class="notes">
@@ -379,12 +412,12 @@ Klaudia Brzezińska
 <section id="three-plots-you-will-use-forever" class="slide level2 smaller">
 <h2>Three plots you will use forever 📊</h2>
 <p><strong>Distribution</strong> → histogram</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>ax.hist(df[<span class="st">"length"</span>], bins<span class="op">=</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>ax.hist(df[<span class="st">"length"</span>], bins<span class="op">=</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Compare groups</strong> → bar chart (hello, <code>groupby</code> 👋)</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>mean_gc <span class="op">=</span> df.groupby(<span class="st">"organism"</span>)[<span class="st">"gc_content"</span>].mean()</span>
-<span id="cb12-2"><a></a>ax.bar(mean_gc.index, mean_gc.values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>mean_gc <span class="op">=</span> df.groupby(<span class="st">"organism"</span>)[<span class="st">"gc_content"</span>].mean()</span>
+<span id="cb16-2"><a></a>ax.bar(mean_gc.index, mean_gc.values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Relationship</strong> → scatter</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>ax.scatter(df[<span class="st">"length"</span>], df[<span class="st">"gc_content"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>ax.scatter(df[<span class="st">"length"</span>], df[<span class="st">"gc_content"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>44–50 min. Ask before each: “what question does this plot answer?”</p>
 <style type="text/css">
@@ -401,7 +434,7 @@ Klaudia Brzezińska
 </section>
 <section id="save-dont-screenshot" class="slide level2 smaller">
 <h2>Save, don’t screenshot 💾</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>fig.savefig(<span class="st">"results/gc_per_organism.png"</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>fig.savefig(<span class="st">"results/gc_per_organism.png"</span>, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <ul>
 <li><code>dpi=150</code> → sharp enough for a report 🔍</li>
@@ -437,9 +470,9 @@ Klaudia Brzezińska
 </ol>
 <p>Every plot needs: axis labels + a title ✍️</p>
 <p>💡 <strong>Bonus:</strong> colour the scatter by organism:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="cf">for</span> organism, group <span class="kw">in</span> df.groupby(<span class="st">"organism"</span>):</span>
-<span id="cb15-2"><a></a>    ax.scatter(group[<span class="st">"length"</span>], group[<span class="st">"gc_content"</span>], label<span class="op">=</span>organism)</span>
-<span id="cb15-3"><a></a>ax.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="cf">for</span> organism, group <span class="kw">in</span> df.groupby(<span class="st">"organism"</span>):</span>
+<span id="cb19-2"><a></a>    ax.scatter(group[<span class="st">"length"</span>], group[<span class="st">"gc_content"</span>], label<span class="op">=</span>organism)</span>
+<span id="cb19-3"><a></a>ax.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>53–73 min. Common issues: missing results/ folder, saving after show(), long organism names overlapping on the bar chart. Fix: plt.xticks(rotation=30) or ax.barh(…). The bonus loops over groupby, worth showing to the whole group if someone gets it.</p>
 <style type="text/css">

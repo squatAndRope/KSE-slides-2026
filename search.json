@@ -1404,21 +1404,28 @@
     "href": "week10-block1-numpy-matplotlib.html#list-vs-array",
     "title": "Week 10 · Block 1 — numpy & plots",
     "section": "List vs array 🤔",
-    "text": "List vs array 🤔\nlengths_list = [1200, 980, 1530]\nlengths_arr  = np.array([1200, 980, 1530])\n\nlengths_list * 2     # [1200, 980, 1530, 1200, 980, 1530]  😮\nlengths_arr * 2      # [2400 1960 3060]                    ✅\n\n\nlengths_arr / 1000             # every element, no loop ✨\nlengths_arr - lengths_arr.mean()\nA list is a container. An array is a vector of numbers you can do maths on. 🧮\n\n13–20 min. Live-code this. The list * 2 surprise always lands. Same idea as pandas new columns last week: the operation goes to every element at once."
+    "text": "List vs array 🤔\nlengths_list = [1200, 980, 1530]\nlengths_arr  = np.array([1200, 980, 1530])\n\nlengths_list * 2     # [1200, 980, 1530, 1200, 980, 1530]  😮\nlengths_arr * 2      # [2400 1960 3060]                    ✅\n\n\nWhy? You have seen this before, in week 3:\n\"AT\" * 3             # \"ATATAT\"\nA list can hold anything (numbers, text, other lists), so Python can’t assume maths. For a list, * means “repeat the contents”, just like for a string 🔁\nAn array holds only numbers of one type, so * means “multiply every number” 🧮\n\n13–19 min. Live-code this. The list * 2 surprise always lands. Ask before revealing: “what do you think list * 2 gives?” Most will guess wrong, that’s the point."
+  },
+  {
+    "objectID": "week10-block1-numpy-matplotlib.html#maths-on-every-element",
+    "href": "week10-block1-numpy-matplotlib.html#maths-on-every-element",
+    "title": "Week 10 · Block 1 — numpy & plots",
+    "section": "Maths on every element ✨",
+    "text": "Maths on every element ✨\nThe number is applied to each element (numpy calls this broadcasting):\n[1200, 980, 1530] * 2   →   [1200*2, 980*2, 1530*2]   →   [2400, 1960, 3060]\n\nlengths_arr / 1000       # bp → kb for every sample: [1.2  0.98 1.53]\nlengths_list / 1000      # TypeError ❌, a list would need a loop\n\n\nlengths_arr.mean()                  # one number: 1236.7\nlengths_arr - lengths_arr.mean()    # [-36.7 -256.7 293.3]\n→ how much each sample is longer or shorter than average 📏\n\n\n⚠️ Same trap with +:\n[1, 2] + [3, 4]                       # [1, 2, 3, 4]  → glued together\nnp.array([1, 2]) + np.array([3, 4])   # [4 6]         → added\n\n19–24 min. Same idea as pandas new columns last week: df[“length”] / 1000 worked because the column IS an array. Lists are not “worse”: for collecting mixed things and append() in a loop, a list is the right tool."
   },
   {
     "objectID": "week10-block1-numpy-matplotlib.html#statistics-in-one-line",
     "href": "week10-block1-numpy-matplotlib.html#statistics-in-one-line",
     "title": "Week 10 · Block 1 — numpy & plots",
     "section": "Statistics in one line 📈",
-    "text": "Statistics in one line 📈\nnp.mean(gc)          # average\nnp.median(gc)        # middle value\nnp.std(gc)           # spread\nnp.min(gc), np.max(gc)\nnp.round(gc, 0)      # round every value\n\nFiltering works like in pandas: a mask of True / False\ngc &gt; 45              # [False False ... True True]\ngc[gc &gt; 45]          # only the GC-rich values\n(gc &gt; 45).sum()      # how many? True counts as 1 🤯\n\n20–27 min. The True-as-1 trick is worth a pause: counting with sum()."
+    "text": "Statistics in one line 📈\nnp.mean(gc)          # average\nnp.median(gc)        # middle value\nnp.std(gc)           # spread\nnp.min(gc), np.max(gc)\nnp.round(gc, 0)      # round every value\n\nFiltering works like in pandas: a mask of True / False\ngc &gt; 45              # [False False ... True True]\ngc[gc &gt; 45]          # only the GC-rich values\n(gc &gt; 45).sum()      # how many? True counts as 1 🤯\n\n24–29 min. The True-as-1 trick is worth a pause: counting with sum()."
   },
   {
     "objectID": "week10-block1-numpy-matplotlib.html#exercise-1-numpy-warm-up",
     "href": "week10-block1-numpy-matplotlib.html#exercise-1-numpy-warm-up",
     "title": "Week 10 · Block 1 — numpy & plots",
     "section": "Exercise 1: numpy warm-up 🧮",
-    "text": "Exercise 1: numpy warm-up 🧮\n⏱️ 10 min · your own screen · react ✅\nIn scripts/numpy_practice.py, using the length column as an array:\n\nPrint the mean, median and standard deviation 📏\nConvert all lengths to kb (one line, no loop)\nHow many samples are longer than 1000 bp?\nWhich is bigger here: mean or median? What does that tell you? 🤔\n\n💡 Bonus: np.percentile(lengths, 90): what does it mean?\n\n27–37 min. Q4: mean &gt; median → a few long samples pull the mean up. Good intuition for skewed data."
+    "text": "Exercise 1: numpy warm-up 🧮\n⏱️ 10 min · your own screen · react ✅\nIn scripts/numpy_practice.py, using the length column as an array:\n\nPrint the mean, median and standard deviation 📏\nConvert all lengths to kb (one line, no loop)\nHow many samples are longer than 1000 bp?\nWhich is bigger here: mean or median? What does that tell you? 🤔\n\n💡 Bonus: np.percentile(lengths, 90): what does it mean?\n\n29–38 min. Q4: mean &gt; median → a few long samples pull the mean up. Good intuition for skewed data."
   },
   {
     "objectID": "week10-block1-numpy-matplotlib.html#matplotlib-the-idea",
