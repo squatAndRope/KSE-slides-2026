@@ -1572,7 +1572,7 @@
     "href": "final-project.html#repository-readme",
     "title": "Final project 🚀",
     "section": "Repository & README 📖",
-    "text": "Repository & README 📖\n\n\nRepository\n\n🌍 your own, public GitHub repo\n🙈 .gitignore (.venv/, __pycache__/)\n📈 commits spread over several days\n▶️ runs from a fresh clone, step by step as in the README\n🧩 at least 2 functions with clear names\n🛡️ a friendly message if the data file is missing\n\n\nREADME.md\n\n▶️ how to run the project, step by step\n📥 data: source, link, what one row is\n❓ answers to Q1–Q5 + your 2 questions\n💡 conclusions: what did you learn from the data?\n🧱 problems: what was hard, how you solved it\n\n\n\n“Problems” is not a weakness: it is the most useful part for the oral exam."
+    "text": "Repository & README 📖\n\n\nRepository\n\n🌍 your own, public GitHub repo\n🙈 .gitignore (.venv/, __pycache__/)\n📈 commits spread over several days\n▶️ runs from a fresh clone, step by step as in the README\n🧩 at least 2 functions with clear names\n🛡️ a friendly message if the data file is missing\n\n\nREADME.md\n\n📅 your oral exam date (14 or 18 December)\n▶️ how to run the project, step by step\n📥 data: source, link, what one row is\n❓ answers to Q1–Q5 + your 2 questions\n💡 conclusions: what did you learn from the data?\n🧱 problems: what was hard, how you solved it\n\n\n\n“Problems” is not a weakness: it is the most useful part for the oral exam."
   },
   {
     "objectID": "final-project.html#structure-split-your-code-into-files",
@@ -1607,14 +1607,14 @@
     "href": "final-project.html#reminder-your-final-grade",
     "title": "Final project 🚀",
     "section": "Reminder: your final grade 🧾",
-    "text": "Reminder: your final grade 🧾\n\n\n\nComponent\nWhen\nWeight\n\n\n\n\n📝 Quizzes → your commits ⭐\nwhole semester\n15%\n\n\n👥 Pair assignment (Git teamwork)\nweek 8\n25%\n\n\n🧬 Final project (individual) + oral exam\nweek 14\n60%\n\n\n\n\n⭐ Quizzes: instead of quizzes, I count your commits from the class exercises. You committed your exercises → 100% for the quiz part ✅\n\n\nThe final project is the biggest part of your grade 🚀\n\nQuizzes were replaced by in-class commits during the semester."
+    "text": "Reminder: your final grade 🧾\n\n\n\n\n\n\n\n\nComponent\nWhen\nWeight\n\n\n\n\n📝 Quizzes → your commits ⭐\nwhole semester\n15%\n\n\n👥 Pair assignment (Git teamwork)\nweek 8\n25%\n\n\n🧬 Final project (individual) + oral exam\n14 or 18 Dec\n60%\n\n\n\n\n⭐ Quizzes: instead of quizzes, I count your commits from the class exercises. You committed your exercises → 100% for the quiz part ✅\n\n\nThe final project is the biggest part of your grade 🚀\n\nQuizzes were replaced by in-class commits during the semester."
   },
   {
     "objectID": "final-project.html#points",
     "href": "final-project.html#points",
     "title": "Final project 🚀",
     "section": "Points 🧮",
-    "text": "Points 🧮\n\n\n\nComponent\nPoints\n\n\n\n\n1 · Data\n10\n\n\n2 · Exploration\n10\n\n\n3 · Five required questions\n25 (5 each)\n\n\n4 · Own research\n15\n\n\n5 · Plots\n10\n\n\nClean code & structure\n15\n\n\nRepository & README\n15\n\n\nTotal\n100\n\n\n⭐ Bonus: venv + requirements.txt\n+10\n\n\n\n\n🗣️ Week 14 oral exam: you run your project and explain it. You must be able to explain every line of your code.\n\nWeights are a proposal, adjust before presenting."
+    "text": "Points 🧮\n\n\n\nComponent\nPoints\n\n\n\n\n1 · Data\n10\n\n\n2 · Exploration\n10\n\n\n3 · Five required questions\n25 (5 each)\n\n\n4 · Own research\n15\n\n\n5 · Plots\n10\n\n\nClean code & structure\n15\n\n\nRepository & README\n15\n\n\nTotal\n100\n\n\n⭐ Bonus: venv + requirements.txt\n+10\n\n\n\n\n🗣️ Oral exam (14 or 18 December): you run your project and explain it. You must be able to explain every line of your code.\n\nWeights are a proposal, adjust before presenting."
   },
   {
     "objectID": "final-project.html#using-ai",
@@ -1628,7 +1628,14 @@
     "href": "final-project.html#deadline-submission",
     "title": "Final project 🚀",
     "section": "Deadline & submission 📅",
-    "text": "Deadline & submission 📅\n\n\n\nWhat\nWhen\n\n\n\n\n🚀 Project starts\nWeek 10\n\n\n📬 Deadline\n11 December 2026\n\n\n🗣️ Oral exam, 15 min\nWeek 14\n\n\n\n\nHow to submit 📬\n\nYour repo on GitHub, public\nSettings → Collaborators → Add people → invite squatAndRope\n\n\n\nThe version on GitHub on 11 December is the one I grade ⏰\nQuestions? Ask early, not the night before 😉"
+    "text": "Deadline & submission 📅\nYou choose your oral exam date (15 min), the deadline follows from it:\n\n\n\n🗣️ Oral exam\n📬 Project deadline\n\n\n\n\nMon 14 December 🏃\nFri 11 December\n\n\nFri 18 December 🐢\nMon 14 December\n\n\n\n\n🏃 Want the course done sooner? Take 14 December. 🐢 Need more time for other exams? Take 18 December.\n\n\n📅 Write your choice at the top of your README.md:\n**Oral exam date:** 14 December"
+  },
+  {
+    "objectID": "final-project.html#how-to-submit",
+    "href": "final-project.html#how-to-submit",
+    "title": "Final project 🚀",
+    "section": "How to submit 📬",
+    "text": "How to submit 📬\n\nYour repo on GitHub, public\nSettings → Collaborators → Add people → invite squatAndRope\nOral exam date at the top of your README.md ✅\n\n\nThe version on GitHub on your deadline is the one I grade ⏰\n\n\nQuestions? Ask early, not the night before 😉"
   },
   {
     "objectID": "week05-block2-practice.html#today-no-new-syntax",
