@@ -23,12 +23,14 @@
       "/week09-block2-pandas.html",
       "/week10-block1-numpy-matplotlib.html",
       "/week10-block2-venv.html",
-      "/week12-block1-r-intro.html",
-      "/week12-block2-r-plots.html",
+      "/week11-block1-r-intro.html",
+      "/week11-block2-r-plots.html",
+      "/week12-block1-dplyr.html",
+      "/week12-block2-ggplot2.html",
       "/week13-block1-python-vs-r.html",
       "/week13-block2-final-stretch.html",
-      "/week14-oral-exams.html",
-      "/week15-final-project.html"
+      "/week15-final-project.html",
+      "/week16-oral-exams.html"
     ]
   }
 ]

@@ -205,9 +205,26 @@ Klaudia Brzezińska
 </div>
 
 </section>
-<section id="one-week-to-go" class="slide level2 smaller">
-<h2>One week to go 📅</h2>
-<p>Next week: your <strong>15 minutes</strong> with me 💬</p>
+<section id="almost-there" class="slide level2 smaller">
+<h2>Almost there 📅</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>🗣️ Your oral exam</th>
+<th>📬 Your deadline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mon 14 December 🏃</td>
+<td><strong>Fri 11 December</strong></td>
+</tr>
+<tr class="even">
+<td>Fri 18 December 🐢</td>
+<td><strong>Mon 14 December</strong></td>
+</tr>
+</tbody>
+</table>
 <p>Today:</p>
 <ul>
 <li>how the exam will look 🎓</li>
@@ -303,17 +320,30 @@ Klaudia Brzezińska
 </section>
 <section id="final-checklist" class="slide level2 smaller">
 <h2>Final checklist ✅</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Project</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox">Main script runs: <code>python3 scripts/analysis.py</code> ⚙️</label></li>
-<li><label><input type="checkbox">Own module with ≥ 3 functions, imported 📦</label></li>
-<li><label><input type="checkbox">Data saved in <code>data/</code> (file or API download) 💾</label></li>
-<li><label><input type="checkbox">pandas: a filter, a sort or groupby, a new column 🐼</label></li>
-<li><label><input type="checkbox">≥ 2 plots with title + axis labels in <code>figures/</code> 📊</label></li>
-<li><label><input type="checkbox">Friendly message when the data file is missing 🛡️</label></li>
-<li><label><input type="checkbox">README: question, how to run, <strong>what you found</strong> 📖</label></li>
+<li><label><input type="checkbox">Runs from start to end, following your README ▶️</label></li>
+<li><label><input type="checkbox">Data in <code>data/</code>: ≥ 50 rows, 2 numeric + 1 category column 📄</label></li>
+<li><label><input type="checkbox">Exploration: shape, types, missing values 🔍</label></li>
+<li><label><input type="checkbox">Q1–Q5 answered 🔢</label></li>
+<li><label><input type="checkbox">2 own questions 🧪</label></li>
+<li><label><input type="checkbox">≥ 3 plots, different types, titles + labels, in <code>results/</code> 📊</label></li>
+<li><label><input type="checkbox">Code split into files, ≥ 2 functions 🗂️</label></li>
+<li><label><input type="checkbox">Friendly message if the data file is missing 🛡️</label></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Repo &amp; README</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Public repo, <code>squatAndRope</code> invited 📬</label></li>
+<li><label><input type="checkbox"><code>.gitignore</code> (<code>.venv/</code>, <code>__pycache__/</code>) 🙈</label></li>
+<li><label><input type="checkbox">README: <strong>exam date</strong>, how to run, data, answers, conclusions, problems 📖</label></li>
 <li><label><input type="checkbox">Commits spread over several days 📈</label></li>
+<li><label><input type="checkbox">⭐ Bonus: <code>requirements.txt</code></label></li>
 <li><label><input type="checkbox"><strong>You can explain every line</strong> 🗣️</label></li>
 </ul>
+</div></div>
 <aside class="notes">
 <p>25–30 min. Ask them to tick these live and put the count in the chat — instant picture of readiness.</p>
 <style type="text/css">
@@ -333,7 +363,7 @@ Klaudia Brzezińska
 <p><strong>Small and working &gt; big and broken</strong> 🌱</p>
 <p>If something is half-finished, say so in the README. Honesty is not a penalty.</p>
 <div class="fragment">
-<p><strong>If you used AI</strong>, that’s allowed for explaining and debugging — but next week you explain the code yourself. So go through it now, line by line. 📖</p>
+<p><strong>If you used AI</strong>, that’s allowed, but at the exam you explain the code yourself. So go through it now, line by line. 📖</p>
 <aside class="notes">
 <p>30–40 min. Non-accusatory framing. The message is “protect yourself”, not “I’m watching you”.</p>
 <style type="text/css">
@@ -376,16 +406,18 @@ Klaudia Brzezińska
 <h2>Before you go 📌</h2>
 <ol type="1">
 <li>Push everything 💾</li>
-<li>Sign up for an exam slot: [link] 📅</li>
-<li>Check your tool runs on a <strong>clean clone</strong> of your repo:</li>
+<li>Exam date at the <strong>top of your README</strong> 📅</li>
+<li>Check your project runs on a <strong>clean clone</strong> of your repo:</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="fu">git</span> clone <span class="op">&lt;</span>your repo<span class="op">&gt;</span> test-clone</span>
 <span id="cb1-2"><a></a><span class="bu">cd</span> test-clone</span>
-<span id="cb1-3"><a></a><span class="ex">python3</span> scripts/analysis.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv <span class="kw">&amp;&amp;</span> <span class="bu">source</span> .venv/bin/activate   <span class="co"># ⭐ if you use a venv</span></span>
+<span id="cb1-4"><a></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span>
+<span id="cb1-5"><a></a><span class="ex">python</span> scripts/main.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<p>See you next week 💛</p>
+<p>See you at your exam 💛</p>
 <aside class="notes">
-<p>75–80 min. The clean-clone test catches missing files — a very common exam-day surprise. TODO: add the booking link.</p>
+<p>75–80 min. The clean-clone test catches missing files — a very common exam-day surprise.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

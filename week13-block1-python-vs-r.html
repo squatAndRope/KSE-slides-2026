@@ -280,15 +280,16 @@ Klaudia Brzezińska
 <span id="cb4-6"><a></a></span>
 <span id="cb4-7"><a></a>plt.hist(df[<span class="st">"gc_content"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<p><strong>R</strong> 🇷</p>
+<p><strong>R</strong> 🇷 (dplyr + ggplot2)</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/samples.csv"</span>)</span>
 <span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>df[df<span class="sc">$</span>gc_content <span class="sc">&gt;</span> <span class="dv">45</span>, ]</span>
+<span id="cb5-3"><a></a>df <span class="sc">|&gt;</span> <span class="fu">filter</span>(gc_content <span class="sc">&gt;</span> <span class="dv">45</span>)</span>
 <span id="cb5-4"><a></a></span>
-<span id="cb5-5"><a></a><span class="fu">aggregate</span>(gc_content <span class="sc">~</span> organism,</span>
-<span id="cb5-6"><a></a>          <span class="at">data =</span> df, <span class="at">FUN =</span> mean)</span>
+<span id="cb5-5"><a></a>df <span class="sc">|&gt;</span> <span class="fu">group_by</span>(organism) <span class="sc">|&gt;</span></span>
+<span id="cb5-6"><a></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(gc_content))</span>
 <span id="cb5-7"><a></a></span>
-<span id="cb5-8"><a></a><span class="fu">hist</span>(df<span class="sc">$</span>gc_content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> gc_content)) <span class="sc">+</span></span>
+<span id="cb5-9"><a></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div class="fragment">
 <p>Different words, <strong>same four steps</strong>: read → filter → group → plot 🧠</p>
@@ -386,7 +387,7 @@ Klaudia Brzezińska
 <li>Run both — do they give the same answer? ✅</li>
 <li>In the chat: which version was shorter? Which was clearer? 🤔</li>
 </ol>
-<p>💡 <strong>Bonus:</strong> translate a plot from <strong>your project</strong> — it counts as the project bonus 🇷</p>
+<p>💡 <strong>Bonus:</strong> translate a plot from <strong>your project</strong> into ggplot2 🇷</p>
 <aside class="notes">
 <p>35–70 min. The comparison of their own code is far more convincing than my slides. Common trap: indexing from 1, and strsplit() returning a list.</p>
 <style type="text/css">
