@@ -43,6 +43,14 @@ nrow(seqs)
 
 . . .
 
+| R 🇷 | pandas 🐼 |
+|---|---|
+| `read.csv("data/samples.csv")` | `pd.read_csv("data/samples.csv")` |
+| `head(seqs)` | `df.head()` |
+| `str(seqs)` | `df.info()` / `df.dtypes` |
+| `summary(seqs)` | `df.describe()` |
+| `nrow(seqs)` | `len(df)` |
+
 **pandas saved it with `to_csv()`. R reads it.** 🐍🤝🇷
 
 ::: notes
@@ -81,9 +89,12 @@ boxplot(gc_content ~ organism, data = seqs)  # compare groups 📦
 
 . . .
 
-`main` `xlab` `ylab` `col` work almost everywhere.
-
-Same three plots as matplotlib last week — compare! 📊
+| R 🇷 | matplotlib 🐍 |
+|---|---|
+| `hist(x)` | `plt.hist(x)` |
+| `plot(x, y)` | `plt.scatter(x, y)` |
+| `boxplot(y ~ group, data = df)` | `df.boxplot(column="y", by="group")` |
+| `main=`, `xlab=`, `ylab=` | `plt.title()`, `plt.xlabel()`, `plt.ylabel()` |
 
 ## Saving a figure 💾
 
@@ -94,6 +105,8 @@ dev.off()          # ⚠️ don't forget this — it closes the file!
 ```
 
 . . .
+
+Python version: `plt.savefig("results/gc_plot.png")`, one line, no closing needed 🐍
 
 Now your figure is a file you can put in a report or a thesis 📄
 
@@ -141,10 +154,12 @@ Create `scripts/plot_report.R`:
 
 ## Wrap-up ✅ {.smaller}
 
-- `read.csv()` brings data in 📄
-- `summary()` and `str()` before anything else 🔍
-- `hist()` `plot()` `boxplot()` — one line each 📊
-- `png()` … `dev.off()` to save 💾
+| R 🇷 | Python 🐍 |
+|---|---|
+| `read.csv()` | `pd.read_csv()` 📄 |
+| `summary()` / `str()` | `describe()` / `info()` 🔍 |
+| `hist()` `plot()` `boxplot()` | `plt.hist()` `plt.scatter()` `boxplot()` 📊 |
+| `png()` … `dev.off()` | `plt.savefig()` 💾 |
 
 **Commit** 💾 your R script.
 

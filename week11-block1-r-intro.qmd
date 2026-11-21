@@ -98,13 +98,77 @@ In R, operations work on **whole vectors** at once.
 Same idea as numpy arrays from week 10 — in R it is built in, no library needed.
 :::
 
-## Indexing ⚠️ {.smaller}
+## Sounds familiar? numpy! 🐍🤝🇷 {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+**numpy** 🐍 (week 10)
+
+```python
+import numpy as np
+arr = np.array([120, 85, 300, 42])
+
+len(arr)
+arr.mean()
+arr.max()
+np.sort(arr)
+
+arr * 2
+arr > 100
+```
+:::
+::: {.column width="50%"}
+**R** 🇷
 
 ```r
-lengths[1]              # the FIRST element — R counts from 1! 🤨
-lengths[c(1, 3)]        # first and third
-lengths[lengths > 100]  # filtering by condition 🎯
+
+lengths <- c(120, 85, 300, 42)
+
+length(lengths)
+mean(lengths)
+max(lengths)
+sort(lengths)
+
+lengths * 2
+lengths > 100
 ```
+:::
+::::
+
+. . .
+
+A vector = a numpy array that is **built in**: no `import` needed ⚡
+
+Fun fact: R has no single numbers. `5` is a vector of length 1 → `length(5)` gives `1` 🤯
+
+::: notes
+They did numpy on 23.11, so this should click immediately. Ask them to predict each R line from the numpy one.
+:::
+
+## Indexing ⚠️ {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+**numpy** 🐍
+
+```python
+arr[0]            # first element
+arr[[0, 2]]       # first and third
+arr[arr > 100]    # filter 🎯
+```
+:::
+::: {.column width="50%"}
+**R** 🇷
+
+```r
+lengths[1]              # first element 🤨
+lengths[c(1, 3)]        # first and third
+lengths[lengths > 100]  # filter 🎯
+```
+:::
+::::
+
+Filtering by condition: **identical** ✅ Position: **different** ⚠️
 
 . . .
 
@@ -129,9 +193,17 @@ mean(seqs$gc)
 
 . . .
 
-Looks familiar? It's the same idea as a pandas DataFrame — pandas copied it from R 🐼🇷
+| R 🇷 | pandas 🐼 |
+|---|---|
+| `data.frame(...)` | `pd.DataFrame({...})` |
+| `head(seqs)` | `df.head()` |
+| `nrow(seqs)` | `len(df)` |
+| `seqs$length` → a **vector** | `df["length"]` → a **Series** |
+| `mean(seqs$gc)` | `df["gc"].mean()` |
 
-## Filtering rows 🎯
+pandas copied the idea from R 🐼🇷
+
+## Filtering rows 🎯 {.smaller}
 
 ```r
 seqs[seqs$length > 100, ]          # rows where length > 100
@@ -141,7 +213,13 @@ seqs$gc_percent <- seqs$gc * 100   # add a new column ➕
 
 . . .
 
-The comma matters: `[rows, columns]` 📐
+| R 🇷 | pandas 🐼 |
+|---|---|
+| `seqs[seqs$length > 100, ]` | `df[df["length"] > 100]` |
+| `seqs[seqs$gc > 0.5, "name"]` | `df.loc[df["gc"] > 0.5, "name"]` |
+| `seqs$gc_percent <- seqs$gc * 100` | `df["gc_percent"] = df["gc"] * 100` |
+
+The comma matters: `[rows, columns]`, just like `.loc[rows, columns]` 📐
 
 ## Exercise: First steps in R 🇷 {.smaller}
 
@@ -164,12 +242,12 @@ In RStudio, create `scripts/first_analysis.R`:
 
 ## Wrap-up ✅ {.smaller}
 
-| R | What it does |
-|---|---|
-| `x <- c(1,2,3)` | vector |
-| `mean()` `max()` `sort()` | stats, no loop needed ⚡ |
-| `df$column` | one column |
-| `df[df$x > 5, ]` | filter rows 🎯 |
+| R 🇷 | Python 🐍 | What it does |
+|---|---|---|
+| `x <- c(1,2,3)` | `np.array([1,2,3])` | vector / array |
+| `mean()` `max()` `sort()` | `.mean()` `.max()` `np.sort()` | stats, no loop ⚡ |
+| `df$column` | `df["column"]` | one column |
+| `df[df$x > 5, ]` | `df[df["x"] > 5]` | filter rows 🎯 |
 
 **Remember:** R counts from **1** ⚠️
 

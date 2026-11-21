@@ -56,6 +56,41 @@ Layers are added with **`+`** (not `|>`!) ➕
 The + vs |> mix-up is the #1 error of the block.
 :::
 
+## matplotlib vs ggplot2 🐍🤝🇷 {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+**matplotlib** 🐍: step by step
+
+```python
+plt.scatter(df["length"], df["gc_content"])
+plt.title("GC vs length")
+plt.xlabel("Length (bp)")
+plt.ylabel("GC (%)")
+plt.savefig("results/gc.png")
+```
+:::
+::: {.column width="50%"}
+**ggplot2** 🇷: describe, then add layers
+
+```r
+ggplot(df, aes(x = length, y = gc_content)) +
+  geom_point() +
+  labs(title = "GC vs length",
+       x = "Length (bp)", y = "GC (%)")
+ggsave("results/gc.png")
+```
+:::
+::::
+
+. . .
+
+Colour by group: matplotlib needs a **loop** over groups, ggplot2 needs **one word**: `colour = organism` 🎨
+
+::: notes
+12–15 min. The colour-by-group point is the best argument for ggplot2; show it on the next slides.
+:::
+
 ## Four plots you will actually use 📊 {.smaller}
 
 ```r

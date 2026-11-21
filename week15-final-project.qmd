@@ -22,8 +22,8 @@ You get a dataset. Your job: **understand it, ask questions, answer them with co
 |---|---|---|
 | 1 | 📥 **Get the data**: API, CSV or Excel | `requests` / `pandas` |
 | 2 | 🔍 **Explore** the data | `pandas` |
-| 3 | ❓ **Answer 5 required questions** | `pandas` |
-| 4 | 🧪 **Your own research**: 2 questions you choose | `pandas` |
+| 3 | ❓ **Answer 5 required questions** | `pandas` + `numpy` |
+| 4 | 🧪 **Your own research**: 2 questions you choose | `pandas` + `numpy` |
 | 5 | 📊 **Plots** | `matplotlib` |
 | ⭐ | **Bonus**: virtual environment + `requirements.txt` | `venv` |
 
@@ -106,6 +106,30 @@ Answer each with code, and write the answer in your README:
 These five work for any table that meets the data requirements on slide 1.
 Q1: ask them to comment if mean and median are very different (skewed data / outliers).
 Q5: correlation is not causation, one sentence about that in the README is enough.
+:::
+
+## pandas or numpy? 🐼🔢 {.smaller}
+
+Both are fine: use what you understand best ✅
+
+| Question | pandas 🐼 | numpy 🔢 |
+|---|---|---|
+| Q1 · min, max, mean, median | `df["col"].describe()` | `np.min()`, `np.max()`, `np.mean()`, `np.median()` |
+| Q2 · top 3 / bottom 3 | `df.nlargest(3, "col")` | `np.sort(arr)[-3:]` |
+| Q4 · % meeting a condition | `(df["col"] > x).mean() * 100` | `np.mean(arr > x) * 100` |
+| Q5 · are two columns related? | `df["a"].corr(df["b"])` | `np.corrcoef(a, b)[0, 1]` |
+
+. . .
+
+A pandas column → a numpy array: `arr = df["length"].to_numpy()` 🔁
+
+. . .
+
+💡 numpy also helps in your own research: `np.percentile()` for outliers, `np.log10()` for very skewed data, `np.where()` for a new yes/no column
+
+::: notes
+Q3 (groupby) has no simple numpy version: pandas is the right tool there, mention it if asked.
+(arr > x).mean(): True counts as 1, same trick as sum(gc > 0.5) in R.
 :::
 
 ## 4 · Your own research 🧪 {.smaller}
