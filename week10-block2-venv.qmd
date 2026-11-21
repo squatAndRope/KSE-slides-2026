@@ -1,0 +1,426 @@
+---
+title: "Week 10 · Block 2 — Virtual environments & data from the internet"
+subtitle: "Programming and Computing Basics · KSE 2026"
+author: "Klaudia Brzezińska"
+format:
+  revealjs:
+    theme: dark
+    highlight-style: github-dark
+    slide-number: true
+    code-copy: true
+    footer: "Programming and Computing Basics · Week 10"
+    transition: fade
+---
+
+## Warm-up 🔥 {.smaller}
+
+⏱️ 5 min · your browser
+
+Open this link in your browser:
+
+```
+https://rest.ensembl.org/lookup/symbol/homo_sapiens/BRCA2?content-type=application/json
+```
+
+. . .
+
+In the chat: on which **chromosome** is BRCA2? How long is the gene? 🧬
+
+::: notes
+0–5 min. Answer: chromosome 13 (seq_region_name), length = end - start + 1 (both ends count).
+They just used an API without writing any code. We come back to this in part 2.
+:::
+
+## Today 🗺️ {.smaller}
+
+| Part | Topic | Time |
+|---|---|---|
+| 1 | 📦 **Virtual environments**: your own clean box for each project | ~25 min |
+| 2 | 🌐 **APIs**: getting data straight from biological databases | ~45 min |
+| ✅ | Commit & push | ~5 min |
+
+. . .
+
+Both are things your **final project** will need 🚀
+
+::: notes
+5–7 min. Part 1 first on purpose: in part 2 we install `requests` *inside* a venv.
+:::
+
+# Part 1 · Virtual environments 📦
+
+## The problem 😩 {.smaller}
+
+So far: `pip3 install pandas` → installed **for the whole computer** 🌍
+
+. . .
+
+- Project A needs `pandas 1.5`, project B needs `pandas 2.2` 💥
+- Your code runs on your laptop… and crashes on mine 🤷
+- After a year you don't remember **what** you installed
+
+. . .
+
+> "But it works on my machine!" 😅
+
+::: notes
+7–10 min. Ask in the chat: has anyone had an install break something before?
+:::
+
+## The solution: a virtual environment 📦 {.smaller}
+
+A **folder inside your project** with its own Python and its own libraries.
+
+```
+my-project/
+├── .venv/              ← the box 📦 (Python + libraries)
+├── scripts/
+├── results/
+└── requirements.txt    ← the shopping list 🧾
+```
+
+. . .
+
+- One project = one `.venv` ✅
+- Delete it anytime, rebuild it from `requirements.txt` 🔁
+- `.venv` stays **on your computer**, `requirements.txt` goes to **Git** 💾
+
+::: notes
+10–12 min. Analogy: .venv is the fridge, requirements.txt is the shopping list.
+You don't send the fridge to a friend, you send the list.
+:::
+
+## Create and activate 🛠️ {.smaller}
+
+In the terminal, **inside your project folder**:
+
+```bash
+python3 -m venv .venv          # create the box (once)
+```
+
+. . .
+
+:::: {.columns}
+::: {.column width="50%"}
+🍎 🐧 **macOS / Linux**
+
+```bash
+source .venv/bin/activate
+```
+:::
+::: {.column width="50%"}
+🪟 **Windows (PowerShell)**
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+:::
+::::
+
+. . .
+
+It worked if your prompt starts with **`(.venv)`** 🎉
+
+```bash
+(.venv) $ which python      # Windows: where python
+/.../my-project/.venv/bin/python
+```
+
+::: notes
+12–16 min. Live demo. Windows: if PowerShell blocks the script, run once:
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+On Windows the command may be `python` instead of `python3`.
+VS Code: Ctrl/Cmd+Shift+P → "Python: Select Interpreter" → pick .venv.
+:::
+
+## Install, save, rebuild 🧾 {.smaller}
+
+```bash
+(.venv) $ pip install requests pandas matplotlib   # only into this box
+(.venv) $ pip freeze > requirements.txt            # write the shopping list
+```
+
+. . .
+
+Someone else (or you, on a new laptop) gets your repo:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt     # same libraries, same versions ✅
+```
+
+. . .
+
+Done for today? `deactivate` 👋
+
+::: notes
+16–19 min. Inside an active venv `pip` and `python` point to the box, no need for pip3/python3.
+Show requirements.txt content: package==version lines.
+:::
+
+## Keep the box out of Git 🙈 {.smaller}
+
+`.venv` is big (thousands of files) and specific to your computer.
+
+Add it to **`.gitignore`**:
+
+```
+.venv/
+__pycache__/
+```
+
+. . .
+
+| Goes to Git 💾 | Stays local 💻 |
+|---|---|
+| `scripts/`, `README.md` | `.venv/` |
+| `requirements.txt` | `__pycache__/` |
+
+::: notes
+19–20 min. Check with `git status`: .venv must not show up.
+:::
+
+## Exercise: your project's box 📦 {.smaller}
+
+⏱️ 7 min · on your own · react ✅ when done
+
+In **your repo** folder:
+
+1. Create a venv: `python3 -m venv .venv`
+2. Activate it → see **`(.venv)`** in the prompt
+3. `pip install requests pandas matplotlib`
+4. `pip freeze > requirements.txt`
+5. Add `.venv/` to `.gitignore`
+6. Commit `requirements.txt` and `.gitignore` 💾
+
+✅ Check: `git status` does **not** show `.venv/`
+
+::: notes
+20–27 min. Common issues: venv created in the wrong folder (home dir), PowerShell execution policy,
+forgetting to activate → packages installed globally again, .venv already committed
+(fix: git rm -r --cached .venv).
+:::
+
+# Part 2 · Data from the internet 🌐
+
+## What is an API? 🌐 {.smaller}
+
+A **web page** is made for humans 👀
+
+An **API** is a URL made for **programs** 🤖, and it returns *data*, not a layout.
+
+. . .
+
+```
+https://rest.ensembl.org / lookup/symbol / homo_sapiens / BRCA2
+        server              what to do      species       gene
+```
+
+. . .
+
+Big biological databases all have one: Ensembl, NCBI, UniProt, PDB… 🧬
+
+::: notes
+27–30 min. Read the URL as a sentence. Change BRCA2 to TP53 in the browser live.
+:::
+
+## Where to find biological data 🧬 {.smaller}
+
+| Database | What you find there | API docs |
+|---|---|---|
+| **Ensembl** 🧬 | genes, transcripts, sequences, variants, orthologs, for hundreds of species | [rest.ensembl.org](https://rest.ensembl.org) |
+| **NCBI** 📚 | GenBank sequences, genes, PubMed articles, sequencing runs (SRA) | [E-utilities](https://www.ncbi.nlm.nih.gov/books/NBK25501/) |
+| **UniProt** 🧪 | proteins: sequence, function, domains, where in the cell | [uniprot.org/help/api](https://www.uniprot.org/help/api) |
+| **PDB** 🔬 | experimental 3D structures of proteins and DNA | [RCSB web APIs](https://www.rcsb.org/docs/programmatic-access/web-apis-overview) |
+| **AlphaFold DB** 🤖 | predicted 3D structures for almost every known protein | [alphafold.ebi.ac.uk/api-docs](https://alphafold.ebi.ac.uk/api-docs) |
+| **KEGG** 🗺️ | metabolic and signalling pathways, which genes take part | [KEGG REST](https://www.kegg.jp/kegg/rest/keggapi.html) |
+
+. . .
+
+Same idea everywhere: **a URL in → data out** (JSON, FASTA or a table) 🔁
+
+::: notes
+~2 min, don't go through every row. Point out: these are good data sources for the final project.
+Today we only use Ensembl.
+:::
+
+## JSON = dictionaries you already know 📖 {.smaller}
+
+What you saw in the browser:
+
+```json
+{
+  "id": "ENSG00000139618",
+  "display_name": "BRCA2",
+  "biotype": "protein_coding",
+  "seq_region_name": "13",
+  "start": 32315086,
+  "end": 32400268,
+  "strand": 1
+}
+```
+
+. . .
+
+Keys and values → a Python **dictionary** (week 6!) 🎯
+
+::: notes
+32–34 min. Values shortened, the real response has more keys (description, assembly_name, …).
+:::
+
+## Asking from Python 🐍 {.smaller}
+
+`requests` is already in your box from part 1 📦 (`(.venv)` active?)
+
+```python
+import requests
+
+url = "https://rest.ensembl.org/lookup/symbol/homo_sapiens/BRCA2"
+response = requests.get(url, headers={"Content-Type": "application/json"})
+response.raise_for_status()      # stop with an error if something went wrong
+
+gene = response.json()           # JSON → dictionary
+print(gene["display_name"], gene["seq_region_name"])
+print("Length:", gene["end"] - gene["start"] + 1, "bp")
+```
+
+. . .
+
+`ModuleNotFoundError: requests`? → your venv is **not active** 😉
+
+::: notes
+34–39 min. Show what happens with a typo in the gene name: raise_for_status() gives an HTTPError (400).
+Same idea as FileNotFoundError: the outside world can fail.
+Deactivate on purpose and run again to show the ModuleNotFoundError.
+:::
+
+## Many genes → a table 📋 {.smaller}
+
+The bridge from last week: **list of dictionaries → DataFrame** 🪄
+
+```python
+import pandas as pd
+import requests
+
+genes = ["BRCA1", "BRCA2", "TP53", "EGFR", "MYC"]
+rows = []
+
+for symbol in genes:
+    url = f"https://rest.ensembl.org/lookup/symbol/homo_sapiens/{symbol}"
+    r = requests.get(url, headers={"Content-Type": "application/json"})
+    r.raise_for_status()
+    g = r.json()
+    rows.append({"gene": symbol, "chromosome": g["seq_region_name"],
+                 "length": g["end"] - g["start"] + 1})
+
+df = pd.DataFrame(rows)
+df.to_csv("results/genes.csv", index=False)     # save it! 💾
+```
+
+::: notes
+39–44 min. Every piece is something they know: loop (w5), dict (w6), list of dicts → DataFrame (w9), to_csv (w9).
+:::
+
+## Be a polite client 🙏 {.smaller}
+
+- **Save** what you downloaded → work on the CSV, not the API 💾
+- Don't ask 10 000 times in a loop: there are rate limits ⏳
+- Add a small pause if you ask many times: `time.sleep(0.2)`
+- No internet = your analysis still runs from the saved file ✅
+
+. . .
+
+> Download once, analyse many times. 🔁
+
+::: notes
+44–46 min. Important for the project and the oral exam: their tool must run without the network.
+:::
+
+## Exercise, part A: Fetch 🌐 {.smaller}
+
+⏱️ 10 min · breakout rooms · pairs · react ✅ · file: **`scripts/fetch_genes.py`**
+
+```python
+genes = ["BRCA1", "BRCA2", "TP53", "EGFR", "MYC", "KRAS", "CFTR", "HBB"]
+url = f"https://rest.ensembl.org/lookup/symbol/homo_sapiens/{symbol}"   # inside the loop
+```
+
+:::: {.columns}
+::: {.column width="50%"}
+1. Loop over `genes`, request each `url` with
+   `headers={"Content-Type": "application/json"}`
+2. Keep the 4 columns from the table →
+3. Save to **`results/genes.csv`** (`index=False`)
+
+✅ Check: **8 rows** + header
+:::
+::: {.column width="50%"}
+| column | from JSON |
+|---|---|
+| `gene` | your symbol |
+| `chromosome` | `seq_region_name` |
+| `length` | `end - start + 1` |
+| `strand` | `strand` (1 / -1) |
+:::
+::::
+
+::: notes
+46–56 min. "Many genes → a table" slide plus one extra column (strand).
+Common issues: venv not active (ModuleNotFoundError), forgetting the header (HTML/error),
+typo in a key → KeyError, results/ missing → OSError.
+If Ensembl is slow or down: paste a ready genes.csv in the chat and go to part B.
+:::
+
+## Exercise, part B: Analyse 📊 {.smaller}
+
+⏱️ 10 min · same pairs
+
+Create a **second** script **`scripts/plot_genes.py`** (no internet needed here!):
+
+1. Read `results/genes.csv` with pandas
+2. Sort the genes by `length`, longest first
+3. Draw a bar chart: genes on the x axis, length on the y axis
+4. Labels: x = `"Gene"`, y = `"Length (bp)"`, title = `"Length of 8 human genes"`
+5. Save it as **`results/gene_lengths.png`**
+
+💡 **Bonus** (answer in the chat):
+
+- Which gene is the longest? Which is the shortest? 🥇
+- Which genes are on the minus strand (`strand == -1`)? Filter them with pandas
+
+::: notes
+56–66 min. Two scripts on purpose: fetching and analysing are separate steps
+("download once, analyse many times").
+Expected: HBB is tiny compared to the others, the bar chart makes the scale difference obvious.
+Run the script once yourself before class to know the exact answers.
+Hint if needed: plt.xticks(rotation=45) if labels overlap.
+:::
+
+## Wrap-up 🎁 {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+📦 **Virtual environments**
+
+- one `.venv` per project
+- `requirements.txt` → Git
+- `.venv/` → `.gitignore`
+:::
+::: {.column width="50%"}
+🌐 **APIs**
+
+- URL in → JSON out → dict
+- `requests` + `raise_for_status()`
+- download once, analyse many times
+:::
+::::
+
+. . .
+
+**Commit & push** 💾 `fetch_genes.py`, `plot_genes.py`, `results/`, `requirements.txt`
+
+::: notes
+66–75 min. Quick round in the chat: one thing that clicked, one thing still confusing.
+Remaining minutes: buffer / help with stuck venvs.
+:::

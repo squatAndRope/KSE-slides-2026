@@ -89,16 +89,59 @@ lengths_arr * 2      # [2400 1960 3060]                    ✅
 
 . . .
 
+**Why?** You have seen this before, in week 3:
+
 ```python
-lengths_arr / 1000             # every element, no loop ✨
-lengths_arr - lengths_arr.mean()
+"AT" * 3             # "ATATAT"
 ```
 
-A list is a **container**. An array is a **vector of numbers** you can do maths on. 🧮
+A **list** can hold anything (numbers, text, other lists), so Python can't assume maths.
+For a list, `*` means **"repeat the contents"**, just like for a string 🔁
+
+An **array** holds **only numbers of one type**, so `*` means **"multiply every number"** 🧮
 
 ::: notes
-13–20 min. Live-code this. The list * 2 surprise always lands.
-Same idea as pandas new columns last week: the operation goes to every element at once.
+13–19 min. Live-code this. The list * 2 surprise always lands.
+Ask before revealing: "what do you think list * 2 gives?" Most will guess wrong, that's the point.
+:::
+
+## Maths on every element ✨ {.smaller}
+
+The number is applied to **each** element (numpy calls this *broadcasting*):
+
+```
+[1200, 980, 1530] * 2   →   [1200*2, 980*2, 1530*2]   →   [2400, 1960, 3060]
+```
+
+. . .
+
+```python
+lengths_arr / 1000       # bp → kb for every sample: [1.2  0.98 1.53]
+lengths_list / 1000      # TypeError ❌, a list would need a loop
+```
+
+. . .
+
+```python
+lengths_arr.mean()                  # one number: 1236.7
+lengths_arr - lengths_arr.mean()    # [-36.7 -256.7 293.3]
+```
+
+→ how much each sample is **longer or shorter than average** 📏
+
+. . .
+
+⚠️ Same trap with `+`:
+
+```python
+[1, 2] + [3, 4]                       # [1, 2, 3, 4]  → glued together
+np.array([1, 2]) + np.array([3, 4])   # [4 6]         → added
+```
+
+::: notes
+19–24 min. Same idea as pandas new columns last week: df["length"] / 1000 worked
+because the column IS an array.
+Lists are not "worse": for collecting mixed things and append() in a loop, a list is the right tool.
 :::
 
 ## Statistics in one line 📈 {.smaller}
@@ -122,7 +165,7 @@ gc[gc > 45]          # only the GC-rich values
 ```
 
 ::: notes
-20–27 min. The True-as-1 trick is worth a pause: counting with sum().
+24–29 min. The True-as-1 trick is worth a pause: counting with sum().
 :::
 
 ## Exercise 1: numpy warm-up 🧮 {.smaller}
@@ -139,7 +182,7 @@ In `scripts/numpy_practice.py`, using the `length` column as an array:
 💡 **Bonus:** `np.percentile(lengths, 90)`: what does it mean?
 
 ::: notes
-27–37 min. Q4: mean > median → a few long samples pull the mean up. Good intuition for skewed data.
+29–38 min. Q4: mean > median → a few long samples pull the mean up. Good intuition for skewed data.
 :::
 
 ## matplotlib: the idea 🎨 {.smaller}

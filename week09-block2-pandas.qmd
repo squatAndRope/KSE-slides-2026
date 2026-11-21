@@ -64,8 +64,65 @@ df.describe()    # quick statistics for numeric columns
 > Look at your data first. Most bugs are in the data, not in the code. 🔍
 
 ::: notes
-8–15 min. Notice: shape and columns have no () — they are attributes, not methods.
+8–12 min. Notice: shape and columns have no () — they are attributes, not methods.
 Students will mix this up; that's fine, the error message tells them.
+:::
+
+## Types: Python vs pandas 🏷️ {.smaller}
+
+```python
+df.dtypes
+```
+
+```
+sample            str      ← older pandas (< 3.0) shows: object
+organism          str
+gc_content    float64
+length          int64
+```
+
+. . .
+
+| Python 🐍 | pandas 🐼 | what's inside |
+|---|---|---|
+| `int` | `int64` | whole numbers |
+| `float` | `float64` | decimals (and missing values!) |
+| `str` | `str` / `object` | text |
+| `bool` | `bool` | True / False |
+
+. . .
+
+One **type per column**, not per value. A Python list can mix `[1, "a", 2.5]`, a pandas column can't 📏
+
+::: notes
+12–15 min. The 64 = 64 bits per number: pandas stores numbers like numpy, fixed size, fast.
+pandas 3.0 changed text columns from object to str — students on older installs will see object, both are fine.
+:::
+
+## When types go wrong ⚠️ {.smaller}
+
+pandas **guesses** the type when reading the CSV. Sometimes it guesses "wrong":
+
+```python
+pd.Series([1200, 980, None]).dtype    # float64, not int64! 😮
+```
+
+→ a single missing value turns a whole integer column into decimals (`NaN` is a float)
+
+. . .
+
+```python
+df["length"].dtype          # if it says str/object, a value is not a number
+df["length"].astype(int)    # convert, like int("1200") in plain Python
+```
+
+. . .
+
+> `.dtypes` is your first bug detector: a number column that says `str` means dirty data 🔍
+
+::: notes
+15–17 min. Typical real cause: "1,200" or "n/a" somewhere in the file.
+Same idea as week 3: input() returns a string, you call int() on it.
 :::
 
 ## Selecting columns 📏 {.smaller}
@@ -88,7 +145,7 @@ df[["sample", "gc_content"]]      # note: double brackets!
 ```
 
 ::: notes
-15–22 min. Double brackets = a list of column names inside the selector.
+17–23 min. Double brackets = a list of column names inside the selector.
 :::
 
 ## Filtering rows 🔎 {.smaller}
@@ -112,7 +169,7 @@ df[(df["organism"] == "Mus musculus") | (df["length"] < 900)]   # OR
 ⚠️ In pandas: `&` and `|`, **not** `and` / `or` — and **parentheses** around each condition
 
 ::: notes
-22–32 min. The & / parentheses rule is the #1 pandas error. Show the error once on purpose.
+23–32 min. The & / parentheses rule is the #1 pandas error. Show the error once on purpose.
 Connect to week 4: same logic as if, different syntax.
 :::
 
@@ -142,7 +199,12 @@ In week 5 this would have been a for loop.
 
 ⏱️ 15 min · your own screen · react ✅
 
-In `scripts/explore_samples.py`:
+Create `scripts/explore_samples.py` and read **`data/samples.csv`** (the 12-sample file from the warm-up):
+
+```python
+import pandas as pd
+df = pd.read_csv("data/samples.csv")
+```
 
 1. How many samples are there? Which organisms? 🔢
 2. What is the mean length of all samples? 📏
