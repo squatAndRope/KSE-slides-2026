@@ -18,14 +18,16 @@ You get a dataset. Your job: **understand it, ask questions, answer them with co
 
 . . .
 
+::: {style="font-size: 80%;"}
 | # | Component | Tool |
 |---|---|---|
 | 1 | 📥 **Get the data**: API, CSV or Excel | `requests` / `pandas` |
 | 2 | 🔍 **Explore** the data | `pandas` |
 | 3 | ❓ **Answer 5 required questions** | `pandas` + `numpy` |
-| 4 | 🧪 **Your own research**: 2 questions you choose | `pandas` + `numpy` |
+| 4 | 🧪 **Your own research**: 2 questions | `pandas` + `numpy` |
 | 5 | 📊 **Plots** | `matplotlib` |
-| ⭐ | **Bonus**: virtual environment + `requirements.txt` | `venv` |
+| ⭐ | **Bonus**: `venv` + `requirements.txt` | `venv` |
+:::
 
 . . .
 
