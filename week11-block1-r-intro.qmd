@@ -1,5 +1,5 @@
 ---
-title: "Week 12 · Block 1 — Hello, R"
+title: "Week 11 · Block 1 — Hello, R"
 subtitle: "Programming and Computing Basics · KSE 2026"
 author: "Klaudia Brzezińska"
 format:
@@ -8,7 +8,7 @@ format:
     highlight-style: github-dark
     slide-number: true
     code-copy: true
-    footer: "Programming and Computing Basics · Week 12"
+    footer: "Programming and Computing Basics · Week 11"
     transition: fade
 ---
 

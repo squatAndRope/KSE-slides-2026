@@ -1,5 +1,5 @@
 ---
-title: "Week 12 · Block 2 — Data & plots in R"
+title: "Week 11 · Block 2 — Data & plots in R"
 subtitle: "Programming and Computing Basics · KSE 2026"
 author: "Klaudia Brzezińska"
 format:
@@ -8,7 +8,7 @@ format:
     highlight-style: github-dark
     slide-number: true
     code-copy: true
-    footer: "Programming and Computing Basics · Week 12"
+    footer: "Programming and Computing Basics · Week 11"
     transition: fade
 ---
 
@@ -114,10 +114,10 @@ ggplot(seqs, aes(x = length, y = gc_content)) +
 . . .
 
 Prettier, more powerful, and a whole language of its own.
-Base R plots are enough for today — ggplot2 is your next step 🌱
+Base R plots are enough for today: ggplot2 gets **its own block** next class 🌱
 
 ::: notes
-Mention only. Going deeper needs a full block; point them to resources instead.
+Teaser only, Week 12 Block 2 is the full ggplot2 block.
 :::
 
 ## Exercise: Analyse your own data 🧬 {.smaller}
@@ -133,7 +133,7 @@ Create `scripts/plot_report.R`:
 5. Make a scatter plot of two numeric columns 🔗
 6. Save one figure into `results/` and commit the **script** (not the PNG 🙈)
 
-💡 **Bonus:** recreate one of your project plots in R — it counts as the project bonus 🇷
+💡 **Bonus:** recreate one of your project plots in R 🇷
 
 ::: notes
 35–75 min. Most common failure: wrong working directory (setwd / RStudio project). Have samples.csv in the chat as plan B.
@@ -150,7 +150,7 @@ Create `scripts/plot_report.R`:
 
 . . .
 
-Next week: Python vs R side by side, and last project lab 🛟
+Next class: **dplyr** (pandas, the R way) and **ggplot2** 🎨
 
 ::: notes
 75–80 min. Two students share their plot — first figures always get a nice reaction.

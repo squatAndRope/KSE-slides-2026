@@ -1,5 +1,5 @@
 ---
-title: "Week 14 · Oral exams & goodbye"
+title: "Oral exams & goodbye"
 subtitle: "Programming and Computing Basics · KSE 2026"
 author: "Klaudia Brzezińska"
 format:
@@ -8,15 +8,15 @@ format:
     highlight-style: github-dark
     slide-number: true
     code-copy: true
-    footer: "Programming and Computing Basics · Week 14"
+    footer: "Programming and Computing Basics · Oral exams"
     transition: fade
 ---
 
 ## Today 📅 {.smaller}
 
-**Both blocks: oral exams** 💬
+**Oral exams** 💬 · Mon 14 December & Fri 18 December
 
-- 15 minutes each, by the slots you booked 📅
+- 15 minutes each, on the date in your README 📅
 - Join the main room at your time
 - Have your repo open and your analysis ready to run ⚙️
 
@@ -26,7 +26,7 @@ Waiting for your turn? You are free to log off and come back 🙂
 
 ::: notes
 Opening slide — show for the first few minutes, then start the first exam.
-Timing: 160 min total ≈ 9–10 students with short breaks. Extra slots outside class if the group is bigger.
+Timing: 160 min per day ≈ 9–10 students with short breaks, so two days ≈ 18–20 students.
 :::
 
 ## While you wait ⏳ {.smaller}
@@ -76,7 +76,7 @@ Today you can:
 - download data from biological databases with an API 🌐
 - debug your own code 🔍
 - collaborate with Git, branches and pull requests 👥
-- take your first steps in R 🇷
+- analyse and plot data in R with dplyr and ggplot2 🇷
 
 . . .
 

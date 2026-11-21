@@ -1,0 +1,201 @@
+---
+title: "Week 12 · Block 2 — Plots with ggplot2"
+subtitle: "Programming and Computing Basics · KSE 2026"
+author: "Klaudia Brzezińska"
+format:
+  revealjs:
+    theme: dark
+    highlight-style: github-dark
+    slide-number: true
+    code-copy: true
+    footer: "Programming and Computing Basics · Week 12"
+    transition: fade
+---
+
+## Warm-up 🔥 {.smaller}
+
+⏱️ 5 min · with dplyr
+
+```r
+library(dplyr)
+seqs <- read.csv("data/samples.csv")
+```
+
+Per `organism`: how many samples, and the mean `length`? 🤔
+
+::: notes
+0–5 min. group_by(organism) |> summarise(n = n(), mean_length = mean(length)).
+We'll plot exactly this later in the block.
+:::
+
+## The idea: a plot is built in layers 🧱 {.smaller}
+
+Every ggplot has 3 parts:
+
+| Part | Question | Example |
+|---|---|---|
+| **data** | which table? | `seqs` |
+| **aes** (aesthetics) | which column goes **where**? | x = length, y = gc_content |
+| **geom** | which **shape**? | points, bars, boxes |
+
+. . .
+
+```r
+library(ggplot2)
+
+ggplot(seqs, aes(x = length, y = gc_content)) +
+  geom_point()
+```
+
+. . .
+
+Layers are added with **`+`** (not `|>`!) ➕
+
+::: notes
+5–12 min. Draw it as a recipe: data → map columns → choose a shape.
+The + vs |> mix-up is the #1 error of the block.
+:::
+
+## Four plots you will actually use 📊 {.smaller}
+
+```r
+ggplot(seqs, aes(x = gc_content)) + geom_histogram(bins = 15)    # distribution
+ggplot(seqs, aes(x = length, y = gc_content)) + geom_point()     # relationship
+ggplot(seqs, aes(x = organism, y = gc_content)) + geom_boxplot() # compare groups
+ggplot(seqs, aes(x = organism)) + geom_bar()                     # count per group
+```
+
+. . .
+
+Same plots as `hist()`, `plot()`, `boxplot()` last class, and matplotlib before that 🔁
+
+::: notes
+12–20 min. Run all four live. geom_bar counts rows itself, no group_by needed.
+:::
+
+## Colour = another column 🎨 {.smaller}
+
+Inside `aes()`, colour is **data**:
+
+```r
+ggplot(seqs, aes(x = length, y = gc_content, colour = organism)) +
+  geom_point(size = 3)
+```
+
+. . .
+
+Outside `aes()`, colour is just **style**:
+
+```r
+ggplot(seqs, aes(x = gc_content)) +
+  geom_histogram(bins = 15, fill = "steelblue")
+```
+
+. . .
+
+The legend appears **automatically** ✨
+
+::: notes
+20–25 min. Rule of thumb: depends on a column → inside aes(); fixed value → outside.
+:::
+
+## Labels & a clean look 🏷️ {.smaller}
+
+```r
+ggplot(seqs, aes(x = length, y = gc_content, colour = organism)) +
+  geom_point(size = 3) +
+  labs(title  = "GC content vs sequence length",
+       x      = "Length (bp)",
+       y      = "GC content (%)",
+       colour = "Organism") +
+  theme_minimal()
+```
+
+. . .
+
+Small multiples: one panel per group 🪟
+
+```r
+  + facet_wrap(~ organism)
+```
+
+::: notes
+25–30 min. Try theme_bw(), theme_classic() too. facet_wrap is a ggplot superpower, matplotlib needs subplots for this.
+:::
+
+## dplyr → ggplot2 🤝 {.smaller}
+
+Summarise first, then plot the summary:
+
+```r
+seqs |>
+  group_by(organism) |>
+  summarise(mean_length = mean(length)) |>
+  ggplot(aes(x = organism, y = mean_length)) +
+  geom_col(fill = "steelblue") +
+  labs(title = "Mean length per organism", x = "Organism", y = "Mean length (bp)")
+```
+
+. . .
+
+`|>` until the table is ready, then **`+`** for the layers ⚠️
+
+::: notes
+30–35 min. geom_col = bars with heights from the data; geom_bar = counts rows.
+:::
+
+## Saving 💾 {.smaller}
+
+```r
+p <- ggplot(seqs, aes(x = gc_content)) +
+  geom_histogram(bins = 15)
+
+ggsave("results/gc_histogram.png", p, width = 8, height = 5)
+```
+
+. . .
+
+No `png()` … `dev.off()` this time 🙌
+
+::: notes
+35–37 min. width/height in inches by default.
+:::
+
+## Exercise: three plots 🖼️ {.smaller}
+
+⏱️ 35 min · breakout rooms · pairs · file: **`scripts/plots.R`**
+
+Use `data/samples.csv` (or **your own project data** 🎯):
+
+1. 📊 Histogram of `gc_content`, filled with a colour of your choice
+2. ⚫ Scatter plot `length` vs `gc_content`, **coloured by** `organism`
+3. 📦 Bar chart of **mean** `length` per organism (dplyr → `geom_col`)
+4. Every plot: title + axis labels (`labs()`) + a theme
+5. Save all three with `ggsave()` into `results/`
+
+💡 **Bonus:** add `facet_wrap(~ organism)` to the scatter plot
+
+**Commit** 💾 `plots.R` (not the PNGs 🙈)
+
+::: notes
+37–75 min. Common issues: |> instead of + (error "could not find function geom_point" or weird pipe errors),
+colour outside aes() with a column name, results/ folder missing.
+:::
+
+## Wrap-up ✅ {.smaller}
+
+```r
+ggplot(data, aes(x = ..., y = ..., colour = ...)) +   # what & where
+  geom_point() +                                     # which shape
+  labs(title = ..., x = ..., y = ...) +               # labels
+  theme_minimal()                                    # look
+ggsave("results/plot.png")                           # save
+```
+
+. . .
+
+Next class: **Python vs R** side by side, and the last check before your deadline 🏁
+
+::: notes
+75–80 min. Two pairs share their scatter plot.
+:::

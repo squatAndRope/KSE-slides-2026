@@ -12,9 +12,12 @@ format:
     transition: fade
 ---
 
-## One week to go 📅 {.smaller}
+## Almost there 📅 {.smaller}
 
-Next week: your **15 minutes** with me 💬
+| 🗣️ Your oral exam | 📬 Your deadline |
+|---|---|
+| Mon 14 December 🏃 | **Fri 11 December** |
+| Fri 18 December 🐢 | **Mon 14 December** |
 
 Today:
 
@@ -63,15 +66,30 @@ No memorising. No trick questions. Your code is open in front of you 📖
 
 ## Final checklist ✅ {.smaller}
 
-- [ ] Main script runs: `python3 scripts/analysis.py` ⚙️
-- [ ] Own module with ≥ 3 functions, imported 📦
-- [ ] Data saved in `data/` (file or API download) 💾
-- [ ] pandas: a filter, a sort or groupby, a new column 🐼
-- [ ] ≥ 2 plots with title + axis labels in `figures/` 📊
-- [ ] Friendly message when the data file is missing 🛡️
-- [ ] README: question, how to run, **what you found** 📖
+:::: {.columns}
+::: {.column width="50%"}
+**Project**
+
+- [ ] Runs from start to end, following your README ▶️
+- [ ] Data in `data/`: ≥ 50 rows, 2 numeric + 1 category column 📄
+- [ ] Exploration: shape, types, missing values 🔍
+- [ ] Q1–Q5 answered 🔢
+- [ ] 2 own questions 🧪
+- [ ] ≥ 3 plots, different types, titles + labels, in `results/` 📊
+- [ ] Code split into files, ≥ 2 functions 🗂️
+- [ ] Friendly message if the data file is missing 🛡️
+:::
+::: {.column width="50%"}
+**Repo & README**
+
+- [ ] Public repo, `squatAndRope` invited 📬
+- [ ] `.gitignore` (`.venv/`, `__pycache__/`) 🙈
+- [ ] README: **exam date**, how to run, data, answers, conclusions, problems 📖
 - [ ] Commits spread over several days 📈
+- [ ] ⭐ Bonus: `requirements.txt`
 - [ ] **You can explain every line** 🗣️
+:::
+::::
 
 ::: notes
 25–30 min. Ask them to tick these live and put the count in the chat — instant picture of readiness.
@@ -85,7 +103,7 @@ If something is half-finished, say so in the README. Honesty is not a penalty.
 
 . . .
 
-**If you used AI**, that's allowed for explaining and debugging — but next week you explain the code yourself.
+**If you used AI**, that's allowed, but at the exam you explain the code yourself.
 So go through it now, line by line. 📖
 
 ::: notes
@@ -109,20 +127,21 @@ So go through it now, line by line. 📖
 ## Before you go 📌 {.smaller}
 
 1. Push everything 💾
-2. Sign up for an exam slot: [link] 📅
-3. Check your tool runs on a **clean clone** of your repo:
+2. Exam date at the **top of your README** 📅
+3. Check your project runs on a **clean clone** of your repo:
 
 ```bash
 git clone <your repo> test-clone
 cd test-clone
-python3 scripts/analysis.py
+python3 -m venv .venv && source .venv/bin/activate   # ⭐ if you use a venv
+pip install -r requirements.txt
+python scripts/main.py
 ```
 
 . . .
 
-See you next week 💛
+See you at your exam 💛
 
 ::: notes
 75–80 min. The clean-clone test catches missing files — a very common exam-day surprise.
-TODO: add the booking link.
 :::

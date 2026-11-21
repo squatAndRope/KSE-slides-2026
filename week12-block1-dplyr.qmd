@@ -1,0 +1,235 @@
+---
+title: "Week 12 · Block 1 — dplyr: pandas, the R way"
+subtitle: "Programming and Computing Basics · KSE 2026"
+author: "Klaudia Brzezińska"
+format:
+  revealjs:
+    theme: dark
+    highlight-style: github-dark
+    slide-number: true
+    code-copy: true
+    footer: "Programming and Computing Basics · Week 12"
+    transition: fade
+---
+
+## Warm-up 🔥 {.smaller}
+
+⏱️ 5 min · RStudio
+
+```r
+seqs <- read.csv("data/samples.csv")
+```
+
+1. How many rows?
+2. Only the rows with `gc_content` above 50
+3. The mean `length` 🤔
+
+::: notes
+0–5 min. Base R recall from last class: nrow(), seqs[seqs$gc_content > 50, ], mean(seqs$length).
+Have samples.csv in the chat (columns: sample, organism, gc_content, length).
+:::
+
+## Base R works, but… 😵 {.smaller}
+
+```r
+seqs[seqs$gc_content > 50 & seqs$organism == "E. coli", c("sample", "length")]
+```
+
+. . .
+
+Lots of `$`, `[ , ]` and repeating `seqs` 😩
+
+. . .
+
+**dplyr**: a package with **verbs** that read like sentences ✨
+
+```r
+seqs |>
+  filter(gc_content > 50, organism == "E. coli") |>
+  select(sample, length)
+```
+
+::: notes
+5–8 min. Read the dplyr version out loud: "take seqs, then filter, then select".
+:::
+
+## Install once, load every time 📦 {.smaller}
+
+```r
+install.packages(c("dplyr", "ggplot2"))   # once, in the Console
+```
+
+```r
+library(dplyr)                             # at the top of every script
+```
+
+. . .
+
+Same idea as Python:
+
+| Python | R |
+|---|---|
+| `pip install pandas` | `install.packages("dplyr")` |
+| `import pandas as pd` | `library(dplyr)` |
+
+::: notes
+8–12 min. Install ggplot2 now too, next block needs it.
+Messages about "masked objects" when loading dplyr are normal, not errors.
+:::
+
+## The pipe `|>` 🚰 {.smaller}
+
+`|>` = **"and then"**: the result on the left goes into the function on the right
+
+```r
+seqs |> head()          # same as head(seqs)
+seqs |> nrow()          # same as nrow(seqs)
+```
+
+. . .
+
+Chain steps, top to bottom, like a recipe 📜
+
+```r
+seqs |>
+  filter(length > 1000) |>
+  arrange(desc(gc_content)) |>
+  head(3)
+```
+
+. . .
+
+Keyboard shortcut: **Ctrl/Cmd + Shift + M** ⌨️
+
+::: notes
+12–16 min. You may see %>% in older code and tutorials: same idea, from the magrittr package.
+|> needs R 4.1+. If the shortcut inserts %>%: Tools → Global Options → Code → "Use native pipe operator".
+:::
+
+## Five verbs 🧰 {.smaller}
+
+| dplyr 🇷 | What it does | pandas 🐼 |
+|---|---|---|
+| `filter()` | keep **rows** that match | `df[df["x"] > 5]` |
+| `select()` | keep **columns** | `df[["a", "b"]]` |
+| `arrange()` | **sort** rows | `sort_values()` |
+| `mutate()` | add a **new column** | `df["new"] = ...` |
+| `summarise()` | **one number** from many | `.mean()`, `.count()` |
+
+. . .
+
++ `group_by()`: do it **per group** (= `groupby()`) 👥
+
+::: notes
+16–20 min. The pandas column is the key: they already know every one of these ideas.
+:::
+
+## `filter` & `select` 🎯 {.smaller}
+
+```r
+seqs |> filter(gc_content > 50)                         # rows
+seqs |> filter(organism == "E. coli", length > 1000)    # comma = AND
+seqs |> filter(organism %in% c("E. coli", "B. subtilis"))
+
+seqs |> select(sample, gc_content)                      # columns
+seqs |> select(-length)                                 # all except length
+```
+
+. . .
+
+No quotes around column names, no `seqs$` 🙌
+
+::: notes
+20–25 min. %in% is the R version of Python's "in".
+:::
+
+## `arrange` & `mutate` 🔃 {.smaller}
+
+```r
+seqs |> arrange(length)                # smallest first
+seqs |> arrange(desc(length))          # largest first
+
+seqs |> slice_max(length, n = 3)       # top 3 🥇
+seqs |> slice_min(length, n = 3)       # bottom 3
+```
+
+. . .
+
+```r
+seqs <- seqs |>
+  mutate(length_kb = length / 1000,
+         high_gc   = gc_content > 50)  # TRUE / FALSE
+```
+
+. . .
+
+⚠️ dplyr **never changes** `seqs` by itself: save with `seqs <- ...`
+
+::: notes
+25–30 min. Same as pandas: a new DataFrame unless you assign it.
+:::
+
+## `group_by` + `summarise` 👥 {.smaller}
+
+The most useful pair in data analysis:
+
+```r
+seqs |>
+  group_by(organism) |>
+  summarise(n_samples   = n(),
+            mean_gc     = mean(gc_content),
+            max_length  = max(length))
+```
+
+. . .
+
+Just counting? There's a shortcut:
+
+```r
+seqs |> count(organism, sort = TRUE)
+```
+
+::: notes
+30–35 min. Compare live with pandas: df.groupby("organism")["gc_content"].mean().
+n() = number of rows in the group.
+:::
+
+## Exercise: your project questions, in R 🔄 {.smaller}
+
+⏱️ 35 min · breakout rooms · pairs · file: **`scripts/questions.R`**
+
+Use `data/samples.csv` (or **your own project data** 🎯):
+
+1. **Q1** · `summary()` of the numeric columns
+2. **Q2** · top 3 and bottom 3 by `length` (`slice_max` / `slice_min`)
+3. **Q3** · per `organism`: number of samples + mean `gc_content`
+4. **Q4** · how many samples have `length > 1000`? What **%** of all?
+5. **Q5** · are `length` and `gc_content` related? `cor(seqs$length, seqs$gc_content)`
+
+💡 **Bonus:** `mutate()` a `length_kb` column and sort by it
+
+**Commit** 💾 `questions.R`
+
+::: notes
+35–75 min. These are exactly the 5 required project questions: they practise the logic twice.
+Q4 hint: nrow(filter(...)) and divide by nrow(seqs); or mean(seqs$length > 1000) * 100 (TRUE = 1 trick from last class).
+Common issues: forgot library(dplyr) → "could not find function filter"; == vs =.
+:::
+
+## Wrap-up ✅ {.smaller}
+
+```r
+seqs |>                          # take the data, and then…
+  filter(length > 1000) |>       # keep some rows
+  mutate(kb = length / 1000) |>  # add a column
+  group_by(organism) |>          # per group…
+  summarise(mean_kb = mean(kb))  # …one number
+```
+
+. . .
+
+Next block: **ggplot2**, plots you can put in a thesis 🎨
+
+::: notes
+75–80 min. One pair shares their Q3 result.
+:::

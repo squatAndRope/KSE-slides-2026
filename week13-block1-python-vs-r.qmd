@@ -84,17 +84,18 @@ plt.hist(df["gc_content"])
 ```
 :::
 ::: {.column width="50%"}
-**R** 🇷
+**R** 🇷 (dplyr + ggplot2)
 
 ```r
 df <- read.csv("data/samples.csv")
 
-df[df$gc_content > 45, ]
+df |> filter(gc_content > 45)
 
-aggregate(gc_content ~ organism,
-          data = df, FUN = mean)
+df |> group_by(organism) |>
+  summarise(mean(gc_content))
 
-hist(df$gc_content)
+ggplot(df, aes(x = gc_content)) +
+  geom_histogram()
 ```
 :::
 ::::
@@ -151,7 +152,7 @@ Take one of your **own** Python scripts from weeks 3–10 and rewrite a piece of
 3. Run both — do they give the same answer? ✅
 4. In the chat: which version was shorter? Which was clearer? 🤔
 
-💡 **Bonus:** translate a plot from **your project** — it counts as the project bonus 🇷
+💡 **Bonus:** translate a plot from **your project** into ggplot2 🇷
 
 ::: notes
 35–70 min. The comparison of their own code is far more convincing than my slides.
