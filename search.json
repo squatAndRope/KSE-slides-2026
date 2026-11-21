@@ -970,7 +970,7 @@
     "href": "week11-block1-r-intro.html#data-frames-tables",
     "title": "Week 11 · Block 1 — Hello, R",
     "section": "Data frames: tables 📊",
-    "text": "Data frames: tables 📊\nseqs &lt;- data.frame(\n  name   = c(\"seq1\", \"seq2\", \"seq3\"),\n  length = c(120, 85, 300),\n  gc     = c(0.55, 0.41, 0.62)\n)\n\nhead(seqs)          # first rows\nnrow(seqs)          # number of rows\nseqs$length         # one column as a vector\nmean(seqs$gc)\n\n\n\n\nR 🇷\npandas 🐼\n\n\n\n\ndata.frame(...)\npd.DataFrame({...})\n\n\nhead(seqs)\ndf.head()\n\n\nnrow(seqs)\nlen(df)\n\n\nseqs$length → a vector\ndf[\"length\"] → a Series\n\n\nmean(seqs$gc)\ndf[\"gc\"].mean()\n\n\n\npandas copied the idea from R 🐼🇷"
+    "text": "Data frames: tables 📊\nseqs &lt;- data.frame(\n  name   = c(\"seq1\", \"seq2\", \"seq3\"),\n  length = c(120, 85, 300),\n  gc     = c(0.55, 0.41, 0.62)\n)\n\nhead(seqs)          # first rows\nnrow(seqs)          # number of rows\nseqs$length         # one column as a vector\nmean(seqs$gc)\n\n\n\n\nR 🇷\npandas 🐼\n\n\n\n\ndata.frame(...)\npd.DataFrame({...})\n\n\nhead(seqs)\ndf.head()\n\n\nnrow(seqs)\nlen(df)\n\n\nseqs$length → a vector\ndf[\"length\"] → a Series\n\n\nmean(seqs$gc)\ndf[\"gc\"].mean()\n\n\n\npandas was inspired by R’s data.frame 🐼 (McKinney, SciPy 2010)"
   },
   {
     "objectID": "week11-block1-r-intro.html#filtering-rows",
