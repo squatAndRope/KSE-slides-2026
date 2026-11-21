@@ -76,6 +76,45 @@ Run a line: **Ctrl/Cmd + Enter** ⏎
 Screen share and point at each panel. The Environment panel is something Python beginners never get — highlight it.
 :::
 
+## R + Git: nothing new 💾 {.smaller}
+
+**1. Open your repo as a project** (once)
+
+*File → New Project → Existing Directory* → pick your repo folder 📁
+
+→ `read.csv("data/...")` just works, no working-directory trouble ✅
+
+. . .
+
+**2. Save scripts in `scripts/`**, like your `.py` files 📄
+
+. . .
+
+**3. Commit in the terminal, as always** (RStudio has a **Terminal** tab next to Console 🖥️)
+
+```bash
+git add scripts/first_analysis.R
+git commit -m "First R analysis"
+git push
+```
+
+. . .
+
+**4. Add to `.gitignore`** what RStudio creates by itself 🙈
+
+```
+.Rproj.user/
+.Rhistory
+.RData
+```
+
+::: notes
+Do this live BEFORE they write any code, so nobody saves scripts in the home folder.
+Skip RStudio's Git pane on purpose: it needs extra setup (git path, Windows quirks). The terminal works the same as all semester.
+The .Rproj file itself can be committed, it's small and harmless.
+If the Terminal tab is missing: Tools → Terminal → New Terminal.
+:::
+
 ## Vectors: R's superpower ⚡ {.smaller}
 
 ```r
