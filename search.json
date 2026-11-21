@@ -2027,7 +2027,7 @@
     "href": "week15-final-project.html#your-role-data-analyst",
     "title": "Final project 🚀",
     "section": "Your role: data analyst 🕵️",
-    "text": "Your role: data analyst 🕵️\nYou get a dataset. Your job: understand it, ask questions, answer them with code, show the answers in plots.\n\n\n\n\n\n\n\n\n\n#\nComponent\nTool\n\n\n\n\n1\n📥 Get the data: API, CSV or Excel\nrequests / pandas\n\n\n2\n🔍 Explore the data\npandas\n\n\n3\n❓ Answer 5 required questions\npandas + numpy\n\n\n4\n🧪 Your own research: 2 questions you choose\npandas + numpy\n\n\n5\n📊 Plots\nmatplotlib\n\n\n⭐\nBonus: virtual environment + requirements.txt\nvenv\n\n\n\n\n\nIndividual work, done at home, outside class 🏠\n\nPoints 1–5 = 100%. The bonus is extra on top."
+    "text": "Your role: data analyst 🕵️\nYou get a dataset. Your job: understand it, ask questions, answer them with code, show the answers in plots.\n\n\n\n\n\n#\nComponent\nTool\n\n\n\n\n1\n📥 Get the data: API, CSV or Excel\nrequests / pandas\n\n\n2\n🔍 Explore the data\npandas\n\n\n3\n❓ Answer 5 required questions\npandas + numpy\n\n\n4\n🧪 Your own research: 2 questions\npandas + numpy\n\n\n5\n📊 Plots\nmatplotlib\n\n\n⭐\nBonus: venv + requirements.txt\nvenv\n\n\n\n\n\n\nIndividual work, done at home, outside class 🏠\n\nPoints 1–5 = 100%. The bonus is extra on top."
   },
   {
     "objectID": "week15-final-project.html#get-the-data",
