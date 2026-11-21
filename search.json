@@ -945,6 +945,13 @@
     "text": "RStudio 🖥️\nFour panels:\n\nConsole — try things out (like python3 interactive)\nScript — your saved code 💾\nEnvironment — what variables exist right now 👀\nPlots / Files 📊\n\n\nRun a line: Ctrl/Cmd + Enter ⏎\n\nScreen share and point at each panel. The Environment panel is something Python beginners never get — highlight it."
   },
   {
+    "objectID": "week11-block1-r-intro.html#r-git-nothing-new",
+    "href": "week11-block1-r-intro.html#r-git-nothing-new",
+    "title": "Week 11 · Block 1 — Hello, R",
+    "section": "R + Git: nothing new 💾",
+    "text": "R + Git: nothing new 💾\n1. Open your repo as a project (once)\nFile → New Project → Existing Directory → pick your repo folder 📁\n→ read.csv(\"data/...\") just works, no working-directory trouble ✅\n\n2. Save scripts in scripts/, like your .py files 📄\n\n\n3. Commit in the terminal, as always (RStudio has a Terminal tab next to Console 🖥️)\ngit add scripts/first_analysis.R\ngit commit -m \"First R analysis\"\ngit push\n\n\n4. Add to .gitignore what RStudio creates by itself 🙈\n.Rproj.user/\n.Rhistory\n.RData\n\nDo this live BEFORE they write any code, so nobody saves scripts in the home folder. Skip RStudio’s Git pane on purpose: it needs extra setup (git path, Windows quirks). The terminal works the same as all semester. The .Rproj file itself can be committed, it’s small and harmless. If the Terminal tab is missing: Tools → Terminal → New Terminal."
+  },
+  {
     "objectID": "week11-block1-r-intro.html#vectors-rs-superpower",
     "href": "week11-block1-r-intro.html#vectors-rs-superpower",
     "title": "Week 11 · Block 1 — Hello, R",
