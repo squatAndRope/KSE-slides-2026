@@ -359,11 +359,67 @@ Klaudia Brzezińska
       }</style></aside>
 </div>
 </section>
+<section id="sounds-familiar-numpy" class="slide level2 smaller">
+<h2>Sounds familiar? numpy! 🐍🤝🇷</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>numpy</strong> 🐍 (week 10)</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a></a>arr <span class="op">=</span> np.array([<span class="dv">120</span>, <span class="dv">85</span>, <span class="dv">300</span>, <span class="dv">42</span>])</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="bu">len</span>(arr)</span>
+<span id="cb2-5"><a></a>arr.mean()</span>
+<span id="cb2-6"><a></a>arr.<span class="bu">max</span>()</span>
+<span id="cb2-7"><a></a>np.sort(arr)</span>
+<span id="cb2-8"><a></a></span>
+<span id="cb2-9"><a></a>arr <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb2-10"><a></a>arr <span class="op">&gt;</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<p><strong>R</strong> 🇷</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a></span>
+<span id="cb3-2"><a></a>lengths <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">85</span>, <span class="dv">300</span>, <span class="dv">42</span>)</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="fu">length</span>(lengths)</span>
+<span id="cb3-5"><a></a><span class="fu">mean</span>(lengths)</span>
+<span id="cb3-6"><a></a><span class="fu">max</span>(lengths)</span>
+<span id="cb3-7"><a></a><span class="fu">sort</span>(lengths)</span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a>lengths <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb3-10"><a></a>lengths <span class="sc">&gt;</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="fragment">
+<p>A vector = a numpy array that is <strong>built in</strong>: no <code>import</code> needed ⚡</p>
+<p>Fun fact: R has no single numbers. <code>5</code> is a vector of length 1 → <code>length(5)</code> gives <code>1</code> 🤯</p>
+<aside class="notes">
+<p>They did numpy on 23.11, so this should click immediately. Ask them to predict each R line from the numpy one.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
 <section id="indexing" class="slide level2 smaller">
 <h2>Indexing ⚠️</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>lengths[<span class="dv">1</span>]              <span class="co"># the FIRST element — R counts from 1! 🤨</span></span>
-<span id="cb2-2"><a></a>lengths[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]        <span class="co"># first and third</span></span>
-<span id="cb2-3"><a></a>lengths[lengths <span class="sc">&gt;</span> <span class="dv">100</span>]  <span class="co"># filtering by condition 🎯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>numpy</strong> 🐍</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>arr[<span class="dv">0</span>]            <span class="co"># first element</span></span>
+<span id="cb4-2"><a></a>arr[[<span class="dv">0</span>, <span class="dv">2</span>]]       <span class="co"># first and third</span></span>
+<span id="cb4-3"><a></a>arr[arr <span class="op">&gt;</span> <span class="dv">100</span>]    <span class="co"># filter 🎯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<p><strong>R</strong> 🇷</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>lengths[<span class="dv">1</span>]              <span class="co"># first element 🤨</span></span>
+<span id="cb5-2"><a></a>lengths[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]        <span class="co"># first and third</span></span>
+<span id="cb5-3"><a></a>lengths[lengths <span class="sc">&gt;</span> <span class="dv">100</span>]  <span class="co"># filter 🎯</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<p>Filtering by condition: <strong>identical</strong> ✅ Position: <strong>different</strong> ⚠️</p>
 <div class="fragment">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -382,27 +438,83 @@ Klaudia Brzezińska
 </section>
 <section id="data-frames-tables" class="slide level2 smaller">
 <h2>Data frames: tables 📊</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>seqs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb3-2"><a></a>  <span class="at">name   =</span> <span class="fu">c</span>(<span class="st">"seq1"</span>, <span class="st">"seq2"</span>, <span class="st">"seq3"</span>),</span>
-<span id="cb3-3"><a></a>  <span class="at">length =</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">85</span>, <span class="dv">300</span>),</span>
-<span id="cb3-4"><a></a>  <span class="at">gc     =</span> <span class="fu">c</span>(<span class="fl">0.55</span>, <span class="fl">0.41</span>, <span class="fl">0.62</span>)</span>
-<span id="cb3-5"><a></a>)</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a><span class="fu">head</span>(seqs)          <span class="co"># first rows</span></span>
-<span id="cb3-8"><a></a><span class="fu">nrow</span>(seqs)          <span class="co"># number of rows</span></span>
-<span id="cb3-9"><a></a>seqs<span class="sc">$</span>length         <span class="co"># one column as a vector</span></span>
-<span id="cb3-10"><a></a><span class="fu">mean</span>(seqs<span class="sc">$</span>gc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>seqs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-2"><a></a>  <span class="at">name   =</span> <span class="fu">c</span>(<span class="st">"seq1"</span>, <span class="st">"seq2"</span>, <span class="st">"seq3"</span>),</span>
+<span id="cb6-3"><a></a>  <span class="at">length =</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">85</span>, <span class="dv">300</span>),</span>
+<span id="cb6-4"><a></a>  <span class="at">gc     =</span> <span class="fu">c</span>(<span class="fl">0.55</span>, <span class="fl">0.41</span>, <span class="fl">0.62</span>)</span>
+<span id="cb6-5"><a></a>)</span>
+<span id="cb6-6"><a></a></span>
+<span id="cb6-7"><a></a><span class="fu">head</span>(seqs)          <span class="co"># first rows</span></span>
+<span id="cb6-8"><a></a><span class="fu">nrow</span>(seqs)          <span class="co"># number of rows</span></span>
+<span id="cb6-9"><a></a>seqs<span class="sc">$</span>length         <span class="co"># one column as a vector</span></span>
+<span id="cb6-10"><a></a><span class="fu">mean</span>(seqs<span class="sc">$</span>gc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<p>Looks familiar? It’s the same idea as a pandas DataFrame — pandas copied it from R 🐼🇷</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>R 🇷</th>
+<th>pandas 🐼</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>data.frame(...)</code></td>
+<td><code>pd.DataFrame({...})</code></td>
+</tr>
+<tr class="even">
+<td><code>head(seqs)</code></td>
+<td><code>df.head()</code></td>
+</tr>
+<tr class="odd">
+<td><code>nrow(seqs)</code></td>
+<td><code>len(df)</code></td>
+</tr>
+<tr class="even">
+<td><code>seqs$length</code> → a <strong>vector</strong></td>
+<td><code>df["length"]</code> → a <strong>Series</strong></td>
+</tr>
+<tr class="odd">
+<td><code>mean(seqs$gc)</code></td>
+<td><code>df["gc"].mean()</code></td>
+</tr>
+</tbody>
+</table>
+<p>pandas copied the idea from R 🐼🇷</p>
 </div>
 </section>
-<section id="filtering-rows" class="slide level2">
+<section id="filtering-rows" class="slide level2 smaller">
 <h2>Filtering rows 🎯</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>seqs[seqs<span class="sc">$</span>length <span class="sc">&gt;</span> <span class="dv">100</span>, ]          <span class="co"># rows where length &gt; 100</span></span>
-<span id="cb4-2"><a></a>seqs[seqs<span class="sc">$</span>gc <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">"name"</span>]        <span class="co"># just the names</span></span>
-<span id="cb4-3"><a></a>seqs<span class="sc">$</span>gc_percent <span class="ot">&lt;-</span> seqs<span class="sc">$</span>gc <span class="sc">*</span> <span class="dv">100</span>   <span class="co"># add a new column ➕</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>seqs[seqs<span class="sc">$</span>length <span class="sc">&gt;</span> <span class="dv">100</span>, ]          <span class="co"># rows where length &gt; 100</span></span>
+<span id="cb7-2"><a></a>seqs[seqs<span class="sc">$</span>gc <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">"name"</span>]        <span class="co"># just the names</span></span>
+<span id="cb7-3"><a></a>seqs<span class="sc">$</span>gc_percent <span class="ot">&lt;-</span> seqs<span class="sc">$</span>gc <span class="sc">*</span> <span class="dv">100</span>   <span class="co"># add a new column ➕</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<p>The comma matters: <code>[rows, columns]</code> 📐</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R 🇷</th>
+<th>pandas 🐼</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>seqs[seqs$length &gt; 100, ]</code></td>
+<td><code>df[df["length"] &gt; 100]</code></td>
+</tr>
+<tr class="even">
+<td><code>seqs[seqs$gc &gt; 0.5, "name"]</code></td>
+<td><code>df.loc[df["gc"] &gt; 0.5, "name"]</code></td>
+</tr>
+<tr class="odd">
+<td><code>seqs$gc_percent &lt;- seqs$gc * 100</code></td>
+<td><code>df["gc_percent"] = df["gc"] * 100</code></td>
+</tr>
+</tbody>
+</table>
+<p>The comma matters: <code>[rows, columns]</code>, just like <code>.loc[rows, columns]</code> 📐</p>
 </div>
 </section>
 <section id="exercise-first-steps-in-r" class="slide level2 smaller">
@@ -435,27 +547,37 @@ Klaudia Brzezińska
 <section id="wrap-up" class="slide level2 smaller">
 <h2>Wrap-up ✅</h2>
 <table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>R</th>
+<th>R 🇷</th>
+<th>Python 🐍</th>
 <th>What it does</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>x &lt;- c(1,2,3)</code></td>
-<td>vector</td>
+<td><code>np.array([1,2,3])</code></td>
+<td>vector / array</td>
 </tr>
 <tr class="even">
 <td><code>mean()</code> <code>max()</code> <code>sort()</code></td>
-<td>stats, no loop needed ⚡</td>
+<td><code>.mean()</code> <code>.max()</code> <code>np.sort()</code></td>
+<td>stats, no loop ⚡</td>
 </tr>
 <tr class="odd">
 <td><code>df$column</code></td>
+<td><code>df["column"]</code></td>
 <td>one column</td>
 </tr>
 <tr class="even">
 <td><code>df[df$x &gt; 5, ]</code></td>
+<td><code>df[df["x"] &gt; 5]</code></td>
 <td>filter rows 🎯</td>
 </tr>
 </tbody>

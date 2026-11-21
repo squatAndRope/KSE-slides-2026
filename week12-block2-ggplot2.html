@@ -282,12 +282,47 @@ Klaudia Brzezińska
       }</style></aside>
 </div>
 </section>
+<section id="matplotlib-vs-ggplot2" class="slide level2 smaller">
+<h2>matplotlib vs ggplot2 🐍🤝🇷</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>matplotlib</strong> 🐍: step by step</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>plt.scatter(df[<span class="st">"length"</span>], df[<span class="st">"gc_content"</span>])</span>
+<span id="cb3-2"><a></a>plt.title(<span class="st">"GC vs length"</span>)</span>
+<span id="cb3-3"><a></a>plt.xlabel(<span class="st">"Length (bp)"</span>)</span>
+<span id="cb3-4"><a></a>plt.ylabel(<span class="st">"GC (%)"</span>)</span>
+<span id="cb3-5"><a></a>plt.savefig(<span class="st">"results/gc.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<p><strong>ggplot2</strong> 🇷: describe, then add layers</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> length, <span class="at">y =</span> gc_content)) <span class="sc">+</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GC vs length"</span>,</span>
+<span id="cb4-4"><a></a>       <span class="at">x =</span> <span class="st">"Length (bp)"</span>, <span class="at">y =</span> <span class="st">"GC (%)"</span>)</span>
+<span id="cb4-5"><a></a><span class="fu">ggsave</span>(<span class="st">"results/gc.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="fragment">
+<p>Colour by group: matplotlib needs a <strong>loop</strong> over groups, ggplot2 needs <strong>one word</strong>: <code>colour = organism</code> 🎨</p>
+<aside class="notes">
+<p>12–15 min. The colour-by-group point is the best argument for ggplot2; show it on the next slides.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
 <section id="four-plots-you-will-actually-use" class="slide level2 smaller">
 <h2>Four plots you will actually use 📊</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> gc_content)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>)    <span class="co"># distribution</span></span>
-<span id="cb3-2"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> length, <span class="at">y =</span> gc_content)) <span class="sc">+</span> <span class="fu">geom_point</span>()     <span class="co"># relationship</span></span>
-<span id="cb3-3"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> organism, <span class="at">y =</span> gc_content)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="co"># compare groups</span></span>
-<span id="cb3-4"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> organism)) <span class="sc">+</span> <span class="fu">geom_bar</span>()                     <span class="co"># count per group</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> gc_content)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>)    <span class="co"># distribution</span></span>
+<span id="cb5-2"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> length, <span class="at">y =</span> gc_content)) <span class="sc">+</span> <span class="fu">geom_point</span>()     <span class="co"># relationship</span></span>
+<span id="cb5-3"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> organism, <span class="at">y =</span> gc_content)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="co"># compare groups</span></span>
+<span id="cb5-4"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> organism)) <span class="sc">+</span> <span class="fu">geom_bar</span>()                     <span class="co"># count per group</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Same plots as <code>hist()</code>, <code>plot()</code>, <code>boxplot()</code> last class, and matplotlib before that 🔁</p>
 <aside class="notes">
@@ -308,12 +343,12 @@ Klaudia Brzezińska
 <section id="colour-another-column" class="slide level2 smaller">
 <h2>Colour = another column 🎨</h2>
 <p>Inside <code>aes()</code>, colour is <strong>data</strong>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> length, <span class="at">y =</span> gc_content, <span class="at">colour =</span> organism)) <span class="sc">+</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> length, <span class="at">y =</span> gc_content, <span class="at">colour =</span> organism)) <span class="sc">+</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Outside <code>aes()</code>, colour is just <strong>style</strong>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> gc_content)) <span class="sc">+</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> gc_content)) <span class="sc">+</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>The legend appears <strong>automatically</strong> ✨</p>
@@ -334,16 +369,16 @@ Klaudia Brzezińska
 </section>
 <section id="labels-a-clean-look" class="slide level2 smaller">
 <h2>Labels &amp; a clean look 🏷️</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> length, <span class="at">y =</span> gc_content, <span class="at">colour =</span> organism)) <span class="sc">+</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">labs</span>(<span class="at">title  =</span> <span class="st">"GC content vs sequence length"</span>,</span>
-<span id="cb6-4"><a></a>       <span class="at">x      =</span> <span class="st">"Length (bp)"</span>,</span>
-<span id="cb6-5"><a></a>       <span class="at">y      =</span> <span class="st">"GC content (%)"</span>,</span>
-<span id="cb6-6"><a></a>       <span class="at">colour =</span> <span class="st">"Organism"</span>) <span class="sc">+</span></span>
-<span id="cb6-7"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> length, <span class="at">y =</span> gc_content, <span class="at">colour =</span> organism)) <span class="sc">+</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a></a>  <span class="fu">labs</span>(<span class="at">title  =</span> <span class="st">"GC content vs sequence length"</span>,</span>
+<span id="cb8-4"><a></a>       <span class="at">x      =</span> <span class="st">"Length (bp)"</span>,</span>
+<span id="cb8-5"><a></a>       <span class="at">y      =</span> <span class="st">"GC content (%)"</span>,</span>
+<span id="cb8-6"><a></a>       <span class="at">colour =</span> <span class="st">"Organism"</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Small multiples: one panel per group 🪟</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>  <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span> organism)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>  <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span> organism)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>25–30 min. Try theme_bw(), theme_classic() too. facet_wrap is a ggplot superpower, matplotlib needs subplots for this.</p>
 <style type="text/css">
@@ -362,12 +397,12 @@ Klaudia Brzezińska
 <section id="dplyr-ggplot2" class="slide level2 smaller">
 <h2>dplyr → ggplot2 🤝</h2>
 <p>Summarise first, then plot the summary:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>seqs <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">group_by</span>(organism) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">summarise</span>(<span class="at">mean_length =</span> <span class="fu">mean</span>(length)) <span class="sc">|&gt;</span></span>
-<span id="cb8-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> organism, <span class="at">y =</span> mean_length)) <span class="sc">+</span></span>
-<span id="cb8-5"><a></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
-<span id="cb8-6"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mean length per organism"</span>, <span class="at">x =</span> <span class="st">"Organism"</span>, <span class="at">y =</span> <span class="st">"Mean length (bp)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>seqs <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">group_by</span>(organism) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">summarise</span>(<span class="at">mean_length =</span> <span class="fu">mean</span>(length)) <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> organism, <span class="at">y =</span> mean_length)) <span class="sc">+</span></span>
+<span id="cb10-5"><a></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mean length per organism"</span>, <span class="at">x =</span> <span class="st">"Organism"</span>, <span class="at">y =</span> <span class="st">"Mean length (bp)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p><code>|&gt;</code> until the table is ready, then <strong><code>+</code></strong> for the layers ⚠️</p>
 <aside class="notes">
@@ -387,10 +422,10 @@ Klaudia Brzezińska
 </section>
 <section id="saving" class="slide level2 smaller">
 <h2>Saving 💾</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> gc_content)) <span class="sc">+</span></span>
-<span id="cb9-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>)</span>
-<span id="cb9-3"><a></a></span>
-<span id="cb9-4"><a></a><span class="fu">ggsave</span>(<span class="st">"results/gc_histogram.png"</span>, p, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(seqs, <span class="fu">aes</span>(<span class="at">x =</span> gc_content)) <span class="sc">+</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>)</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a><span class="fu">ggsave</span>(<span class="st">"results/gc_histogram.png"</span>, p, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>No <code>png()</code> … <code>dev.off()</code> this time 🙌</p>
 <aside class="notes">
@@ -437,11 +472,11 @@ Klaudia Brzezińska
 </section>
 <section id="wrap-up" class="slide level2 smaller">
 <h2>Wrap-up ✅</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> ..., <span class="at">y =</span> ..., <span class="at">colour =</span> ...)) <span class="sc">+</span>   <span class="co"># what &amp; where</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>                                     <span class="co"># which shape</span></span>
-<span id="cb10-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> ..., <span class="at">x =</span> ..., <span class="at">y =</span> ...) <span class="sc">+</span>               <span class="co"># labels</span></span>
-<span id="cb10-4"><a></a>  <span class="fu">theme_minimal</span>()                                    <span class="co"># look</span></span>
-<span id="cb10-5"><a></a><span class="fu">ggsave</span>(<span class="st">"results/plot.png"</span>)                           <span class="co"># save</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> ..., <span class="at">y =</span> ..., <span class="at">colour =</span> ...)) <span class="sc">+</span>   <span class="co"># what &amp; where</span></span>
+<span id="cb12-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>                                     <span class="co"># which shape</span></span>
+<span id="cb12-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> ..., <span class="at">x =</span> ..., <span class="at">y =</span> ...) <span class="sc">+</span>               <span class="co"># labels</span></span>
+<span id="cb12-4"><a></a>  <span class="fu">theme_minimal</span>()                                    <span class="co"># look</span></span>
+<span id="cb12-5"><a></a><span class="fu">ggsave</span>(<span class="st">"results/plot.png"</span>)                           <span class="co"># save</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Next class: <strong>Python vs R</strong> side by side, and the last check before your deadline 🏁</p>
 <aside class="notes">

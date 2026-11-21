@@ -210,6 +210,11 @@ Klaudia Brzezińska
 <p>You get a dataset. Your job: <strong>understand it, ask questions, answer them with code, show the answers in plots.</strong></p>
 <div class="fragment">
 <table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>#</th>
@@ -231,12 +236,12 @@ Klaudia Brzezińska
 <tr class="odd">
 <td>3</td>
 <td>❓ <strong>Answer 5 required questions</strong></td>
-<td><code>pandas</code></td>
+<td><code>pandas</code> + <code>numpy</code></td>
 </tr>
 <tr class="even">
 <td>4</td>
 <td>🧪 <strong>Your own research</strong>: 2 questions you choose</td>
-<td><code>pandas</code></td>
+<td><code>pandas</code> + <code>numpy</code></td>
 </tr>
 <tr class="odd">
 <td>5</td>
@@ -349,6 +354,65 @@ Klaudia Brzezińska
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="pandas-or-numpy" class="slide level2 smaller">
+<h2>pandas or numpy? 🐼🔢</h2>
+<p>Both are fine: use what you understand best ✅</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>pandas 🐼</th>
+<th>numpy 🔢</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Q1 · min, max, mean, median</td>
+<td><code>df["col"].describe()</code></td>
+<td><code>np.min()</code>, <code>np.max()</code>, <code>np.mean()</code>, <code>np.median()</code></td>
+</tr>
+<tr class="even">
+<td>Q2 · top 3 / bottom 3</td>
+<td><code>df.nlargest(3, "col")</code></td>
+<td><code>np.sort(arr)[-3:]</code></td>
+</tr>
+<tr class="odd">
+<td>Q4 · % meeting a condition</td>
+<td><code>(df["col"] &gt; x).mean() * 100</code></td>
+<td><code>np.mean(arr &gt; x) * 100</code></td>
+</tr>
+<tr class="even">
+<td>Q5 · are two columns related?</td>
+<td><code>df["a"].corr(df["b"])</code></td>
+<td><code>np.corrcoef(a, b)[0, 1]</code></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>A pandas column → a numpy array: <code>arr = df["length"].to_numpy()</code> 🔁</p>
+</div>
+<div class="fragment">
+<p>💡 numpy also helps in your own research: <code>np.percentile()</code> for outliers, <code>np.log10()</code> for very skewed data, <code>np.where()</code> for a new yes/no column</p>
+<aside class="notes">
+<p>Q3 (groupby) has no simple numpy version: pandas is the right tool there, mention it if asked. (arr &gt; x).mean(): True counts as 1, same trick as sum(gc &gt; 0.5) in R.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
 </section>
 <section id="your-own-research" class="slide level2 smaller">
 <h2>4 · Your own research 🧪</h2>

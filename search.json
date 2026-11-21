@@ -952,25 +952,32 @@
     "text": "Vectors: R’s superpower ⚡\nlengths &lt;- c(120, 85, 300, 42)\n\nlength(lengths)     # 4\nmean(lengths)       # 136.75\nmax(lengths)\nsort(lengths)\n\nlengths * 2         # every element doubled — no loop! 🤯\nlengths &gt; 100       # TRUE FALSE TRUE FALSE\n\nIn R, operations work on whole vectors at once.\n\nSame idea as numpy arrays from week 10 — in R it is built in, no library needed."
   },
   {
+    "objectID": "week11-block1-r-intro.html#sounds-familiar-numpy",
+    "href": "week11-block1-r-intro.html#sounds-familiar-numpy",
+    "title": "Week 11 · Block 1 — Hello, R",
+    "section": "Sounds familiar? numpy! 🐍🤝🇷",
+    "text": "Sounds familiar? numpy! 🐍🤝🇷\n\n\nnumpy 🐍 (week 10)\nimport numpy as np\narr = np.array([120, 85, 300, 42])\n\nlen(arr)\narr.mean()\narr.max()\nnp.sort(arr)\n\narr * 2\narr &gt; 100\n\nR 🇷\n\nlengths &lt;- c(120, 85, 300, 42)\n\nlength(lengths)\nmean(lengths)\nmax(lengths)\nsort(lengths)\n\nlengths * 2\nlengths &gt; 100\n\n\nA vector = a numpy array that is built in: no import needed ⚡\nFun fact: R has no single numbers. 5 is a vector of length 1 → length(5) gives 1 🤯\n\nThey did numpy on 23.11, so this should click immediately. Ask them to predict each R line from the numpy one."
+  },
+  {
     "objectID": "week11-block1-r-intro.html#indexing",
     "href": "week11-block1-r-intro.html#indexing",
     "title": "Week 11 · Block 1 — Hello, R",
     "section": "Indexing ⚠️",
-    "text": "Indexing ⚠️\nlengths[1]              # the FIRST element — R counts from 1! 🤨\nlengths[c(1, 3)]        # first and third\nlengths[lengths &gt; 100]  # filtering by condition 🎯\n\n\n\n\n\n\n\nWarning\n\n\nPython counts from 0, R counts from 1. This will bite you. 🐛"
+    "text": "Indexing ⚠️\n\n\nnumpy 🐍\narr[0]            # first element\narr[[0, 2]]       # first and third\narr[arr &gt; 100]    # filter 🎯\n\nR 🇷\nlengths[1]              # first element 🤨\nlengths[c(1, 3)]        # first and third\nlengths[lengths &gt; 100]  # filter 🎯\n\nFiltering by condition: identical ✅ Position: different ⚠️\n\n\n\n\n\n\n\nWarning\n\n\nPython counts from 0, R counts from 1. This will bite you. 🐛"
   },
   {
     "objectID": "week11-block1-r-intro.html#data-frames-tables",
     "href": "week11-block1-r-intro.html#data-frames-tables",
     "title": "Week 11 · Block 1 — Hello, R",
     "section": "Data frames: tables 📊",
-    "text": "Data frames: tables 📊\nseqs &lt;- data.frame(\n  name   = c(\"seq1\", \"seq2\", \"seq3\"),\n  length = c(120, 85, 300),\n  gc     = c(0.55, 0.41, 0.62)\n)\n\nhead(seqs)          # first rows\nnrow(seqs)          # number of rows\nseqs$length         # one column as a vector\nmean(seqs$gc)\n\nLooks familiar? It’s the same idea as a pandas DataFrame — pandas copied it from R 🐼🇷"
+    "text": "Data frames: tables 📊\nseqs &lt;- data.frame(\n  name   = c(\"seq1\", \"seq2\", \"seq3\"),\n  length = c(120, 85, 300),\n  gc     = c(0.55, 0.41, 0.62)\n)\n\nhead(seqs)          # first rows\nnrow(seqs)          # number of rows\nseqs$length         # one column as a vector\nmean(seqs$gc)\n\n\n\n\nR 🇷\npandas 🐼\n\n\n\n\ndata.frame(...)\npd.DataFrame({...})\n\n\nhead(seqs)\ndf.head()\n\n\nnrow(seqs)\nlen(df)\n\n\nseqs$length → a vector\ndf[\"length\"] → a Series\n\n\nmean(seqs$gc)\ndf[\"gc\"].mean()\n\n\n\npandas copied the idea from R 🐼🇷"
   },
   {
     "objectID": "week11-block1-r-intro.html#filtering-rows",
     "href": "week11-block1-r-intro.html#filtering-rows",
     "title": "Week 11 · Block 1 — Hello, R",
     "section": "Filtering rows 🎯",
-    "text": "Filtering rows 🎯\nseqs[seqs$length &gt; 100, ]          # rows where length &gt; 100\nseqs[seqs$gc &gt; 0.5, \"name\"]        # just the names\nseqs$gc_percent &lt;- seqs$gc * 100   # add a new column ➕\n\nThe comma matters: [rows, columns] 📐"
+    "text": "Filtering rows 🎯\nseqs[seqs$length &gt; 100, ]          # rows where length &gt; 100\nseqs[seqs$gc &gt; 0.5, \"name\"]        # just the names\nseqs$gc_percent &lt;- seqs$gc * 100   # add a new column ➕\n\n\n\n\n\n\n\n\nR 🇷\npandas 🐼\n\n\n\n\nseqs[seqs$length &gt; 100, ]\ndf[df[\"length\"] &gt; 100]\n\n\nseqs[seqs$gc &gt; 0.5, \"name\"]\ndf.loc[df[\"gc\"] &gt; 0.5, \"name\"]\n\n\nseqs$gc_percent &lt;- seqs$gc * 100\ndf[\"gc_percent\"] = df[\"gc\"] * 100\n\n\n\nThe comma matters: [rows, columns], just like .loc[rows, columns] 📐"
   },
   {
     "objectID": "week11-block1-r-intro.html#exercise-first-steps-in-r",
@@ -984,7 +991,7 @@
     "href": "week11-block1-r-intro.html#wrap-up",
     "title": "Week 11 · Block 1 — Hello, R",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\n\n\n\nR\nWhat it does\n\n\n\n\nx &lt;- c(1,2,3)\nvector\n\n\nmean() max() sort()\nstats, no loop needed ⚡\n\n\ndf$column\none column\n\n\ndf[df$x &gt; 5, ]\nfilter rows 🎯\n\n\n\nRemember: R counts from 1 ⚠️\n\nNext block: reading real data and plots 📈\n\n65–80 min. Two students share their data frame output."
+    "text": "Wrap-up ✅\n\n\n\n\n\n\n\n\nR 🇷\nPython 🐍\nWhat it does\n\n\n\n\nx &lt;- c(1,2,3)\nnp.array([1,2,3])\nvector / array\n\n\nmean() max() sort()\n.mean() .max() np.sort()\nstats, no loop ⚡\n\n\ndf$column\ndf[\"column\"]\none column\n\n\ndf[df$x &gt; 5, ]\ndf[df[\"x\"] &gt; 5]\nfilter rows 🎯\n\n\n\nRemember: R counts from 1 ⚠️\n\nNext block: reading real data and plots 📈\n\n65–80 min. Two students share their data frame output."
   },
   {
     "objectID": "week02-block1-terminal.html#warm-up",
@@ -1103,7 +1110,7 @@
     "href": "week11-block2-r-plots.html#reading-real-data",
     "title": "Week 11 · Block 2 — Data & plots in R",
     "section": "Reading real data 📄",
-    "text": "Reading real data 📄\nRemember data/samples.csv? Let’s read it in R.\nseqs &lt;- read.csv(\"data/samples.csv\")\n\nhead(seqs)\nstr(seqs)        # structure: columns and their types 🔍\nsummary(seqs)    # min, max, mean per column 📊\nnrow(seqs)\n\npandas saved it with to_csv(). R reads it. 🐍🤝🇷\n\n10–25 min. Any CSV saved by pandas with to_csv() reads straight into R — the pipeline spans two languages. Use samples.csv from week 9 (columns: sample, organism, gc_content, length)."
+    "text": "Reading real data 📄\nRemember data/samples.csv? Let’s read it in R.\nseqs &lt;- read.csv(\"data/samples.csv\")\n\nhead(seqs)\nstr(seqs)        # structure: columns and their types 🔍\nsummary(seqs)    # min, max, mean per column 📊\nnrow(seqs)\n\n\n\n\nR 🇷\npandas 🐼\n\n\n\n\nread.csv(\"data/samples.csv\")\npd.read_csv(\"data/samples.csv\")\n\n\nhead(seqs)\ndf.head()\n\n\nstr(seqs)\ndf.info() / df.dtypes\n\n\nsummary(seqs)\ndf.describe()\n\n\nnrow(seqs)\nlen(df)\n\n\n\npandas saved it with to_csv(). R reads it. 🐍🤝🇷\n\n10–25 min. Any CSV saved by pandas with to_csv() reads straight into R — the pipeline spans two languages. Use samples.csv from week 9 (columns: sample, organism, gc_content, length)."
   },
   {
     "objectID": "week11-block2-r-plots.html#your-first-plot",
@@ -1117,14 +1124,14 @@
     "href": "week11-block2-r-plots.html#three-plots-you-will-actually-use",
     "title": "Week 11 · Block 2 — Data & plots in R",
     "section": "Three plots you will actually use",
-    "text": "Three plots you will actually use\nhist(seqs$gc_content)                        # distribution 📊\n\nplot(seqs$length, seqs$gc_content,           # relationship 🔗\n     xlab = \"Length\", ylab = \"GC\",\n     pch = 19, col = \"darkgreen\")\n\nboxplot(gc_content ~ organism, data = seqs)  # compare groups 📦\n\nmain xlab ylab col work almost everywhere.\nSame three plots as matplotlib last week — compare! 📊"
+    "text": "Three plots you will actually use\nhist(seqs$gc_content)                        # distribution 📊\n\nplot(seqs$length, seqs$gc_content,           # relationship 🔗\n     xlab = \"Length\", ylab = \"GC\",\n     pch = 19, col = \"darkgreen\")\n\nboxplot(gc_content ~ organism, data = seqs)  # compare groups 📦\n\n\n\n\n\n\n\n\nR 🇷\nmatplotlib 🐍\n\n\n\n\nhist(x)\nplt.hist(x)\n\n\nplot(x, y)\nplt.scatter(x, y)\n\n\nboxplot(y ~ group, data = df)\ndf.boxplot(column=\"y\", by=\"group\")\n\n\nmain=, xlab=, ylab=\nplt.title(), plt.xlabel(), plt.ylabel()"
   },
   {
     "objectID": "week11-block2-r-plots.html#saving-a-figure",
     "href": "week11-block2-r-plots.html#saving-a-figure",
     "title": "Week 11 · Block 2 — Data & plots in R",
     "section": "Saving a figure 💾",
-    "text": "Saving a figure 💾\npng(\"results/gc_plot.png\", width = 800, height = 600)\nhist(seqs$gc_content, main = \"GC content\", col = \"steelblue\")\ndev.off()          # ⚠️ don't forget this — it closes the file!\n\nNow your figure is a file you can put in a report or a thesis 📄\n\n25–35 min. dev.off() is the classic forgotten line — the file stays empty without it."
+    "text": "Saving a figure 💾\npng(\"results/gc_plot.png\", width = 800, height = 600)\nhist(seqs$gc_content, main = \"GC content\", col = \"steelblue\")\ndev.off()          # ⚠️ don't forget this — it closes the file!\n\nPython version: plt.savefig(\"results/gc_plot.png\"), one line, no closing needed 🐍\nNow your figure is a file you can put in a report or a thesis 📄\n\n25–35 min. dev.off() is the classic forgotten line — the file stays empty without it."
   },
   {
     "objectID": "week11-block2-r-plots.html#a-word-on-ggplot2",
@@ -1145,7 +1152,7 @@
     "href": "week11-block2-r-plots.html#wrap-up",
     "title": "Week 11 · Block 2 — Data & plots in R",
     "section": "Wrap-up ✅",
-    "text": "Wrap-up ✅\n\nread.csv() brings data in 📄\nsummary() and str() before anything else 🔍\nhist() plot() boxplot() — one line each 📊\npng() … dev.off() to save 💾\n\nCommit 💾 your R script.\n\nNext class: dplyr (pandas, the R way) and ggplot2 🎨\n\n75–80 min. Two students share their plot — first figures always get a nice reaction."
+    "text": "Wrap-up ✅\n\n\n\n\n\n\n\nR 🇷\nPython 🐍\n\n\n\n\nread.csv()\npd.read_csv() 📄\n\n\nsummary() / str()\ndescribe() / info() 🔍\n\n\nhist() plot() boxplot()\nplt.hist() plt.scatter() boxplot() 📊\n\n\npng() … dev.off()\nplt.savefig() 💾\n\n\n\nCommit 💾 your R script.\n\nNext class: dplyr (pandas, the R way) and ggplot2 🎨\n\n75–80 min. Two students share their plot — first figures always get a nice reaction."
   },
   {
     "objectID": "week01-block2-git.html#warm-up-5-min",
@@ -1349,6 +1356,13 @@
     "title": "Week 12 · Block 2 — Plots with ggplot2",
     "section": "The idea: a plot is built in layers 🧱",
     "text": "The idea: a plot is built in layers 🧱\nEvery ggplot has 3 parts:\n\n\n\n\n\n\n\n\nPart\nQuestion\nExample\n\n\n\n\ndata\nwhich table?\nseqs\n\n\naes (aesthetics)\nwhich column goes where?\nx = length, y = gc_content\n\n\ngeom\nwhich shape?\npoints, bars, boxes\n\n\n\n\nlibrary(ggplot2)\n\nggplot(seqs, aes(x = length, y = gc_content)) +\n  geom_point()\n\n\nLayers are added with + (not |&gt;!) ➕\n\n5–12 min. Draw it as a recipe: data → map columns → choose a shape. The + vs |&gt; mix-up is the #1 error of the block."
+  },
+  {
+    "objectID": "week12-block2-ggplot2.html#matplotlib-vs-ggplot2",
+    "href": "week12-block2-ggplot2.html#matplotlib-vs-ggplot2",
+    "title": "Week 12 · Block 2 — Plots with ggplot2",
+    "section": "matplotlib vs ggplot2 🐍🤝🇷",
+    "text": "matplotlib vs ggplot2 🐍🤝🇷\n\n\nmatplotlib 🐍: step by step\nplt.scatter(df[\"length\"], df[\"gc_content\"])\nplt.title(\"GC vs length\")\nplt.xlabel(\"Length (bp)\")\nplt.ylabel(\"GC (%)\")\nplt.savefig(\"results/gc.png\")\n\nggplot2 🇷: describe, then add layers\nggplot(df, aes(x = length, y = gc_content)) +\n  geom_point() +\n  labs(title = \"GC vs length\",\n       x = \"Length (bp)\", y = \"GC (%)\")\nggsave(\"results/gc.png\")\n\n\nColour by group: matplotlib needs a loop over groups, ggplot2 needs one word: colour = organism 🎨\n\n12–15 min. The colour-by-group point is the best argument for ggplot2; show it on the next slides."
   },
   {
     "objectID": "week12-block2-ggplot2.html#four-plots-you-will-actually-use",
@@ -2013,7 +2027,7 @@
     "href": "week15-final-project.html#your-role-data-analyst",
     "title": "Final project 🚀",
     "section": "Your role: data analyst 🕵️",
-    "text": "Your role: data analyst 🕵️\nYou get a dataset. Your job: understand it, ask questions, answer them with code, show the answers in plots.\n\n\n\n\n#\nComponent\nTool\n\n\n\n\n1\n📥 Get the data: API, CSV or Excel\nrequests / pandas\n\n\n2\n🔍 Explore the data\npandas\n\n\n3\n❓ Answer 5 required questions\npandas\n\n\n4\n🧪 Your own research: 2 questions you choose\npandas\n\n\n5\n📊 Plots\nmatplotlib\n\n\n⭐\nBonus: virtual environment + requirements.txt\nvenv\n\n\n\n\n\nIndividual work, done at home, outside class 🏠\n\nPoints 1–5 = 100%. The bonus is extra on top."
+    "text": "Your role: data analyst 🕵️\nYou get a dataset. Your job: understand it, ask questions, answer them with code, show the answers in plots.\n\n\n\n\n\n\n\n\n\n#\nComponent\nTool\n\n\n\n\n1\n📥 Get the data: API, CSV or Excel\nrequests / pandas\n\n\n2\n🔍 Explore the data\npandas\n\n\n3\n❓ Answer 5 required questions\npandas + numpy\n\n\n4\n🧪 Your own research: 2 questions you choose\npandas + numpy\n\n\n5\n📊 Plots\nmatplotlib\n\n\n⭐\nBonus: virtual environment + requirements.txt\nvenv\n\n\n\n\n\nIndividual work, done at home, outside class 🏠\n\nPoints 1–5 = 100%. The bonus is extra on top."
   },
   {
     "objectID": "week15-final-project.html#get-the-data",
@@ -2035,6 +2049,13 @@
     "title": "Final project 🚀",
     "section": "3 · Five required questions ❓",
     "text": "3 · Five required questions ❓\nAnswer each with code, and write the answer in your README:\n\nQ1 · What are the min, max, mean and median of your numeric columns? → describe() 🧬 median gene length · 🎬 median movie rating\nQ2 · Which are the top 3 and bottom 3 rows by a numeric column? → sort_values() 🧬 3 longest / shortest genes · 🎬 3 best / worst rated movies\nQ3 · How many rows per category, and the mean of a numeric column per category? → groupby() 🧬 genes per chromosome, mean length · 🎬 movies per genre, mean rating\nQ4 · How many rows meet a condition you choose? What % of all rows? → df[...] 🧬 genes longer than 100 000 bp · 🎬 movies longer than 2 hours\nQ5 · Are two numeric columns related? → corr() + scatter plot 🧬 length vs number of exons · 🎬 budget vs box office\n\n\nThese five work for any table that meets the data requirements on slide 1. Q1: ask them to comment if mean and median are very different (skewed data / outliers). Q5: correlation is not causation, one sentence about that in the README is enough."
+  },
+  {
+    "objectID": "week15-final-project.html#pandas-or-numpy",
+    "href": "week15-final-project.html#pandas-or-numpy",
+    "title": "Final project 🚀",
+    "section": "pandas or numpy? 🐼🔢",
+    "text": "pandas or numpy? 🐼🔢\nBoth are fine: use what you understand best ✅\n\n\n\n\n\n\n\n\nQuestion\npandas 🐼\nnumpy 🔢\n\n\n\n\nQ1 · min, max, mean, median\ndf[\"col\"].describe()\nnp.min(), np.max(), np.mean(), np.median()\n\n\nQ2 · top 3 / bottom 3\ndf.nlargest(3, \"col\")\nnp.sort(arr)[-3:]\n\n\nQ4 · % meeting a condition\n(df[\"col\"] &gt; x).mean() * 100\nnp.mean(arr &gt; x) * 100\n\n\nQ5 · are two columns related?\ndf[\"a\"].corr(df[\"b\"])\nnp.corrcoef(a, b)[0, 1]\n\n\n\n\nA pandas column → a numpy array: arr = df[\"length\"].to_numpy() 🔁\n\n\n💡 numpy also helps in your own research: np.percentile() for outliers, np.log10() for very skewed data, np.where() for a new yes/no column\n\nQ3 (groupby) has no simple numpy version: pandas is the right tool there, mention it if asked. (arr &gt; x).mean(): True counts as 1, same trick as sum(gc &gt; 0.5) in R."
   },
   {
     "objectID": "week15-final-project.html#your-own-research",

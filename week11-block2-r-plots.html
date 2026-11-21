@@ -238,6 +238,36 @@ Klaudia Brzezińska
 <span id="cb2-5"><a></a><span class="fu">summary</span>(seqs)    <span class="co"># min, max, mean per column 📊</span></span>
 <span id="cb2-6"><a></a><span class="fu">nrow</span>(seqs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>R 🇷</th>
+<th>pandas 🐼</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>read.csv("data/samples.csv")</code></td>
+<td><code>pd.read_csv("data/samples.csv")</code></td>
+</tr>
+<tr class="even">
+<td><code>head(seqs)</code></td>
+<td><code>df.head()</code></td>
+</tr>
+<tr class="odd">
+<td><code>str(seqs)</code></td>
+<td><code>df.info()</code> / <code>df.dtypes</code></td>
+</tr>
+<tr class="even">
+<td><code>summary(seqs)</code></td>
+<td><code>df.describe()</code></td>
+</tr>
+<tr class="odd">
+<td><code>nrow(seqs)</code></td>
+<td><code>len(df)</code></td>
+</tr>
+</tbody>
+</table>
 <p><strong>pandas saved it with <code>to_csv()</code>. R reads it.</strong> 🐍🤝🇷</p>
 <aside class="notes">
 <p>10–25 min. Any CSV saved by pandas with to_csv() reads straight into R — the pipeline spans two languages. Use samples.csv from week 9 (columns: sample, organism, gc_content, length).</p>
@@ -287,8 +317,36 @@ Klaudia Brzezińska
 <span id="cb4-6"><a></a></span>
 <span id="cb4-7"><a></a><span class="fu">boxplot</span>(gc_content <span class="sc">~</span> organism, <span class="at">data =</span> seqs)  <span class="co"># compare groups 📦</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<p><code>main</code> <code>xlab</code> <code>ylab</code> <code>col</code> work almost everywhere.</p>
-<p>Same three plots as matplotlib last week — compare! 📊</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R 🇷</th>
+<th>matplotlib 🐍</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>hist(x)</code></td>
+<td><code>plt.hist(x)</code></td>
+</tr>
+<tr class="even">
+<td><code>plot(x, y)</code></td>
+<td><code>plt.scatter(x, y)</code></td>
+</tr>
+<tr class="odd">
+<td><code>boxplot(y ~ group, data = df)</code></td>
+<td><code>df.boxplot(column="y", by="group")</code></td>
+</tr>
+<tr class="even">
+<td><code>main=</code>, <code>xlab=</code>, <code>ylab=</code></td>
+<td><code>plt.title()</code>, <code>plt.xlabel()</code>, <code>plt.ylabel()</code></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="saving-a-figure" class="slide level2">
@@ -297,6 +355,7 @@ Klaudia Brzezińska
 <span id="cb5-2"><a></a><span class="fu">hist</span>(seqs<span class="sc">$</span>gc_content, <span class="at">main =</span> <span class="st">"GC content"</span>, <span class="at">col =</span> <span class="st">"steelblue"</span>)</span>
 <span id="cb5-3"><a></a><span class="fu">dev.off</span>()          <span class="co"># ⚠️ don't forget this — it closes the file!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
+<p>Python version: <code>plt.savefig("results/gc_plot.png")</code>, one line, no closing needed 🐍</p>
 <p>Now your figure is a file you can put in a report or a thesis 📄</p>
 <aside class="notes">
 <p>25–35 min. dev.off() is the classic forgotten line — the file stays empty without it.</p>
@@ -366,12 +425,36 @@ Klaudia Brzezińska
 </section>
 <section id="wrap-up" class="slide level2 smaller">
 <h2>Wrap-up ✅</h2>
-<ul>
-<li><code>read.csv()</code> brings data in 📄</li>
-<li><code>summary()</code> and <code>str()</code> before anything else 🔍</li>
-<li><code>hist()</code> <code>plot()</code> <code>boxplot()</code> — one line each 📊</li>
-<li><code>png()</code> … <code>dev.off()</code> to save 💾</li>
-</ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R 🇷</th>
+<th>Python 🐍</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>read.csv()</code></td>
+<td><code>pd.read_csv()</code> 📄</td>
+</tr>
+<tr class="even">
+<td><code>summary()</code> / <code>str()</code></td>
+<td><code>describe()</code> / <code>info()</code> 🔍</td>
+</tr>
+<tr class="odd">
+<td><code>hist()</code> <code>plot()</code> <code>boxplot()</code></td>
+<td><code>plt.hist()</code> <code>plt.scatter()</code> <code>boxplot()</code> 📊</td>
+</tr>
+<tr class="even">
+<td><code>png()</code> … <code>dev.off()</code></td>
+<td><code>plt.savefig()</code> 💾</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Commit</strong> 💾 your R script.</p>
 <div class="fragment">
 <p>Next class: <strong>dplyr</strong> (pandas, the R way) and <strong>ggplot2</strong> 🎨</p>
