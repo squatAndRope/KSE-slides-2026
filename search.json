@@ -1708,46 +1708,102 @@
     "text": "Order By\n      Default\n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nWeek 1 · Block 1 — Welcome!\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 1 · Block 2 — First commit\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 2 · Block 1 — The terminal\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 2 · Block 2 — Bash on real data\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 3 · Block 1 — Hello, Python\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 3 · Block 2 — Strings are sequences\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 4 · Block 1 — Lists & tuples\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 4 · Block 2 — Making decisions\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 5 · Block 1 — Loops\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 5 · Block 2 — Putting it together\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 6 · Block 1 — Functions\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 6 · Block 2 — Dictionaries (first look)\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 7 · Block 1 — Files\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 7 · Block 2 — Errors & debugging\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 8 · Block 1 — Git in teams\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 8 · Block 2 — Conflicts & the pair assignment\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 8 · Block 2 — Protected main, conflicts & the pair assignment\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 8 · Block 2 — Protected main, conflicts & the pair assignment\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 9 · Block 1 — Modules & libraries\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 9 · Block 2 — pandas basics\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 10 · Block 1 — numpy & plots\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 10 · Block 2 — Virtual environments & data from the internet\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 11 · Block 1 — Project lab\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 11 · Block 2 — Review & build\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 12 · Block 1 — Hello, R\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 12 · Block 2 — Data & plots in R\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 13 · Block 1 — Python vs R\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 13 · Block 2 — Final stretch\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nWeek 14 · Oral exams & goodbye\n\n\nProgramming and Computing Basics · KSE 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "final-project.html#the-idea",
-    "href": "final-project.html#the-idea",
-    "title": "Your final project 🚀",
-    "section": "The idea 💡",
-    "text": "The idea 💡\nBuild one small tool in Python that answers one question about real biological data.\n\nIt brings together everything:\n\n\n\nSkill\nFrom week\n\n\n\n\nreading files, functions, loops\n3–7 🐍\n\n\nGit & commits\n1, 8 💾\n\n\npandas analysis\n9 🐼\n\n\nplots\n10 📊\n\n\nvirtual environment + requirements.txt\n10 📦\n\n\n(optional) data from an API\n10 🌐\n\n\n\n\nEnergy up here, this is the start of the most important part of the course."
+    "objectID": "final-project.html#your-role-data-analyst",
+    "href": "final-project.html#your-role-data-analyst",
+    "title": "Final project 🚀",
+    "section": "Your role: data analyst 🕵️",
+    "text": "Your role: data analyst 🕵️\nYou get a dataset. Your job: understand it, ask questions, answer them with code, show the answers in plots.\n\n\n\n\n#\nComponent\nTool\n\n\n\n\n1\n📥 Get the data: API, CSV or Excel\nrequests / pandas\n\n\n2\n🔍 Explore the data\npandas\n\n\n3\n❓ Answer 5 required questions\npandas\n\n\n4\n🧪 Your own research: 2 questions you choose\npandas\n\n\n5\n📊 Plots\nmatplotlib\n\n\n⭐\nBonus: virtual environment + requirements.txt\nvenv\n\n\n\n\n\nIndividual work, done at home, outside class 🏠\n\nPoints 1–5 = 100%. The bonus is extra on top."
   },
   {
-    "objectID": "final-project.html#requirements",
-    "href": "final-project.html#requirements",
-    "title": "Your final project 🚀",
-    "section": "Requirements ✅",
-    "text": "Requirements ✅\nYour tool must:\n\n📄 read a real data file (FASTA, CSV, or data you downloaded and saved)\n🧩 use at least 3 functions with clear names\n🐼 do an analysis with pandas\n📊 save at least one plot to results/\n🛡️ show a friendly message if the input file is missing\n📦 have a requirements.txt (and .venv/ in .gitignore)\n📖 have a README.md with how to run it\n📈 have commits spread over several days\n\n\nAnd the most important one: you can explain every line 🗣️\n\nThese match the final checklist in week 13, so nothing will surprise them later. requirements.txt: lets you (and me) rebuild their environment at the oral exam."
+    "objectID": "final-project.html#get-the-data",
+    "href": "final-project.html#get-the-data",
+    "title": "Final project 🚀",
+    "section": "1 · Get the data 📥",
+    "text": "1 · Get the data 📥\nAny source works:\n\n🌐 an API (Ensembl, UniProt, NCBI…) → save the result as CSV in data/\n📄 a CSV or 📗 Excel file → put the file in data/ in your repo\n🧬 a FASTA file → turn it into a table first (id, length, GC content…)\n\n\nYour data must have:\n\nat least 50 rows\nat least 2 numeric columns (e.g. length, expression, score)\nat least 1 text / category column (e.g. chromosome, organism, type)\n\n\n\n✅ The analysis runs from the saved file, without internet\n\nThe data requirements guarantee that all 5 required questions are possible. Files over ~50 MB: don’t commit, take a subset or describe in the README how to download."
   },
   {
-    "objectID": "final-project.html#what-it-looks-like",
-    "href": "final-project.html#what-it-looks-like",
-    "title": "Your final project 🚀",
-    "section": "What it looks like 🗂️",
-    "text": "What it looks like 🗂️\nmy-project/\n├── data/               ← your input file(s) 📄\n├── scripts/            ← your Python code 🐍\n├── results/            ← plots and tables your tool makes 📊\n├── requirements.txt    ← libraries you use 📦\n├── .gitignore          ← .venv/ is in here 🙈\n├── README.md           ← how to run it 📖\n└── PROJECT.md          ← your plan ✍️\n\nUsing an API? Fetch in one script, analyse the saved file in another 🔁\n\nSame split as the Week 10 exercise: the analysis must run without the internet (oral exam!)."
+    "objectID": "final-project.html#explore-the-data",
+    "href": "final-project.html#explore-the-data",
+    "title": "Final project 🚀",
+    "section": "2 · Explore the data 🔍",
+    "text": "2 · Explore the data 🔍\nDescribe your dataset with pandas, before asking any questions:\ndf.shape              # how many rows and columns?\ndf.dtypes             # which columns are numbers, which are text?\ndf.head()             # what does it look like?\ndf.isna().sum()       # missing values per column\ndf[\"column\"].unique() # which categories are there?\n\nThen in words (README): where does the data come from, what is one row, what does each column mean? 📝\n\n“What is one row” is the most important question: one gene? one sample? one patient? Missing values: say what you did with them (dropped / kept / filled) and why."
   },
   {
-    "objectID": "final-project.html#ideas-if-you-need-one",
-    "href": "final-project.html#ideas-if-you-need-one",
-    "title": "Your final project 🚀",
-    "section": "Ideas, if you need one 🌱",
-    "text": "Ideas, if you need one 🌱\n\n🧬 GC content and length of all sequences in a FASTA file, per organism, with a plot\n🔬 Fetch 20 genes from Ensembl, compare lengths across chromosomes\n📋 A CSV from your own lab or course: clean it, summarise it, plot it\n🦠 Compare two genomes / gene sets: what is different?\n🎲 Your own idea, the best option if you have one!\n\n\nSmall and working &gt; big and broken 🌱\n\nDevelopers in the group can do something more ambitious (or in another language, as agreed)."
+    "objectID": "final-project.html#five-required-questions",
+    "href": "final-project.html#five-required-questions",
+    "title": "Final project 🚀",
+    "section": "3 · Five required questions ❓",
+    "text": "3 · Five required questions ❓\nAnswer each with code, and write the answer in your README:\n\n\n\n\n\n\n\n\n\n#\nQuestion\nExample (genes)\npandas\n\n\n\n\nQ1\nWhat are the min, max, mean and median of your numeric columns?\nmedian gene length\ndescribe()\n\n\nQ2\nWhich are the top 3 and bottom 3 rows by a numeric column?\n3 longest / shortest genes\nsort_values()\n\n\nQ3\nHow many rows per category, and the mean of a numeric column per category?\ngenes per chromosome, mean length\ngroupby()\n\n\nQ4\nHow many rows meet a condition you choose? What % of all rows?\ngenes longer than 100 000 bp\nfilter df[...]\n\n\nQ5\nAre two numeric columns related?\nlength vs number of exons\ncorr() + scatter\n\n\n\n\nThese five work for any table that meets the data requirements on slide 1. Q1: ask them to comment if mean and median are very different (skewed data / outliers). Q5: correlation is not causation, one sentence about that in the README is enough."
   },
   {
-    "objectID": "final-project.html#timeline",
-    "href": "final-project.html#timeline",
-    "title": "Your final project 🚀",
-    "section": "Timeline 📅",
-    "text": "Timeline 📅\n\n\n\n\n\n\n\nWhen\nWhat\n\n\n\n\nKick-off\nWrite PROJECT.md ✍️\n\n\nWeek 11\nProject lab: I give feedback, you build 🛠️\n\n\nWeek 12 + Week 13 Block 1\nR in class, project at home 🔁\n\n\nWeek 13 Block 2\nFinal stretch: last project work time in class + exam prep ✅\n\n\nWeek 14\n15-minute oral exam: you run and explain your tool 💬\n\n\n\n\nWeek 11 slides reference feedback on PROJECT.md, so it must exist by then."
+    "objectID": "final-project.html#your-own-research",
+    "href": "final-project.html#your-own-research",
+    "title": "Final project 🚀",
+    "section": "4 · Your own research 🧪",
+    "text": "4 · Your own research 🧪\nAsk 2 questions of your own about your data, the ones you are curious about 🤔\n\nFor each question:\n\n❓ the question, in one sentence\n🐍 the code that answers it\n📊 a plot (or a table) with the result\n💬 your answer, 2–3 sentences: what did you find? did it surprise you?\n\n\n\n💡 Ideas: compare two groups · find outliers · combine two columns into a new one · rank categories\n\nThis is where the oral exam conversation usually starts: “why did you ask this?”"
   },
   {
-    "objectID": "final-project.html#project.md",
-    "href": "final-project.html#project.md",
-    "title": "Your final project 🚀",
-    "section": "PROJECT.md ✍️",
-    "text": "PROJECT.md ✍️\n⏱️ rest of the block · your own screen\nCreate it in your repo and answer in 3–5 lines each:\n# My project\n\n## Question\nWhat do I want to find out?\n\n## Data\nWhich file? Where does it come from? (paste the first 3 lines)\n\n## Steps\n1. read ...\n2. compute ...\n3. plot ...\n\n## Output\nWhat will be in results/ when it works?\nCommit & push 💾 by the end of the block, I read all of them before week 11 👀\n\nVisit rooms. The most useful nudge: “show me your data file”, no file = no project yet."
+    "objectID": "final-project.html#plots",
+    "href": "final-project.html#plots",
+    "title": "Final project 🚀",
+    "section": "5 · Plots 📊",
+    "text": "5 · Plots 📊\nAt least 3 plots, made with matplotlib, of different types:\n\n📊 bar chart (e.g. Q3: count per category)\n📈 histogram (e.g. distribution of a numeric column)\n⚫ scatter plot (e.g. Q5: two numeric columns)\n\n\nEvery plot has:\n\na title and labelled axes (with units!)\nis saved as .png in results/ (plt.savefig(...))\n\n\nPlots from the own-research part count too."
+  },
+  {
+    "objectID": "final-project.html#repository-readme",
+    "href": "final-project.html#repository-readme",
+    "title": "Final project 🚀",
+    "section": "Repository & README 📖",
+    "text": "Repository & README 📖\n\n\nRepository\n\n🌍 your own, public GitHub repo\n🙈 .gitignore (.venv/, __pycache__/)\n📈 commits spread over several days\n▶️ runs from a fresh clone, step by step as in the README\n🧩 at least 2 functions with clear names\n🛡️ a friendly message if the data file is missing\n\n\nREADME.md\n\n▶️ how to run the project, step by step\n📥 data: source, link, what one row is\n❓ answers to Q1–Q5 + your 2 questions\n💡 conclusions: what did you learn from the data?\n🧱 problems: what was hard, how you solved it\n\n\n\n“Problems” is not a weakness: it is the most useful part for the oral exam."
+  },
+  {
+    "objectID": "final-project.html#structure-split-your-code-into-files",
+    "href": "final-project.html#structure-split-your-code-into-files",
+    "title": "Final project 🚀",
+    "section": "Structure: split your code into files 🗂️",
+    "text": "Structure: split your code into files 🗂️\nOne file per job, like the 5 components 🧩\nmy-project/\n├── data/\n│   └── genes.csv          ← your input file 📄\n├── scripts/\n│   ├── fetch_data.py      ← 1 · get the data (API → data/genes.csv) 🌐\n│   ├── load_data.py       ← read the file, friendly message if missing 🛡️\n│   ├── explore.py         ← 2 · exploration 🔍\n│   ├── questions.py       ← 3 + 4 · required questions + own research ❓\n│   ├── plots.py           ← 5 · all plots → results/ 📊\n│   └── main.py            ← runs everything, in order ▶️\n├── results/               ← plots (.png) 📊\n├── requirements.txt       ← ⭐ bonus\n├── .gitignore\n└── README.md\n\n⭐ Bonus: work in a virtual environment, commit requirements.txt (not .venv/!)\n\nExact file names are up to them, the rule is: one file = one job. No API? Then no fetch_data.py, the file is committed in data/."
+  },
+  {
+    "objectID": "final-project.html#main.py-puts-it-together",
+    "href": "final-project.html#main.py-puts-it-together",
+    "title": "Final project 🚀",
+    "section": "main.py puts it together ▶️",
+    "text": "main.py puts it together ▶️\nThe other files hold functions, main.py only calls them:\n# scripts/main.py\nfrom load_data import load_genes\nfrom explore import describe_data\nfrom questions import top_and_bottom, count_per_category\nfrom plots import plot_length_histogram\n\ndf = load_genes(\"data/genes.csv\")\n\ndescribe_data(df)\ntop_and_bottom(df, column=\"length\", n=3)\ncount_per_category(df, category=\"chromosome\", value=\"length\")\nplot_length_histogram(df, \"results/length_histogram.png\")\n\nRun the whole project: python scripts/main.py 🚀\n\n\n📓 Prefer a notebook? Fine: analysis.ipynb imports from your .py files, the same way.\n\nSame import idea as week 9 (modules). Run from the project root so the relative paths work."
+  },
+  {
+    "objectID": "final-project.html#clean-code",
+    "href": "final-project.html#clean-code",
+    "title": "Final project 🚀",
+    "section": "Clean code 🧼",
+    "text": "Clean code 🧼\nThe test: can I read your code and understand it? 👀\n\n\n✅ Do\n\nclear names: gene_lengths, count_per_category()\nshort functions, each doing one thing\nfile paths as constants at the top\na comment where the why isn’t obvious\n\n\n❌ Avoid\n\nx, df2, test_final_v3()\none 300-line script\nthe same code copy-pasted 5×\nold, commented-out code left behind\n\n\n\nCopy-paste 5×: that’s a sign it should be a function with a parameter."
+  },
+  {
+    "objectID": "final-project.html#what-is-graded",
+    "href": "final-project.html#what-is-graded",
+    "title": "Final project 🚀",
+    "section": "What is graded 🎯",
+    "text": "What is graded 🎯\n\n▶️ It runs: following your README, the program works from start to end\n✅ All 5 components are there (data, exploration, 5 questions, own research, plots)\n🧼 Clean code: I can read it and understand it\n🗂️ Structure: code split into files, at least 2 functions\n📖 Repository & README: instructions, answers, conclusions, problems"
+  },
+  {
+    "objectID": "final-project.html#points",
+    "href": "final-project.html#points",
+    "title": "Final project 🚀",
+    "section": "Points 🧮",
+    "text": "Points 🧮\n\n\n\nComponent\nPoints\n\n\n\n\n1 · Data\n10\n\n\n2 · Exploration\n10\n\n\n3 · Five required questions\n25 (5 each)\n\n\n4 · Own research\n15\n\n\n5 · Plots\n10\n\n\nClean code & structure\n15\n\n\nRepository & README\n15\n\n\nTotal\n100\n\n\n⭐ Bonus: venv + requirements.txt\n+10\n\n\n\n\n🗣️ Week 14 oral exam: you run your project and explain it. You must be able to explain every line of your code.\n\nWeights are a proposal, adjust before presenting."
+  },
+  {
+    "objectID": "final-project.html#using-ai",
+    "href": "final-project.html#using-ai",
+    "title": "Final project 🚀",
+    "section": "Using AI 🤖",
+    "text": "Using AI 🤖\nYou may use AI tools (ChatGPT, Claude, Copilot…) ✅\n\nBut: the oral exam checks whether you understand your project 🗣️\n\nwhy you chose this data and these questions\nwhat each line of your code does\nhow you would change it (“what if you wanted the top 5 instead?”)\n\n\n\n\nIf you can’t explain it, it doesn’t count. 💡\n\n\nTip for them: when AI writes something, ask it to explain, then rewrite it in your own words."
+  },
+  {
+    "objectID": "final-project.html#deadline-submission",
+    "href": "final-project.html#deadline-submission",
+    "title": "Final project 🚀",
+    "section": "Deadline & submission 📅",
+    "text": "Deadline & submission 📅\n\n\n\nWhat\nWhen\n\n\n\n\n🚀 Project starts\nWeek 10\n\n\n📬 Deadline\n11 December 2026\n\n\n🗣️ Oral exam, 15 min\nWeek 14\n\n\n\n\nHow to submit 📬\n\nYour repo on GitHub, public\nSettings → Collaborators → Add people → invite squatAndRope\n\n\n\nThe version on GitHub on 11 December is the one I grade ⏰\nQuestions? Ask early, not the night before 😉"
   },
   {
     "objectID": "week05-block2-practice.html#today-no-new-syntax",

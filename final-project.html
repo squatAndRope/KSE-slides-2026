@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Klaudia Brzezińska">
-  <title>Programming and Computing Basics – Your final project 🚀</title>
+  <title>Programming and Computing Basics – Final project 🚀</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,7 +193,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Your final project 🚀</h1>
+  <h1 class="title">Final project 🚀</h1>
   <p class="subtitle">Programming and Computing Basics · KSE 2026</p>
 
 <div class="quarto-title-authors">
@@ -205,47 +205,56 @@ Klaudia Brzezińska
 </div>
 
 </section>
-<section id="the-idea" class="slide level2 smaller">
-<h2>The idea 💡</h2>
-<p>Build <strong>one small tool</strong> in Python that answers <strong>one question</strong> about <strong>real biological data</strong>.</p>
+<section id="your-role-data-analyst" class="slide level2 smaller">
+<h2>Your role: data analyst 🕵️</h2>
+<p>You get a dataset. Your job: <strong>understand it, ask questions, answer them with code, show the answers in plots.</strong></p>
 <div class="fragment">
-<p>It brings together everything:</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>Skill</th>
-<th>From week</th>
+<th>#</th>
+<th>Component</th>
+<th>Tool</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>reading files, functions, loops</td>
-<td>3–7 🐍</td>
+<td>1</td>
+<td>📥 <strong>Get the data</strong>: API, CSV or Excel</td>
+<td><code>requests</code> / <code>pandas</code></td>
 </tr>
 <tr class="even">
-<td>Git &amp; commits</td>
-<td>1, 8 💾</td>
+<td>2</td>
+<td>🔍 <strong>Explore</strong> the data</td>
+<td><code>pandas</code></td>
 </tr>
 <tr class="odd">
-<td>pandas analysis</td>
-<td>9 🐼</td>
+<td>3</td>
+<td>❓ <strong>Answer 5 required questions</strong></td>
+<td><code>pandas</code></td>
 </tr>
 <tr class="even">
-<td>plots</td>
-<td>10 📊</td>
+<td>4</td>
+<td>🧪 <strong>Your own research</strong>: 2 questions you choose</td>
+<td><code>pandas</code></td>
 </tr>
 <tr class="odd">
-<td>virtual environment + <code>requirements.txt</code></td>
-<td>10 📦</td>
+<td>5</td>
+<td>📊 <strong>Plots</strong></td>
+<td><code>matplotlib</code></td>
 </tr>
 <tr class="even">
-<td>(optional) data from an API</td>
-<td>10 🌐</td>
+<td>⭐</td>
+<td><strong>Bonus</strong>: virtual environment + <code>requirements.txt</code></td>
+<td><code>venv</code></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="fragment">
+<p>Individual work, done <strong>at home</strong>, outside class 🏠</p>
 <aside class="notes">
-<p>Energy up here, this is the start of the most important part of the course.</p>
+<p>Points 1–5 = 100%. The bonus is extra on top.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -259,76 +268,26 @@ Klaudia Brzezińska
       }</style></aside>
 </div>
 </section>
-<section id="requirements" class="slide level2 smaller">
-<h2>Requirements ✅</h2>
-<p>Your tool must:</p>
+<section id="get-the-data" class="slide level2 smaller">
+<h2>1 · Get the data 📥</h2>
+<p>Any source works:</p>
 <ul>
-<li>📄 read a <strong>real data file</strong> (FASTA, CSV, or data you downloaded and saved)</li>
-<li>🧩 use at least <strong>3 functions</strong> with clear names</li>
-<li>🐼 do an analysis with <strong>pandas</strong></li>
-<li>📊 save at least <strong>one plot</strong> to <code>results/</code></li>
-<li>🛡️ show a friendly message if the input file is missing</li>
-<li>📦 have a <code>requirements.txt</code> (and <code>.venv/</code> in <code>.gitignore</code>)</li>
-<li>📖 have a <code>README.md</code> with how to run it</li>
-<li>📈 have commits spread over several days</li>
+<li>🌐 an <strong>API</strong> (Ensembl, UniProt, NCBI…) → save the result as CSV in <code>data/</code></li>
+<li>📄 a <strong>CSV</strong> or 📗 <strong>Excel</strong> file → put the file in <code>data/</code> in your repo</li>
+<li>🧬 a <strong>FASTA</strong> file → turn it into a table first (id, length, GC content…)</li>
 </ul>
 <div class="fragment">
-<p>And the most important one: <strong>you can explain every line</strong> 🗣️</p>
-<aside class="notes">
-<p>These match the final checklist in week 13, so nothing will surprise them later. requirements.txt: lets you (and me) rebuild their environment at the oral exam.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="what-it-looks-like" class="slide level2 smaller">
-<h2>What it looks like 🗂️</h2>
-<pre><code>my-project/
-├── data/               ← your input file(s) 📄
-├── scripts/            ← your Python code 🐍
-├── results/            ← plots and tables your tool makes 📊
-├── requirements.txt    ← libraries you use 📦
-├── .gitignore          ← .venv/ is in here 🙈
-├── README.md           ← how to run it 📖
-└── PROJECT.md          ← your plan ✍️</code></pre>
-<div class="fragment">
-<p>Using an API? <strong>Fetch</strong> in one script, <strong>analyse</strong> the saved file in another 🔁</p>
-<aside class="notes">
-<p>Same split as the Week 10 exercise: the analysis must run without the internet (oral exam!).</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-<section id="ideas-if-you-need-one" class="slide level2 smaller">
-<h2>Ideas, if you need one 🌱</h2>
+<p>Your data must have:</p>
 <ul>
-<li>🧬 GC content and length of all sequences in a FASTA file, per organism, with a plot</li>
-<li>🔬 Fetch 20 genes from Ensembl, compare lengths across chromosomes</li>
-<li>📋 A CSV from your own lab or course: clean it, summarise it, plot it</li>
-<li>🦠 Compare two genomes / gene sets: what is different?</li>
-<li>🎲 Your own idea, the best option if you have one!</li>
+<li>at least <strong>50 rows</strong></li>
+<li>at least <strong>2 numeric</strong> columns (e.g.&nbsp;length, expression, score)</li>
+<li>at least <strong>1 text / category</strong> column (e.g.&nbsp;chromosome, organism, type)</li>
 </ul>
+</div>
 <div class="fragment">
-<p><strong>Small and working &gt; big and broken</strong> 🌱</p>
+<p>✅ The analysis runs <strong>from the saved file</strong>, without internet</p>
 <aside class="notes">
-<p>Developers in the group can do something more ambitious (or in another language, as agreed).</p>
+<p>The data requirements guarantee that all 5 required questions are possible. Files over ~50 MB: don’t commit, take a subset or describe in the README how to download.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -342,44 +301,84 @@ Klaudia Brzezińska
       }</style></aside>
 </div>
 </section>
-<section id="timeline" class="slide level2 smaller">
-<h2>Timeline 📅</h2>
+<section id="explore-the-data" class="slide level2 smaller">
+<h2>2 · Explore the data 🔍</h2>
+<p>Describe your dataset with pandas, before asking any questions:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>df.shape              <span class="co"># how many rows and columns?</span></span>
+<span id="cb1-2"><a></a>df.dtypes             <span class="co"># which columns are numbers, which are text?</span></span>
+<span id="cb1-3"><a></a>df.head()             <span class="co"># what does it look like?</span></span>
+<span id="cb1-4"><a></a>df.isna().<span class="bu">sum</span>()       <span class="co"># missing values per column</span></span>
+<span id="cb1-5"><a></a>df[<span class="st">"column"</span>].unique() <span class="co"># which categories are there?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Then <strong>in words</strong> (README): where does the data come from, what is one row, what does each column mean? 📝</p>
+<aside class="notes">
+<p>“What is one row” is the most important question: one gene? one sample? one patient? Missing values: say what you did with them (dropped / kept / filled) and why.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="five-required-questions" class="slide level2 smaller">
+<h2>3 · Five required questions ❓</h2>
+<p>Answer each with code, and write the answer in your README:</p>
 <table class="caption-top">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>When</th>
-<th>What</th>
+<th>#</th>
+<th>Question</th>
+<th>Example (genes)</th>
+<th>pandas</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Kick-off</strong></td>
-<td>Write <code>PROJECT.md</code> ✍️</td>
+<td>Q1</td>
+<td>What are the <strong>min, max, mean and median</strong> of your numeric columns?</td>
+<td>median gene length</td>
+<td><code>describe()</code></td>
 </tr>
 <tr class="even">
-<td>Week 11</td>
-<td>Project lab: I give feedback, you build 🛠️</td>
+<td>Q2</td>
+<td>Which are the <strong>top 3 and bottom 3</strong> rows by a numeric column?</td>
+<td>3 longest / shortest genes</td>
+<td><code>sort_values()</code></td>
 </tr>
 <tr class="odd">
-<td>Week 12 + Week 13 Block 1</td>
-<td>R in class, project at home 🔁</td>
+<td>Q3</td>
+<td><strong>How many</strong> rows per category, and the <strong>mean</strong> of a numeric column per category?</td>
+<td>genes per chromosome, mean length</td>
+<td><code>groupby()</code></td>
 </tr>
 <tr class="even">
-<td>Week 13 Block 2</td>
-<td>Final stretch: last project work time in class + exam prep ✅</td>
+<td>Q4</td>
+<td>How many rows meet a <strong>condition</strong> you choose? What <strong>%</strong> of all rows?</td>
+<td>genes longer than 100 000 bp</td>
+<td>filter <code>df[...]</code></td>
 </tr>
 <tr class="odd">
-<td><strong>Week 14</strong></td>
-<td>15-minute oral exam: you run and explain your tool 💬</td>
+<td>Q5</td>
+<td>Are two numeric columns <strong>related</strong>?</td>
+<td>length vs number of exons</td>
+<td><code>corr()</code> + scatter</td>
 </tr>
 </tbody>
 </table>
 <aside class="notes">
-<p>Week 11 slides reference feedback on PROJECT.md, so it must exist by then.</p>
+<p>These five work for any table that meets the data requirements on slide 1. Q1: ask them to comment if mean and median are very different (skewed data / outliers). Q5: correlation is not causation, one sentence about that in the README is enough.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -392,28 +391,22 @@ Klaudia Brzezińska
           display:block!important;
       }</style></aside>
 </section>
-<section id="project.md" class="slide level2 smaller">
-<h2><code>PROJECT.md</code> ✍️</h2>
-<p>⏱️ rest of the block · your own screen</p>
-<p>Create it in your repo and answer in 3–5 lines each:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a></a><span class="fu"># My project</span></span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="fu">## Question</span></span>
-<span id="cb2-4"><a></a>What do I want to find out?</span>
-<span id="cb2-5"><a></a></span>
-<span id="cb2-6"><a></a><span class="fu">## Data</span></span>
-<span id="cb2-7"><a></a>Which file? Where does it come from? (paste the first 3 lines)</span>
-<span id="cb2-8"><a></a></span>
-<span id="cb2-9"><a></a><span class="fu">## Steps</span></span>
-<span id="cb2-10"><a></a><span class="ss">1. </span>read ...</span>
-<span id="cb2-11"><a></a><span class="ss">2. </span>compute ...</span>
-<span id="cb2-12"><a></a><span class="ss">3. </span>plot ...</span>
-<span id="cb2-13"><a></a></span>
-<span id="cb2-14"><a></a><span class="fu">## Output</span></span>
-<span id="cb2-15"><a></a>What will be in results/ when it works?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Commit &amp; push</strong> 💾 by the end of the block, I read all of them before week 11 👀</p>
+<section id="your-own-research" class="slide level2 smaller">
+<h2>4 · Your own research 🧪</h2>
+<p>Ask <strong>2 questions of your own</strong> about your data, the ones <em>you</em> are curious about 🤔</p>
+<div class="fragment">
+<p>For each question:</p>
+<ol type="1">
+<li>❓ the question, in one sentence</li>
+<li>🐍 the code that answers it</li>
+<li>📊 a plot (or a table) with the result</li>
+<li>💬 your answer, 2–3 sentences: what did you find? did it surprise you?</li>
+</ol>
+</div>
+<div class="fragment">
+<p>💡 Ideas: compare two groups · find outliers · combine two columns into a new one · rank categories</p>
 <aside class="notes">
-<p>Visit rooms. The most useful nudge: “show me your data file”, no file = no project yet.</p>
+<p>This is where the oral exam conversation usually starts: “why did you ask this?”</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -425,8 +418,320 @@ Klaudia Brzezińska
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
+</section>
+<section id="plots" class="slide level2 smaller">
+<h2>5 · Plots 📊</h2>
+<p>At least <strong>3 plots</strong>, made with <strong>matplotlib</strong>, of <strong>different types</strong>:</p>
+<ul>
+<li>📊 bar chart (e.g.&nbsp;Q3: count per category)</li>
+<li>📈 histogram (e.g.&nbsp;distribution of a numeric column)</li>
+<li>⚫ scatter plot (e.g.&nbsp;Q5: two numeric columns)</li>
+</ul>
+<div class="fragment">
+<p>Every plot has:</p>
+<ul>
+<li>a <strong>title</strong> and <strong>labelled axes</strong> (with units!)</li>
+<li>is saved as <code>.png</code> in <strong><code>results/</code></strong> (<code>plt.savefig(...)</code>)</li>
+</ul>
+<aside class="notes">
+<p>Plots from the own-research part count too.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="repository-readme" class="slide level2 smaller">
+<h2>Repository &amp; README 📖</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Repository</strong></p>
+<ul>
+<li>🌍 your <strong>own, public</strong> GitHub repo</li>
+<li>🙈 <code>.gitignore</code> (<code>.venv/</code>, <code>__pycache__/</code>)</li>
+<li>📈 commits spread over <strong>several days</strong></li>
+<li>▶️ runs from a fresh clone, step by step as in the README</li>
+<li>🧩 at least <strong>2 functions</strong> with clear names</li>
+<li>🛡️ a friendly message if the data file is missing</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong><code>README.md</code></strong></p>
+<ul>
+<li>▶️ <strong>how to run</strong> the project, step by step</li>
+<li>📥 <strong>data</strong>: source, link, what one row is</li>
+<li>❓ <strong>answers</strong> to Q1–Q5 + your 2 questions</li>
+<li>💡 <strong>conclusions</strong>: what did you learn from the data?</li>
+<li>🧱 <strong>problems</strong>: what was hard, how you solved it</li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>“Problems” is not a weakness: it is the most useful part for the oral exam.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="structure-split-your-code-into-files" class="slide level2 smaller">
+<h2>Structure: split your code into files 🗂️</h2>
+<p>One file per job, like the 5 components 🧩</p>
+<pre><code>my-project/
+├── data/
+│   └── genes.csv          ← your input file 📄
+├── scripts/
+│   ├── fetch_data.py      ← 1 · get the data (API → data/genes.csv) 🌐
+│   ├── load_data.py       ← read the file, friendly message if missing 🛡️
+│   ├── explore.py         ← 2 · exploration 🔍
+│   ├── questions.py       ← 3 + 4 · required questions + own research ❓
+│   ├── plots.py           ← 5 · all plots → results/ 📊
+│   └── main.py            ← runs everything, in order ▶️
+├── results/               ← plots (.png) 📊
+├── requirements.txt       ← ⭐ bonus
+├── .gitignore
+└── README.md</code></pre>
+<div class="fragment">
+<p>⭐ <strong>Bonus</strong>: work in a virtual environment, commit <code>requirements.txt</code> (not <code>.venv/</code>!)</p>
+<aside class="notes">
+<p>Exact file names are up to them, the rule is: one file = one job. No API? Then no fetch_data.py, the file is committed in data/.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="main.py-puts-it-together" class="slide level2 smaller">
+<h2><code>main.py</code> puts it together ▶️</h2>
+<p>The other files hold <strong>functions</strong>, <code>main.py</code> only <strong>calls</strong> them:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># scripts/main.py</span></span>
+<span id="cb3-2"><a></a><span class="im">from</span> load_data <span class="im">import</span> load_genes</span>
+<span id="cb3-3"><a></a><span class="im">from</span> explore <span class="im">import</span> describe_data</span>
+<span id="cb3-4"><a></a><span class="im">from</span> questions <span class="im">import</span> top_and_bottom, count_per_category</span>
+<span id="cb3-5"><a></a><span class="im">from</span> plots <span class="im">import</span> plot_length_histogram</span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a>df <span class="op">=</span> load_genes(<span class="st">"data/genes.csv"</span>)</span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a>describe_data(df)</span>
+<span id="cb3-10"><a></a>top_and_bottom(df, column<span class="op">=</span><span class="st">"length"</span>, n<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb3-11"><a></a>count_per_category(df, category<span class="op">=</span><span class="st">"chromosome"</span>, value<span class="op">=</span><span class="st">"length"</span>)</span>
+<span id="cb3-12"><a></a>plot_length_histogram(df, <span class="st">"results/length_histogram.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Run the whole project: <code>python scripts/main.py</code> 🚀</p>
+</div>
+<div class="fragment">
+<p>📓 Prefer a notebook? Fine: <code>analysis.ipynb</code> <strong>imports</strong> from your <code>.py</code> files, the same way.</p>
+<aside class="notes">
+<p>Same import idea as week 9 (modules). Run from the project root so the relative paths work.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="clean-code" class="slide level2 smaller">
+<h2>Clean code 🧼</h2>
+<p>The test: <strong>can I read your code and understand it?</strong> 👀</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>✅ <strong>Do</strong></p>
+<ul>
+<li>clear names: <code>gene_lengths</code>, <code>count_per_category()</code></li>
+<li>short functions, each doing <strong>one</strong> thing</li>
+<li>file paths as constants at the top</li>
+<li>a comment where the <em>why</em> isn’t obvious</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p>❌ <strong>Avoid</strong></p>
+<ul>
+<li><code>x</code>, <code>df2</code>, <code>test_final_v3()</code></li>
+<li>one 300-line script</li>
+<li>the same code copy-pasted 5×</li>
+<li>old, commented-out code left behind</li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>Copy-paste 5×: that’s a sign it should be a function with a parameter.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-graded" class="slide level2 smaller">
+<h2>What is graded 🎯</h2>
+<ol type="1">
+<li>▶️ <strong>It runs</strong>: following your README, the program works from start to end</li>
+<li>✅ <strong>All 5 components</strong> are there (data, exploration, 5 questions, own research, plots)</li>
+<li>🧼 <strong>Clean code</strong>: I can read it and understand it</li>
+<li>🗂️ <strong>Structure</strong>: code split into files, at least 2 functions</li>
+<li>📖 <strong>Repository &amp; README</strong>: instructions, answers, conclusions, problems</li>
+</ol>
+</section>
+<section id="points" class="slide level2 smaller">
+<h2>Points 🧮</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1 · Data</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>2 · Exploration</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>3 · Five required questions</td>
+<td>25 (5 each)</td>
+</tr>
+<tr class="even">
+<td>4 · Own research</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td>5 · Plots</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Clean code &amp; structure</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td>Repository &amp; README</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>100</strong></td>
+</tr>
+<tr class="odd">
+<td>⭐ Bonus: venv + <code>requirements.txt</code></td>
+<td><strong>+10</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>🗣️ <strong>Week 14 oral exam</strong>: you run your project and explain it. You must be able to explain <strong>every line</strong> of your code.</p>
+<aside class="notes">
+<p>Weights are a proposal, adjust before presenting.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="using-ai" class="slide level2 smaller">
+<h2>Using AI 🤖</h2>
+<p>You <strong>may</strong> use AI tools (ChatGPT, Claude, Copilot…) ✅</p>
+<div class="fragment">
+<p>But: the <strong>oral exam</strong> checks whether <strong>you understand</strong> your project 🗣️</p>
+<ul>
+<li>why you chose this data and these questions</li>
+<li>what each line of your code does</li>
+<li>how you would change it (“what if you wanted the top 5 instead?”)</li>
+</ul>
+</div>
+<div class="fragment">
+<blockquote>
+<p>If you can’t explain it, it doesn’t count. 💡</p>
+</blockquote>
+<aside class="notes">
+<p>Tip for them: when AI writes something, ask it to explain, then rewrite it in your own words.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="deadline-submission" class="slide level2 smaller">
+<h2>Deadline &amp; submission 📅</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>What</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🚀 Project starts</td>
+<td>Week 10</td>
+</tr>
+<tr class="even">
+<td>📬 <strong>Deadline</strong></td>
+<td><strong>11 December 2026</strong></td>
+</tr>
+<tr class="odd">
+<td>🗣️ Oral exam, 15 min</td>
+<td>Week 14</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><strong>How to submit</strong> 📬</p>
+<ol type="1">
+<li>Your repo on GitHub, <strong>public</strong></li>
+<li><strong>Settings → Collaborators → Add people</strong> → invite <strong><code>squatAndRope</code></strong></li>
+</ol>
+</div>
+<div class="fragment">
+<p>The version on GitHub on <strong>11 December</strong> is the one I grade ⏰</p>
+<p>Questions? Ask early, not the night before 😉</p>
 
 
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
