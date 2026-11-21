@@ -37,10 +37,10 @@ Points 1–5 = 100%. The bonus is extra on top.
 
 ## 1 · Get the data 📥 {.smaller}
 
-Any source works:
+**Any topic** works: biology, sport, movies, music, weather, your hobby… 🌍
 
-- 🌐 an **API** (Ensembl, UniProt, NCBI…) → save the result as CSV in `data/`
-- 📄 a **CSV** or 📗 **Excel** file → put the file in `data/` in your repo
+- 🌐 an **API** (Ensembl, UniProt, NCBI, weather, …) → save the result as CSV in `data/`
+- 📄 a **CSV** or 📗 **Excel** file, e.g. from [Kaggle](https://www.kaggle.com/datasets) → put it in `data/`
 - 🧬 a **FASTA** file → turn it into a table first (id, length, GC content…)
 
 . . .
@@ -48,8 +48,8 @@ Any source works:
 Your data must have:
 
 - at least **50 rows**
-- at least **2 numeric** columns (e.g. length, expression, score)
-- at least **1 text / category** column (e.g. chromosome, organism, type)
+- at least **2 numeric** columns (e.g. length, price, rating, temperature)
+- at least **1 text / category** column (e.g. chromosome, genre, country)
 
 . . .
 
@@ -85,13 +85,22 @@ Missing values: say what you did with them (dropped / kept / filled) and why.
 
 Answer each with code, and write the answer in your README:
 
-| # | Question | Example (genes) | pandas |
-|---|---|---|---|
-| Q1 | What are the **min, max, mean and median** of your numeric columns? | median gene length | `describe()` |
-| Q2 | Which are the **top 3 and bottom 3** rows by a numeric column? | 3 longest / shortest genes | `sort_values()` |
-| Q3 | **How many** rows per category, and the **mean** of a numeric column per category? | genes per chromosome, mean length | `groupby()` |
-| Q4 | How many rows meet a **condition** you choose? What **%** of all rows? | genes longer than 100 000 bp | filter `df[...]` |
-| Q5 | Are two numeric columns **related**? | length vs number of exons | `corr()` + scatter |
+::: {style="font-size: 85%;"}
+**Q1** · What are the **min, max, mean and median** of your numeric columns? → `describe()`<br>
+🧬 median gene length · 🎬 median movie rating
+
+**Q2** · Which are the **top 3 and bottom 3** rows by a numeric column? → `sort_values()`<br>
+🧬 3 longest / shortest genes · 🎬 3 best / worst rated movies
+
+**Q3** · **How many** rows per category, and the **mean** of a numeric column per category? → `groupby()`<br>
+🧬 genes per chromosome, mean length · 🎬 movies per genre, mean rating
+
+**Q4** · How many rows meet a **condition** you choose? What **%** of all rows? → `df[...]`<br>
+🧬 genes longer than 100 000 bp · 🎬 movies longer than 2 hours
+
+**Q5** · Are two numeric columns **related**? → `corr()` + scatter plot<br>
+🧬 length vs number of exons · 🎬 budget vs box office
+:::
 
 ::: notes
 These five work for any table that meets the data requirements on slide 1.
@@ -155,6 +164,7 @@ Plots from the own-research part count too.
 ::: {.column width="50%"}
 **`README.md`**
 
+- 📅 your **oral exam date** (14 or 18 December)
 - ▶️ **how to run** the project, step by step
 - 📥 **data**: source, link, what one row is
 - ❓ **answers** to Q1–Q5 + your 2 questions
@@ -263,6 +273,27 @@ Copy-paste 5×: that's a sign it should be a function with a parameter.
 4. 🗂️ **Structure**: code split into files, at least 2 functions
 5. 📖 **Repository & README**: instructions, answers, conclusions, problems
 
+## Reminder: your final grade 🧾 {.smaller}
+
+| Component | When | Weight |
+|---|---|---|
+| 📝 Quizzes → **your commits** ⭐ | whole semester | 15% |
+| 👥 Pair assignment (Git teamwork) | week 8 | 25% |
+| 🧬 **Final project** (individual) + oral exam | 14 or 18 Dec | **60%** |
+
+. . .
+
+⭐ **Quizzes**: instead of quizzes, I count your **commits** from the class exercises.
+You committed your exercises → **100%** for the quiz part ✅
+
+. . .
+
+The final project is the **biggest part** of your grade 🚀
+
+::: notes
+Quizzes were replaced by in-class commits during the semester.
+:::
+
 ## Points 🧮 {.smaller}
 
 | Component | Points |
@@ -279,7 +310,7 @@ Copy-paste 5×: that's a sign it should be a function with a parameter.
 
 . . .
 
-🗣️ **Week 14 oral exam**: you run your project and explain it. You must be able to explain **every line** of your code.
+🗣️ **Oral exam** (14 or 18 December): you run your project and explain it. You must be able to explain **every line** of your code.
 
 ::: notes
 Weights are a proposal, adjust before presenting.
@@ -307,21 +338,36 @@ Tip for them: when AI writes something, ask it to explain, then rewrite it in yo
 
 ## Deadline & submission 📅 {.smaller}
 
-| What | When |
+**You choose** your oral exam date (15 min), the deadline follows from it:
+
+| 🗣️ Oral exam | 📬 Project deadline |
 |---|---|
-| 🚀 Project starts | Week 10 |
-| 📬 **Deadline** | **11 December 2026** |
-| 🗣️ Oral exam, 15 min | Week 14 |
+| **Mon 14 December** 🏃 | **Fri 11 December** |
+| **Fri 18 December** 🐢 | **Mon 14 December** |
 
 . . .
 
-**How to submit** 📬
+🏃 Want the course done sooner? Take 14 December.
+🐢 Need more time for other exams? Take 18 December.
+
+. . .
+
+📅 Write your choice at the **top of your `README.md`**:
+
+```markdown
+**Oral exam date:** 14 December
+```
+
+## How to submit 📬 {.smaller}
 
 1. Your repo on GitHub, **public**
 2. **Settings → Collaborators → Add people** → invite **`squatAndRope`**
+3. Oral exam date at the top of your `README.md` ✅
 
 . . .
 
-The version on GitHub on **11 December** is the one I grade ⏰
+The version on GitHub **on your deadline** is the one I grade ⏰
+
+. . .
 
 Questions? Ask early, not the night before 😉
