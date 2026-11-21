@@ -201,7 +201,7 @@ mean(seqs$gc)
 | `seqs$length` → a **vector** | `df["length"]` → a **Series** |
 | `mean(seqs$gc)` | `df["gc"].mean()` |
 
-pandas copied the idea from R 🐼🇷
+pandas was **inspired by** R's data.frame 🐼 ([McKinney, SciPy 2010](https://proceedings.scipy.org/articles/Majora-92bf1922-00a.pdf))
 
 ## Filtering rows 🎯 {.smaller}
 
