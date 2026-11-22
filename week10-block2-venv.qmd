@@ -172,25 +172,73 @@ __pycache__/
 19–20 min. Check with `git status`: .venv must not show up.
 :::
 
-## Exercise: your project's box 📦 {.smaller}
+## Exercise 1/2: build the box 📦 {.smaller}
 
-⏱️ 7 min · on your own · react ✅ when done
+⏱️ 10 min (both slides) · on your own · react ✅ when done
 
-In **your repo** folder:
+Open a terminal **in your repo folder**, then type line by line:
 
-1. Create a venv: `python3 -m venv .venv`
-2. Activate it → see **`(.venv)`** in the prompt
-3. `pip install requests pandas matplotlib`
-4. `pip freeze > requirements.txt`
-5. Add `.venv/` to `.gitignore`
-6. Commit `requirements.txt` and `.gitignore` 💾
+```bash
+mkdir venv-practice                     # 1. a new folder for today
+cd venv-practice                        # 2. go inside
+python3 -m venv .venv                   # 3. create the box
+source .venv/bin/activate               # 4. → (.venv) in the prompt? Windows: .venv\Scripts\Activate.ps1
+pip install requests pandas matplotlib  # 5. fill the box
+pip freeze > requirements.txt           # 6. write the shopping list
+```
 
-✅ Check: `git status` does **not** show `.venv/`
+. . .
+
+In **VS Code**, inside `venv-practice/`, create two files:
+
+:::: {.columns}
+::: {.column width="35%"}
+7\. **`.gitignore`**
+
+```
+.venv/
+```
+:::
+::: {.column width="65%"}
+8\. **`check.py`**
+
+```python
+import pandas, requests, matplotlib
+print("pandas", pandas.__version__)
+print("All libraries found ✅")
+```
+:::
+::::
 
 ::: notes
-20–27 min. Common issues: venv created in the wrong folder (home dir), PowerShell execution policy,
-forgetting to activate → packages installed globally again, .venv already committed
-(fix: git rm -r --cached .venv).
+~6 min. Windows: `python` instead of `python3`; if PowerShell blocks activation:
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+Common issues: mkdir in the home folder instead of the repo, (.venv) missing → pip installs globally again.
+Create the files in VS Code, not with echo (PowerShell echo writes UTF-16, Git can't read that .gitignore).
+:::
+
+## Exercise 2/2: test it and save it to Git 💾 {.smaller}
+
+Still in `venv-practice/`, with **`(.venv)`** in the prompt:
+
+```bash
+python3 check.py                        # 9. prints pandas version + ✅
+git status                              # 10. .venv/ must NOT be listed
+cd ..                                   # 11. back to your repo folder
+git add venv-practice
+git commit -m "Add venv practice"       # 12. save it
+git push                                # 13. your partner needs it next!
+```
+
+. . .
+
+On GitHub, `venv-practice/` should have **3 files**: `.gitignore`, `check.py`, `requirements.txt`, and **no** `.venv/` ✅
+
+::: notes
+~4 min. If .venv shows up in git status: .gitignore is in the wrong folder or has a typo.
+If .venv was already committed: git rm -r --cached venv-practice/.venv
+The venv stays active after cd .., so part 2 (APIs) works from the repo root with the same box.
+Push matters: the next exercise clones this repo.
 :::
 
 ## Exercise: swap boxes 🔁 {.smaller}
@@ -204,12 +252,12 @@ forgetting to activate → packages installed globally again, .venv already comm
 ```bash
 cd ..                                   # 1. leave your own repo!
 git clone <OWNER_URL> friend-repo       # 2. copy the owner's project
-cd friend-repo
-ls -a                                   # 3. no .venv here, only the list ✅
+cd friend-repo/venv-practice
+ls -a                                   # 3. list + check.py, but no .venv ✅
 python3 -m venv .venv                   # 4. build an empty box
 source .venv/bin/activate               # 5. Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt         # 6. fill it from the shopping list
-pip list                                # 7. same versions as in requirements.txt?
+python3 check.py                        # 7. same pandas version as the owner?
 ```
 
 ✅ Post in the room chat: *"pandas X.Y.Z, works on my machine too!"* → then **swap roles** 🔄
@@ -219,8 +267,9 @@ pip list                                # 7. same versions as in requirements.tx
 Repos are public (final project rule), so cloning needs no invite.
 Step 3 is the point: .venv is NOT in the clone, only requirements.txt; the guest builds the box themselves.
 Common issues: cloning inside their own repo (forgot cd ..), owner forgot to push requirements.txt,
-"friend-repo" already exists on the second round (use friend-repo2), venv not activated before pip install.
-Windows: `python` instead of `python3`, `dir /a` or `ls -Force` instead of `ls -a`.
+owner forgot step 13 (push), "friend-repo" already exists on the second round (use friend-repo2), venv not activated before pip install.
+Windows: `python` instead of `python3`, `ls -Force` instead of `ls -a`.
+On the swap the new owner already pushed in exercise 2/2, so they only paste the URL.
 friend-repo is just a copy, they can delete it afterwards.
 :::
 
