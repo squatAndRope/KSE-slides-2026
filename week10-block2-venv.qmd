@@ -51,43 +51,34 @@ Both are things your **final project** will need 🚀
 
 ## The problem 😩 {.smaller}
 
-So far: `pip3 install pandas` → installed **for the whole computer** 🌍
+![](works-on-my-machine.svg){fig-align="center" width="100%" fig-alt="Four-panel comic: a student's script works on her laptop with pandas 1.5, she sends only the .py file to a friend, it crashes on his laptop with pandas 2.2, and she shrugs: but it works on my machine!"}
 
 . . .
 
-- Project A needs `pandas 1.5`, project B needs `pandas 2.2` 💥
-- Your code runs on your laptop… and crashes on mine 🤷
-- After a year you don't remember **what** you installed
-
-. . .
-
-> "But it works on my machine!" 😅
+`pip3 install pandas` → installed **for the whole computer** 🌍, and the project doesn't remember **which version** it needs
 
 ::: notes
-7–10 min. Ask in the chat: has anyone had an install break something before?
+7–10 min. Tell the comic panel by panel, then ask in the chat: has anyone had an install break something before?
+Points behind it: project A needs pandas 1.5, project B needs 2.2; code runs on one laptop and crashes on another;
+after a year you don't remember what you installed.
+DataFrame.append really was removed in pandas 2.0 (use pd.concat), so the error in panel 3 is real.
 :::
 
 ## The solution: a virtual environment 📦 {.smaller}
 
-A **folder inside your project** with its own Python and its own libraries.
+A **box inside your project** with its own Python and its own libraries.
 
-```
-my-project/
-├── .venv/              ← the box 📦 (Python + libraries)
-├── scripts/
-├── results/
-└── requirements.txt    ← the shopping list 🧾
-```
+![](venv-box.svg){fig-align="center" width="100%" fig-alt="Diagram: the my-project folder holds a cardboard box labelled .venv with Python 3.12, pandas 2.2, numpy and matplotlib inside, plus scripts/ and results/ folders and a requirements.txt shopping list. A dashed arrow rebuilds the box from the list with pip install -r requirements.txt. Only requirements.txt goes to Git/GitHub; .venv never does."}
 
 . . .
 
-- One project = one `.venv` ✅
-- Delete it anytime, rebuild it from `requirements.txt` 🔁
-- `.venv` stays **on your computer**, `requirements.txt` goes to **Git** 💾
+One project = one `.venv` ✅
 
 ::: notes
-10–12 min. Analogy: .venv is the fridge, requirements.txt is the shopping list.
-You don't send the fridge to a friend, you send the list.
+10–12 min. Walk through the picture: the box (.venv) holds this project's Python and libraries,
+the shopping list (requirements.txt) says what goes in the box.
+Delete the box anytime, rebuild it from the list. The list goes to Git, the box stays on your computer.
+Analogy: you don't send the fridge to a friend, you send the shopping list.
 :::
 
 ## Create and activate 🛠️ {.smaller}
