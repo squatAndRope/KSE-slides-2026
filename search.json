@@ -56,6 +56,20 @@
     "text": "Exercise: your project’s box 📦\n⏱️ 7 min · on your own · react ✅ when done\nIn your repo folder:\n\nCreate a venv: python3 -m venv .venv\nActivate it → see (.venv) in the prompt\npip install requests pandas matplotlib\npip freeze &gt; requirements.txt\nAdd .venv/ to .gitignore\nCommit requirements.txt and .gitignore 💾\n\n✅ Check: git status does not show .venv/\n\n20–27 min. Common issues: venv created in the wrong folder (home dir), PowerShell execution policy, forgetting to activate → packages installed globally again, .venv already committed (fix: git rm -r –cached .venv)."
   },
   {
+    "objectID": "week10-block2-venv.html#exercise-swap-boxes",
+    "href": "week10-block2-venv.html#exercise-swap-boxes",
+    "title": "Week 10 · Block 2 — Virtual environments & data from the internet",
+    "section": "Exercise: swap boxes 🔁",
+    "text": "Exercise: swap boxes 🔁\n⏱️ 10 min · breakout rooms · pairs · react ✅ when both are done\nOwner 🏠: git push, then paste your repo URL in the room chat\nGuest 🧳: rebuild the owner’s box on your laptop, step by step:\ncd ..                                   # 1. leave your own repo!\ngit clone &lt;OWNER_URL&gt; friend-repo       # 2. copy the owner's project\ncd friend-repo\nls -a                                   # 3. no .venv here, only the list ✅\npython3 -m venv .venv                   # 4. build an empty box\nsource .venv/bin/activate               # 5. Windows: .venv\\Scripts\\Activate.ps1\npip install -r requirements.txt         # 6. fill it from the shopping list\npip list                                # 7. same versions as in requirements.txt?\n✅ Post in the room chat: “pandas X.Y.Z, works on my machine too!” → then swap roles 🔄\n\n~10 min. Pure practice, no thinking needed: they just follow the steps. Same repo as the previous exercise. Repos are public (final project rule), so cloning needs no invite. Step 3 is the point: .venv is NOT in the clone, only requirements.txt; the guest builds the box themselves. Common issues: cloning inside their own repo (forgot cd ..), owner forgot to push requirements.txt, “friend-repo” already exists on the second round (use friend-repo2), venv not activated before pip install. Windows: python instead of python3, dir /a or ls -Force instead of ls -a. friend-repo is just a copy, they can delete it afterwards."
+  },
+  {
+    "objectID": "week10-block2-venv.html#an-api-is-a-waiter",
+    "href": "week10-block2-venv.html#an-api-is-a-waiter",
+    "title": "Week 10 · Block 2 — Virtual environments & data from the internet",
+    "section": "An API is a waiter 🍽️",
+    "text": "An API is a waiter 🍽️\n\n\nYou don’t walk into the kitchen: you order with a URL and get just the data back 🧬\n\n~2 min. Tell it panel by panel. The menu would be the API docs: it says what you can order. Then the next slide shows how the order (the URL) is written."
+  },
+  {
     "objectID": "week10-block2-venv.html#what-is-an-api",
     "href": "week10-block2-venv.html#what-is-an-api",
     "title": "Week 10 · Block 2 — Virtual environments & data from the internet",

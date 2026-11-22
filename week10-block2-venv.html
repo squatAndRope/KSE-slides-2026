@@ -449,11 +449,59 @@ __pycache__/</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="exercise-swap-boxes" class="slide level2 smaller">
+<h2>Exercise: swap boxes 🔁</h2>
+<p>⏱️ 10 min · breakout rooms · pairs · react ✅ when <strong>both</strong> are done</p>
+<p><strong>Owner</strong> 🏠: <code>git push</code>, then paste your repo URL in the room chat</p>
+<p><strong>Guest</strong> 🧳: rebuild the owner’s box on <strong>your</strong> laptop, step by step:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="bu">cd</span> ..                                   <span class="co"># 1. leave your own repo!</span></span>
+<span id="cb9-2"><a></a><span class="fu">git</span> clone <span class="op">&lt;</span>OWNER_URL<span class="op">&gt;</span> friend-repo       <span class="co"># 2. copy the owner's project</span></span>
+<span id="cb9-3"><a></a><span class="bu">cd</span> friend-repo</span>
+<span id="cb9-4"><a></a><span class="fu">ls</span> <span class="at">-a</span>                                   <span class="co"># 3. no .venv here, only the list ✅</span></span>
+<span id="cb9-5"><a></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv                   <span class="co"># 4. build an empty box</span></span>
+<span id="cb9-6"><a></a><span class="bu">source</span> .venv/bin/activate               <span class="co"># 5. Windows: .venv\Scripts\Activate.ps1</span></span>
+<span id="cb9-7"><a></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt         <span class="co"># 6. fill it from the shopping list</span></span>
+<span id="cb9-8"><a></a><span class="ex">pip</span> list                                <span class="co"># 7. same versions as in requirements.txt?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>✅ Post in the room chat: <em>“pandas X.Y.Z, works on my machine too!”</em> → then <strong>swap roles</strong> 🔄</p>
+<aside class="notes">
+<p>~10 min. Pure practice, no thinking needed: they just follow the steps. Same repo as the previous exercise. Repos are public (final project rule), so cloning needs no invite. Step 3 is the point: .venv is NOT in the clone, only requirements.txt; the guest builds the box themselves. Common issues: cloning inside their own repo (forgot cd ..), owner forgot to push requirements.txt, “friend-repo” already exists on the second round (use friend-repo2), venv not activated before pip install. Windows: <code>python</code> instead of <code>python3</code>, <code>dir /a</code> or <code>ls -Force</code> instead of <code>ls -a</code>. friend-repo is just a copy, they can delete it afterwards.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="part-2-data-from-the-internet" class="title-slide slide level1 center">
 <h1>Part 2 · Data from the internet 🌐</h1>
 
+</section>
+<section id="an-api-is-a-waiter" class="slide level2 smaller">
+<h2>An API is a waiter 🍽️</h2>
+
+<img data-src="api-waiter.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Four-panel comic: a student with a laptop orders one human BRCA2; a waiter (the API) takes the order to the kitchen; a chef in Ensembl's kitchen picks the BRCA2 jar from a shelf of gene jars; the waiter serves the data on a plate as JSON."><div class="fragment">
+<p>You don’t walk into the kitchen: you <strong>order</strong> with a URL and get <strong>just the data</strong> back 🧬</p>
+<aside class="notes">
+<p>~2 min. Tell it panel by panel. The menu would be the API docs: it says what you can order. Then the next slide shows how the order (the URL) is written.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
 </section>
 <section id="what-is-an-api" class="slide level2 smaller">
 <h2>What is an API? 🌐</h2>
@@ -543,15 +591,15 @@ __pycache__/</code></pre>
 <section id="json-dictionaries-you-already-know" class="slide level2 smaller">
 <h2>JSON = dictionaries you already know 📖</h2>
 <p>What you saw in the browser:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a></a><span class="fu">{</span></span>
-<span id="cb10-2"><a></a>  <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"ENSG00000139618"</span><span class="fu">,</span></span>
-<span id="cb10-3"><a></a>  <span class="dt">"display_name"</span><span class="fu">:</span> <span class="st">"BRCA2"</span><span class="fu">,</span></span>
-<span id="cb10-4"><a></a>  <span class="dt">"biotype"</span><span class="fu">:</span> <span class="st">"protein_coding"</span><span class="fu">,</span></span>
-<span id="cb10-5"><a></a>  <span class="dt">"seq_region_name"</span><span class="fu">:</span> <span class="st">"13"</span><span class="fu">,</span></span>
-<span id="cb10-6"><a></a>  <span class="dt">"start"</span><span class="fu">:</span> <span class="dv">32315086</span><span class="fu">,</span></span>
-<span id="cb10-7"><a></a>  <span class="dt">"end"</span><span class="fu">:</span> <span class="dv">32400268</span><span class="fu">,</span></span>
-<span id="cb10-8"><a></a>  <span class="dt">"strand"</span><span class="fu">:</span> <span class="dv">1</span></span>
-<span id="cb10-9"><a></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb11-1"><a></a><span class="fu">{</span></span>
+<span id="cb11-2"><a></a>  <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"ENSG00000139618"</span><span class="fu">,</span></span>
+<span id="cb11-3"><a></a>  <span class="dt">"display_name"</span><span class="fu">:</span> <span class="st">"BRCA2"</span><span class="fu">,</span></span>
+<span id="cb11-4"><a></a>  <span class="dt">"biotype"</span><span class="fu">:</span> <span class="st">"protein_coding"</span><span class="fu">,</span></span>
+<span id="cb11-5"><a></a>  <span class="dt">"seq_region_name"</span><span class="fu">:</span> <span class="st">"13"</span><span class="fu">,</span></span>
+<span id="cb11-6"><a></a>  <span class="dt">"start"</span><span class="fu">:</span> <span class="dv">32315086</span><span class="fu">,</span></span>
+<span id="cb11-7"><a></a>  <span class="dt">"end"</span><span class="fu">:</span> <span class="dv">32400268</span><span class="fu">,</span></span>
+<span id="cb11-8"><a></a>  <span class="dt">"strand"</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb11-9"><a></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Keys and values → a Python <strong>dictionary</strong> (week 6!) 🎯</p>
 <aside class="notes">
@@ -572,15 +620,15 @@ __pycache__/</code></pre>
 <section id="asking-from-python" class="slide level2 smaller">
 <h2>Asking from Python 🐍</h2>
 <p><code>requests</code> is already in your box from part 1 📦 (<code>(.venv)</code> active?)</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb11-2"><a></a></span>
-<span id="cb11-3"><a></a>url <span class="op">=</span> <span class="st">"https://rest.ensembl.org/lookup/symbol/homo_sapiens/BRCA2"</span></span>
-<span id="cb11-4"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>{<span class="st">"Content-Type"</span>: <span class="st">"application/json"</span>})</span>
-<span id="cb11-5"><a></a>response.raise_for_status()      <span class="co"># stop with an error if something went wrong</span></span>
-<span id="cb11-6"><a></a></span>
-<span id="cb11-7"><a></a>gene <span class="op">=</span> response.json()           <span class="co"># JSON → dictionary</span></span>
-<span id="cb11-8"><a></a><span class="bu">print</span>(gene[<span class="st">"display_name"</span>], gene[<span class="st">"seq_region_name"</span>])</span>
-<span id="cb11-9"><a></a><span class="bu">print</span>(<span class="st">"Length:"</span>, gene[<span class="st">"end"</span>] <span class="op">-</span> gene[<span class="st">"start"</span>] <span class="op">+</span> <span class="dv">1</span>, <span class="st">"bp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a>url <span class="op">=</span> <span class="st">"https://rest.ensembl.org/lookup/symbol/homo_sapiens/BRCA2"</span></span>
+<span id="cb12-4"><a></a>response <span class="op">=</span> requests.get(url, headers<span class="op">=</span>{<span class="st">"Content-Type"</span>: <span class="st">"application/json"</span>})</span>
+<span id="cb12-5"><a></a>response.raise_for_status()      <span class="co"># stop with an error if something went wrong</span></span>
+<span id="cb12-6"><a></a></span>
+<span id="cb12-7"><a></a>gene <span class="op">=</span> response.json()           <span class="co"># JSON → dictionary</span></span>
+<span id="cb12-8"><a></a><span class="bu">print</span>(gene[<span class="st">"display_name"</span>], gene[<span class="st">"seq_region_name"</span>])</span>
+<span id="cb12-9"><a></a><span class="bu">print</span>(<span class="st">"Length:"</span>, gene[<span class="st">"end"</span>] <span class="op">-</span> gene[<span class="st">"start"</span>] <span class="op">+</span> <span class="dv">1</span>, <span class="st">"bp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p><code>ModuleNotFoundError: requests</code>? → your venv is <strong>not active</strong> 😉</p>
 <aside class="notes">
@@ -601,22 +649,22 @@ __pycache__/</code></pre>
 <section id="many-genes-a-table" class="slide level2 smaller">
 <h2>Many genes → a table 📋</h2>
 <p>The bridge from last week: <strong>list of dictionaries → DataFrame</strong> 🪄</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb12-2"><a></a><span class="im">import</span> requests</span>
-<span id="cb12-3"><a></a></span>
-<span id="cb12-4"><a></a>genes <span class="op">=</span> [<span class="st">"BRCA1"</span>, <span class="st">"BRCA2"</span>, <span class="st">"TP53"</span>, <span class="st">"EGFR"</span>, <span class="st">"MYC"</span>]</span>
-<span id="cb12-5"><a></a>rows <span class="op">=</span> []</span>
-<span id="cb12-6"><a></a></span>
-<span id="cb12-7"><a></a><span class="cf">for</span> symbol <span class="kw">in</span> genes:</span>
-<span id="cb12-8"><a></a>    url <span class="op">=</span> <span class="ss">f"https://rest.ensembl.org/lookup/symbol/homo_sapiens/</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb12-9"><a></a>    r <span class="op">=</span> requests.get(url, headers<span class="op">=</span>{<span class="st">"Content-Type"</span>: <span class="st">"application/json"</span>})</span>
-<span id="cb12-10"><a></a>    r.raise_for_status()</span>
-<span id="cb12-11"><a></a>    g <span class="op">=</span> r.json()</span>
-<span id="cb12-12"><a></a>    rows.append({<span class="st">"gene"</span>: symbol, <span class="st">"chromosome"</span>: g[<span class="st">"seq_region_name"</span>],</span>
-<span id="cb12-13"><a></a>                 <span class="st">"length"</span>: g[<span class="st">"end"</span>] <span class="op">-</span> g[<span class="st">"start"</span>] <span class="op">+</span> <span class="dv">1</span>})</span>
-<span id="cb12-14"><a></a></span>
-<span id="cb12-15"><a></a>df <span class="op">=</span> pd.DataFrame(rows)</span>
-<span id="cb12-16"><a></a>df.to_csv(<span class="st">"results/genes.csv"</span>, index<span class="op">=</span><span class="va">False</span>)     <span class="co"># save it! 💾</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a></a><span class="im">import</span> requests</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a>genes <span class="op">=</span> [<span class="st">"BRCA1"</span>, <span class="st">"BRCA2"</span>, <span class="st">"TP53"</span>, <span class="st">"EGFR"</span>, <span class="st">"MYC"</span>]</span>
+<span id="cb13-5"><a></a>rows <span class="op">=</span> []</span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a><span class="cf">for</span> symbol <span class="kw">in</span> genes:</span>
+<span id="cb13-8"><a></a>    url <span class="op">=</span> <span class="ss">f"https://rest.ensembl.org/lookup/symbol/homo_sapiens/</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb13-9"><a></a>    r <span class="op">=</span> requests.get(url, headers<span class="op">=</span>{<span class="st">"Content-Type"</span>: <span class="st">"application/json"</span>})</span>
+<span id="cb13-10"><a></a>    r.raise_for_status()</span>
+<span id="cb13-11"><a></a>    g <span class="op">=</span> r.json()</span>
+<span id="cb13-12"><a></a>    rows.append({<span class="st">"gene"</span>: symbol, <span class="st">"chromosome"</span>: g[<span class="st">"seq_region_name"</span>],</span>
+<span id="cb13-13"><a></a>                 <span class="st">"length"</span>: g[<span class="st">"end"</span>] <span class="op">-</span> g[<span class="st">"start"</span>] <span class="op">+</span> <span class="dv">1</span>})</span>
+<span id="cb13-14"><a></a></span>
+<span id="cb13-15"><a></a>df <span class="op">=</span> pd.DataFrame(rows)</span>
+<span id="cb13-16"><a></a>df.to_csv(<span class="st">"results/genes.csv"</span>, index<span class="op">=</span><span class="va">False</span>)     <span class="co"># save it! 💾</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>39–44 min. Every piece is something they know: loop (w5), dict (w6), list of dicts → DataFrame (w9), to_csv (w9).</p>
 <style type="text/css">
@@ -661,8 +709,8 @@ __pycache__/</code></pre>
 <section id="exercise-part-a-fetch" class="slide level2 smaller">
 <h2>Exercise, part A: Fetch 🌐</h2>
 <p>⏱️ 10 min · breakout rooms · pairs · react ✅ · file: <strong><code>scripts/fetch_genes.py</code></strong></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>genes <span class="op">=</span> [<span class="st">"BRCA1"</span>, <span class="st">"BRCA2"</span>, <span class="st">"TP53"</span>, <span class="st">"EGFR"</span>, <span class="st">"MYC"</span>, <span class="st">"KRAS"</span>, <span class="st">"CFTR"</span>, <span class="st">"HBB"</span>]</span>
-<span id="cb13-2"><a></a>url <span class="op">=</span> <span class="ss">f"https://rest.ensembl.org/lookup/symbol/homo_sapiens/</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">"</span>   <span class="co"># inside the loop</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>genes <span class="op">=</span> [<span class="st">"BRCA1"</span>, <span class="st">"BRCA2"</span>, <span class="st">"TP53"</span>, <span class="st">"EGFR"</span>, <span class="st">"MYC"</span>, <span class="st">"KRAS"</span>, <span class="st">"CFTR"</span>, <span class="st">"HBB"</span>]</span>
+<span id="cb14-2"><a></a>url <span class="op">=</span> <span class="ss">f"https://rest.ensembl.org/lookup/symbol/homo_sapiens/</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">"</span>   <span class="co"># inside the loop</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ol type="1">
