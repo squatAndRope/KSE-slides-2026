@@ -284,20 +284,11 @@ Klaudia Brzezińska
 </section>
 <section id="the-problem" class="slide level2 smaller">
 <h2>The problem 😩</h2>
-<p>So far: <code>pip3 install pandas</code> → installed <strong>for the whole computer</strong> 🌍</p>
-<div class="fragment">
-<ul>
-<li>Project A needs <code>pandas 1.5</code>, project B needs <code>pandas 2.2</code> 💥</li>
-<li>Your code runs on your laptop… and crashes on mine 🤷</li>
-<li>After a year you don’t remember <strong>what</strong> you installed</li>
-</ul>
-</div>
-<div class="fragment">
-<blockquote>
-<p>“But it works on my machine!” 😅</p>
-</blockquote>
+
+<img data-src="works-on-my-machine.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Four-panel comic: a student's script works on her laptop with pandas 1.5, she sends only the .py file to a friend, it crashes on his laptop with pandas 2.2, and she shrugs: but it works on my machine!"><div class="fragment">
+<p><code>pip3 install pandas</code> → installed <strong>for the whole computer</strong> 🌍, and the project doesn’t remember <strong>which version</strong> it needs</p>
 <aside class="notes">
-<p>7–10 min. Ask in the chat: has anyone had an install break something before?</p>
+<p>7–10 min. Tell the comic panel by panel, then ask in the chat: has anyone had an install break something before? Points behind it: project A needs pandas 1.5, project B needs 2.2; code runs on one laptop and crashes on another; after a year you don’t remember what you installed. DataFrame.append really was removed in pandas 2.0 (use pd.concat), so the error in panel 3 is real.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

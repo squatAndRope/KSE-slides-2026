@@ -18,7 +18,7 @@
     "href": "week10-block2-venv.html#the-problem",
     "title": "Week 10 · Block 2 — Virtual environments & data from the internet",
     "section": "The problem 😩",
-    "text": "The problem 😩\nSo far: pip3 install pandas → installed for the whole computer 🌍\n\n\nProject A needs pandas 1.5, project B needs pandas 2.2 💥\nYour code runs on your laptop… and crashes on mine 🤷\nAfter a year you don’t remember what you installed\n\n\n\n\n“But it works on my machine!” 😅\n\n\n7–10 min. Ask in the chat: has anyone had an install break something before?"
+    "text": "The problem 😩\n\n\npip3 install pandas → installed for the whole computer 🌍, and the project doesn’t remember which version it needs\n\n7–10 min. Tell the comic panel by panel, then ask in the chat: has anyone had an install break something before? Points behind it: project A needs pandas 1.5, project B needs 2.2; code runs on one laptop and crashes on another; after a year you don’t remember what you installed. DataFrame.append really was removed in pandas 2.0 (use pd.concat), so the error in panel 3 is real."
   },
   {
     "objectID": "week10-block2-venv.html#the-solution-a-virtual-environment",
