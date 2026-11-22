@@ -25,7 +25,7 @@
     "href": "week10-block2-venv.html#the-solution-a-virtual-environment",
     "title": "Week 10 · Block 2 — Virtual environments & data from the internet",
     "section": "The solution: a virtual environment 📦",
-    "text": "The solution: a virtual environment 📦\nA folder inside your project with its own Python and its own libraries.\nmy-project/\n├── .venv/              ← the box 📦 (Python + libraries)\n├── scripts/\n├── results/\n└── requirements.txt    ← the shopping list 🧾\n\n\nOne project = one .venv ✅\nDelete it anytime, rebuild it from requirements.txt 🔁\n.venv stays on your computer, requirements.txt goes to Git 💾\n\n\n10–12 min. Analogy: .venv is the fridge, requirements.txt is the shopping list. You don’t send the fridge to a friend, you send the list."
+    "text": "The solution: a virtual environment 📦\nA box inside your project with its own Python and its own libraries.\n\n\nOne project = one .venv ✅\n\n10–12 min. Walk through the picture: the box (.venv) holds this project’s Python and libraries, the shopping list (requirements.txt) says what goes in the box. Delete the box anytime, rebuild it from the list. The list goes to Git, the box stays on your computer. Analogy: you don’t send the fridge to a friend, you send the shopping list."
   },
   {
     "objectID": "week10-block2-venv.html#create-and-activate",
