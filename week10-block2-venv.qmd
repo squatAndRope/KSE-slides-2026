@@ -193,7 +193,52 @@ forgetting to activate → packages installed globally again, .venv already comm
 (fix: git rm -r --cached .venv).
 :::
 
+## Exercise: swap boxes 🔁 {.smaller}
+
+⏱️ 10 min · breakout rooms · pairs · react ✅ when **both** are done
+
+**Owner** 🏠: `git push`, then paste your repo URL in the room chat
+
+**Guest** 🧳: rebuild the owner's box on **your** laptop, step by step:
+
+```bash
+cd ..                                   # 1. leave your own repo!
+git clone <OWNER_URL> friend-repo       # 2. copy the owner's project
+cd friend-repo
+ls -a                                   # 3. no .venv here, only the list ✅
+python3 -m venv .venv                   # 4. build an empty box
+source .venv/bin/activate               # 5. Windows: .venv\Scripts\Activate.ps1
+pip install -r requirements.txt         # 6. fill it from the shopping list
+pip list                                # 7. same versions as in requirements.txt?
+```
+
+✅ Post in the room chat: *"pandas X.Y.Z, works on my machine too!"* → then **swap roles** 🔄
+
+::: notes
+~10 min. Pure practice, no thinking needed: they just follow the steps. Same repo as the previous exercise.
+Repos are public (final project rule), so cloning needs no invite.
+Step 3 is the point: .venv is NOT in the clone, only requirements.txt; the guest builds the box themselves.
+Common issues: cloning inside their own repo (forgot cd ..), owner forgot to push requirements.txt,
+"friend-repo" already exists on the second round (use friend-repo2), venv not activated before pip install.
+Windows: `python` instead of `python3`, `dir /a` or `ls -Force` instead of `ls -a`.
+friend-repo is just a copy, they can delete it afterwards.
+:::
+
 # Part 2 · Data from the internet 🌐
+
+## An API is a waiter 🍽️ {.smaller}
+
+![](api-waiter.svg){fig-align="center" width="100%" fig-alt="Four-panel comic: a student with a laptop orders one human BRCA2; a waiter (the API) takes the order to the kitchen; a chef in Ensembl's kitchen picks the BRCA2 jar from a shelf of gene jars; the waiter serves the data on a plate as JSON."}
+
+. . .
+
+You don't walk into the kitchen: you **order** with a URL and get **just the data** back 🧬
+
+::: notes
+~2 min. Tell it panel by panel. The menu would be the API docs: it says what you can order.
+Then the next slide shows how the order (the URL) is written.
+:::
+
 
 ## What is an API? 🌐 {.smaller}
 
