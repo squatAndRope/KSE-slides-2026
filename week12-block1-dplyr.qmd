@@ -71,10 +71,13 @@ Same idea as Python:
 |---|---|
 | `pip install pandas` | `install.packages("dplyr")` |
 | `import pandas as pd` | `library(dplyr)` |
+| `pip freeze > requirements.txt` | `renv::snapshot()` → `renv.lock` |
 
 ::: notes
 8–12 min. Install ggplot2 now too, next block needs it.
 Messages about "masked objects" when loading dplyr are normal, not errors.
+renv = venv for R (week 10): renv::init() makes a project-local library, renv.lock is the shopping list,
+renv::restore() rebuilds it. Just mention it, not needed for the project. conda can install R packages too (r-dplyr).
 :::
 
 ## The pipe `|>` 🚰 {.smaller}
@@ -104,6 +107,40 @@ Keyboard shortcut: **Ctrl/Cmd + Shift + M** ⌨️
 ::: notes
 12–16 min. You may see %>% in older code and tutorials: same idea, from the magrittr package.
 |> needs R 4.1+. If the shortcut inserts %>%: Tools → Global Options → Code → "Use native pipe operator".
+:::
+
+## You've piped before! 🐚 {.smaller}
+
+Week 2, Bash: **`|`** sends the output of one command into the next
+
+```bash
+grep -v "^sample" data/samples.csv | cut -d "," -f 2 | sort | uniq -c
+```
+
+. . .
+
+R, today: **`|>`** sends a table into the next function
+
+```r
+seqs |> count(organism)
+```
+
+. . .
+
+| Bash 🐚 | dplyr 🇷 | pandas 🐼 |
+|---|---|---|
+| <code>&#124;</code> | <code>&#124;&gt;</code> | `.` method chaining |
+| `grep` | `filter()` | `df[df["x"] > 5]` |
+| `cut -f 2` | `select()` | `df[["a"]]` |
+| `sort` | `arrange()` | `sort_values()` |
+| <code>sort &#124; uniq -c</code> | `count()` | `value_counts()` |
+| `head -n 3` | `head(3)` / `slice_head(n = 3)` | `.head(3)` |
+
+Same idea, 3 languages: **small steps, chained** 🔗
+
+::: notes
+~4 min. The Bash version counts organisms from the CSV (assumes organism is column 2 and no commas inside values).
+Point: they already think in pipelines; dplyr is the table-aware version.
 :::
 
 ## Five verbs 🧰 {.smaller}

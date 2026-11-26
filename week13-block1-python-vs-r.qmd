@@ -108,6 +108,109 @@ Different words, **same four steps**: read → filter → group → plot 🧠
 Line by line, ask: "what is the R version of this?" before revealing.
 :::
 
+## Translation cheat sheet: text 🔤 {.smaller}
+
+Week 3 strings, in R (and Bash where it exists)
+
+| What | Python 🐍 | R 🇷 | Bash 🐚 |
+|---|---|---|---|
+| length | `len(seq)` | `nchar(seq)` | `wc -c` |
+| upper case | `seq.upper()` | `toupper(seq)` | `tr a-z A-Z` |
+| first 3 letters | `seq[0:3]` | `substr(seq, 1, 3)` | `cut -c 1-3` |
+| replace | `seq.replace("T", "U")` | `gsub("T", "U", seq)` | `sed 's/T/U/g'` |
+| contains? | `"GC" in seq` | `grepl("GC", seq)` | `grep GC` |
+| glue text | `f"gene_{i}"` | `paste0("gene_", i)` | `"gene_$i"` |
+| split into letters | `list(seq)` | `strsplit(seq, "")[[1]]` ⚠️ | – |
+
+. . .
+
+⚠️ `strsplit()` returns a **list**, so take the first element with `[[1]]`
+
+```r
+bases <- strsplit("ATGCGC", "")[[1]]   # "A" "T" "G" "C" "G" "C"
+mean(bases %in% c("G", "C"))           # GC content: 0.67 🧬
+```
+
+::: notes
+~5 min. nchar, not length! length("ATGC") is 1 (one string = vector of length 1).
+mean(TRUE/FALSE) = share of TRUE, the same trick as week 11.
+:::
+
+## Translation cheat sheet: functions & control flow 🧩 {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+**Python** 🐍 (weeks 4–6)
+
+```python
+def classify(gc):
+    if gc > 0.6:
+        return "high"
+    elif gc < 0.4:
+        return "low"
+    else:
+        return "medium"
+
+for g in [0.7, 0.3, 0.5]:
+    print(classify(g))
+```
+:::
+::: {.column width="50%"}
+**R** 🇷
+
+```r
+classify <- function(gc) {
+  if (gc > 0.6) {
+    return("high")
+  } else if (gc < 0.4) {
+    return("low")
+  } else {
+    return("medium")
+  }
+}
+for (g in c(0.7, 0.3, 0.5)) {
+  print(classify(g))
+}
+```
+:::
+::::
+
+. . .
+
+`:` + indentation → `{ }` · `elif` → `else if` · `and`/`or` → `&`/`|` · `True` → `TRUE`
+
+::: notes
+~5 min. R doesn't care about indentation, but indent anyway: readers do.
+R returns the last value automatically, return() is optional; keep it while learning.
+Vectorised alternative they'll like: ifelse(gc > 0.6, "high", "low") works on a whole column.
+:::
+
+## Translation cheat sheet: collections, files, errors 🧰 {.smaller}
+
+| What | Python 🐍 | R 🇷 |
+|---|---|---|
+| list of numbers | `[1, 2, 3]` | `c(1, 2, 3)` |
+| dictionary | `{"ATG": "Met"}` → `d["ATG"]` | `list(ATG = "Met")` → `l[["ATG"]]` |
+| count each item | dict loop / `Counter()` | `table(bases)` (Bash: <code>sort &#124; uniq -c</code>) |
+| read lines | `open(f).readlines()` | `readLines(f)` |
+| write lines | `f.write(...)` | `writeLines(lines, f)` |
+| file exists? | `os.path.exists(f)` | `file.exists(f)` |
+
+. . .
+
+| Python error 🐍 | R message 🇷 |
+|---|---|
+| `NameError` | `object 'x' not found` |
+| `ModuleNotFoundError` | `there is no package called 'dplyr'` → `install.packages()` |
+| forgot `import` | `could not find function "filter"` → `library()` |
+| `FileNotFoundError` | `cannot open file ...` → check `getwd()` (Bash: `pwd`) |
+| `IndexError` | **no error!** `x[10]` just gives `NA` 🤫 |
+
+::: notes
+~5 min. The IndexError row is a silent bug (week 7): R prefers NA to crashing.
+print() debugging works exactly the same in R.
+:::
+
 ## Where each one shines ✨ {.smaller}
 
 | Task | Better fit |
@@ -138,12 +241,12 @@ What transfers between every language:
 > You did not learn Python. You learned to program — in Python. 🎓
 
 ::: notes
-25–35 min. This is the closing message of the whole course. Say it warmly.
+40–50 min. This is the closing message of the whole course. Say it warmly.
 :::
 
 ## Exercise: Translate it 🔄 {.smaller}
 
-⏱️ 30 min · breakout rooms
+⏱️ 25 min · breakout rooms
 
 Take one of your **own** Python scripts from weeks 3–10 and rewrite a piece of it in R:
 
@@ -155,8 +258,8 @@ Take one of your **own** Python scripts from weeks 3–10 and rewrite a piece of
 💡 **Bonus:** translate a plot from **your project** into ggplot2 🇷
 
 ::: notes
-35–70 min. The comparison of their own code is far more convincing than my slides.
-Common trap: indexing from 1, and strsplit() returning a list.
+50–75 min. The comparison of their own code is far more convincing than my slides.
+Common trap: indexing from 1, and strsplit() returning a list (both on the cheat sheet slides).
 :::
 
 ## Where to go next 🌱 {.smaller}
@@ -183,5 +286,5 @@ Common trap: indexing from 1, and strsplit() returning a list.
 And: The Carpentries lessons, free and biology-focused 🎓
 
 ::: notes
-70–80 min. Put the actual links in the chat.
+75–80 min. Put the actual links in the chat.
 :::

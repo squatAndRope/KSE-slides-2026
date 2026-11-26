@@ -43,19 +43,45 @@ nrow(seqs)
 
 . . .
 
-| R 🇷 | pandas 🐼 |
-|---|---|
-| `read.csv("data/samples.csv")` | `pd.read_csv("data/samples.csv")` |
-| `head(seqs)` | `df.head()` |
-| `str(seqs)` | `df.info()` / `df.dtypes` |
-| `summary(seqs)` | `df.describe()` |
-| `nrow(seqs)` | `len(df)` |
+| R 🇷 | pandas 🐼 | Bash 🐚 |
+|---|---|---|
+| `read.csv("data/samples.csv")` | `pd.read_csv("data/samples.csv")` | `cat data/samples.csv` |
+| `head(seqs)` | `df.head()` | `head data/samples.csv` |
+| `str(seqs)` | `df.info()` / `df.dtypes` | – |
+| `summary(seqs)` | `df.describe()` | – |
+| `nrow(seqs)` | `len(df)` | `wc -l` (minus the header!) |
 
 **pandas saved it with `to_csv()`. R reads it.** 🐍🤝🇷
 
 ::: notes
 10–25 min. Any CSV saved by pandas with to_csv() reads straight into R — the pipeline spans two languages.
 Use samples.csv from week 9 (columns: sample, organism, gc_content, length).
+:::
+
+## Missing values & saving a table 🕳️💾 {.smaller}
+
+Real data has holes. In R a hole is **`NA`** (pandas: `NaN`)
+
+```r
+gc <- c(0.55, NA, 0.62)
+mean(gc)                 # NA 😱 one hole spoils everything
+mean(gc, na.rm = TRUE)   # 0.585 ✅ skip the holes
+sum(is.na(gc))           # how many holes? 1
+```
+
+. . .
+
+| R 🇷 | pandas 🐼 |
+|---|---|
+| `mean(x, na.rm = TRUE)` | `df["x"].mean()` (skips NaN by default) |
+| `is.na(x)` | `df["x"].isna()` |
+| `write.csv(seqs, "results/out.csv", row.names = FALSE)` | `df.to_csv("results/out.csv", index=False)` |
+
+`row.names = FALSE` = `index=False`: no extra numbered column 🙅
+
+::: notes
+~5 min. The opposite default from pandas: R refuses to guess, pandas silently skips.
+A CSV written by R reads straight into pandas, and the other way round.
 :::
 
 ## Your first plot 📈

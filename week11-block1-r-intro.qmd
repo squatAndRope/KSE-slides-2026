@@ -76,6 +76,29 @@ Run a line: **Ctrl/Cmd + Enter** ⏎
 Screen share and point at each panel. The Environment panel is something Python beginners never get — highlight it.
 :::
 
+## R in the terminal, too 🖥️ {.smaller}
+
+RStudio is just a window: R runs in the terminal like everything else this semester
+
+| | Bash 🐚 | Python 🐍 | R 🇷 |
+|---|---|---|---|
+| try things out | the terminal itself | `python3` | `R` (or the Console) |
+| run a script | `bash count_seqs.sh` | `python3 scripts/x.py` | `Rscript scripts/x.R` |
+| where am I? | `pwd` | `os.getcwd()` | `getwd()` |
+| what's here? | `ls` | `os.listdir()` | `list.files()` |
+| help | `man ls` | `help(len)` | `?length` |
+| quit | `exit` | `exit()` | `q()` |
+
+. . .
+
+`Rscript` = your R analysis becomes a **command**, like your `.sh` and `.py` scripts ⚙️
+
+::: notes
+~3 min. Show `Rscript -e 'mean(c(1,2,3))'` in the RStudio Terminal tab.
+Windows: if Rscript is not found, use the RStudio Terminal tab or add R's bin folder to PATH.
+getwd() matters: read.csv("data/...") is relative to it, same as relative paths in week 2.
+:::
+
 ## R + Git: nothing new 💾 {.smaller}
 
 **1. Open your repo as a project** (once)
