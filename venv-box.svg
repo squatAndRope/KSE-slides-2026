@@ -1,0 +1,86 @@
+<svg viewBox="0 -50 1600 690" xmlns="http://www.w3.org/2000/svg" font-family="'Source Sans Pro','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <style>
+      .lbl { fill: #e1e4e8; font-size: 30px; }
+      .mono { font-family: 'DejaVu Sans Mono', Menlo, Consolas, monospace; }
+      .note { fill: #8b949e; font-size: 24px; }
+      .arrow { stroke: #b392f0; stroke-width: 4; fill: none; stroke-linecap: round; }
+    </style>
+    <marker id="ahv" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b392f0"/>
+    </marker>
+    <g id="minifolder">
+      <path d="M0,14 h40 l12,-14 h48 v14 h50 v86 h-150 z" fill="#79b8ff" fill-opacity="0.18" stroke="#79b8ff" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+  </defs>
+
+  <!-- ===== project folder ===== -->
+  <path d="M30,10 h230 l30,-40 h190 v40 h560 v620 h-1010 z" fill="#79b8ff" fill-opacity="0.06" stroke="#79b8ff" stroke-width="4" stroke-linejoin="round"/>
+  <text x="56" y="2" class="mono" fill="#79b8ff" font-size="30" font-weight="bold">my-project/</text>
+
+  <!-- ===== the box (.venv) ===== -->
+  <g transform="translate(70,200)">
+    <!-- open flaps -->
+    <path d="M0,70 L-34,10 L150,10 L170,70 z" fill="#b07a45" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M200,70 L180,10 L364,10 L330,70 z" fill="#b07a45" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
+    <!-- contents sticking out -->
+    <g class="mono" font-size="20" text-anchor="middle">
+      <rect x="20" y="-48" width="132" height="120" rx="10" fill="#3776ab" stroke="#111" stroke-width="3"/>
+      <text x="86" y="-14" fill="#ffd43b" font-weight="bold" font-size="22">Python</text>
+      <text x="86" y="12" fill="#fff">3.12</text>
+      <rect x="164" y="-22" width="150" height="94" rx="10" fill="#150458" stroke="#111" stroke-width="3"/>
+      <text x="239" y="10" fill="#ffca00" font-weight="bold">pandas</text>
+      <text x="239" y="36" fill="#fff">2.2</text>
+      <rect x="72" y="30" width="116" height="46" rx="8" fill="#4dabcf" stroke="#111" stroke-width="3"/>
+      <text x="130" y="60" fill="#111" font-weight="bold">numpy</text>
+      <rect x="198" y="40" width="140" height="40" rx="8" fill="#e8ecef" stroke="#111" stroke-width="3"/>
+      <text x="268" y="67" fill="#11557c" font-weight="bold" font-size="18">matplotlib</text>
+    </g>
+    <!-- box body -->
+    <rect x="0" y="70" width="330" height="250" fill="#c8915a" stroke="#111" stroke-width="4"/>
+    <rect x="148" y="70" width="34" height="250" fill="#e0b27a" opacity="0.7"/>
+    <rect x="70" y="150" width="190" height="80" rx="6" fill="#fdf6e3" stroke="#111" stroke-width="3"/>
+    <text x="165" y="202" class="mono" text-anchor="middle" font-size="36" font-weight="bold" fill="#111">.venv/</text>
+    <text x="165" y="290" text-anchor="middle" font-size="20" fill="#3b2a20">THIS PROJECT ONLY</text>
+  </g>
+  <text x="235" y="575" class="lbl" text-anchor="middle">the box: own Python</text>
+  <text x="235" y="610" class="lbl" text-anchor="middle">+ own libraries</text>
+
+  <!-- ===== scripts / results ===== -->
+  <use href="#minifolder" x="490" y="190"/>
+  <text x="565" y="330" class="mono" fill="#e1e4e8" font-size="24" text-anchor="middle">scripts/</text>
+  <use href="#minifolder" x="490" y="380"/>
+  <text x="565" y="520" class="mono" fill="#e1e4e8" font-size="24" text-anchor="middle">results/</text>
+
+  <!-- ===== requirements.txt (shopping list) ===== -->
+  <g transform="translate(720,150)">
+    <path d="M0,0 h230 v330 l-20,-12 l-20,12 l-20,-12 l-20,12 l-20,-12 l-20,12 l-20,-12 l-20,12 l-20,-12 l-20,12 l-20,-12 l-10,6 z" fill="#fdf6e3" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
+    <text x="115" y="44" text-anchor="middle" font-size="24" font-weight="bold" fill="#111">SHOPPING LIST</text>
+    <line x1="20" y1="60" x2="210" y2="60" stroke="#111" stroke-width="2" stroke-dasharray="6 5"/>
+    <g class="mono" font-size="18" fill="#111">
+      <text x="20" y="104">pandas==2.2.3</text>
+      <text x="20" y="144">numpy==2.1.3</text>
+      <text x="20" y="184">matplotlib==3.9</text>
+      <text x="20" y="224">requests==2.32</text>
+    </g>
+  </g>
+  <text x="835" y="560" class="mono" fill="#b392f0" font-size="26" text-anchor="middle">requirements.txt</text>
+  <text x="835" y="598" class="note" text-anchor="middle">the shopping list</text>
+
+  <!-- rebuild arrow: list -> box -->
+  <path class="arrow" d="M770,140 C700,110 480,110 420,170" marker-end="url(#ahv)" stroke-dasharray="10 8"/>
+  <text x="600" y="62" fill="#b392f0" font-size="24" text-anchor="middle">lost it? rebuild it from the list</text>
+  <text x="600" y="92" class="mono" fill="#8b949e" font-size="19" text-anchor="middle">pip install -r requirements.txt</text>
+
+  <!-- ===== Git ===== -->
+  <path class="arrow" d="M965,300 L1150,300" marker-end="url(#ahv)"/>
+  <g transform="translate(1170,170)">
+    <path d="M60,120 a60,60 0 0 1 40,-104 a80,80 0 0 1 150,10 a55,55 0 0 1 80,94 z" fill="#b392f0" fill-opacity="0.15" stroke="#b392f0" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="0" y="120" width="400" height="140" rx="16" fill="#b392f0" fill-opacity="0.15" stroke="#b392f0" stroke-width="4"/>
+    <text x="200" y="182" text-anchor="middle" font-size="36" font-weight="bold" fill="#e1e4e8">Git / GitHub</text>
+    <text x="200" y="228" text-anchor="middle" font-size="24" fill="#85e89d">✓ requirements.txt</text>
+  </g>
+  <text x="1370" y="490" class="note" text-anchor="middle" style="fill:#ff7b72">✗ .venv/ never goes here</text>
+  <text x="1370" y="526" class="note" text-anchor="middle">(you send the list,</text>
+  <text x="1370" y="558" class="note" text-anchor="middle">not the whole box)</text>
+</svg>
